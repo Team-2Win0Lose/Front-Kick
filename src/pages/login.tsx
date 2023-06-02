@@ -1,7 +1,7 @@
 type Props = {};
 
-const login = (props: Props) => {
+const Login = (props: Props) => {
   return <div>login</div>;
 };
 
-export default login;
+export default Login;
