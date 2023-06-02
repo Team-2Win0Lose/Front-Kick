@@ -1,7 +1,6 @@
-type Props = {}
+type Props = {};
 
-const main = (props: Props) => {
-  return (
-    <div>main</div>
-  )
-}
+const Main = (props: Props) => {
+  return <div>main</div>;
+};
+export default Main;
