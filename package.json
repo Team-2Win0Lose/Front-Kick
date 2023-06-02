@@ -20,7 +20,7 @@
     "react-router-dom": "^6.9.0",
     "redux-persist": "^6.0.0",
     "styled-components": "^5.3.10",
-    "styled-reset": "^4.4.5"
+    "styled-reset": "^4.4.7"
   },
   "devDependencies": {
     "@types/react": "^18.0.27",
