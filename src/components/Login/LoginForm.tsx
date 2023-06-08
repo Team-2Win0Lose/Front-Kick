@@ -18,7 +18,6 @@ const LoginForm = (props: any) => {
   });
 
   const onSubmit: SubmitHandler<FormValue> = (data) => {
-    //api 호출
     console.log(data);
   };
   const onError: SubmitErrorHandler<FormValue> = (error) => {
