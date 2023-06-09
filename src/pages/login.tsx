@@ -1,18 +1,13 @@
 import styled from 'styled-components';
 import LoginForm from '../components/Login/LoginForm';
 import KakaoForm from '../components/Login/KakaoForm';
+import LoginHeader from '../components/Login/LoginHeader';
 type Props = {};
 
 const Login = (props: Props) => {
   return (
     <Wrap>
-      <Header>
-        <Logos>
-          <IMG src='public/assets/logo.svg' alt='logo' />
-          <Kick>킥킥</Kick>
-        </Logos>
-        <Slogan>K리그, 함께 떠나고 즐기자</Slogan>
-      </Header>
+      <LoginHeader />
       <Main>
         <LoginForm />
         <Partition>
@@ -31,38 +26,9 @@ const Wrap = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 25px;
 `;
-const Header = styled.div`
-  margin-top: 50px;
-  width: 175px;
-  height: 160px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 15px;
-`;
-const Logos = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 15px;
-`;
-const IMG = styled.img`
-  width: 60px;
-  height: 59.02px;
-`;
-const Kick = styled.p`
-  font-size: 45px;
-  font-weight: 700;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-`;
-const Slogan = styled.p`
-  font-size: 16px;
-  font-weight: 700;
-`;
+
 const Main = styled.div`
   display: flex;
   flex-direction: column;
