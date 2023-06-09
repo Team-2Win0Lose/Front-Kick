@@ -1,4 +1,5 @@
 import React, { useRef, useEffect } from 'react';
+import { AiOutlineClose } from 'react-icons/ai';
 import styled from 'styled-components';
  
 const SideBarWrap = styled.div`
@@ -50,16 +51,17 @@ function Sidebar({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: any }) {
  
   return (
     <SideBarWrap id="sidebar" ref={outside} className={isOpen ? 'open' : ''}>
-      <img
-        src="/img/close.png"
+      <AiOutlineClose
         alt="close"
         onClick={toggleSide}
         onKeyDown={toggleSide}
       />
+      
       <ul>
-        <Menu>메뉴1</Menu>
-        <Menu>메뉴2</Menu>
-        <Menu>메뉴3</Menu>
+        <Menu>킥킥 소개</Menu>
+        <Menu>공지사항</Menu>
+        <Menu>자주 묻는 질문</Menu>
+        <Menu>설정</Menu>
       </ul>
     </SideBarWrap>
   );
