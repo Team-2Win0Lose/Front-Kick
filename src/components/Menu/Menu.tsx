@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 
 
-function Header() {
+function Menu() {
     const [isOpen, setIsOpen] = useState(false);
     const toggleSide = () => {
       setIsOpen(true);
@@ -14,7 +14,9 @@ function Header() {
     return (
       <div>
         <div role="button" onClick={toggleSide}>
-          <GiHamburgerMenu />
+          <GiHamburgerMenu
+          size="30"
+          color="#ffffff" />
         </div>
         <Sidebar isOpen={isOpen} setIsOpen={setIsOpen} />
       </div>
@@ -22,4 +24,4 @@ function Header() {
 }
 
 
-export default Header;
+export default Menu;
