@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 
 type Props = {};
@@ -7,7 +6,7 @@ const LoginHeader = (props: Props) => {
   return (
     <Header>
       <Logos>
-        <IMG src='public/assets/totalLogo.svg' alt='logo' />
+        <IMG src='public/assets/totalLogo.png' alt='logo' />
       </Logos>
     </Header>
   );
@@ -29,18 +28,6 @@ const Logos = styled.div`
   align-items: center;
   gap: 15px;
 `;
-const IMG = styled.img`
-  /* width: 60px;
-  height: 59.02px; */
-`;
-const Kick = styled.p`
-  font-size: 45px;
-  font-weight: 700;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-`;
-const Slogan = styled.p`
-  font-size: 16px;
-  font-weight: 700;
-`;
+const IMG = styled.img``;
+
 export default LoginHeader;

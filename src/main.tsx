@@ -7,7 +7,7 @@ import Loading from './pages/Loading/Loading';
 const RouterObject = createBrowserRouter(RouterInfo);
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  <React.Suspense fallback={<Loading />}>
+  <React.Suspense fallback={<div>loading...</div>}>
     <GlobalStyle />
     <RouterProvider router={RouterObject} />
   </React.Suspense>,

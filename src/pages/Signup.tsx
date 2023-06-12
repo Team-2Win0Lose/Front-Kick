@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import SignupForm from '../components/Signup/SignupForm';
 import LoginHeader from '../components/Login/LoginHeader';
+import News from './news/News';
 
 type Props = {};
 
@@ -10,6 +11,7 @@ const Signup = (props: Props) => {
     <Wrap>
       <LoginHeader />
       <SignupForm />
+      <News />
     </Wrap>
   );
 };
