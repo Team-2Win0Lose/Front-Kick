@@ -66,7 +66,7 @@ const SideBarWrap = styled.div`
 const Menu = styled.li`
   margin: 30px 8px;
   padding: 15px;
-  font-size: 2rem;
+  font-size: 1rem;
   color: #FFFFFF;
 `;
  
