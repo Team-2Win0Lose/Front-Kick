@@ -15,7 +15,7 @@ const TeamSlide = (props: Props) => {
     autoplay: true,
     infinite: true,
     speed: 100,
-    slidesToShow: 5,
+    slidesToShow: 4,
     slidesToScroll: 1,
     swipeToSlide: true,
     cssEase: 'linear',
