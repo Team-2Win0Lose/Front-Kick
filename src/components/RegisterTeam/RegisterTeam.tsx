@@ -1,13 +1,14 @@
-import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 type Props = {};
 
 const RegisterTeam = (props: Props) => {
+  const navigate = useNavigate();
   return (
     <Wrap>
       <Form>
         <Comment>아직 선택한 구단 카드가 없어요</Comment>
-        <RegistBtn onClick={() => alert('버튼 누름!')}>
+        <RegistBtn onClick={() => navigate('/selectteam')}>
           구단 카드 등록하기
         </RegistBtn>
       </Form>

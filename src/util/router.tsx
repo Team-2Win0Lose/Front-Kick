@@ -4,6 +4,7 @@
 // import Signup from '../pages/Signup';
 import React from 'react';
 import Loading from '../pages/Loading/Loading';
+import SelectTeam from '../pages/SelectTeam';
 
 const App = React.lazy(() => import('../App'));
 const Login = React.lazy(() => import('../pages/Login'));
@@ -37,12 +38,17 @@ export const RouterInfo = [
         element: <Signup />,
         label: 'Signup',
       },
+      {
+        path: '/selectteam',
+        element: <SelectTeam />,
+        label: 'SelectTeam',
+      },
 
       {
         path: '/matchmaking',
         Element: <Matchmaking />,
-        label: "Matchmaking"
-      }
+        label: 'Matchmaking',
+      },
     ],
   },
 ];
