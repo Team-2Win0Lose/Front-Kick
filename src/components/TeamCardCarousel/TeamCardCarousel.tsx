@@ -4,12 +4,12 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 
-const BannerCarousel = () => {
+const TeamCardCarousel = () => {
     const settings = {
-        dots: true,
+        dots: false,
         autoplay: true,
         Infinite: true,
-        slidesToshow: 1,
+        slidesToshow: 4,
         slidesToscroll: 1,
         swipeToslide: true,
         autoplaySpeed:3000,
@@ -18,10 +18,8 @@ const BannerCarousel = () => {
   
     return (
         <div className="carousel">
+            
             <Slider {...settings}>
-                <Box>
-                    <IMG src='/assets/banner3.png' alt='logo'/>
-                </Box>
                 <Box>
                     <IMG src='/assets/banner2.svg' alt='logo2'/>
                 </Box>
@@ -34,11 +32,12 @@ const BannerCarousel = () => {
     );
 }
 
-export default BannerCarousel;
+export default TeamCardCarousel;
 
 const Box = styled.div`
   width: 200%;
-  height: 15vh;
+  height: 30vh;
+
   margin-top: 50px;
 `;
 
