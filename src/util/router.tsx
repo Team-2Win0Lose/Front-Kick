@@ -9,6 +9,7 @@ const App = React.lazy(() => import('../App'));
 const Login = React.lazy(() => import('../pages/Login'));
 const Main = React.lazy(() => import('../pages/Main'));
 const Signup = React.lazy(() => import('../pages/Signup'));
+const Matchmaking = React.lazy(() => import('../pages/Matchmaking'));
 
 export const RouterInfo = [
   {
@@ -36,6 +37,12 @@ export const RouterInfo = [
         element: <Signup />,
         label: 'Signup',
       },
+
+      {
+        path: '/matchmaking',
+        Element: <Matchmaking />,
+        label: "Matchmaking"
+      }
     ],
   },
 ];
