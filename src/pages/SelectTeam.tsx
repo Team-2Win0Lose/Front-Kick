@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 import TeamSlide from '../components/SelectTeam/TeamSlide';
+import Base from '../components/SelectTeam/TeamInfo/Base';
 import Ulsan from '../components/SelectTeam/TeamInfo/Ulsan';
 import Pohang from '../components/SelectTeam/TeamInfo/Pohang';
 import Seoul from '../components/SelectTeam/TeamInfo/Seoul';
@@ -16,7 +17,7 @@ import Suwonsamsung from '../components/SelectTeam/TeamInfo/Suwonsamsung';
 
 type Props = {};
 const tabs = [
-  { index: 0, name: '기본 페이지', content: <div>기본</div> },
+  { index: 0, name: '기본 페이지', content: <Base /> },
   { index: 1, name: '울산현대축구단', content: <Ulsan /> },
   { index: 2, name: '포항스틸러스', content: <Pohang /> },
   { index: 3, name: 'FC서울', content: <Seoul /> },
@@ -44,6 +45,7 @@ const SelectTeam = (props: Props) => {
 };
 const Wrap = styled.div`
   background-color: #1f1f45;
+  height: 100vh;
 `;
 const BodyContainer = styled.div``;
 export default SelectTeam;

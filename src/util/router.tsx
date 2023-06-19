@@ -46,7 +46,7 @@ export const RouterInfo = [
 
       {
         path: '/matchmaking',
-        Element: <Matchmaking />,
+        element: <Matchmaking />,
         label: 'Matchmaking',
       },
     ],
