@@ -4,6 +4,11 @@ import TeamCardCarousel from './TeamCardCarousel';
 
 
 const TeamCard = () => {
+  
+
+
+
+
   return (
     <div>
     <Title>
