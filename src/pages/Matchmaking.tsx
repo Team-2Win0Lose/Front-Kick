@@ -9,4 +9,7 @@ const Matchmaking = (props: props) => {
 
 export default Matchmaking;
 
-const DIV = styled.div``;
+
+const DIV = styled.div`
+  
+`;
