@@ -11,6 +11,8 @@ const Login = React.lazy(() => import('../pages/Login'));
 const Main = React.lazy(() => import('../pages/Main'));
 const Signup = React.lazy(() => import('../pages/Signup'));
 const Matchmaking = React.lazy(() => import('../pages/Matchmaking'));
+const CreateRoom = React.lazy(() => import('../pages/CreateRoom'));
+
 
 export const RouterInfo = [
   {
@@ -48,6 +50,11 @@ export const RouterInfo = [
         path: '/matchmaking',
         element: <Matchmaking />,
         label: 'Matchmaking',
+      },
+      {
+        path: '/createroom',
+        element: <CreateRoom />,
+        label: 'CreateRoom',
       },
     ],
   },
