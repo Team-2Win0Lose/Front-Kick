@@ -4,7 +4,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { RouterInfo } from './util/router';
 import GlobalStyle from './util/GlobalStyle';
 import { Provider } from 'react-redux';
-import store from './app/store';
+import { store } from './app/store';
 
 const RouterObject = createBrowserRouter(RouterInfo);
 
