@@ -8,14 +8,17 @@ const Account = () => {
     const navigate = useNavigate();
 
   return (
-    <Button onClick={() => { navigate('/login'); }}>
-                <VscAccount/>
-              </Button>
+      <CustomIcon onClick={() => { navigate('/login'); }}/>
+
   )
 }
 
-export default Account
+const CustomIcon = styled(VscAccount)`
+  color: white;
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
 
-const Button = styled.button`
-  
 `;
+
+export default Account
