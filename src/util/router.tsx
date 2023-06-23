@@ -4,16 +4,16 @@
 // import Signup from '../pages/Signup';
 import React from 'react';
 import Loading from '../pages/Loading/Loading';
-import SelectTeam from '../pages/SelectTeam';
-import AddCourse from '../pages/CreateRoom/AddCourse';
 
 const App = React.lazy(() => import('../App'));
 const Login = React.lazy(() => import('../pages/Login'));
 const Main = React.lazy(() => import('../pages/Main'));
 const Signup = React.lazy(() => import('../pages/Signup'));
 const Matchmaking = React.lazy(() => import('../pages/Matchmaking'));
+const SelectTeam = React.lazy(() => import('../pages/SelectTeam'));
 const CreateRoom = React.lazy(() => import('../pages/CreateRoom/CreateRoom'));
 const RoomInfo = React.lazy(() => import('../pages/RoomInfo'));
+const AddCourse = React.lazy(() => import('../pages/CreateRoom/AddCourse'));
 
 export const RouterInfo = [
   {
@@ -56,6 +56,16 @@ export const RouterInfo = [
         path: '/createroom',
         element: <CreateRoom />,
         label: 'CreateRoom',
+      },
+      {
+        path: '/roominfo',
+        element: <RoomInfo />,
+        label: 'RoomInfo',
+      },
+      {
+        path: '/addcourse',
+        element: <AddCourse />,
+        label: 'AddCourse',
       },
     ],
   },
