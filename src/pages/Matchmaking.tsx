@@ -9,7 +9,6 @@ const Matchmaking = (props: props) => {
   return (
   <DIV><DateCard></DateCard>
   <Matchschedule></Matchschedule>
-  <MatchscheduleAdd></MatchscheduleAdd>
   </DIV>
   );
 };

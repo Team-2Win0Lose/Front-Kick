@@ -68,7 +68,7 @@ const RegisterTeam = (props: Props) => {
             <Blue>달려갈 준비가 끝난 동행 팀</Blue>
             <Black>수원삼성보다 4팀이나 적어요</Black>
             <FindBtn>
-              <BtnText>동행찾기</BtnText>
+              <BtnText onClick={() => navigate('/matchmaking')}>동행찾기</BtnText>
             </FindBtn>
           </Find>
         </TeamContainer2>

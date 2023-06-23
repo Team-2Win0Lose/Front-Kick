@@ -1,36 +1,30 @@
 import React from 'react';
 import styled from 'styled-components';
+import MatchscheduleFilter from './MatchscheduleFilter';
 import MatchscheduleItem from './MatchscheduleItem';
+import MatchscheduleAdd from './MatchscheduleAdd';
 
-function Matchschedule(){
 
-    const todos = [
-      {
-        id: 1,
-        text: 'Context API 배우기',
-        done: true
-      },
-      {
-        id: 2,
-        text: 'TypeScript 배우기',
-        done: true
-      },
-      {
-        id: 3,
-        text: 'TypeScript 와 Context API 함께 사용하기',
-        done: false
-      }
-    ];
 
-    return (
-      <div className="todoList">
-        {todos.length === 0 ? <span>오늘 할 일을 등록하세요!</span> :
-          todos.map(todo => (
-            <MatchscheduleItem todo={todo} key={todo.id} />
-          ))
-        }
-      </div>
-    );
+type Props = {}
+
+const MatchSchedule = (props: Props) => {
+  return (
+    <div>
+      <MatchscheduleFilter></MatchscheduleFilter>
+      <MatchscheduleItem/>
+      <CenteredContainer>
+      <MatchscheduleAdd/>
+      </CenteredContainer>
+      
+    </div>
+  )
 }
 
-export default Matchschedule;
+export default MatchSchedule
+
+const CenteredContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
