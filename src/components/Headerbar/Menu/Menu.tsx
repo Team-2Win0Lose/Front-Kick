@@ -14,14 +14,20 @@ function Menu() {
     return (
       <div>
         <div role="button" onClick={toggleSide}>
-          <GiHamburgerMenu
-          size="30"
-          color="#ffffff" />
+          <CustomIcon/>
         </div>
         <Sidebar isOpen={isOpen} setIsOpen={setIsOpen} />
       </div>
     );
 }
 
+
+const CustomIcon = styled(GiHamburgerMenu)`
+  color: white;
+  width: 30px;
+  height: 30px;
+  margin-right: 20px;
+
+`;
 
 export default Menu;

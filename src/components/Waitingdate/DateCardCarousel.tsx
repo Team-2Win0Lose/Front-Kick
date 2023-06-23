@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from "styled-components";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -104,22 +105,16 @@ const DateCardCarousel = () => {
   
     return (
         <DIV className="carousel">
-            
-            <Slider {...settings}>
-            
-                {items.map((item, index) => (
-                    
+            <CustomSlider {...settings}>
+                {items.map((item, index) => (  
                     <Box key={index}>
-                        <IMG src ={item.item} alt={item.name} />
-                        <Name>{item.name}</Name>
-                        <StadiumName> 8월 3일 14:00 </StadiumName>
-                        <StadiumName>{item.stadium}</StadiumName>
+                            <IMG src ={item.item} alt={item.name} />
+                            <Name>{item.name}</Name>
+                            <StadiumName> 8월 3일 14:00 </StadiumName>
+                            <StadiumName>{item.stadium}</StadiumName>
                     </Box>
-    
-                ))}
-                
-            </Slider>
-            
+                ))}    
+            </CustomSlider>           
         </DIV>
     );
 }
@@ -127,8 +122,18 @@ const DateCardCarousel = () => {
 export default DateCardCarousel;
 
 const DIV = styled.div`
-    margin-bottom: 50px;
 `;
+
+const CustomSlider = styled(Slider)`
+  .slick-slide {
+    margin-right: 20px;
+
+  }
+  .slick-dots {
+    bottom: 100px; 
+  }
+`;
+
 
 
 const Box = styled.div`
@@ -142,7 +147,6 @@ const Box = styled.div`
 `;
 
 const IMG = styled.img`
-
     width: 100%;
     height: 50%;
     object-fit: contain;
@@ -153,7 +157,6 @@ font-size: 25px;
 margin-Top: 30px;
 font-weight: bold;
 text-align: center;
-margin: 20px;
 `;
 
 const StadiumName = styled.div`
