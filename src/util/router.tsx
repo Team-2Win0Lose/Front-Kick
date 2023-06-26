@@ -57,6 +57,11 @@ export const RouterInfo = [
         element: <CreateRoom />,
         label: 'CreateRoom',
       },
+      {
+        path: '/roominfo',
+        element: <RoomInfo />,
+        label: 'RoomInfo',
+      },
     ],
   },
 ];
