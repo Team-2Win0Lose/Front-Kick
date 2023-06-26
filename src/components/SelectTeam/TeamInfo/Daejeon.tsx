@@ -1,10 +1,14 @@
 import React from 'react';
 import { dummyTeams } from '../../../../public/dummy/dummyTeams';
 import styled from 'styled-components';
-
+import { useDispatch } from 'react-redux';
+import { register } from '../../../feature/TeamSlice';
+import { useNavigate } from 'react-router-dom';
 type Props = {};
 
 const Daejeon = (props: Props) => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   return (
     <Wrap>
       {dummyTeams.map((team, idx) =>
@@ -29,7 +33,11 @@ const Daejeon = (props: Props) => {
                 <Info>{team.totalMatching} 개</Info>
               </InfoContainer>
             </TeamInfo>
-            <Select>선택하기</Select>
+            <Select
+              onClick={() => (dispatch(register(team)), navigate('/home'))}
+            >
+              선택하기
+            </Select>
           </Form>
         ) : null,
       )}
