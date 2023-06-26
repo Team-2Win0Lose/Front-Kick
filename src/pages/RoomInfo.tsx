@@ -1,23 +1,18 @@
 import React from 'react'
+import CourseCard from '../components/RoomInfo/CourseCard/CourseCard'
+import CurrentInfo from '../components/RoomInfo/CurrentInfo/CurrentInfo'
+import MeetingMapInfo from '../components/RoomInfo/MeetingMapInfo'
+import PostInfo from '../components/RoomInfo/PostInfo'
 
 type Props = {}
 
 const RoomInfo = (props: Props) => {
   return (
     <div>
-        <div>
-            현황 및 참여하기
-        </div>
-        <div>
-            지도
-        </div>
-        <div>
-            추가설명
-        </div>
-        <div>
-            코스카드
-        </div>
-
+        <CurrentInfo></CurrentInfo>
+        <MeetingMapInfo></MeetingMapInfo>
+        <PostInfo></PostInfo>
+        <CourseCard></CourseCard>
 
     </div>
     
