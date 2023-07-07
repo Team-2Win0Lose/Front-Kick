@@ -5,10 +5,6 @@ import CourseCardCarousel from './CourseCardCarousel';
 
 const CourseCard = () => {
   
-
-
-
-
   return (
     <div>
     <Title>
