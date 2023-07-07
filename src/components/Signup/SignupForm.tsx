@@ -2,8 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import { useForm } from 'react-hook-form';
 interface IAuthForm {
-  nickname: string;
   email: string;
+  nickname: string;
+  phonenumber: string;
   password: string;
   passwordConfirm: string;
   extraError?: string;
@@ -26,9 +27,27 @@ const SignupForm = (props: any) => {
       );
     }
   };
+  const autoHyphen = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const target = event.target as HTMLInputElement;
+    target.value = target.value
+      .replace(/[^0-9]/g, '')
+      .replace(/^(\d{0,3})(\d{0,4})(\d{0,4})$/g, '$1-$2-$3')
+      .replace(/(\-{1,2})$/g, '');
+  };
   return (
     <Form onSubmit={handleSubmit(onValid)}>
       <Field>
+        <Input
+          {...register('email', {
+            required: '이메일을 올바르게 입력해주세요.',
+            pattern: {
+              value: /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/,
+              message: '이메일을 올바르게 입력해주세요.',
+            },
+          })}
+          placeholder='이메일을 입력해주세요.'
+        />
+        <Warn>{errors?.email?.message}</Warn>
         <Input
           {...register('nickname', {
             required: '닉네임을 입력해주세요',
@@ -45,16 +64,17 @@ const SignupForm = (props: any) => {
         />
         <Warn>{errors?.nickname?.message}</Warn>
         <Input
-          {...register('email', {
-            required: '이메일을 올바르게 입력해주세요.',
+          {...register('phonenumber', {
+            required: '휴대폰 번호를 올바르게 입력해주세요.',
             pattern: {
-              value: /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/,
-              message: '이메일을 올바르게 입력해주세요.',
+              value: /^[0-9]{3}-[0-9]{4}-[0-9]{4}$/,
+              message: '휴대폰 번호를 올바르게 입력해주세요.',
             },
           })}
-          placeholder='이메일을 입력해주세요.'
+          onInput={autoHyphen}
+          placeholder='휴대폰 번호를 입력해주세요.'
         />
-        <Warn>{errors?.email?.message}</Warn>
+        <Warn>{errors?.phonenumber?.message}</Warn>
         <Input
           type='password'
           {...register('password', {

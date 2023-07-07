@@ -1,19 +1,19 @@
-import React from 'react';
 import styled from 'styled-components';
 import SelectBox from '../../components/CreateRoom/SelectBox';
 import { peopleNumbering } from '../../util/PeopleNumbering';
 import { useNavigate } from 'react-router-dom';
+import SelectSchedule from '../../components/CreateRoom/SelectSchedule';
 type Props = {};
 
 const CreateRoom = (props: Props) => {
   const navigate = useNavigate();
   return (
     <Form>
-      <RoomTitle>방 만들기</RoomTitle>
+      <RoomTitle>경기일정 선택(필수)</RoomTitle>
+      <SelectSchedule />
       <SettingBox>
         <TitleContainer>
-          <Reddot></Reddot>
-          <Title>인원 설정</Title>
+          <TitleInput placeholder='제목(필수)' />
         </TitleContainer>
         <BoxContainer>
           <SettingTxt>최소</SettingTxt>
@@ -24,7 +24,6 @@ const CreateRoom = (props: Props) => {
       </SettingBox>
       <SettingBox>
         <TitleContainer>
-          <Reddot></Reddot>
           <Title>코스 설정</Title>
         </TitleContainer>
         <BoxContainer>
@@ -35,7 +34,6 @@ const CreateRoom = (props: Props) => {
       </SettingBox>
       <SettingBox>
         <TitleContainer>
-          <Reddot></Reddot>
           <Title>내용</Title>
         </TitleContainer>
         <BoxContainer>
@@ -57,11 +55,11 @@ const Form = styled.div`
 const RoomTitle = styled.h1`
   margin-top: 10px;
   color: #000;
-  font-size: 32px;
-  font-weight: 700;
+  font-size: 24px;
+  font-weight: 500;
 `;
 const SettingBox = styled.div`
-  margin-top: 20px;
+  margin-top: 30px;
   width: 100%;
 `;
 const TitleContainer = styled.div`
@@ -70,15 +68,12 @@ const TitleContainer = styled.div`
   align-items: center;
   gap: 3px;
 `;
-const Reddot = styled.div`
-  width: 5px;
-  height: 5px;
-  border-radius: 5px;
-  background: #f00;
+const TitleInput = styled.input`
+  width: 90%;
+  font-size: 24px;
+  padding: 5px 10px;
 `;
-const Title = styled.p`
-  line-height: 0;
-`;
+const Title = styled.p``;
 const BoxContainer = styled.div`
   padding: 30px;
   margin: 0 auto;

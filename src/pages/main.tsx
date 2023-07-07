@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import React, { useState, useEffect } from 'react';
-import News from '../components/News/News';
 import RegisterTeam from '../components/RegisterTeam/RegisterTeam';
 import BannerCarousel from '../components/Banner/BannerCarousel';
 import TeamCard from '../components/TeamCardCarousel/TeamCard';
@@ -14,7 +13,6 @@ const Main = (props: Props) => {
       <RegisterTeam />
       <TeamCard></TeamCard>
       <BannerCarousel></BannerCarousel>
-      <News />
     </div>
   );
 };

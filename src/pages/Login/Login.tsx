@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import LoginForm from '../components/Login/LoginForm';
-import KakaoForm from '../components/Login/KakaoForm';
-import LoginHeader from '../components/Login/LoginHeader';
+import LoginForm from '../../components/Login/LoginForm';
+import KakaoForm from '../../components/Login/KakaoForm';
+import LoginHeader from '../../components/Login/LoginHeader';
 type Props = {};
 
 const Login = (props: Props) => {
