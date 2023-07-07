@@ -67,7 +67,8 @@ const LoginForm = (props: any) => {
         )}
         <SignUp>
           <Find to='/signup'>회원가입</Find>
-          <Find to='/login'>아이디/비밀번호 찾기</Find>
+          <Find to='/find/id'>아이디 찾기</Find>
+          <Find to='/find/password'>비밀번호 찾기</Find>
         </SignUp>
         <Button type='submit'>로그인</Button>
       </DivForm>
@@ -101,7 +102,7 @@ const Input = styled.input`
 `;
 const SignUp = styled.div`
   width: 339px;
-  justify-content: end;
+  justify-content: space-between;
   padding: 0;
   display: flex;
   gap: 5px;

@@ -6,7 +6,7 @@ import React from 'react';
 import Loading from '../pages/Loading/Loading';
 
 const App = React.lazy(() => import('../App'));
-const Login = React.lazy(() => import('../pages/Login'));
+const Login = React.lazy(() => import('../pages/Login/Login'));
 const Main = React.lazy(() => import('../pages/Main'));
 const Signup = React.lazy(() => import('../pages/Signup'));
 const Matchmaking = React.lazy(() => import('../pages/Matchmaking'));
@@ -14,7 +14,8 @@ const SelectTeam = React.lazy(() => import('../pages/SelectTeam'));
 const CreateRoom = React.lazy(() => import('../pages/CreateRoom/CreateRoom'));
 const RoomInfo = React.lazy(() => import('../pages/RoomInfo'));
 const AddCourse = React.lazy(() => import('../pages/CreateRoom/AddCourse'));
-
+const FindId = React.lazy(() => import('../pages/Login/Find/Id'));
+const FindPassword = React.lazy(() => import('../pages/Login/Find/Password'));
 export const RouterInfo = [
   {
     path: '/',
@@ -35,7 +36,16 @@ export const RouterInfo = [
         element: <Login />,
         label: 'Login',
       },
-
+      {
+        path: '/find/id',
+        element: <FindId />,
+        label: 'FindId',
+      },
+      {
+        path: '/find/password',
+        element: <FindPassword />,
+        label: 'FindPassword',
+      },
       {
         path: '/signup',
         element: <Signup />,

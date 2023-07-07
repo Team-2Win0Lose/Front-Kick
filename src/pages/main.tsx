@@ -13,7 +13,9 @@ const Main = (props: Props) => {
     <div>
       <Navbar></Navbar>
       <RegisterTeam />
-      <Banner><BannerCarousel></BannerCarousel></Banner>
+      <Banner>
+        <BannerCarousel></BannerCarousel>
+      </Banner>
       <TeamCard></TeamCard>
     </div>
   );
@@ -21,5 +23,5 @@ const Main = (props: Props) => {
 export default Main;
 
 const Banner = styled.div`
-  background-color:#F2F5F7
-`
+  background-color: #f2f5f7;
+`;
