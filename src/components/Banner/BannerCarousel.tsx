@@ -37,12 +37,15 @@ const BannerCarousel = () => {
 export default BannerCarousel;
 
 const Box = styled.div`
-  width: 200%;
-  height: 15vh;
-  margin-top: 50px;
+  width: 100%;
+  height: 365px;
 `;
 
 const IMG = styled.img`
-  width: 100%;
-  height: 100%;
+  width: 90%;
+  height: 90%;
+  border-radius: 50px;
+  justify-content:center;
+  align-items:center;
+  
 `;

@@ -9,7 +9,7 @@ const TeamCard = () => {
   return (
     <div>
     <Title>
-        팀 카드 둘러보기
+        구단별 응원순위
     </Title>
     <TeamCardCarousel/> 
 
