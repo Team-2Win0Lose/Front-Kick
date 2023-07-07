@@ -6,9 +6,6 @@ import TeamCardCarousel from './TeamCardCarousel';
 const TeamCard = () => {
   
 
-
-
-
   return (
     <div>
     <Title>
@@ -26,7 +23,7 @@ export default TeamCard
 
 
 const Title = styled.div`
-  font-size: 30px;
+  font-size: 20px;
   margin-Top: 30px;
   font-weight: bold;
 `;
