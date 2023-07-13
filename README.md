@@ -6,6 +6,7 @@
 ## 개발자
 
 - [김영준](https://github.com/coke05288) - 백엔드 개발자
+- [김진](https://github.com/aljinny) - 백엔드 개발자
 - [정승훈](https://github.com/Jeongseunghun) - 프론트엔드 개발자
 - [조승후](https://github.com/whtmdgn1409) - 프론트엔드 개발자
 

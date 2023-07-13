@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useForm } from 'react-hook-form';
+import SelectBox from './SelectBox';
 interface IAuthForm {
   email: string;
   nickname: string;
@@ -17,7 +18,16 @@ const SignupForm = (props: any) => {
     handleSubmit,
     setError,
   } = useForm<IAuthForm>({ mode: 'onBlur' });
-
+  const [selectedGender, setselectedGender] = useState<string>('male');
+  const handleDateChange = (year: number, month: number, day: number) => {
+    // 선택된 생년월일 값들을 처리하는 로직을 작성합니다.
+    console.log('Year:', year);
+    console.log('Month:', month);
+    console.log('Day:', day);
+  };
+  const handleGenderChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setselectedGender(event.target.value);
+  };
   const onValid = (data: IAuthForm) => {
     if (data.password !== data.passwordConfirm) {
       setError(
@@ -36,79 +46,112 @@ const SignupForm = (props: any) => {
   };
   return (
     <Form onSubmit={handleSubmit(onValid)}>
-      <Field>
-        <Input
-          {...register('email', {
-            required: '이메일을 올바르게 입력해주세요.',
-            pattern: {
-              value: /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/,
-              message: '이메일을 올바르게 입력해주세요.',
-            },
-          })}
-          placeholder='이메일을 입력해주세요.'
-        />
-        <Warn>{errors?.email?.message}</Warn>
-        <Input
-          {...register('nickname', {
-            required: '닉네임을 입력해주세요',
-            minLength: {
-              value: 3,
-              message: '3글자 이상 입력해주세요.',
-            },
-            pattern: {
-              value: /^[A-za-z0-9가-힣]{3,10}$/,
-              message: '가능한 문자: 영문 대소문자, 글자 단위 한글, 숫자',
-            },
-          })}
-          placeholder='닉네임을 입력해주세요.'
-        />
-        <Warn>{errors?.nickname?.message}</Warn>
-        <Input
-          {...register('phonenumber', {
-            required: '휴대폰 번호를 올바르게 입력해주세요.',
-            pattern: {
-              value: /^[0-9]{3}-[0-9]{4}-[0-9]{4}$/,
-              message: '휴대폰 번호를 올바르게 입력해주세요.',
-            },
-          })}
-          onInput={autoHyphen}
-          placeholder='휴대폰 번호를 입력해주세요.'
-        />
-        <Warn>{errors?.phonenumber?.message}</Warn>
-        <Input
-          type='password'
-          {...register('password', {
-            required: '비밀번호를 입력해주세요.',
-            minLength: {
-              value: 8,
-              message:
-                '비밀번호는 숫자, 영문 대문자, 소문자, 특수문자를 포함한 8글자 이상이어야 합니다.',
-            },
-            pattern: {
-              value:
-                /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
-              message:
-                '비밀번호는 숫자, 영문 대문자, 소문자, 특수문자를 포함한 8글자 이상이어야 합니다.',
-            },
-          })}
-          placeholder='비밀번호를 입력해주세요.'
-        />
-        <Warn>{errors?.password?.message}</Warn>
+      <p>입력사항</p>
+      <div>
+        <Field>
+          <Input
+            {...register('email', {
+              required: '이메일을 올바르게 입력해주세요.',
+              pattern: {
+                value: /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/,
+                message: '이메일을 올바르게 입력해주세요.',
+              },
+            })}
+            placeholder='이메일을 입력해주세요.'
+          />
+          <Warn>{errors?.email?.message}</Warn>
+          <Input
+            type='password'
+            {...register('password', {
+              required: '비밀번호를 입력해주세요.',
+              minLength: {
+                value: 8,
+                message:
+                  '비밀번호는 숫자, 영문 대문자, 소문자, 특수문자를 포함한 8글자 이상이어야 합니다.',
+              },
+              pattern: {
+                value:
+                  /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
+                message:
+                  '비밀번호는 숫자, 영문 대문자, 소문자, 특수문자를 포함한 8글자 이상이어야 합니다.',
+              },
+            })}
+            placeholder='비밀번호를 입력해주세요.'
+          />
+          <Warn>{errors?.password?.message}</Warn>
 
-        <Input
-          type='password'
-          {...register('passwordConfirm', {
-            required: '비밀번호를 입력해주세요.',
-            minLength: {
-              value: 8,
-              message:
-                '비밀번호는 숫자, 영문 대문자, 소문자, 특수문자를 포함한 8글자 이상이어야 합니다.',
-            },
-          })}
-          placeholder='비밀번호를 한번 더 입력해주세요.'
-        />
-        <Warn>{errors?.passwordConfirm?.message}</Warn>
-      </Field>
+          <Input
+            type='password'
+            {...register('passwordConfirm', {
+              required: '비밀번호를 입력해주세요.',
+              minLength: {
+                value: 8,
+                message:
+                  '비밀번호는 숫자, 영문 대문자, 소문자, 특수문자를 포함한 8글자 이상이어야 합니다.',
+              },
+            })}
+            placeholder='비밀번호를 한번 더 입력해주세요.'
+          />
+          <Warn>{errors?.passwordConfirm?.message}</Warn>
+          <Input
+            {...register('nickname', {
+              required: '닉네임을 입력해주세요',
+              minLength: {
+                value: 3,
+                message: '3글자 이상 입력해주세요.',
+              },
+              pattern: {
+                value: /^[A-za-z0-9가-힣]{3,10}$/,
+                message: '가능한 문자: 영문 대소문자, 글자 단위 한글, 숫자',
+              },
+            })}
+            placeholder='닉네임을 입력해주세요.'
+          />
+          <Warn>{errors?.nickname?.message}</Warn>
+          <PhoneNumberForm>
+            <InputPhonenumber
+              {...register('phonenumber', {
+                required: '휴대폰 번호를 올바르게 입력해주세요.',
+                pattern: {
+                  value: /^[0-9]{3}-[0-9]{4}-[0-9]{4}$/,
+                  message: '휴대폰 번호를 올바르게 입력해주세요.',
+                },
+              })}
+              onInput={autoHyphen}
+              placeholder='휴대폰 번호를 입력해주세요.'
+            />
+            <AuthBtn>인증 요청</AuthBtn>
+          </PhoneNumberForm>
+          <Warn>{errors?.phonenumber?.message}</Warn>
+          <div>
+            <label>
+              <input
+                type='radio'
+                value='male'
+                checked={selectedGender === 'male'}
+                onChange={handleGenderChange}
+              />
+              남성
+            </label>
+            <label>
+              <input
+                type='radio'
+                value='female'
+                checked={selectedGender === 'female'}
+                onChange={handleGenderChange}
+              />
+              여성
+            </label>
+          </div>
+          <SelectBox
+            year={2023}
+            month={7}
+            day={14}
+            onChange={handleDateChange}
+          />
+        </Field>
+      </div>
+
       <SubmitBtn type='submit'>회원가입</SubmitBtn>
       {errors?.extraError?.message && <p>{errors?.extraError?.message}</p>}
     </Form>
@@ -118,8 +161,8 @@ const SignupForm = (props: any) => {
 const Form = styled.form`
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  /* align-items: center;
+  justify-content: center; */
   gap: 30px;
 `;
 const Field = styled.fieldset`
@@ -128,15 +171,51 @@ const Field = styled.fieldset`
   align-items: center;
   justify-content: center;
   gap: 13px;
+  background-color: #e7e7e7;
+  border-radius: 17px;
+  padding: 20px 17px;
 `;
 const Input = styled.input`
-  width: 339px;
-  height: 55px;
-  border: 1px solid #818181;
+  width: 275px;
+  height: 48px;
+  border: none;
   filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.12));
   border-radius: 12px;
   padding: 18px 16px;
+  background-color: #d9d9d9;
 `;
+const PhoneNumberForm = styled.div`
+  width: 275px;
+  height: 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #d9d9d9;
+  filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.12));
+
+  border-radius: 12px;
+`;
+const InputPhonenumber = styled.input`
+  width: 180px;
+  height: 48px;
+  border: none;
+  border-radius: 12px;
+  padding: 18px 16px;
+  background-color: #d9d9d9;
+`;
+const AuthBtn = styled.button`
+  width: 51px;
+  height: 24px;
+  color: white;
+  background-color: #898989;
+  border-radius: 21px;
+  font-size: 9px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+`;
+
 const Warn = styled.p`
   width: 320px;
   font-size: 14px;
