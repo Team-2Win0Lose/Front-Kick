@@ -23,7 +23,9 @@ export default TeamCard
 
 
 const Title = styled.div`
-  font-size: 20px;
-  margin-Top: 30px;
+  border: 1px;
+  font-size: 30px;
+  margin-Top: 80px;
+  margin-bottom: 30px;
   font-weight: bold;
 `;

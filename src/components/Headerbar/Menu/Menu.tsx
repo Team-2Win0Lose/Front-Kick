@@ -23,9 +23,9 @@ function Menu() {
 
 
 const CustomIcon = styled(GiHamburgerMenu)`
-  color: white;
-  width: 30px;
-  height: 30px;
+  color: black;
+  width: 40px;
+  height: 40px;
   margin-right: 20px;
 
 `;
