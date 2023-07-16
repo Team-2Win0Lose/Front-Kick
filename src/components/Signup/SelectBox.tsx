@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import styled from 'styled-components';
 
 interface SelectBoxProps {
   year: number;
@@ -85,27 +86,97 @@ const SelectBox: React.FC<SelectBoxProps> = ({
   };
 
   return (
-    <div>
-      <select
+    <SelectBoxWrapper>
+      <Select
         value={selectedYear}
         onChange={(e) => handleSelectChange(e, 'year')}
       >
         {renderYearOptions()}
-      </select>
-      <select
+      </Select>
+      <IconSVG
+        width='20'
+        height='20'
+        viewBox='0 0 20 20'
+        fill='none'
+        xmlns='http://www.w3.org/2000/svg'
+      >
+        <path
+          fill-rule='evenodd'
+          clip-rule='evenodd'
+          d='M10 14L16 6H4L10 14Z'
+          fill='#1A1A1A'
+        />
+      </IconSVG>{' '}
+      <Select
         value={selectedMonth}
         onChange={(e) => handleSelectChange(e, 'month')}
       >
         {renderMonthOptions()}
-      </select>
-      <select
+      </Select>
+      <IconSVG
+        width='20'
+        height='20'
+        viewBox='0 0 20 20'
+        fill='none'
+        xmlns='http://www.w3.org/2000/svg'
+      >
+        <path
+          fill-rule='evenodd'
+          clip-rule='evenodd'
+          d='M10 14L16 6H4L10 14Z'
+          fill='#1A1A1A'
+        />
+      </IconSVG>
+      <Select
         value={selectedDay}
         onChange={(e) => handleSelectChange(e, 'day')}
       >
         {renderDayOptions()}
-      </select>
-    </div>
+      </Select>
+      <IconSVG
+        width='20'
+        height='20'
+        viewBox='0 0 20 20'
+        fill='none'
+        xmlns='http://www.w3.org/2000/svg'
+      >
+        <path
+          fill-rule='evenodd'
+          clip-rule='evenodd'
+          d='M10 14L16 6H4L10 14Z'
+          fill='#1A1A1A'
+        />
+      </IconSVG>{' '}
+    </SelectBoxWrapper>
   );
 };
-
+const SelectBoxWrapper = styled.div`
+  display: flex;
+  gap: 20px;
+`;
+export const Select = styled.select`
+  margin: 0;
+  min-width: 0;
+  display: block;
+  width: 100%;
+  padding: 8px 8px;
+  font-size: inherit;
+  line-height: inherit;
+  border: 1px solid;
+  border-radius: 4px;
+  color: inherit;
+  background-color: transparent;
+  &:focus {
+    border-color: red;
+  }
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+`;
+const IconSVG = styled.svg`
+  margin-left: -28px;
+  align-self: center;
+  width: 24px;
+  height: 24px;
+`;
 export default SelectBox;

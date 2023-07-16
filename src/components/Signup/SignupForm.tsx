@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useForm } from 'react-hook-form';
 import SelectBox from './SelectBox';
+import Icon_checked from './asset/icon_checked';
+import Icon_unchecked from './asset/icon_unchecked';
+
 interface IAuthForm {
   email: string;
   nickname: string;
@@ -25,9 +28,11 @@ const SignupForm = (props: any) => {
     console.log('Month:', month);
     console.log('Day:', day);
   };
+
   const handleGenderChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setselectedGender(event.target.value);
   };
+
   const onValid = (data: IAuthForm) => {
     if (data.password !== data.passwordConfirm) {
       setError(
@@ -37,6 +42,7 @@ const SignupForm = (props: any) => {
       );
     }
   };
+
   const autoHyphen = (event: React.ChangeEvent<HTMLInputElement>) => {
     const target = event.target as HTMLInputElement;
     target.value = target.value
@@ -44,6 +50,11 @@ const SignupForm = (props: any) => {
       .replace(/^(\d{0,3})(\d{0,4})(\d{0,4})$/g, '$1-$2-$3')
       .replace(/(\-{1,2})$/g, '');
   };
+
+  let now = new Date();
+  let nowYear = now.getFullYear();
+  let nowMonth = now.getMonth() + 1;
+  let nowDay = now.getDate();
   return (
     <Form onSubmit={handleSubmit(onValid)}>
       <p>입력사항</p>
@@ -123,36 +134,49 @@ const SignupForm = (props: any) => {
             <AuthBtn>인증 요청</AuthBtn>
           </PhoneNumberForm>
           <Warn>{errors?.phonenumber?.message}</Warn>
-          <div>
-            <label>
+          <GenderWrap>
+            <RadioWrap id='male'>
               <input
                 type='radio'
                 value='male'
+                name='gender'
                 checked={selectedGender === 'male'}
                 onChange={handleGenderChange}
               />
-              남성
-            </label>
-            <label>
+              {selectedGender === 'male' ? (
+                <Icon_checked />
+              ) : (
+                <Icon_unchecked />
+              )}
+              <span>남성</span>
+            </RadioWrap>
+            <RadioWrap id='female'>
               <input
                 type='radio'
                 value='female'
+                name='gender'
                 checked={selectedGender === 'female'}
                 onChange={handleGenderChange}
               />
-              여성
-            </label>
-          </div>
+              {selectedGender === 'female' ? (
+                <Icon_checked />
+              ) : (
+                <Icon_unchecked />
+              )}
+
+              <span>여성</span>
+            </RadioWrap>
+          </GenderWrap>
           <SelectBox
-            year={2023}
-            month={7}
-            day={14}
+            year={nowYear}
+            month={nowMonth}
+            day={nowDay}
             onChange={handleDateChange}
           />
         </Field>
       </div>
 
-      <SubmitBtn type='submit'>회원가입</SubmitBtn>
+      <SubmitBtn type='submit'>가입하기</SubmitBtn>
       {errors?.extraError?.message && <p>{errors?.extraError?.message}</p>}
     </Form>
   );
@@ -196,7 +220,7 @@ const PhoneNumberForm = styled.div`
   border-radius: 12px;
 `;
 const InputPhonenumber = styled.input`
-  width: 180px;
+  width: 210px;
   height: 48px;
   border: none;
   border-radius: 12px;
@@ -214,6 +238,7 @@ const AuthBtn = styled.button`
   justify-content: center;
   align-items: center;
   border: none;
+  margin-right: 10px;
 `;
 
 const Warn = styled.p`
@@ -230,5 +255,24 @@ const SubmitBtn = styled.button`
   color: #fff;
   font-weight: 600;
   font-size: 18px;
+`;
+
+const GenderWrap = styled.div`
+  margin-bottom: 16px;
+  display: flex;
+  gap: 15px;
+`;
+const RadioWrap = styled.label`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+  input {
+    display: none;
+  }
+  span {
+    margin-left: 4px;
+    margin-top: 1px;
+  }
 `;
 export default SignupForm;
