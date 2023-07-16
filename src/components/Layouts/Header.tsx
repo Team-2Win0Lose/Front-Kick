@@ -25,13 +25,14 @@ export default Header
 
 
 const Head = styled.header`
-  height: 100px;
+  height: 100%;
   justify-content: space-between;
   top: 0;
   margin: 0px;
   display: flex;
   align-items: center;
-  background: #1F1F45;
+  background: #FFFFFF;
+  //background: #1F1F45;
   overflow-x: hidden;
   background-size: cover;
   background-repeat: no-repeat;

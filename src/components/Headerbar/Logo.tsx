@@ -9,7 +9,7 @@ const Logo = () => {
 
   return (
     <Button onClick={() => { navigate('/home'); }}>
-        <IMG src='/assets/whitelogo.png' alt='logo'/>
+        <IMG src='/assets/officiallogo.png' alt='logo'/>
     </Button>
   )
 }
@@ -23,5 +23,5 @@ const IMG = styled.img`
 const Button = styled.button`
   background: transparent;
   border: none; 
-  padding: 30px;
+  padding: 20px;
 `;

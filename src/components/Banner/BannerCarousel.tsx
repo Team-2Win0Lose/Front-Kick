@@ -20,13 +20,19 @@ const BannerCarousel = () => {
         <div className="carousel">
             <Slider {...settings}>
                 <Box>
-                    <IMG src='/assets/banner3.png' alt='logo'/>
+                    <CenteredContent>
+                    <IMG src='/assets/banner5.png' alt='logo'/>
+                    </CenteredContent>
                 </Box>
                 <Box>
-                    <IMG src='/assets/banner2.svg' alt='logo2'/>
+                    <CenteredContent>
+                    <IMG src='/assets/banner4.png' alt='logo'/>
+                    </CenteredContent>
                 </Box>
                 <Box>
-                    <IMG src='/assets/banner.svg' alt='logo'/>
+                    <CenteredContent>
+                    <IMG src='/assets/banner5.png' alt='logo'/>
+                    </CenteredContent>
                 </Box>
 
             </Slider>
@@ -38,14 +44,21 @@ export default BannerCarousel;
 
 const Box = styled.div`
   width: 100%;
-  height: 365px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const CenteredContent = styled.div`
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const IMG = styled.img`
-  width: 90%;
-  height: 90%;
-  border-radius: 50px;
-  justify-content:center;
-  align-items:center;
-  
+  width: 80%;
+  height: 80%;
+  border-radius: 20px;
 `;

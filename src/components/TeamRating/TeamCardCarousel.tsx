@@ -8,7 +8,9 @@ interface itemsProps {
     rating: number,
     item: string,
     name: string,
-    loc: string
+    ing: number,
+    follower: number,
+    end: number;
   }
   
 const items:itemsProps[] = [
@@ -16,73 +18,97 @@ const items:itemsProps[] = [
     rating: 1,
     item: 'public/assets/teams/강원FC.png',
     name: '강원FC',
-    loc: '강원자치도'
+    ing: 12,
+    follower: 23,
+    end: 23 
     },
     {
     rating: 2,
     item: 'public/assets/teams/광주FC.png',
     name: '광주FC',
-    loc: '광주광역시'
+    ing: 12,
+    follower: 23,
+    end: 23 
     },
     {
     rating: 3,
     item: 'public/assets/teams/대구FC.png',
     name: '대구FC',
-    loc: '대구광역시'
+    ing: 12,
+    follower: 23,
+    end: 23 
     },
     {
     rating: 4,
     item: 'public/assets/teams/대전하나시티즌.png',
     name: '대전하나시티즌',
-    loc: '대전광역시'
+    ing: 12,
+    follower: 23,
+    end: 23 
     },
     {
     rating: 5,
     item: 'public/assets/teams/수원삼성블루윙즈.png',
     name: '수원삼성블루윙즈',
-    loc: '경기도 수원시'
+    ing: 12,
+    follower: 23,
+    end: 23 
     },
     {
     rating: 6,
     item: 'public/assets/teams/수원FC.png',
     name: '수원FC',
-    loc: '경기도 수원시'
+    ing: 12,
+    follower: 23,
+    end: 23 
     },
     {
     rating: 7,
     item: 'public/assets/teams/울산현대.png',
     name: '울산현대',
-    loc: '울산광역시'
+    ing: 12,
+    follower: 23,
+    end: 23 
     },
     {
     rating: 8,
     item: 'public/assets/teams/인천유나이티드.png',
     name: '인천유나이티드',
-    loc: '인천광역시'
+    ing: 12,
+    follower: 23,
+    end: 23 
     },
     {
     rating: 9,
     item: 'public/assets/teams/전북현대모터스.png',
     name: '전북현대모터스',
-    loc: '전라북도'
+    ing: 12,
+    follower: 23,
+    end: 23 
     },
     {
     rating: 10,
     item: 'public/assets/teams/제주유나이티드.png',
     name: '제주유나이티드',
-    loc: '제주특별자치도'
+    ing: 12,
+    follower: 23,
+    end: 23 
     },
     {
     rating: 11,
     item: 'public/assets/teams/포항스틸러스.png',
     name: '포항스틸러스',
-    loc: '경상북도 포항시'
+    ing: 12,
+    follower: 23,
+    end: 23 
     },
     {
     rating: 12,
     item: 'public/assets/teams/FC서울.png',
     name: 'FC서울',
-    loc: '서울특별시'
+    ing: 12,
+    follower: 23,
+    end: 23 
     }  
 ]
 
@@ -104,7 +130,7 @@ const TeamCardCarousel = () => {
     return (
         <div className="carousel">
             
-            <Slider {...settings}>
+            <CustomSlider {...settings}>
             
                 {items.map((item, index) => (
                     
@@ -112,12 +138,26 @@ const TeamCardCarousel = () => {
                         <Rate>{item.rating}</Rate>
                         <IMG src ={item.item} alt={item.name} />
                         <Name>{item.name}</Name>
-                        <Loc>{item.loc}</Loc>
+                        <FlexContainer>
+                            <FlexColumn>
+                                <FlexItem>{item.ing}</FlexItem>
+                                <FlexText>모집 중인 동행 팀</FlexText>
+                            </FlexColumn>
+                            <FlexColumn>
+                                <FlexItem>{item.follower}</FlexItem>
+                                <FlexText>팔로워</FlexText>
+                            </FlexColumn>
+                            <FlexColumn>
+                                <FlexItem>{item.end}</FlexItem>
+                                <FlexText>마감된 동행팀</FlexText>
+                            </FlexColumn>
+                        </FlexContainer>
+                        
                     </Box>
     
                 ))}
                 
-            </Slider>
+            </CustomSlider>
             
         </div>
     );
@@ -125,11 +165,17 @@ const TeamCardCarousel = () => {
 
 export default TeamCardCarousel;
 
+const CustomSlider = styled(Slider)`
+  .slick-slide {
+    margin-right: 20px;
+  }
+`;
+
 
 
 const Box = styled.div`
     width: 100%;
-    height: 400px;
+    height: 500px;
     justify-content: center;
     align-items: center;
     background: #EEEEEE;
@@ -137,31 +183,56 @@ const Box = styled.div`
     border-radius: 50px;
 `;
 
-const IMG = styled.img`
+const Rate = styled.div`
+    font-size: 80px;
+    font-weight: bold;
+    text-align: left;
+    margin-top: 10px;
+    padding-left: 50px;
+    
+`
 
+const IMG = styled.img`
     width: 100%;
     height: 200px;
     object-fit: contain;
 `;
 
 const Name = styled.div`
-font-size: 25px;
-margin-Top: 30px;
-font-weight: bold;
-text-align: center;
-margin: 20px;
+    font-size: 40px;
+    margin-Top: 60px;
+    font-weight: bold;
+    text-align: center;
+    margin: 20px;
 `;
 
-const Loc = styled.div`
-font-size: 15px;
-font-weight: bold;
-text-align: center;
+const FlexContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  margin-left: 30px;
+  margin-right: 30px;
+
 `;
 
-const Rate = styled.div`
-font-size: 100px;
-font-weight: bold;
-text-align: left;
-padding-left: 50px;
-    
-`
+const FlexColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const FlexItem = styled.div`
+    margin-top: 30px;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+
+`;
+
+const FlexText = styled.div`
+    margin-top: 10px;
+    font-size: 15px;
+
+
+`;

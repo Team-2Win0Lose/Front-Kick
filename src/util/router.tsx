@@ -7,7 +7,7 @@ import Loading from '../pages/Loading/Loading';
 
 const App = React.lazy(() => import('../App'));
 const Login = React.lazy(() => import('../pages/Login/Login'));
-const Main = React.lazy(() => import('../pages/Main'));
+const Main = React.lazy(() => import('../pages/main'));
 const Signup = React.lazy(() => import('../pages/Signup'));
 const Matchmaking = React.lazy(() => import('../pages/Matchmaking'));
 const SelectTeam = React.lazy(() => import('../pages/SelectTeam'));

@@ -1,6 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 import reset from 'styled-reset';
 
+
 const GlobalStyle = createGlobalStyle`
   ${reset}
 
@@ -18,7 +19,7 @@ const GlobalStyle = createGlobalStyle`
 
   @media only screen and (min-width: 768px) {
   body {
-    max-width: 1200px;
+    max-width: 1500px;
     margin: 0 auto;
     padding: 0 50px;
   }
