@@ -6,6 +6,7 @@ import React from 'react';
 import Loading from '../pages/Loading/Loading';
 
 const App = React.lazy(() => import('../App'));
+const EmailLogin = React.lazy(() => import('../pages/Login/EmailLogin'));
 const Login = React.lazy(() => import('../pages/Login/Login'));
 const Main = React.lazy(() => import('../pages/main'));
 const Signup = React.lazy(() => import('../pages/Signup'));
@@ -35,6 +36,11 @@ export const RouterInfo = [
         path: '/login',
         element: <Login />,
         label: 'Login',
+      },
+      {
+        path: '/emaillogin',
+        element: <EmailLogin />,
+        label: 'EmailLogin',
       },
       {
         path: '/find/id',

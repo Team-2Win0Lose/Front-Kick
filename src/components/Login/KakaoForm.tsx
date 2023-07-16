@@ -14,6 +14,6 @@ const KakaoForm = (props: Props) => {
   );
 };
 const KakaoLoginButton = styled.img`
-  width: 260px;
+  width: 360px;
 `;
 export default KakaoForm;
