@@ -13,15 +13,10 @@ const Main = (props: Props) => {
     <div>
       <Navbar></Navbar>
       <RegisterTeam />
-      <Banner>
         <BannerCarousel></BannerCarousel>
-      </Banner>
       <TeamCard></TeamCard>
     </div>
   );
 };
 export default Main;
 
-const Banner = styled.div`
-  background-color: #f2f5f7;
-`;
