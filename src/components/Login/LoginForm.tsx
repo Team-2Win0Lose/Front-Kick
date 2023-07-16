@@ -65,11 +65,11 @@ const LoginForm = (props: any) => {
         {errors.password && (
           <small role='alert'>{errors.password.message}</small>
         )}
-        <SignUp>
-          <Find to='/signup'>회원가입</Find>
-          <Find to='/find/id'>아이디 찾기</Find>
+        <TextBox>
+          <Find to='/find/id'>이메일 찾기</Find>
           <Find to='/find/password'>비밀번호 찾기</Find>
-        </SignUp>
+          <Signup to='/signup'>회원가입</Signup>
+        </TextBox>
         <Button type='submit'>로그인</Button>
       </DivForm>
     </Form>
@@ -100,8 +100,8 @@ const Input = styled.input`
   border-radius: 12px;
   padding: 18px 16px;
 `;
-const SignUp = styled.div`
-  width: 339px;
+const TextBox = styled.div`
+  width: 330px;
   justify-content: space-between;
   padding: 0;
   display: flex;
@@ -109,6 +109,12 @@ const SignUp = styled.div`
 `;
 const Find = styled(Link)`
   font-weight: 400;
+  font-size: 14px;
+  text-decoration: none;
+  color: black;
+`;
+const Signup = styled(Link)`
+  font-weight: bold;
   font-size: 14px;
   text-decoration: none;
   color: black;

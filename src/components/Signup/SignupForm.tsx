@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import SelectBox from './SelectBox';
 import Icon_checked from './asset/icon_checked';
 import Icon_unchecked from './asset/icon_unchecked';
+import Terms from './Terms';
 
 interface IAuthForm {
   email: string;
@@ -175,7 +176,7 @@ const SignupForm = (props: any) => {
           />
         </Field>
       </div>
-
+      <Terms />
       <SubmitBtn type='submit'>가입하기</SubmitBtn>
       {errors?.extraError?.message && <p>{errors?.extraError?.message}</p>}
     </Form>

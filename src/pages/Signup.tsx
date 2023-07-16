@@ -1,7 +1,5 @@
-import React from 'react';
 import styled from 'styled-components';
 import SignupForm from '../components/Signup/SignupForm';
-import LoginHeader from '../components/Login/LoginHeader';
 
 type Props = {};
 

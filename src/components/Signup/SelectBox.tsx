@@ -104,7 +104,7 @@ const SelectBox: React.FC<SelectBoxProps> = ({
           fill-rule='evenodd'
           clip-rule='evenodd'
           d='M10 14L16 6H4L10 14Z'
-          fill='#1A1A1A'
+          fill='#898989'
         />
       </IconSVG>{' '}
       <Select
@@ -124,7 +124,7 @@ const SelectBox: React.FC<SelectBoxProps> = ({
           fill-rule='evenodd'
           clip-rule='evenodd'
           d='M10 14L16 6H4L10 14Z'
-          fill='#1A1A1A'
+          fill='#898989'
         />
       </IconSVG>
       <Select
@@ -144,7 +144,7 @@ const SelectBox: React.FC<SelectBoxProps> = ({
           fill-rule='evenodd'
           clip-rule='evenodd'
           d='M10 14L16 6H4L10 14Z'
-          fill='#1A1A1A'
+          fill='#898989'
         />
       </IconSVG>{' '}
     </SelectBoxWrapper>
@@ -161,8 +161,9 @@ export const Select = styled.select`
   width: 100%;
   padding: 8px 8px;
   font-size: inherit;
+  color: #898989;
   line-height: inherit;
-  border: 1px solid;
+  border: 1px solid #898989;
   border-radius: 4px;
   color: inherit;
   background-color: transparent;
