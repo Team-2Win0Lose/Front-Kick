@@ -9,17 +9,17 @@ const Icon_checked = (props: Props) => {
       fill='none'
       xmlns='http://www.w3.org/2000/svg'
     >
-      <circle cx='12' cy='12' r='9.35' stroke='#C4C4C4' stroke-width='1.3' />
-      <g clip-path='url(#gxufjr4bqa)'>
+      <circle cx='12' cy='12' r='9.35' stroke='#C4C4C4' strokeWidth='1.3' />
+      <g clipPath='url(#gxufjr4bqa)'>
         <g filter='url(#4xtt2agx5b)'>
-          <circle cx='12' cy='12' r='10' fill='#9E30F4' />
+          <circle cx='12' cy='12' r='10' fill='#1f1f45' />
         </g>
         <path
           d='m16 9-5.082 6L8 11.555'
           stroke='#fff'
-          stroke-width='2'
-          stroke-linecap='round'
-          stroke-linejoin='round'
+          strokeWidth='2'
+          strokeLinecap='round'
+          strokeLinejoin='round'
         />
       </g>
       <defs>
@@ -33,9 +33,9 @@ const Icon_checked = (props: Props) => {
           width='28'
           height='28'
           filterUnits='userSpaceOnUse'
-          color-interpolation-filters='sRGB'
+          colorInterpolationFilters='sRGB'
         >
-          <feFlood flood-opacity='0' result='BackgroundImageFix' />
+          <feFlood floodOpacity='0' result='BackgroundImageFix' />
           <feColorMatrix
             in='SourceAlpha'
             values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0'

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import SignupForm from '../components/Signup/SignupForm';
+import SignupForm from '../../components/Signup/SignupForm';
 import React from 'react';
 
 type Props = {};
@@ -23,7 +23,7 @@ const Wrap = styled.div`
   justify-content: center;
   align-items: center;
   gap: 20px;
-  padding: 0 0 50px;
+  padding: 0 0 300px;
 `;
 
 export default Signup;
