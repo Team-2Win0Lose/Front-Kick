@@ -9,13 +9,14 @@ const App = React.lazy(() => import('../App'));
 const EmailLogin = React.lazy(() => import('../pages/Login/EmailLogin'));
 const Login = React.lazy(() => import('../pages/Login/Login'));
 const Main = React.lazy(() => import('../pages/main'));
-const Signup = React.lazy(() => import('../pages/Signup'));
+const Signup = React.lazy(() => import('../pages/Signup/Signup'));
+const Onboarding = React.lazy(() => import('../pages/Signup/Onboarding'));
 const Matchmaking = React.lazy(() => import('../pages/Matchmaking'));
-const SelectTeam = React.lazy(() => import('../pages/SelectTeam'));
 const CreateRoom = React.lazy(() => import('../pages/CreateRoom/CreateRoom'));
 const RoomInfo = React.lazy(() => import('../pages/RoomInfo'));
 const AddCourse = React.lazy(() => import('../pages/CreateRoom/AddCourse'));
 const FindId = React.lazy(() => import('../pages/Login/Find/Id'));
+const UserEmail = React.lazy(() => import('../pages/Login/Find/UserEmail'));
 const FindPassword = React.lazy(() => import('../pages/Login/Find/Password'));
 export const RouterInfo = [
   {
@@ -48,6 +49,11 @@ export const RouterInfo = [
         label: 'FindId',
       },
       {
+        path: '/find/useremail',
+        element: <UserEmail />,
+        label: 'UserEmail',
+      },
+      {
         path: '/find/password',
         element: <FindPassword />,
         label: 'FindPassword',
@@ -58,11 +64,10 @@ export const RouterInfo = [
         label: 'Signup',
       },
       {
-        path: '/selectteam',
-        element: <SelectTeam />,
-        label: 'SelectTeam',
+        path: '/signup/onboarding',
+        element: <Onboarding />,
+        label: 'Onboarding',
       },
-
       {
         path: '/matchmaking',
         element: <Matchmaking />,

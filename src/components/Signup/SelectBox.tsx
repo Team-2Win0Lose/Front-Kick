@@ -101,8 +101,8 @@ const SelectBox: React.FC<SelectBoxProps> = ({
         xmlns='http://www.w3.org/2000/svg'
       >
         <path
-          fill-rule='evenodd'
-          clip-rule='evenodd'
+          fillRule='evenodd'
+          clipRule='evenodd'
           d='M10 14L16 6H4L10 14Z'
           fill='#898989'
         />
@@ -121,8 +121,8 @@ const SelectBox: React.FC<SelectBoxProps> = ({
         xmlns='http://www.w3.org/2000/svg'
       >
         <path
-          fill-rule='evenodd'
-          clip-rule='evenodd'
+          fillRule='evenodd'
+          clipRule='evenodd'
           d='M10 14L16 6H4L10 14Z'
           fill='#898989'
         />
@@ -141,8 +141,8 @@ const SelectBox: React.FC<SelectBoxProps> = ({
         xmlns='http://www.w3.org/2000/svg'
       >
         <path
-          fill-rule='evenodd'
-          clip-rule='evenodd'
+          fillRule='evenodd'
+          clipRule='evenodd'
           d='M10 14L16 6H4L10 14Z'
           fill='#898989'
         />

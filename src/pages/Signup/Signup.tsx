@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import SignupForm from '../components/Signup/SignupForm';
+import SignupForm from '../../components/Signup/SignupForm';
 import React from 'react';
 
 type Props = {};

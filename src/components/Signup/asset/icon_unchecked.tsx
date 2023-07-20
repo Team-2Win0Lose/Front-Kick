@@ -11,7 +11,7 @@ const Icon_unchecked = (props: Props) => {
       fill='none'
       xmlns='http://www.w3.org/2000/svg'
     >
-      <circle cx='12' cy='12' r='9.35' stroke='#C4C4C4' stroke-width='1.3' />
+      <circle cx='12' cy='12' r='9.35' stroke='#C4C4C4' strokeWidth='1.3' />
     </svg>
   );
 };
