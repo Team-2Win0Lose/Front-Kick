@@ -33,12 +33,10 @@ const tabs = [
 ];
 const SelectTeam = (props: Props) => {
   const [tab, settab] = useState(0);
-  const handleTab = (state: number) => {
-    settab(state);
-  };
+
   return (
     <Wrap>
-      <TeamSlide handleTab={handleTab} />
+      <TeamSlide />
       <BodyContainer>{tabs[tab].content}</BodyContainer>
     </Wrap>
   );

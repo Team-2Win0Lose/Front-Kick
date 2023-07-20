@@ -2,22 +2,15 @@ import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 type Props = {};
 
-const FindId = (props: Props) => {
+const UserEmail = (props: Props) => {
   const navigate = useNavigate();
   return (
     <Form>
       <TextForm>
-        <Title>이메일 찾기</Title>
+        <Title>이메일 확인</Title>
       </TextForm>
       <FormContainer>
-        <InputForm>
-          <Input placeholder='휴대폰 번호' />
-          <Button>인증하기</Button>
-        </InputForm>
-        <InputForm>
-          <Input type='number' placeholder='인증번호입력' />
-          <Button>01:00</Button>
-        </InputForm>
+        <InputForm>{'footballjoa123@naver.com'}</InputForm>
         <BtnContainer>
           <BackBtn
             onClick={() => {
@@ -28,10 +21,10 @@ const FindId = (props: Props) => {
           </BackBtn>
           <NextBtn
             onClick={() => {
-              navigate('/find/useremail');
+              navigate('/find/password');
             }}
           >
-            인증하기
+            비밀번호 변경
           </NextBtn>
         </BtnContainer>
       </FormContainer>
@@ -63,30 +56,13 @@ const FormContainer = styled.div`
 const InputForm = styled.div`
   width: 319px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  background-color: #d9d9d9;
+  background-color: #fff;
+  border: 1px solid black;
+  padding: 16px 10px;
   margin-bottom: 10px;
   border-radius: 12px;
-  gap: 3px;
-`;
-
-const Input = styled.input`
-  width: 240px;
-  height: 30px;
-  background-color: #d9d9d9;
-  border: none;
-  border-radius: 12px;
-  padding: 18px 16px;
-`;
-const Button = styled.button`
-  background-color: #5c5c5c;
-  width: 60px;
-  height: 30px;
-  border: none;
-  border-radius: 12px;
-  color: white;
-  font-size: 10px;
 `;
 const BtnContainer = styled.div`
   display: flex;
@@ -116,4 +92,4 @@ const NextBtn = styled.div`
   background-color: #898989;
   font-size: 10px;
 `;
-export default FindId;
+export default UserEmail;

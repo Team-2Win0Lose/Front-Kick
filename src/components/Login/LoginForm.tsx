@@ -42,7 +42,7 @@ const LoginForm = (props: any) => {
             },
           })}
         />
-        {errors.email && <small role='alert'>{errors.email.message}</small>}
+        {errors.email && <Small role='alert'>{errors.email.message}</Small>}
         <Input
           id='password'
           type='password'
@@ -63,7 +63,7 @@ const LoginForm = (props: any) => {
           })}
         />
         {errors.password && (
-          <small role='alert'>{errors.password.message}</small>
+          <Small role='alert'>{errors.password.message}</Small>
         )}
         <TextBox>
           <Find to='/find/id'>이메일 찾기</Find>
@@ -128,5 +128,8 @@ const Button = styled.button`
   color: #fff;
   font-weight: 600;
   font-size: 18px;
+`;
+const Small = styled.small`
+  color: red;
 `;
 export default LoginForm;
