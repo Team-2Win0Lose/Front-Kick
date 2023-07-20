@@ -15,9 +15,9 @@ const Account = () => {
 
 const CustomIcon = styled(VscAccount)`
   //color: white;
-  width: 40px;
-  height: 40px;
-  margin-right: 20px;
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
 
 `;
 

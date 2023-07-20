@@ -10,12 +10,19 @@ const Navbar = () => {
 
   return (
     <Wrap>
-    <DIV>
-    <InfoBox onClick={() => navigate('/matchmaking')}>동행찾기</InfoBox>
-    </DIV>
-    <DIV>
-    <InfoBox onClick={() => navigate('/matchmaking')}>전체</InfoBox>
-    </DIV>
+      <DIV>
+        <InfoBox onClick={() => navigate('/matchmaking')}>전체</InfoBox>
+      </DIV>
+      <DIV>
+        <InfoBox onClick={() => navigate('/matchmaking')}>동행 구하기</InfoBox>
+      </DIV>
+      <DIV>
+        <InfoBox onClick={() => navigate('/matchmaking')}>동행 만들기</InfoBox>
+      </DIV>
+      <DIV>
+        <InfoBox onClick={() => navigate('/matchmaking')}>나의 지난 동행</InfoBox>
+      </DIV>
+      
     </Wrap>
 
   )
@@ -24,10 +31,11 @@ const Navbar = () => {
 export default Navbar
 
 const InfoBox = styled.div`
-  font-size: 25px;
+  font-size: 14px;
 `;
 
 const Wrap = styled.div`
+  font-weight: bold;
   background-color: #FFFFFF;
   display: flex;
   justify-content: left;

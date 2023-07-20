@@ -50,15 +50,15 @@ const Box = styled.div`
 `;
 
 const CenteredContent = styled.div`
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
 `;
 
 const IMG = styled.img`
-  width: 80%;
-  height: 80%;
+  width: 90%;
+  height: 90%;
   border-radius: 20px;
 `;

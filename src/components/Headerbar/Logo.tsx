@@ -17,7 +17,7 @@ const Logo = () => {
 export default Logo
 
 const IMG = styled.img`
-  height: 30px;
+  height: 26px;
 `;
 
 const Button = styled.button`

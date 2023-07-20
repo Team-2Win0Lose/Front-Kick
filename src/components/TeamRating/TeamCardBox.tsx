@@ -1,9 +1,6 @@
-import styled from "styled-components";
-import Slider from "react-slick";
+import React from 'react'
+import styled from 'styled-components'
 import { useNavigate } from 'react-router-dom'
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-
 
 interface itemsProps {
     rating: number,
@@ -105,67 +102,51 @@ const items:itemsProps[] = [
 
 
 
-const TeamCardCarousel = () => {
-    const navigate = useNavigate();
+const TeamCardBox = () => {
 
-    const settings = {
-        dots: true,
-        autoplay: true,
-        infinite: true,
-        slidesToShow: 2,
-        slidesToScroll: 2,
-        swipeToSlide: true,
-        autoplaySpeed:3000,
-        speed: 500
-    }
+    const navigate = useNavigate();
+    const sortedItems = items.sort((a, b) => a.rating - b.rating);
+    const top3Items = sortedItems.slice(0, 3);
+
+  return (
+    <div className="list">
   
-    return (
-        <div className="carousel">
+        {top3Items.map((item, index) => (
             
-            <CustomSlider {...settings}>
-            
-                {items.map((item, index) => (
-                    
-                    <Box key={index}>
-                    <Rate>{item.rating}</Rate>
-                    <FlexContainer>
-                        <IMG src ={item.item} alt={item.name} />
-                        <FlexContainerRight>
-                            <Name>{item.name}</Name>
-                            <FlexColumnInside>
-                                <FlexColumn>
-                                    <FlexText>
-                                        <FlexItem>{item.follower}</FlexItem>
-                                        <Font>팔로워</Font>
-                                    </FlexText>
-                                </FlexColumn>
-                                <FlexColumn>
-                                    <FlexText>
-                                        <FlexItem>{item.ing}</FlexItem> 
-                                        <Font>현재 동행팀</Font>
-                                    </FlexText>
-                                </FlexColumn>
-                            </FlexColumnInside>
-                            <InfoBox onClick={() => navigate('/roominfo')}>상세정보</InfoBox>
-    
-                        </FlexContainerRight>
-                    </FlexContainer>
-                </Box>
-                ))}
-                
-            </CustomSlider>
-            
-        </div>
-    );
+
+
+            <Box key={index}>
+                <Rate>TOP {item.rating}</Rate>
+                <FlexContainer>
+                    <IMG src ={item.item} alt={item.name} />
+                    <FlexContainerRight>
+                        <Name>{item.name}</Name>
+                        <FlexColumnInside>
+                            <FlexColumn>
+                                <FlexText>
+                                    <FlexItem>{item.follower}</FlexItem>
+                                    <DIV>팔로워</DIV>
+                                </FlexText>
+                            </FlexColumn>
+                            <FlexColumn>
+                                <FlexText>
+                                    <FlexItem>{item.ing}</FlexItem> 
+                                    <DIV>현재 동행팀</DIV>
+                                </FlexText>
+                            </FlexColumn>
+                        </FlexColumnInside>
+                        <InfoBox onClick={() => navigate('/roominfo')}>상세정보</InfoBox>
+
+                    </FlexContainerRight>
+                </FlexContainer>
+            </Box>
+        ))}
+    </div>
+  )
 }
 
-export default TeamCardCarousel;
+export default TeamCardBox
 
-const CustomSlider = styled(Slider)`
-  .slick-slide {
-    margin-right: 20px;
-  }
-`;
 
 const Box = styled.div`
     position: relative; 
@@ -185,20 +166,21 @@ const Box = styled.div`
 const Rate = styled.div`
     font-size: 24px;
     font-weight: bold;
+    position: absolute;
     top:-5px;
     left:5px;
     
 `
 
 const IMG = styled.img`
-    width: 60px;
-    height: 60px;
+    width: 90px;
+    height: 90px;
     object-fit: contain;
-    margin-right: 8px;
+    margin-right: 30px;
 `;
 
 const Name = styled.div`
-    font-size: 14px;
+    font-size: 18px;
     font-weight: bold;
     margin-bottom: 10px;
 `;
@@ -229,22 +211,22 @@ const FlexColumnInside = styled.div`
 
 const FlexItem = styled.div`
  
-    font-size: 14px;
+    font-size: 18px;
     font-weight: bold;
     text-align: center;
 
 `;
 
 const FlexText = styled.div`
-    margin-right: 10px;
+    margin-right: 14px;
     display: flex;
     align-items: center;
 
 `;
 
-const Font = styled.div`
-    margin-left: 3px;
-    font-size: 2px;
+const DIV = styled.div`
+    margin-left: 6px;
+    font-size: 12px;
     
 `;
 

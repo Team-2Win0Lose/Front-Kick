@@ -12,7 +12,6 @@ const Main = (props: Props) => {
   return (
     <div>
       <Navbar></Navbar>
-      <RegisterTeam />
         <BannerCarousel></BannerCarousel>
       <TeamCard></TeamCard>
     </div>

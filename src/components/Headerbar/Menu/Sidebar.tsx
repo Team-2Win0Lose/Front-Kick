@@ -52,8 +52,8 @@ const SideBarWrap = styled.div`
   border-radius: 15px 0 0 15px;
   background-color: #1F1F45;
   height: 100%;
-  width: 35%;
-  right: -35%;
+  width: 55%;
+  right: -55%;
   top: 0;
   position: fixed;
   transition: 0.5s ease;
