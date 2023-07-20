@@ -12,7 +12,7 @@ const Icon_checked = (props: Props) => {
       <circle cx='12' cy='12' r='9.35' stroke='#C4C4C4' stroke-width='1.3' />
       <g clip-path='url(#gxufjr4bqa)'>
         <g filter='url(#4xtt2agx5b)'>
-          <circle cx='12' cy='12' r='10' fill='#9E30F4' />
+          <circle cx='12' cy='12' r='10' fill='#1f1f45' />
         </g>
         <path
           d='m16 9-5.082 6L8 11.555'

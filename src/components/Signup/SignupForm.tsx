@@ -58,7 +58,7 @@ const SignupForm = (props: any) => {
   let nowDay = now.getDate();
   return (
     <Form onSubmit={handleSubmit(onValid)}>
-      <p>입력사항</p>
+      <FormTitle>입력사항</FormTitle>
       <div>
         <Field>
           <Input
@@ -184,11 +184,15 @@ const SignupForm = (props: any) => {
 };
 
 const Form = styled.form`
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
   /* align-items: center;
   justify-content: center; */
-  gap: 30px;
+  gap: 20px;
+`;
+const FormTitle = styled.h1`
+  font-weight: bold;
 `;
 const Field = styled.fieldset`
   display: flex;

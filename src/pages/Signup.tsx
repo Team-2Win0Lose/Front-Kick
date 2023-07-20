@@ -23,7 +23,7 @@ const Wrap = styled.div`
   justify-content: center;
   align-items: center;
   gap: 20px;
-  padding: 0 0 50px;
+  padding: 0 0 300px;
 `;
 
 export default Signup;
