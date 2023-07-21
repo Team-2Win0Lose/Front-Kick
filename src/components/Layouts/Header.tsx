@@ -3,20 +3,23 @@ import React from 'react';
 import Menu from "../Headerbar/Menu/Menu";
 import Logo from "../Headerbar/Logo";
 import Account from "../Headerbar/Account"
+import Navbar from "../Headerbar/Navbar/Navbar";
 
 
 const Header = () => {
 
 
     return (
-      <Head>
-            <Logo></Logo>
-            <div style = {{display: 'flex'}}>
-              <Account></Account>
-              <Menu></Menu>
-            </div>
-      </Head>
-     
+      <div>
+        <Head>
+              <Logo></Logo>
+              <div style = {{display: 'flex'}}>
+                <Account></Account>
+                <Menu></Menu>
+              </div>
+        </Head>
+        <Navbar></Navbar>
+      </div>
     )
   }
   
