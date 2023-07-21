@@ -11,7 +11,7 @@ const Login = React.lazy(() => import('../pages/Login/Login'));
 const Main = React.lazy(() => import('../pages/main'));
 const Signup = React.lazy(() => import('../pages/Signup/Signup'));
 const Onboarding = React.lazy(() => import('../pages/Signup/Onboarding'));
-const Matchmaking = React.lazy(() => import('../pages/Matchmaking'));
+const FindAccompany = React.lazy(() => import('../pages/FindAccompany'));
 const CreateRoom = React.lazy(() => import('../pages/CreateRoom/CreateRoom'));
 const RoomInfo = React.lazy(() => import('../pages/RoomInfo'));
 const AddCourse = React.lazy(() => import('../pages/CreateRoom/AddCourse'));
@@ -69,9 +69,9 @@ export const RouterInfo = [
         label: 'Onboarding',
       },
       {
-        path: '/matchmaking',
-        element: <Matchmaking />,
-        label: 'Matchmaking',
+        path: '/findaccompany',
+        element: <FindAccompany />,
+        label: 'FindAccompany',
       },
       {
         path: '/createroom',
