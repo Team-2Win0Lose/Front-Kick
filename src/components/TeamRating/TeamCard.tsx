@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from "styled-components";
-import TeamCardBox from './TeamCardBox';
+import TeamCardList from './TeamCardList';
 import TeamCardCarousel from './TeamCardCarousel';
 
 

@@ -18,80 +18,80 @@ const items:itemsProps[] = [
     rating: 1,
     item: 'public/assets/teams/강원FC.png',
     name: '강원FC',
-    ing: 12,
+    ing: 112,
     follower: 23,
     },
     {
     rating: 2,
     item: 'public/assets/teams/광주FC.png',
     name: '광주FC',
-    ing: 12,
+    ing: 123,
     follower: 23,
     },
     {
     rating: 3,
     item: 'public/assets/teams/대구FC.png',
     name: '대구FC',
-    ing: 12,
+    ing: 312,
     follower: 23,
     },
     {
     rating: 4,
     item: 'public/assets/teams/대전하나시티즌.png',
     name: '대전하나시티즌',
-    ing: 12,
-    follower: 23,
+    ing: 212,
+    follower: 21,
     },
     {
     rating: 5,
     item: 'public/assets/teams/수원삼성블루윙즈.png',
     name: '수원삼성블루윙즈',
-    ing: 12,
-    follower: 23,
+    ing: 152,
+    follower: 29,
     },
     {
     rating: 6,
     item: 'public/assets/teams/수원FC.png',
     name: '수원FC',
-    ing: 12,
-    follower: 23,
+    ing: 172,
+    follower: 2,
     },
     {
     rating: 7,
     item: 'public/assets/teams/울산현대.png',
     name: '울산현대',
-    ing: 12,
-    follower: 23,
+    ing: 112,
+    follower: 264,
     },
     {
     rating: 8,
     item: 'public/assets/teams/인천유나이티드.png',
     name: '인천유나이티드',
-    ing: 12,
-    follower: 23,
+    ing: 912,
+    follower: 234,
     },
     {
     rating: 9,
     item: 'public/assets/teams/전북현대모터스.png',
     name: '전북현대모터스',
-    ing: 12,
-    follower: 23,
+    ing: 124,
+    follower: 2223,
 
     },
     {
     rating: 10,
     item: 'public/assets/teams/제주유나이티드.png',
     name: '제주유나이티드',
-    ing: 12,
-    follower: 23,
+    ing: 992,
+    follower: 213,
 
     },
     {
     rating: 11,
     item: 'public/assets/teams/포항스틸러스.png',
     name: '포항스틸러스',
-    ing: 12,
-    follower: 23,
+    ing: 132,
+    follower: 20,
 
     },
     {
@@ -99,7 +99,7 @@ const items:itemsProps[] = [
     item: 'public/assets/teams/FC서울.png',
     name: 'FC서울',
     ing: 12,
-    follower: 23,
+    follower: 243,
     }  
 ]
 
@@ -107,12 +107,13 @@ const items:itemsProps[] = [
 
 const TeamCardCarousel = () => {
     const navigate = useNavigate();
+    const sortedItems = items.sort((a, b) => b.ing - a.ing);
 
     const settings = {
         dots: true,
         autoplay: true,
         infinite: true,
-        slidesToShow: 2,
+        slidesToShow: 1.5,
         slidesToScroll: 2,
         swipeToSlide: true,
         autoplaySpeed:3000,
@@ -124,10 +125,10 @@ const TeamCardCarousel = () => {
             
             <CustomSlider {...settings}>
             
-                {items.map((item, index) => (
+                {sortedItems.map((item, index) => (
                     
                     <Box key={index}>
-                    <Rate>{item.rating}</Rate>
+                    <Rate>{index+1}</Rate>
                     <FlexContainer>
                         <IMG src ={item.item} alt={item.name} />
                         <FlexContainerRight>
@@ -163,6 +164,14 @@ export default TeamCardCarousel;
 
 const CustomSlider = styled(Slider)`
   .slick-slide {
+    
+  }
+
+  .slick-list {
+    margin-right: -20px; 
+  }
+
+  .slick-slide > div {
     margin-right: 20px;
   }
 `;
@@ -183,11 +192,9 @@ const Box = styled.div`
 `;
 
 const Rate = styled.div`
-    font-size: 24px;
+    font-size: 30px;
     font-weight: bold;
-    top:-5px;
-    left:5px;
-    
+    color: #1F1F45;
 `
 
 const IMG = styled.img`
