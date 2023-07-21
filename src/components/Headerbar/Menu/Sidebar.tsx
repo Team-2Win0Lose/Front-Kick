@@ -1,6 +1,8 @@
 import React, { useRef, useEffect } from 'react';
 import { AiOutlineClose } from 'react-icons/ai'; 
 import styled from 'styled-components';
+import RegisterTeam from '../../RegisterTeam/RegisterTeam';
+import MyInfoBox from '../../MyInfo/MyInfoBox';
  
  
 function Sidebar({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: any }) {
@@ -33,12 +35,18 @@ function Sidebar({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: any }) {
           onKeyDown={toggleSide}
       />
     
-      
       <ul>
-        <Menu>킥킥 소개</Menu>
-        <Menu>공지사항</Menu>
-        <Menu>자주 묻는 질문</Menu>
-        <Menu>설정</Menu>
+        <DIV>
+          <Menu>내 정보</Menu>
+          <MyInfoBox/>
+        </DIV>
+        <DIV>
+          <Menu>나의 응원팀</Menu>
+          <RegisterTeam/>
+        </DIV>
+        <DIV>
+          <Menu>내 예정 동행 (0)</Menu>
+        </DIV>
       </ul>
     </SideBarWrap>
   );
@@ -52,8 +60,8 @@ const SideBarWrap = styled.div`
   border-radius: 15px 0 0 15px;
   background-color: #1F1F45;
   height: 100%;
-  width: 35%;
-  right: -35%;
+  width: 90%;
+  right: -90%;
   top: 0;
   position: fixed;
   transition: 0.5s ease;
@@ -62,11 +70,16 @@ const SideBarWrap = styled.div`
     transition: 0.5s ease;
   }
 `;
- 
+
+
 const Menu = styled.li`
-  margin: 30px 8px;
-  padding: 15px;
+  margin: 15px 0px;
   font-size: 1rem;
   color: #FFFFFF;
 `;
- 
+
+const DIV = styled.li`
+  margin-left: 10px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+`

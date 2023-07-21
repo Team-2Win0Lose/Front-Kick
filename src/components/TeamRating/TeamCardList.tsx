@@ -1,9 +1,6 @@
-import styled from "styled-components";
-import Slider from "react-slick";
+import React from 'react'
+import styled from 'styled-components'
 import { useNavigate } from 'react-router-dom'
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-
 
 interface itemsProps {
     rating: number,
@@ -18,80 +15,80 @@ const items:itemsProps[] = [
     rating: 1,
     item: 'public/assets/teams/강원FC.png',
     name: '강원FC',
-    ing: 112,
+    ing: 12,
     follower: 23,
     },
     {
     rating: 2,
     item: 'public/assets/teams/광주FC.png',
     name: '광주FC',
-    ing: 123,
+    ing: 12,
     follower: 23,
     },
     {
     rating: 3,
     item: 'public/assets/teams/대구FC.png',
     name: '대구FC',
-    ing: 312,
+    ing: 12,
     follower: 23,
     },
     {
     rating: 4,
     item: 'public/assets/teams/대전하나시티즌.png',
     name: '대전하나시티즌',
-    ing: 212,
-    follower: 21,
+    ing: 12,
+    follower: 23,
     },
     {
     rating: 5,
     item: 'public/assets/teams/수원삼성블루윙즈.png',
     name: '수원삼성블루윙즈',
-    ing: 152,
-    follower: 29,
+    ing: 12,
+    follower: 23,
     },
     {
     rating: 6,
     item: 'public/assets/teams/수원FC.png',
     name: '수원FC',
-    ing: 172,
-    follower: 2,
+    ing: 12,
+    follower: 23,
     },
     {
     rating: 7,
     item: 'public/assets/teams/울산현대.png',
     name: '울산현대',
-    ing: 112,
-    follower: 264,
+    ing: 12,
+    follower: 23,
     },
     {
     rating: 8,
     item: 'public/assets/teams/인천유나이티드.png',
     name: '인천유나이티드',
-    ing: 912,
-    follower: 234,
+    ing: 12,
+    follower: 23,
     },
     {
     rating: 9,
     item: 'public/assets/teams/전북현대모터스.png',
     name: '전북현대모터스',
-    ing: 124,
-    follower: 2223,
+    ing: 12,
+    follower: 23,
 
     },
     {
     rating: 10,
     item: 'public/assets/teams/제주유나이티드.png',
     name: '제주유나이티드',
-    ing: 992,
-    follower: 213,
+    ing: 12,
+    follower: 23,
 
     },
     {
     rating: 11,
     item: 'public/assets/teams/포항스틸러스.png',
     name: '포항스틸러스',
-    ing: 132,
-    follower: 20,
+    ing: 12,
+    follower: 23,
 
     },
     {
@@ -99,82 +96,57 @@ const items:itemsProps[] = [
     item: 'public/assets/teams/FC서울.png',
     name: 'FC서울',
     ing: 12,
-    follower: 243,
+    follower: 23,
     }  
 ]
 
 
 
-const TeamCardCarousel = () => {
-    const navigate = useNavigate();
-    const sortedItems = items.sort((a, b) => b.ing - a.ing);
+const TeamCardBox = () => {
 
-    const settings = {
-        dots: true,
-        autoplay: true,
-        infinite: true,
-        slidesToShow: 1.5,
-        slidesToScroll: 2,
-        swipeToSlide: true,
-        autoplaySpeed:3000,
-        speed: 500
-    }
+    const navigate = useNavigate();
+    const sortedItems = items.sort((a, b) => a.rating - b.rating);
+    const top3Items = sortedItems.slice(0, 3);
+
+  return (
+    <div className="list">
   
-    return (
-        <div className="carousel">
+        {top3Items.map((item, index) => (
             
-            <CustomSlider {...settings}>
-            
-                {sortedItems.map((item, index) => (
-                    
-                    <Box key={index}>
-                    <Rate>{index+1}</Rate>
-                    <FlexContainer>
-                        <IMG src ={item.item} alt={item.name} />
-                        <FlexContainerRight>
-                            <Name>{item.name}</Name>
-                            <FlexColumnInside>
-                                <FlexColumn>
-                                    <FlexText>
-                                        <FlexItem>{item.follower}</FlexItem>
-                                        <Font>팔로워</Font>
-                                    </FlexText>
-                                </FlexColumn>
-                                <FlexColumn>
-                                    <FlexText>
-                                        <FlexItem>{item.ing}</FlexItem> 
-                                        <Font>현재 동행팀</Font>
-                                    </FlexText>
-                                </FlexColumn>
-                            </FlexColumnInside>
-                            <InfoBox onClick={() => navigate('/roominfo')}>상세정보</InfoBox>
-    
-                        </FlexContainerRight>
-                    </FlexContainer>
-                </Box>
-                ))}
-                
-            </CustomSlider>
-            
-        </div>
-    );
+
+
+            <Box key={index}>
+                <Rate>TOP {item.rating}</Rate>
+                <FlexContainer>
+                    <IMG src ={item.item} alt={item.name} />
+                    <FlexContainerRight>
+                        <Name>{item.name}</Name>
+                        <FlexColumnInside>
+                            <FlexColumn>
+                                <FlexText>
+                                    <FlexItem>{item.follower}</FlexItem>
+                                    <DIV>팔로워</DIV>
+                                </FlexText>
+                            </FlexColumn>
+                            <FlexColumn>
+                                <FlexText>
+                                    <FlexItem>{item.ing}</FlexItem> 
+                                    <DIV>현재 동행팀</DIV>
+                                </FlexText>
+                            </FlexColumn>
+                        </FlexColumnInside>
+                        <InfoBox onClick={() => navigate('/roominfo')}>상세정보</InfoBox>
+
+                    </FlexContainerRight>
+                </FlexContainer>
+            </Box>
+        ))}
+    </div>
+  )
 }
 
-export default TeamCardCarousel;
+export default TeamCardBox
 
-const CustomSlider = styled(Slider)`
-  .slick-slide {
-    
-  }
-
-  .slick-list {
-    margin-right: -20px; 
-  }
-
-  .slick-slide > div {
-    margin-right: 20px;
-  }
-`;
 
 const Box = styled.div`
     position: relative; 
@@ -192,20 +164,23 @@ const Box = styled.div`
 `;
 
 const Rate = styled.div`
-    font-size: 30px;
+    font-size: 20px;
     font-weight: bold;
-    color: #1F1F45;
+    position: absolute;
+    top:-5px;
+    left:5px;
+    
 `
 
 const IMG = styled.img`
-    width: 60px;
-    height: 60px;
+    width: 90px;
+    height: 90px;
     object-fit: contain;
-    margin-right: 8px;
+    margin-right: 30px;
 `;
 
 const Name = styled.div`
-    font-size: 14px;
+    font-size: 18px;
     font-weight: bold;
     margin-bottom: 10px;
 `;
@@ -236,22 +211,22 @@ const FlexColumnInside = styled.div`
 
 const FlexItem = styled.div`
  
-    font-size: 14px;
+    font-size: 18px;
     font-weight: bold;
     text-align: center;
 
 `;
 
 const FlexText = styled.div`
-    margin-right: 10px;
+    margin-right: 14px;
     display: flex;
     align-items: center;
 
 `;
 
-const Font = styled.div`
-    margin-left: 3px;
-    font-size: 2px;
+const DIV = styled.div`
+    margin-left: 6px;
+    font-size: 12px;
     
 `;
 

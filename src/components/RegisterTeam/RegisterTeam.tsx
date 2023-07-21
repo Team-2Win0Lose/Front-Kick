@@ -14,14 +14,13 @@ const RegisterTeam = (props: Props) => {
   });
 
   return states.teamName === '' ? (
-    <Wrap>
       <Form>
         <Comment>아직 선택한 구단 카드가 없어요</Comment>
         <RegistBtn onClick={() => navigate('/selectteam')}>
-          구단 카드 등록하기
+          함께 응원할 구단 정하기
         </RegistBtn>
       </Form>
-    </Wrap>
+   
   ) : (
     <TeamWrap>
       <TeamForm>
@@ -76,29 +75,22 @@ const RegisterTeam = (props: Props) => {
     </TeamWrap>
   );
 };
-const Wrap = styled.div`
-  background-color: #1f1f45;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-`;
+
+//구단 미등록 폼
 const Form = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 3px;
-  width: 333px;
-  height: 246px;
+  width: 300px;
+  height: 150px;
   background: #ffffff;
-  border: 0.522796px solid #5956ff;
-  box-shadow: 0px 2.09119px 2.09119px rgba(0, 0, 0, 0.25);
-  border-radius: 15.6839px;
+  border-radius: 15px;
 `;
 const Comment = styled.p`
   font-weight: 500;
-  font-size: 18px;
+  font-size: 14px;
   text-align: center;
   color: #868686;
 `;
