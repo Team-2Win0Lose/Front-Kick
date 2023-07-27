@@ -7,6 +7,7 @@ import theme from './util/theme';
 import { Provider } from 'react-redux';
 import { store } from './app/store';
 import { ThemeProvider } from 'styled-components';
+import GlobalModal from './components/Modal/GlobalModal';
 
 const RouterObject = createBrowserRouter(RouterInfo);
 
@@ -15,6 +16,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     <React.Suspense fallback={<div>loading...</div>}>
       <ThemeProvider theme={theme}>
         <GlobalStyle />
+        <GlobalModal />
         <RouterProvider router={RouterObject} />
       </ThemeProvider>
     </React.Suspense>

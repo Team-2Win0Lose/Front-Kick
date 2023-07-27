@@ -4,6 +4,7 @@ import {
   getDefaultMiddleware,
 } from '@reduxjs/toolkit';
 import teamReducer from '../feature/TeamSlice';
+import modalReducer from '../feature/ModalSlice';
 
 import {
   persistStore,
@@ -20,11 +21,12 @@ import storage from 'redux-persist/lib/storage';
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['team'],
+  whitelist: ['team', 'modal'],
 };
 
 const rootReducer = combineReducers({
   team: teamReducer,
+  modal: modalReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
