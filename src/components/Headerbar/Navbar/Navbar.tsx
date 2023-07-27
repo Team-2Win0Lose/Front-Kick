@@ -28,7 +28,7 @@ const Navbar = () => {
       </DIV>
       <DIV>
           <InfoBox>
-            <NavLink style={({ isActive }) => (isActive ? activeStyle : defaultStyle)} to = '/matchmaking'>
+            <NavLink style={({ isActive }) => (isActive ? activeStyle : defaultStyle)} to = '/findaccompany'>
               동행 구하기
             </NavLink>
           </InfoBox>
@@ -68,6 +68,7 @@ const Wrap = styled.div`
   align-items: center;
   padding: 20px;
 `;
+
 
 const DIV = styled.div`
   margin-right: 20px;
