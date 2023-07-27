@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 import AccompanyList from '../components/FindAccompany/AccompanyList';
 import AccompanyHeader from '../components/FindAccompany/AccompanyHeader';
@@ -21,4 +20,5 @@ const Form = styled.div`
   flex-direction: column;
   justify-content: center;
   align-content: center;
+  margin: 0 auto;
 `;

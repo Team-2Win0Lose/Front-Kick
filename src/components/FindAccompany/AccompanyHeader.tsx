@@ -14,9 +14,11 @@ const AccompanyHeader = (props: Props) => {
   );
 };
 const Header = styled.div`
+  margin: 0 auto;
   display: flex;
-  width: 100%;
-  justify-content: center;
+  width: 60%;
+  justify-content: space-between;
   align-content: center;
+  gap: 10px;
 `;
 export default AccompanyHeader;
