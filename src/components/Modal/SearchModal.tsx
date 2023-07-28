@@ -5,6 +5,7 @@ import { AiFillCaretUp, AiFillCaretDown } from 'react-icons/ai';
 import { MdPeopleAlt } from 'react-icons/md';
 import { SlCalender } from 'react-icons/sl';
 import TeamSelect from './TeamSelect';
+import Calendar from './Calender/CalenderSelect';
 type Props = {};
 
 const SearchModal = (props: Props) => {
@@ -67,9 +68,9 @@ const SearchModal = (props: Props) => {
           </DownScroll>
         </SelectBtn>
         {isCalenderOpen ? (
-          <>
-            <p>열림</p>
-          </>
+          <TeamBox>
+            <Calendar />
+          </TeamBox>
         ) : (
           <></>
         )}
