@@ -3,6 +3,7 @@ import { AiOutlineClose } from 'react-icons/ai';
 import styled from 'styled-components';
 import RegisterTeam from '../../RegisterTeam/RegisterTeam';
 import MyInfoBox from '../../MyInfo/MyInfoBox';
+import ScheduledAccompany from '../../ScheduledAccompany/ScheduledAccompany';
 
 function Sidebar({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: any }) {
   const outside = useRef<any>();
@@ -45,6 +46,7 @@ function Sidebar({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: any }) {
         </DIV>
         <DIV>
           <Menu>내 예정 동행 (0)</Menu>
+          <ScheduledAccompany></ScheduledAccompany>
         </DIV>
       </ul>
     </SideBarWrap>
