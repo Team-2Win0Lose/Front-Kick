@@ -1,13 +1,22 @@
 import React from 'react'
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components'
 import { AiOutlineClose } from 'react-icons/ai';
 import { IoIosArrowBack } from 'react-icons/io';
 import NextButton from './NextButton';
+import PlaceSearch from './MeetingPlace/PlaceSearch';
+import Detailinfo_1 from './Detailinfo/Detailinfo_1';
+import Detailinfo_2 from './Detailinfo/Detailinfo_2';
+import MatchDate from './MatchDate/MatchDate';
+import SelectCard from './SelectCard.tsx/SelectCard';
+import Summary from './Summary/Summary';
 
 const StepHeader = () => {
 
-  const titles = ['경기 일정 선택', '모임장소', '일정 카드 선택', '상세 내용', '내 동행 일정'];
+  const navigate = useNavigate();
+
+  const titles = ['경기 일정 선택', '모임장소', '일정 카드 선택', '상세 내용', '상세 내용', '내 동행 일정'];
   const [titleIndex, setTitleIndex] = useState(0);
 
   const handleBackClick = () => {
@@ -23,16 +32,46 @@ const StepHeader = () => {
   };
 
 
+  let CurrentStepComponent = null;
+
+  switch (titleIndex) {
+    case 0:
+      CurrentStepComponent = MatchDate;
+      break;
+    case 1:
+      CurrentStepComponent = PlaceSearch;
+      break;
+    case 2:
+      CurrentStepComponent = SelectCard;
+      break;
+    case 3:
+      CurrentStepComponent = Detailinfo_1;
+      break;
+    case 4:
+      CurrentStepComponent = Detailinfo_2;
+      break;
+    case 5:
+      CurrentStepComponent = Summary;
+      break;
+    default:
+      CurrentStepComponent = MatchDate;
+  }
+
+
   return (
     <Wrap>
         <DIV>
           <BackIcon onClick={handleBackClick}/>
           <RoomTitle>{titles[titleIndex]}</RoomTitle>
-          <CloseIcon size ={30} />
+          <CloseIcon onClick = {() => navigate('/home')} />
         </DIV>
         <Form>
-          <NextButton onClick={handleNextClick}/>
+          <CurrentStepComponent></CurrentStepComponent>
         </Form>
+        <NextButtonContainer>
+          <NextButton onClick={handleNextClick}/>
+        </NextButtonContainer>
+        
         
     </Wrap>
   )
@@ -85,4 +124,11 @@ const Form = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+`;
+
+const NextButtonContainer = styled.div`
+  position: fixed;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
 `;
