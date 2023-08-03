@@ -5,7 +5,7 @@ import {
 } from '@reduxjs/toolkit';
 import teamReducer from '../feature/TeamSlice';
 import modalReducer from '../feature/ModalSlice';
-
+import termReducer from '../feature/TermSlice';
 import {
   persistStore,
   persistReducer,
@@ -21,12 +21,13 @@ import storage from 'redux-persist/lib/storage';
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['team', 'modal'],
+  whitelist: ['team', 'modal', 'term'],
 };
 
 const rootReducer = combineReducers({
   team: teamReducer,
   modal: modalReducer,
+  term: termReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

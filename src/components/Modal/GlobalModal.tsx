@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
 import { closeModal, selectModal } from '../../feature/ModalSlice';
-import SearchModal from './SearchModal';
 import TeamSelect from './TeamSelect';
 import Cruit from './Cruit';
 import Date from './Date';

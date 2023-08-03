@@ -1,23 +1,30 @@
 import styled from 'styled-components';
 import { dummyTeams } from '../../../public/dummy/dummyTeams';
 import Slider from 'react-slick';
-
-type Props = {};
-
+import {
+  IoIosArrowDropleftCircle,
+  IoIosArrowDroprightCircle,
+} from 'react-icons/io';
+type Props = {
+  settab: (value: number) => void;
+};
 const TeamSlide = (props: Props) => {
   const settings = {
     dots: false,
-    autoplay: true,
-    infinite: true,
+    autoplay: false,
+    infinite: false,
     speed: 100,
-    slidesToShow: 1,
+    slidesToShow: 4,
     slidesToScroll: 1,
     swipeToSlide: true,
+    cssEase: 'linear',
+    nextArrow: <IoIosArrowDroprightCircle color='#fff' />,
+    prevArrow: <IoIosArrowDropleftCircle color='#fff' />,
   };
   return (
     <TeamSlider {...settings}>
       {dummyTeams.map((team, index) => (
-        <TEAMS key={index}>
+        <TEAMS key={index} onClick={() => props.settab(index + 1)}>
           <TeamLogo>
             <TeamIMG src={team.teamImg} />
           </TeamLogo>
@@ -29,9 +36,13 @@ const TeamSlide = (props: Props) => {
 };
 const TeamSlider = styled(Slider)`
   margin: 0 auto;
+  /* background-color: #1f1f45; */
   width: 85%;
+  display: flex;
+  gap: 11px;
 `;
 const TEAMS = styled.div`
+  display: flex;
   gap: 3px;
   flex-direction: column;
   justify-content: center;

@@ -36,14 +36,13 @@ const SelectTeam = (props: Props) => {
 
   return (
     <Wrap>
-      <TeamSlide />
+      <TeamSlide settab={settab} />
       <BodyContainer>{tabs[tab].content}</BodyContainer>
     </Wrap>
   );
 };
 const Wrap = styled.div`
-  background-color: #1f1f45;
-  height: 100vh;
+  width: 100%;
 `;
 const BodyContainer = styled.div``;
 export default SelectTeam;
