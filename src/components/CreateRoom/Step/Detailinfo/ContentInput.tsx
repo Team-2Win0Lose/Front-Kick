@@ -16,18 +16,12 @@ const ContentInput = (props: Props) => {
 
 export default ContentInput
 
-const Title = styled.p``;
 
 const SettingBox = styled.div`
-  margin-top: 30px;
+  margin-top: 5px;
   width: 100%;
 `;
-const TitleContainer = styled.div`
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 3px;
-`;
+
 
 const BoxContainer = styled.div`
   padding: 30px;

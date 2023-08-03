@@ -1,28 +1,88 @@
-import React from 'react'
+import {useState, useCallback} from 'react'
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
+import MapContainer from './MapContainer';
+import {FaSearch} from 'react-icons/Fa'
 
+export interface propsType {
+  searchKeyword: string
+}
 
-type Props = {};
-
-const PlaceSearch = (props: Props) => {
+const PlaceSearch = ():JSX.Element => {
   const navigate = useNavigate();
+
+  // 입력 폼 변화 감지하여 입력 값 관리
+  const [Value, setValue] = useState("");
+  // 제출한 검색어 관리
+  const [Keyword, setKeyword] = useState("");
+
+  // 입력 폼 변화 감지하여 입력 값을 state에 담아주는 함수
+  const keywordChange = (e: { preventDefault: () => void; target: { value: string }; }) => {
+    e.preventDefault();
+    setValue(e.target.value);
+  }
+
+  // 제출한 검색어 state에 담아주는 함수
+  const submitKeyword = (e: { preventDefault: () => void; }) => {
+  e.preventDefault();
+  setKeyword(Value);
+  }
+
+  // 검색어를 입력하지 않고 검색 버튼을 눌렀을 경우
+  const valueChecker = () => {
+  if (Value === "") {
+    alert ("검색어를 입력해주세요.")
+  }
+  }
+
   return (
     <Form>
-
       <SettingBox>
         <BoxContainer>
+          <LandingPage>
+            <LandingPageInner>
+              <CourseAddBtn>
+                <SearchForm onSubmit={submitKeyword}>
+                  <FormLabel htmlFor="place" className="form__label">
+                    <BtnBox>
+                        <FaSearch
+                          className="btn form__submit"
+                          type="submit"
+                          value="검색"
+                          onClick={valueChecker}
+                        />
+                    </BtnBox>
+
+                    <FormInput
+                        type="text"
+                        id="movie-title"
+                        className="form__input"
+                        name="place"
+                        onChange={keywordChange}
+                        placeholder="장소를 입력해보세요!"
+                        required
+                    />
+                    
+                  </FormLabel>
+               </SearchForm>
+              </CourseAddBtn>
+              {/* 제출한 검색어 넘기기 */}
+              <MapContainer searchKeyword={Keyword} />
+            </LandingPageInner>
+          </LandingPage>
+    
           <CourseAddBtn onClick={() => navigate('/addcourse')}>
-          여기를 눌러 주소를 검색해주세요
-          </CourseAddBtn>
-          <CourseAddBtn onClick={() => navigate('/addcourse')}>
-          상세 정보를 입력해주세요.(ex 분수대 앞, 편의점 앞)
+          상세 정보를 입력해주세요.(ex 분수대 앞)
           </CourseAddBtn>
         </BoxContainer>
       </SettingBox>
     </Form>
   );
 };
+
+export default PlaceSearch;
+
+
 const Form = styled.div`
   margin: 0 auto;
   width: 80%;
@@ -32,8 +92,11 @@ const Form = styled.div`
   align-items: center;
 `;
 const SettingBox = styled.div`
-  margin-top: 30px;
   width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 const BoxContainer = styled.div`
@@ -45,6 +108,8 @@ const BoxContainer = styled.div`
 const CourseAddBtn = styled.div`
   width: 326px;
   height: 50px;
+  font-size: 1rem;
+  font-weight: 400;
   margin-top:40px;
   margin-bottom:40px;
   flex-shrink: 0;
@@ -56,4 +121,44 @@ const CourseAddBtn = styled.div`
   color: white;
 `;
 
-export default PlaceSearch;
+const LandingPage = styled.div`
+  /* Add your styles for the landing page container here */
+  /* For example: padding, background-color, etc. */
+`;
+
+const LandingPageInner = styled.div`
+  /* Add your styles for the landing page inner container here */
+  /* For example: padding, width, etc. */
+`;
+
+const SearchFormContainer = styled.div`
+  /* Add your styles for the search form container here */
+  /* For example: margin, padding, etc. */
+`;
+
+const SearchForm = styled.form`
+  /* Add your styles for the search form here */
+  /* For example: display, flex-direction, etc. */
+`;
+
+const FormLabel = styled.label`
+  display:flex;
+  /* Add your styles for the form label here */
+  /* For example: display, flex-direction, etc. */
+`;
+
+const FormInput = styled.input`
+  width:300px;
+  height:100%;
+`;
+
+const BtnBox = styled.div`
+
+
+  /* For example: display, flex-direction, etc. */
+`;
+
+const FormSubmitButton = styled.input`
+  /* Add your styles for the form submit button here */
+  /* For example: background-color, color, padding, etc. */
+`;
