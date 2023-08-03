@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { useForm } from 'react-hook-form';
 import SelectBox from './SelectBox';
 import Icon_checked from './asset/icon_checked';
 import Icon_unchecked from './asset/icon_unchecked';
 import Terms from './Terms';
-
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 interface IAuthForm {
   email: string;
   nickname: string;
@@ -16,6 +17,13 @@ interface IAuthForm {
 }
 
 const SignupForm = (props: any) => {
+  const navigate = useNavigate();
+  const [isClicked, setisClicked] = useState(0);
+  const handleClick = () => {
+    setisClicked(isClicked + 1);
+    console.log('click');
+  };
+  const isChecked = useSelector((state: any) => state.term.isAllChecked);
   const {
     register,
     formState: { errors },
@@ -29,6 +37,14 @@ const SignupForm = (props: any) => {
     console.log('Month:', month);
     console.log('Day:', day);
   };
+
+  const checkEffect = useEffect(() => {
+    if (isChecked === true && isClicked !== 0) {
+      navigate('/signup/onboarding');
+    } else if (isChecked === false && isClicked !== 0) {
+      alert('약관 동의를 해주세요');
+    }
+  }, [isClicked]);
 
   const handleGenderChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setselectedGender(event.target.value);
@@ -177,7 +193,14 @@ const SignupForm = (props: any) => {
         </Field>
       </div>
       <Terms />
-      <SubmitBtn type='submit'>가입하기</SubmitBtn>
+      <SubmitBtn
+        type='submit'
+        onClick={() => {
+          handleClick(), checkEffect;
+        }}
+      >
+        가입하기
+      </SubmitBtn>
       {errors?.extraError?.message && <p>{errors?.extraError?.message}</p>}
     </Form>
   );

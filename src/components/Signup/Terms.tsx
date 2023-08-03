@@ -1,16 +1,19 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import { useDispatch } from 'react-redux';
+import { isChecked, isNotChecked } from '../../feature/TermSlice';
+
 type Props = {};
 
 const Terms = (props: Props) => {
+  const dispatch = useDispatch();
   const [allAgreed, setallAgreed] = useState(false);
   const [agreements, setagreements] = useState({
     termsAgreed: false,
     personalInfoAgreed: false,
     provisionAgreed: false,
     locationAgreed: false,
-    marketingAgreed: false,
     overageAgreed: false,
   });
   const handleAgreementChange = (event: {
@@ -37,13 +40,16 @@ const Terms = (props: Props) => {
           personalInfoAgreed: boolean;
           provisionAgreed: boolean;
           locationAgreed: boolean;
-          marketingAgreed: boolean;
           overageAgreed: boolean;
         },
       ),
     );
     setallAgreed(checked);
   };
+  useEffect(() => {
+    allAgreed ? dispatch(isChecked()) : dispatch(isNotChecked());
+  }, [allAgreed]);
+
   return (
     <TermsWrap>
       <ul>
@@ -103,18 +109,7 @@ const Terms = (props: Props) => {
           />
           <label htmlFor='agree_check_pos'>[필수] 위치기반서비스 동의</label>
         </li>
-        <li>
-          <input
-            type='checkbox'
-            id='agree_check_marketing_receive'
-            name='marketingAgreed'
-            checked={agreements.marketingAgreed}
-            onChange={handleAgreementChange}
-          />
-          <label htmlFor='agree_check_marketing_receive'>
-            [선택] 마케팅 정보 활용 동의
-          </label>
-        </li>
+
         <li>
           <input
             type='checkbox'

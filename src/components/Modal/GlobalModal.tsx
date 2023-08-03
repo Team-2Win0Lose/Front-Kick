@@ -1,15 +1,27 @@
 import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
 import { closeModal, selectModal } from '../../feature/ModalSlice';
-import SearchModal from './SearchModal';
+import TeamSelect from './TeamSelect';
+import Cruit from './Cruit';
+import Date from './Date';
 type Props = {};
 const MODAL_TYPES = {
-  SearchModal: 'SearchModal',
+  TeamModal: 'TeamModal',
+  DateModal: 'DateModal',
+  CruitModal: 'CruitModal',
 };
 const MODAL_COMPONENTS = [
   {
-    type: MODAL_TYPES.SearchModal,
-    component: <SearchModal />,
+    type: MODAL_TYPES.TeamModal,
+    component: <TeamSelect />,
+  },
+  {
+    type: MODAL_TYPES.DateModal,
+    component: <Date />,
+  },
+  {
+    type: MODAL_TYPES.CruitModal,
+    component: <Cruit />,
   },
 ];
 

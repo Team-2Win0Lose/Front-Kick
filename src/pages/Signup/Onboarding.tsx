@@ -1,15 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
 import TeamSlide from '../../components/SelectTeam/TeamSlide';
+import SelectTeam from '../SelectTeam';
 type Props = {};
 
 const Onboarding = (props: Props) => {
   return (
     <Form>
-      <H1>환영해요!</H1>
-      <H2>응원하는 K리그 팀이 있나요?</H2>
+      <TitleForm>
+        <H1>환영해요!</H1>
+        <H1>응원하는 K리그 팀이 있나요?</H1>
+      </TitleForm>
+
       <SlideWrap>
-        <TeamSlide />
+        <SelectTeam />
       </SlideWrap>
     </Form>
   );
@@ -20,8 +24,17 @@ const Form = styled.div`
   justify-content: center;
   align-items: center;
 `;
-const H1 = styled.h1``;
-const H2 = styled.h2``;
+const TitleForm = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+`;
+const H1 = styled.h1`
+  font-size: 18px;
+  font-weight: bold;
+`;
 const SlideWrap = styled.div`
   width: 100%;
 `;
