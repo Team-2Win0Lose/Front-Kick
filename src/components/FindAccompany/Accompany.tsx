@@ -18,7 +18,7 @@ const Container = styled.div`
   width: 312px;
   display: flex;
   flex-direction: column;
-  padding: 16px 12px;
+  padding: 16px 0;
   border-radius: 12px;
 `;
 export default Accompany;

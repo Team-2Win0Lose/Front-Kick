@@ -4,11 +4,14 @@ import { BiFootball } from 'react-icons/bi';
 import { AiFillCaretUp, AiFillCaretDown } from 'react-icons/ai';
 import { MdPeopleAlt } from 'react-icons/md';
 import { SlCalender } from 'react-icons/sl';
+import { GrPowerReset } from 'react-icons/gr';
 import TeamSelect from './TeamSelect';
-import Calendar from './Calender/CalenderSelect';
+import { useDispatch } from 'react-redux';
+import { closeModal } from '../../feature/ModalSlice';
 type Props = {};
 
 const SearchModal = (props: Props) => {
+  const dispatch = useDispatch();
   const [isTeamOpen, setisTeamOpen] = useState(false);
   const [isCalenderOpen, setisCalenderOpen] = useState(false);
   const [isPersonnelOpen, setisPersonnelOpen] = useState(false);
@@ -69,7 +72,7 @@ const SearchModal = (props: Props) => {
         </SelectBtn>
         {isCalenderOpen ? (
           <TeamBox>
-            <Calendar />
+            <p>달력은 수정할 예정</p>
           </TeamBox>
         ) : (
           <></>
@@ -91,18 +94,35 @@ const SearchModal = (props: Props) => {
             )}
           </DownScroll>
         </SelectBtn>
-        {isPersonnelOpen ? (
-          <>
-            <p>열림</p>
-          </>
-        ) : (
-          <></>
-        )}
+        {isPersonnelOpen ? <TeamBox></TeamBox> : <></>}
+        <Buttons>
+          <Button>
+            <GrPowerReset />
+            초기화
+          </Button>
+          <Button onClick={() => dispatch(closeModal())}>적용하기</Button>
+        </Buttons>
       </SelectBtns>
     </Container>
   );
 };
-
+const Buttons = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 312px;
+`;
+const Button = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 142px;
+  height: 74px;
+  border: 1px solid #d9d9d9;
+  border-radius: 12px;
+  gap: 15px;
+  font-size: 20px;
+`;
 const Container = styled.div`
   position: absolute;
   bottom: 0;

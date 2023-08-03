@@ -1,15 +1,15 @@
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
-import { MdTune } from 'react-icons/md';
+import { SlCalender } from 'react-icons/sl';
 import { openModal } from '../../../feature/ModalSlice';
 type Props = {};
 
-const Filter = (props: Props) => {
+const DateFilter = (props: Props) => {
   const dispatch = useDispatch();
   const handleOpenSearchModal = () => {
     dispatch(
       openModal({
-        modalType: 'SearchModal',
+        modalType: 'DateModal',
         isOpen: true,
       }),
     );
@@ -17,14 +17,14 @@ const Filter = (props: Props) => {
 
   return (
     <FilterBtn onClick={handleOpenSearchModal}>
-      <MdTune />
-      <FilterTxt>필터</FilterTxt>
+      <SlCalender size='20' />
+      <FilterTxt>날짜</FilterTxt>
     </FilterBtn>
   );
 };
 
 const FilterBtn = styled.div`
-  width: 61px;
+  width: 80px;
   height: 29px;
   display: flex;
   border: none;
@@ -32,10 +32,10 @@ const FilterBtn = styled.div`
   background-color: #eee;
   justify-content: center;
   align-items: center;
-  gap: 3px;
+  gap: 5px;
 `;
 const FilterTxt = styled.p`
   font-size: 12px;
   font-weight: bold;
 `;
-export default Filter;
+export default DateFilter;
