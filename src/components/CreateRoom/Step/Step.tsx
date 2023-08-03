@@ -71,7 +71,7 @@ const StepHeader = () => {
         <NextButtonContainer>
           <NextButton onClick={handleNextClick}/>
         </NextButtonContainer>
-        
+      
         
     </Wrap>
   )
@@ -127,8 +127,7 @@ const Form = styled.div`
 `;
 
 const NextButtonContainer = styled.div`
-  position: fixed;
-  bottom: 50px;
-  left: 50%;
-  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
 `;

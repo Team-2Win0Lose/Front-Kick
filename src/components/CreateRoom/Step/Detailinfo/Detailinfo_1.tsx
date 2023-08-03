@@ -13,8 +13,6 @@ function Detailinfo_1({}: Props) {
         <MinMaxCnt></MinMaxCnt>
         <MeetingDate></MeetingDate>
         <MeetingTime></MeetingTime>
-
-
     </Form>
   )
 }
