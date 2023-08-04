@@ -1,4 +1,3 @@
-
 const initMockAPI = async (): Promise<void> => {
   if (typeof window === 'undefined') {
     const { server } = await import('@/mocks/server');

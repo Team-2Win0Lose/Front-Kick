@@ -5,10 +5,10 @@ import styled from 'styled-components'
 import { AiOutlineClose } from 'react-icons/ai';
 import { IoIosArrowBack } from 'react-icons/io';
 import NextButton from './NextButton';
+import TeamDateSelect from './MatchDate/TeamDateSelect';
 import PlaceSearch from './MeetingPlace/PlaceSearch';
 import Detailinfo_1 from './Detailinfo/Detailinfo_1';
 import Detailinfo_2 from './Detailinfo/Detailinfo_2';
-import MatchDate from './MatchDate/MatchDate';
 import SelectCard from './SelectCard.tsx/SelectCard';
 import Summary from './Summary/Summary';
 
@@ -36,7 +36,7 @@ const StepHeader = () => {
 
   switch (titleIndex) {
     case 0:
-      CurrentStepComponent = MatchDate;
+      CurrentStepComponent = TeamDateSelect;
       break;
     case 1:
       CurrentStepComponent = PlaceSearch;
@@ -54,7 +54,7 @@ const StepHeader = () => {
       CurrentStepComponent = Summary;
       break;
     default:
-      CurrentStepComponent = MatchDate;
+      CurrentStepComponent = TeamDateSelect;
   }
 
 
@@ -121,7 +121,7 @@ const CloseIcon = styled(AiOutlineClose)`
 
 const Form = styled.div`
   display: flex;
-  flex-direction: column;
+
   justify-content: center;
   align-items: center;
 `;

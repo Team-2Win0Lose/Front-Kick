@@ -23,6 +23,6 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src", "custom.d.ts"],
+  "include": ["src", "custom.d.ts", "src/components/Modal/TeamCardInfo.tsx"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
