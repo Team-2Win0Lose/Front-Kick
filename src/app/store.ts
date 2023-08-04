@@ -6,6 +6,7 @@ import {
 import teamReducer from '../feature/TeamSlice';
 import modalReducer from '../feature/ModalSlice';
 import termReducer from '../feature/TermSlice';
+import authReducer from '../feature/authSlice';
 import {
   persistStore,
   persistReducer,
@@ -21,13 +22,14 @@ import storage from 'redux-persist/lib/storage';
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['team', 'modal', 'term'],
+  whitelist: ['team', 'modal', 'term', 'auth'],
 };
 
 const rootReducer = combineReducers({
   team: teamReducer,
   modal: modalReducer,
   term: termReducer,
+  auth: authReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

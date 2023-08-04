@@ -1,36 +1,43 @@
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import { useSelector, useDispatch } from 'react-redux';
-import { deleteAction } from '../../feature/TeamSlice';
-import { useEffect } from 'react';
-import { AiFillSetting }  from 'react-icons/ai'
-
+import { useSelector } from 'react-redux';
+import { AiFillSetting } from 'react-icons/ai';
+import { autoCheck } from '@/feature/authSlice';
 type Props = {};
 
 const RegisterTeam = (props: Props) => {
   const navigate = useNavigate();
-
-  return (
-      <Form>
-        <FlexContainer>
-          <IMG></IMG>
-          <VerticalContainer>
-            <NickName>닉네임은이거야 님</NickName>
-            <ID>ID : abc@kakao.com</ID>
-          </VerticalContainer>
-          <AiFillSetting 
-            size="30"
-            onClick={() => navigate('/selectteam')}>
-          </AiFillSetting>
-          
-          
-        </FlexContainer>
-      </Form>
-   
+  const email = useSelector((state: autoCheck) => state.auth.email);
+  const name = useSelector((state: autoCheck) => state.auth.name);
+  const isLogin = useSelector((state: autoCheck) => state.auth.isAuthenticated);
+  return isLogin ? (
+    <Form>
+      <FlexContainer>
+        <IMG></IMG>
+        <VerticalContainer>
+          <NickName>{name} 님</NickName>
+          <ID>ID : {email}</ID>
+        </VerticalContainer>
+        <AiFillSetting
+          size='30'
+          onClick={() => navigate('/selectteam')}
+        ></AiFillSetting>
+      </FlexContainer>
+    </Form>
+  ) : (
+    <Form>
+      <FlexContainer>
+        <VerticalContainer
+          onClick={() => {
+            navigate('/login');
+          }}
+        >
+          <NickName>로그인을 해주세요</NickName>
+        </VerticalContainer>
+      </FlexContainer>
+    </Form>
   );
 };
-
-
 
 const Form = styled.div`
   display: flex;
@@ -65,22 +72,19 @@ const FlexContainer = styled.div`
   justify-content: center;
   align-items: center;
   margin-top: 10px;
-
 `;
 
 const VerticalContainer = styled.div`
   align-items: center;
-  margin-left:10px;
-  margin-right:10px;
-
+  margin-left: 10px;
+  margin-right: 10px;
 `;
 
 const IMG = styled.img`
-    width: 60px;
-    height: 60px;
-    object-fit: contain;
-    margin-right: 5px;
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  margin-right: 5px;
 `;
-
 
 export default RegisterTeam;

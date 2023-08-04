@@ -4,10 +4,14 @@ import styled from 'styled-components';
 import RegisterTeam from '../../RegisterTeam/RegisterTeam';
 import MyInfoBox from '../../MyInfo/MyInfoBox';
 import ScheduledAccompany from '../../ScheduledAccompany/ScheduledAccompany';
+import { useDispatch, useSelector } from 'react-redux';
+import { autoCheck, logOutAction } from '@/feature/authSlice';
 
 function Sidebar({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: any }) {
   const outside = useRef<any>();
+  const isLogin = useSelector((state: autoCheck) => state.auth.isAuthenticated);
 
+  const dispatch = useDispatch();
   useEffect(() => {
     document.addEventListener('mousedown', handlerOutsie);
     return () => {
@@ -25,7 +29,7 @@ function Sidebar({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: any }) {
     setIsOpen(false);
   };
 
-  return (
+  return isLogin ? (
     <SideBarWrap id='sidebar' ref={outside} className={isOpen ? 'open' : ''}>
       <AiOutlineClose
         size='30'
@@ -45,8 +49,34 @@ function Sidebar({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: any }) {
           <RegisterTeam />
         </DIV>
         <DIV>
-          <Menu>내 예정 동행 (0)</Menu>
+          <Menu>알림 (0)</Menu>
           <ScheduledAccompany></ScheduledAccompany>
+        </DIV>
+        <Logout>
+          <LogoutBtn
+            onClick={() => {
+              dispatch(logOutAction()), toggleSide();
+            }}
+          >
+            로그아웃
+          </LogoutBtn>
+        </Logout>
+      </ul>
+    </SideBarWrap>
+  ) : (
+    <SideBarWrap id='sidebar' ref={outside} className={isOpen ? 'open' : ''}>
+      <AiOutlineClose
+        size='30'
+        color='#ffffff'
+        alt='close'
+        onClick={toggleSide}
+        onKeyDown={toggleSide}
+      />
+
+      <ul>
+        <DIV onClick={() => toggleSide()}>
+          <Menu>내 정보</Menu>
+          <MyInfoBox />
         </DIV>
       </ul>
     </SideBarWrap>
@@ -82,4 +112,20 @@ const DIV = styled.div`
   margin-left: 10px;
   margin-top: 30px;
   margin-bottom: 30px;
+`;
+const Logout = styled.div`
+  width: 85%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+`;
+const LogoutBtn = styled.div`
+  width: 80px;
+  padding: 10px 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid white;
+  color: white;
+  border-radius: 12px;
 `;

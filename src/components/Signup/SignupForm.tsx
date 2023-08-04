@@ -1,18 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { useForm } from 'react-hook-form';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import SelectBox from './SelectBox';
 import Icon_checked from './asset/icon_checked';
 import Icon_unchecked from './asset/icon_unchecked';
 import Terms from './Terms';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { signup } from '@/lib/api';
 interface IAuthForm {
   email: string;
   nickname: string;
   phonenumber: string;
   password: string;
   passwordConfirm: string;
+  gender: string;
   extraError?: string;
 }
 
@@ -50,16 +52,33 @@ const SignupForm = (props: any) => {
     setselectedGender(event.target.value);
   };
 
-  const onValid = (data: IAuthForm) => {
+  const onValid = async (data: IAuthForm) => {
     if (data.password !== data.passwordConfirm) {
       setError(
         'passwordConfirm', // 에러 핸들링할 input요소 name
         { message: '비밀번호가 일치하지 않습니다.' }, // 에러 메세지
         { shouldFocus: true }, // 에러가 발생한 input으로 focus 이동
       );
+    } else {
+      try {
+        const { email, password, nickname, phonenumber, gender } = data;
+        await signup(email, password, nickname, phonenumber, gender);
+        handleClick();
+        checkEffect;
+      } catch (error) {
+        console.error(error);
+      }
     }
   };
-
+  // const onSubmit: SubmitHandler<IAuthForm> = async (data) => {
+  //   try {
+  //     const { email, password, nickname, phonenumber, gender } = data;
+  //     await signup(email, password, nickname, phonenumber, gender);
+  //     navigate('/signup/onboarding');
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
   const autoHyphen = (event: React.ChangeEvent<HTMLInputElement>) => {
     const target = event.target as HTMLInputElement;
     target.value = target.value
@@ -151,15 +170,13 @@ const SignupForm = (props: any) => {
             <AuthBtn>인증 요청</AuthBtn>
           </PhoneNumberForm>
           <Warn>{errors?.phonenumber?.message}</Warn>
-          <GenderWrap>
+          <GenderWrap
+            id='gender'
+            {...register('gender', {
+              required: true,
+            })}
+          >
             <RadioWrap id='male'>
-              <input
-                type='radio'
-                value='male'
-                name='gender'
-                checked={selectedGender === 'male'}
-                onChange={handleGenderChange}
-              />
               {selectedGender === 'male' ? (
                 <Icon_checked />
               ) : (
@@ -168,13 +185,6 @@ const SignupForm = (props: any) => {
               <span>남성</span>
             </RadioWrap>
             <RadioWrap id='female'>
-              <input
-                type='radio'
-                value='female'
-                name='gender'
-                checked={selectedGender === 'female'}
-                onChange={handleGenderChange}
-              />
               {selectedGender === 'female' ? (
                 <Icon_checked />
               ) : (
@@ -195,9 +205,9 @@ const SignupForm = (props: any) => {
       <Terms />
       <SubmitBtn
         type='submit'
-        onClick={() => {
-          handleClick(), checkEffect;
-        }}
+        // onClick={() => {
+        //   handleClick(), checkEffect;
+        // }}
       >
         가입하기
       </SubmitBtn>
@@ -285,12 +295,12 @@ const SubmitBtn = styled.button`
   font-size: 18px;
 `;
 
-const GenderWrap = styled.div`
+const GenderWrap = styled.select`
   margin-bottom: 16px;
   display: flex;
   gap: 15px;
 `;
-const RadioWrap = styled.label`
+const RadioWrap = styled.option`
   display: flex;
   align-items: center;
   justify-content: center;
