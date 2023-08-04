@@ -1,11 +1,20 @@
-import React from 'react'
+import React from 'react';
+import styled from 'styled-components';
+import TouristCard from './TouristCard';
 
-type Props = {}
+const titles = ['숙박', '음식점', '관광지'];
 
-function SelectCard({}: Props) {
+const SelectCard = () => {
   return (
-    <div>SelectCard</div>
-  )
-}
+    <div>
+      {titles.map((title, index) => (
+        <TouristCard key={index} title={title} />
+      ))}
+    </div>
+  );
+};
 
-export default SelectCard
+export default SelectCard;
+
+
+
