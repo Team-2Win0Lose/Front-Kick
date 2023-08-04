@@ -1,9 +1,12 @@
-import axios from "axios";
+import axios from 'axios';
+import { getCookie } from '@/util/cookieFn';
 
+export const token = getCookie('accessToken');
 const client = axios.create({
-  baseURL: "http://127.0.0.1:5173",
+  baseURL: 'http://localhost:5173',
   headers: {
-    "Content-Type": "application/json",
+    'Content-Type': 'application/json',
+    Authorization: `Bearer ${token}`,
   },
 });
 
@@ -19,31 +22,31 @@ client.interceptors.response.use(
     if (error.response) {
       if (error.response.status === 400) {
         return {
-          code: "400",
-          message: "400",
+          code: '400',
+          message: '400',
         };
       }
       if (error.response.status === 401) {
         return {
-          code: "401",
-          message: "401",
+          code: '401',
+          message: '401',
         };
       }
       if (error.response.status === 403) {
         return {
-          code: "403",
-          message: "403",
+          code: '403',
+          message: '403',
         };
       }
       if (error.response.status === 404) {
         return {
-          code: "404",
-          message: "404",
+          code: '404',
+          message: '404',
         };
       }
     }
     return Promise.reject(error);
-  }
+  },
 );
 
 export default client;

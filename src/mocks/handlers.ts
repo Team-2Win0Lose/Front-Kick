@@ -1,25 +1,46 @@
-import { rest } from "msw";
-import people from "./dummy.json";
+import { rest } from 'msw';
+import { user } from './dummy';
+type UserData = {
+  email: string;
+  name: string;
+  token: string;
+};
+interface SignupData {
+  email: string;
+  password: string;
+  nickname: string;
+  phonenumber: string;
+  gender: string;
+  birth: string;
+  term: boolean;
+}
+const mockUserData: UserData = {
+  email: 'admin@admin.com',
+  name: 'admin',
+  token: '9124697214798124798',
+};
 
 export const handlers = [
-    rest.get("/api/user/auth", async (req, res, ctx) => {
-        await sleep(200);
-
-        return res(ctx.status(200), ctx.json(people));
-    }),
-    rest.post("/api/user/auth", async (req, res, ctx) => {
-        await sleep(200);
-        people.push({
-            email:'seunghun311@naver.com',
-            password:'12324'
-        });
-
-        return res(ctx.status(201), ctx.json(people));
-    }),
+  rest.post('/api/user/login', (req, res, ctx) => {
+    // Here you can check the credentials and return appropriate responses.
+    // For simplicity, this example always returns the same mocked user data.
+    return res(
+      ctx.status(200),
+      ctx.cookie('accessToken', 'abc-123'),
+      ctx.json(mockUserData),
+    );
+  }),
+  rest.post('/api/user/signup', (req, res, ctx) => {
+    const newUser = {
+      email: 'abc@naver.com',
+      password: '12345678',
+      nickname: '킥킥',
+      phonenumber: '010-1234-5689',
+      gender: 'male',
+      birth: '1998-01-01',
+      term: true,
+    };
+    user.push(newUser);
+    return res(ctx.status(200), ctx.json(newUser));
+  }),
 ];
-
-async function sleep(timeout: number) {
-    return new Promise((resolve) => {
-        setTimeout(resolve, timeout);
-    });
-}

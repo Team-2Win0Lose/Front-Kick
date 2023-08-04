@@ -1,7 +1,11 @@
-import React, { useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useForm, SubmitErrorHandler, SubmitHandler } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import { login } from '@/lib/api';
+import { getCookie } from '@/util/cookieFn';
+import { useDispatch, useSelector } from 'react-redux';
+import { autoCheck, setUser } from '@/feature/authSlice';
 
 interface FormValue {
   email: string;
@@ -9,6 +13,14 @@ interface FormValue {
 }
 
 const LoginForm = (props: any) => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const isLogin = useSelector((state: autoCheck) => state.auth.isAuthenticated);
+  useEffect(() => {
+    if (isLogin) {
+      navigate('/home');
+    }
+  }, [isLogin]);
   const {
     register,
     handleSubmit,
@@ -19,15 +31,23 @@ const LoginForm = (props: any) => {
     reValidateMode: 'onChange',
   });
 
-  const onSubmit: SubmitHandler<FormValue> = (data) => {
-    console.log(data);
-  };
-  const onError: SubmitErrorHandler<FormValue> = (error) => {
-    console.log(error);
+  const onSubmit: SubmitHandler<FormValue> = async (data) => {
+    try {
+      const { email, password } = data;
+      await login(email, password);
+
+      let token = getCookie('accessToken');
+      const res = { email, password, token };
+      dispatch(setUser(res));
+      location.reload();
+      navigate('/home');
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
-    <Form onSubmit={handleSubmit(onSubmit, onError)}>
+    <Form onSubmit={handleSubmit(onSubmit)}>
       <DivForm>
         <Input
           id='email'
