@@ -4,11 +4,14 @@ import { closeModal, selectModal } from '../../feature/ModalSlice';
 import TeamSelect from './TeamSelect';
 import Cruit from './Cruit';
 import Date from './Date';
+import TeamCardInfo from './TeamCardInfo';
+
 type Props = {};
 const MODAL_TYPES = {
   TeamModal: 'TeamModal',
   DateModal: 'DateModal',
   CruitModal: 'CruitModal',
+  TeamCardModal: 'TeamCardModal'
 };
 const MODAL_COMPONENTS = [
   {
@@ -23,6 +26,10 @@ const MODAL_COMPONENTS = [
     type: MODAL_TYPES.CruitModal,
     component: <Cruit />,
   },
+  {
+    type: MODAL_TYPES.TeamCardModal,
+    component: <TeamCardInfo />,
+  }
 ];
 
 const GlobalModal = (props: Props) => {

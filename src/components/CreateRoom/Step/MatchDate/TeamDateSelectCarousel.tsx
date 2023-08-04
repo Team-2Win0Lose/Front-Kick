@@ -1,11 +1,7 @@
-import { useDispatch } from 'react-redux';
 import styled from "styled-components";
 import Slider from "react-slick";
-import { useNavigate } from 'react-router-dom'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { openModal } from 'src/feature/ModalSlice.ts'
-
 
 interface itemsProps {
     rating: number,
@@ -107,8 +103,9 @@ const items:itemsProps[] = [
 
 
 
-const TeamCardCarousel = () => {
-    const sortedItems = items.sort((a, b) => b.ing - a.ing);
+const TeamDateSelectCarousel = () => {
+    const item = items
+    
 
     const settings = {
         dots: true,
@@ -119,28 +116,17 @@ const TeamCardCarousel = () => {
         swipeToSlide: true,
         autoplaySpeed:3000,
         speed: 500
-    }
-
-    const dispatch = useDispatch();
-    const handleOpenSearchModal = () => {
-        dispatch(
-        openModal({
-            modalType: 'TeamCardModal',
-            isOpen: true,
-        }),
-        );
     };
+
   
     return (
         <div className="carousel">
-            
+
             <CustomSlider {...settings}>
-            
-                {sortedItems.map((item, index) => (
-                    
-                    <Box key={index}>
-                    <Rate>{index+1}</Rate>
-                    <FlexContainer>
+
+                {item.map((item,index) => (
+                    <Box key ={index}>
+                        <FlexContainer>
                         <IMG src ={item.item} alt={item.name} />
                         <FlexContainerRight>
                             <Name>{item.name}</Name>
@@ -158,36 +144,37 @@ const TeamCardCarousel = () => {
                                     </FlexText>
                                 </FlexColumn>
                             </FlexColumnInside>
-                            <FilterBtn onClick={handleOpenSearchModal}>
-                                <InfoBox>상세정보</InfoBox>
-                            </FilterBtn>
     
                         </FlexContainerRight>
                     </FlexContainer>
-                </Box>
+
+
+
+
+                    </Box>
                 ))}
-                
+
             </CustomSlider>
-            
         </div>
     );
 }
 
-export default TeamCardCarousel;
+export default TeamDateSelectCarousel;
 
 const CustomSlider = styled(Slider)`
-  .slick-slide {
-    
-  }
+    .slick-slide {
+        
+    }
 
-  .slick-list {
+    .slick-list {
     margin-right: -20px; 
-  }
+    }
 
-  .slick-slide > div {
+    .slick-slide > div {
     margin-right: 20px;
-  }
+    }
 `;
+
 
 const Box = styled.div`
     position: relative; 
@@ -268,33 +255,23 @@ const Font = styled.div`
     
 `;
 
-const InfoBox = styled.div`
-  margin-top: 10px;
-  box-sizing: border-box;
-  width: 60px;
-  height: 24px;
+const TeamCard = styled.div`
+  width: 150px;
+  height: 200px;
   margin-right: 10px;
-  background: #ffffff;
-  border: 1px solid #1f1f45;
-  text-align: center;
-  font-size: 8px;
-  border-radius: 8px;
-  cursor: pointer;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center; 
- 
-  cursor: pointer;
+  justify-content: center;
+  background-color: #eeeeee;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
 `;
 
-const FilterBtn = styled.div`
-  width: 80px;
-  height: 29px;
+const CenteredContent = styled.div`
+  margin-top: 10px;
+  margin-bottom: 10px;
   display: flex;
-  border: none;
-  border-radius: 12px;
-  background-color: #eee;
   justify-content: center;
   align-items: center;
-  gap: 5px;
 `;
