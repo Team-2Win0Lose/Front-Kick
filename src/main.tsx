@@ -8,8 +8,13 @@ import { Provider } from 'react-redux';
 import { store } from './app/store';
 import { ThemeProvider } from 'styled-components';
 import GlobalModal from './components/Modal/GlobalModal';
+import initMockAPI from './mocks';
 
 const RouterObject = createBrowserRouter(RouterInfo);
+
+if (process.env.NODE_ENV === 'development') {
+    initMockAPI();
+}
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <Provider store={store}>
