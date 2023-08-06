@@ -10,10 +10,12 @@ type Props = {}
 const Detailinfo_2 = (props: Props) => {
   return (
     <Form>
+      <SettingBox>
         <Thumbnail></Thumbnail>
         <TitleName></TitleName>
         <ContentInput></ContentInput>
         <TagInput></TagInput>
+      </SettingBox>
     </Form>
   )
 }
@@ -28,4 +30,9 @@ const Form = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+`;
+
+const SettingBox = styled.div`
+  margin-top: 10px;
+  width: 100%;
 `;
