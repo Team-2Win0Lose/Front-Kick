@@ -21,11 +21,10 @@ export default TouristCard;
 
 
 const DIV = styled.div`
-
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: flex-start;
+  margin-left: 20px;
 `;
+
+
 
 const Text = styled.p`
   font-size: 15px;
@@ -37,7 +36,6 @@ const Text = styled.p`
 
 const Container = styled.div`
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100px;
