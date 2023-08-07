@@ -2,6 +2,9 @@ import styled from "styled-components";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import TeamDateCalendar from "./TeamDateCalendar";
+import { useState } from "react";
+
 
 interface itemsProps {
     rating: number,
@@ -101,63 +104,48 @@ const items:itemsProps[] = [
     }  
 ]
 
-
-
 const TeamDateSelectCarousel = () => {
-    const item = items
-    
+  const settings = {
+    dots: false,
+    autoplay: false,
+    infinite: true,
+    slidesToShow: 5,
+    slidesToScroll: 2,
+    swipeToSlide: true,
+    autoplaySpeed: 3000,
+    speed: 500,
+  };
 
-    const settings = {
-        dots: true,
-        autoplay: false,
-        infinite: true,
-        slidesToShow: 1.5,
-        slidesToScroll: 2,
-        swipeToSlide: true,
-        autoplaySpeed:3000,
-        speed: 500
-    };
+  const [selectedTeam, setSelectedTeam] = useState<string | null>(null);
 
-  
-    return (
-        <div className="carousel">
+  const handleBoxClick = (teamName: string) => {
+    setSelectedTeam(teamName);
+  };
 
-            <CustomSlider {...settings}>
-
-                {item.map((item,index) => (
-                    <Box key ={index}>
-                        <FlexContainer>
-                        <IMG src ={item.item} alt={item.name} />
-                        <FlexContainerRight>
-                            <Name>{item.name}</Name>
-                            <FlexColumnInside>
-                                <FlexColumn>
-                                    <FlexText>
-                                        <FlexItem>{item.follower}</FlexItem>
-                                        <Font>팔로워</Font>
-                                    </FlexText>
-                                </FlexColumn>
-                                <FlexColumn>
-                                    <FlexText>
-                                        <FlexItem>{item.ing}</FlexItem> 
-                                        <Font>현재 동행팀</Font>
-                                    </FlexText>
-                                </FlexColumn>
-                            </FlexColumnInside>
-    
-                        </FlexContainerRight>
-                    </FlexContainer>
-
-
-
-
-                    </Box>
-                ))}
-
-            </CustomSlider>
-        </div>
-    );
-}
+  return (
+    <CarouselContainer>
+      <CustomSlider {...settings}>
+        {items.map((item, index) => (
+          <BoxWrapper key={index}>
+            <Box onClick={() => handleBoxClick(item.name)}>
+              <FlexContainer>
+                <IMG src={item.item} alt={item.name} />
+              </FlexContainer>
+            </Box>
+            <NameWrapper>
+              <Name>{item.name}</Name>
+            </NameWrapper>
+          </BoxWrapper>
+        ))}
+      </CustomSlider>
+      {selectedTeam && (
+        <TeamCalendarContainer>
+          <TeamDateCalendar teamName={selectedTeam} />
+        </TeamCalendarContainer>
+      )}
+    </CarouselContainer>
+  );
+};
 
 export default TeamDateSelectCarousel;
 
@@ -167,111 +155,73 @@ const CustomSlider = styled(Slider)`
     }
 
     .slick-list {
-    margin-right: -20px; 
+    margin-right: -20%; 
     }
 
     .slick-slide > div {
-    margin-right: 20px;
+    margin-right: 20%;
     }
 `;
 
+const CarouselContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const BoxWrapper = styled.div`
+  /* ... your styles ... */
+`;
+
+const TeamCalendarContainer = styled.div`
+  background-color: white;
+`;
 
 const Box = styled.div`
     position: relative; 
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 90%;
-    height: 150px;
+    width: 70px;
+    height: 70px;
     background: #eeeeee;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 20px;
-    margin-left: 5%;
-    margin-right: 5%;
-    margin-bottom: 20px;
+    border-radius: 50%;
+    margin-top: 10%;
+    overflow:hidden;
 `;
 
-const Rate = styled.div`
-    font-size: 30px;
-    font-weight: bold;
-    color: #1F1F45;
-`
+
 
 const IMG = styled.img`
-    width: 60px;
-    height: 60px;
+    width: 80%;
+    height: 80%;
     object-fit: contain;
-    margin-right: 8px;
+    justify-content: center;
+    align-items: center;
 `;
 
 const Name = styled.div`
-    font-size: 14px;
-    font-weight: bold;
-    margin-bottom: 10px;
+    font-size: 10px;
+    color:#FFFFFF;
+    margin-top: 10%;
+    margin-bottom: 10%
 `;
 
 const FlexContainer = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 10px;
-
 `;
 
-const FlexContainerRight = styled.div`
-  align-items: center;
-
-`;
-
-
-const FlexColumn = styled.div`
+const DIV = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
-`;
-
-const FlexColumnInside = styled.div`
-  display: flex;
-`;
-
-const FlexItem = styled.div`
- 
-    font-size: 14px;
-    font-weight: bold;
-    text-align: center;
-
-`;
-
-const FlexText = styled.div`
-    margin-right: 10px;
-    display: flex;
-    align-items: center;
-
-`;
-
-const Font = styled.div`
-    margin-left: 3px;
-    font-size: 2px;
-    
-`;
-
-const TeamCard = styled.div`
-  width: 150px;
-  height: 200px;
-  margin-right: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-color: #eeeeee;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 20px;
-`;
-
-const CenteredContent = styled.div`
-  margin-top: 10px;
-  margin-bottom: 10px;
-  display: flex;
   justify-content: center;
   align-items: center;
+`;
+
+const NameWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;

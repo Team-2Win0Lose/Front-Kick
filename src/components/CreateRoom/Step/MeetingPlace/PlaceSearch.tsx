@@ -9,7 +9,8 @@ export interface propsType {
 }
 
 const PlaceSearch = ():JSX.Element => {
-  const navigate = useNavigate();
+
+  let [loc, setLoc] = useState<string>('')
 
   // 입력 폼 변화 감지하여 입력 값 관리
   const [Value, setValue] = useState("");
@@ -45,7 +46,7 @@ const PlaceSearch = ():JSX.Element => {
                 <SearchForm onSubmit={submitKeyword}>
                   <FormLabel htmlFor="place" className="form__label">
                     <BtnBox>
-                        <FaSearch
+                        <CustomIcon
                           className="btn form__submit"
                           type="submit"
                           value="검색"
@@ -71,8 +72,8 @@ const PlaceSearch = ():JSX.Element => {
             </LandingPageInner>
           </LandingPage>
     
-          <CourseAddBtn onClick={() => navigate('/addcourse')}>
-          상세 정보를 입력해주세요.(ex 분수대 앞)
+          <CourseAddBtn>
+            <input type="text" id="loc" value={loc} onChange={(e) => setLoc(e.target.value)} placeholder="상세 위치를 입력해주세요."/>
           </CourseAddBtn>
         </BoxContainer>
       </SettingBox>
@@ -118,8 +119,25 @@ const CourseAddBtn = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  color: white;
+
+  input {
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    width: 300px; 
+    padding: 10px; 
+    /* border: none; 
+    outline: none;  */
+    font-size: 16px; 
+  }
 `;
+
+const CustomIcon = styled(FaSearch)`
+  color: white;
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+`;
+
 
 const LandingPage = styled.div`
   /* Add your styles for the landing page container here */
@@ -143,6 +161,8 @@ const SearchForm = styled.form`
 
 const FormLabel = styled.label`
   display:flex;
+  justify-content: center;
+  align-items: center;
   /* Add your styles for the form label here */
   /* For example: display, flex-direction, etc. */
 `;

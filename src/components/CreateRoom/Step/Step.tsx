@@ -122,8 +122,6 @@ const CloseIcon = styled(AiOutlineClose)`
 const Form = styled.div`
   display: flex;
 
-  justify-content: center;
-  align-items: center;
 `;
 
 const NextButtonContainer = styled.div`
