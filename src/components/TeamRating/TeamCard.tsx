@@ -3,7 +3,6 @@ import styled from "styled-components";
 import TeamCardList from './TeamCardList';
 import TeamCardCarousel from './TeamCardCarousel';
 
-
 const TeamCard = () => {
   
 
@@ -15,7 +14,7 @@ const TeamCard = () => {
     <SubTitle>
         구단별 모집이 완료된 동행팀 수
     </SubTitle>
-    <TeamCardCarousel/> 
+    <TeamCardCarousel/>
 
     </div>
     

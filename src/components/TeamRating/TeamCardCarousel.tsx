@@ -106,7 +106,6 @@ const items:itemsProps[] = [
 ]
 
 
-
 const TeamCardCarousel = () => {
     const sortedItems = items.sort((a, b) => b.ing - a.ing);
 
