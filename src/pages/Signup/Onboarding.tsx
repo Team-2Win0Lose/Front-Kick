@@ -23,6 +23,7 @@ const Form = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 40px;
 `;
 const TitleForm = styled.div`
   display: flex;
