@@ -5,15 +5,61 @@ import "slick-carousel/slick/slick-theme.css";
 import TeamDateCalendar from "./TeamDateCalendar";
 import { useState } from "react";
 
+type TeamName = keyof typeof events;
 
 interface itemsProps {
-    rating: number,
-    item: string,
-    name: string,
-    ing: number,
-    follower: number,
+    rating: number;
+    item: string;
+    name: TeamName;
+    ing: number;
+    follower: number;
   }
+ 
+const events = {
+    '강원FC': [
+      { title: '축구', start: '2023-08-10' },
+      { title: '전북vs서울', start: '2023-08-11' }
   
+    ],
+    '광주FC': [
+      { title: '야호', start: '2023-08-10' },
+      { title: '승훈vs서울', start: '2023-08-11' }
+    ],
+    '대구FC': [
+      { title: '휴..', start: '2023-08-10' },
+      { title: '승훈vs서울', start: '2023-08-13' }
+
+    ],
+    '대전하나시티즌': [
+
+    ],
+    '수원삼성블루윙즈': [
+
+    ],
+    '수원FC': [
+
+    ],
+    '울산현대': [
+
+    ],
+    '인천유나이티드': [
+
+    ],
+    '전북현대모터스': [
+
+    ],
+    '제주유나이티드': [
+
+    ],
+    '포항스틸러스': [
+
+    ],
+    'FC서울': [
+
+    ],
+   
+};  
+
 const items:itemsProps[] = [
   {
     rating: 1,
@@ -116,35 +162,35 @@ const TeamDateSelectCarousel = () => {
     speed: 500,
   };
 
-  const [selectedTeam, setSelectedTeam] = useState<string | null>(null);
+  const [selectedTeam, setSelectedTeam] = useState<keyof typeof events | null>(null);
 
-  const handleBoxClick = (teamName: string) => {
+  const handleBoxClick = (teamName: TeamName) => {
     setSelectedTeam(teamName);
-  };
+};
 
-  return (
-    <CarouselContainer>
-      <CustomSlider {...settings}>
-        {items.map((item, index) => (
-          <BoxWrapper key={index}>
-            <Box onClick={() => handleBoxClick(item.name)}>
-              <FlexContainer>
-                <IMG src={item.item} alt={item.name} />
-              </FlexContainer>
-            </Box>
-            <NameWrapper>
-              <Name>{item.name}</Name>
-            </NameWrapper>
-          </BoxWrapper>
-        ))}
-      </CustomSlider>
-      {selectedTeam && (
-        <TeamCalendarContainer>
-          <TeamDateCalendar teamName={selectedTeam} />
-        </TeamCalendarContainer>
-      )}
-    </CarouselContainer>
-  );
+return (
+  <CarouselContainer>
+    <CustomSlider {...settings}>
+      {items.map((item, index) => (
+        <BoxWrapper key={index}>
+          <Box onClick={() => handleBoxClick(item.name)}>
+            <FlexContainer>
+              <IMG src={item.item} alt={item.name} />
+            </FlexContainer>
+          </Box>
+          <NameWrapper>
+            <Name>{item.name}</Name>
+          </NameWrapper>
+        </BoxWrapper>
+      ))}
+    </CustomSlider>
+    {selectedTeam && (
+      <TeamCalendarContainer>
+        <TeamDateCalendar teamName={selectedTeam} teamEvents={events[selectedTeam]} />
+      </TeamCalendarContainer>
+    )}
+  </CarouselContainer>
+);
 };
 
 export default TeamDateSelectCarousel;
@@ -169,7 +215,9 @@ const CarouselContainer = styled.div`
 `;
 
 const BoxWrapper = styled.div`
-  /* ... your styles ... */
+  justify-content: center;
+  align-items: center;
+
 `;
 
 const TeamCalendarContainer = styled.div`
@@ -203,7 +251,7 @@ const Name = styled.div`
     font-size: 10px;
     color:#FFFFFF;
     margin-top: 10%;
-    margin-bottom: 10%
+    margin-bottom: 10%;
 `;
 
 const FlexContainer = styled.div`
@@ -213,12 +261,6 @@ const FlexContainer = styled.div`
   align-items: center;
 `;
 
-const DIV = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
 
 const NameWrapper = styled.div`
   display: flex;
