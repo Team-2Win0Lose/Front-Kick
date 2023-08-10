@@ -54,3 +54,18 @@ export const signup = async (
     }
   }
 };
+
+export const getTeam = async () => {
+  try {
+    const res = await client('/api/teams', {
+      method: 'get',
+    });
+    return res.data;
+  } catch (error) {
+    if (error instanceof AxiosError) {
+      return {
+        data: error?.response?.data,
+      };
+    }
+  }
+};

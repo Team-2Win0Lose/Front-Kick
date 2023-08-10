@@ -1,60 +1,59 @@
 import styled from 'styled-components';
-
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  addTeamFilter,
+  removeTeamFilter,
+  clearTeamFilters,
+} from '@/feature/teamFilterSlice';
+import { RootState } from '../../app/store'; // RootState는 Redux 스토어의 전체 상태 타입입니다.
+import { getTeam } from '@/lib/api';
+import { useEffect, useState } from 'react';
+import { GetTeamList } from '@/lib/interface';
 type Props = {};
-
+interface BoxProps {
+  backgroundColor: boolean;
+}
 const TeamSelect = (props: Props) => {
+  const [teamList, setteamList] = useState<GetTeamList | undefined>();
+  const dispatch = useDispatch();
+  const teamFilters = useSelector(
+    (state: RootState) => state.teamfilter.teamNames,
+  );
+  const handleBoxClick = (teamName: string) => {
+    if (teamFilters.includes(teamName)) {
+      dispatch(removeTeamFilter(teamName));
+    } else {
+      dispatch(addTeamFilter(teamName));
+    }
+  };
+  useEffect(() => {
+    async function fetchData() {
+      const getTeamList = await getTeam();
+      setteamList(getTeamList);
+    }
+    fetchData();
+  });
+
+  const handleClearFilters = () => {
+    dispatch(clearTeamFilters());
+  };
   return (
     <Wrap>
-      <Container>
-        <Box>
-          <Logo src='public/assets/구단로고.png' />
-          <Name>구단 이름</Name>
-        </Box>
-        <Box>
-          <Logo src='public/assets/구단로고.png' />
-          <Name>구단 이름</Name>
-        </Box>
-        <Box>
-          <Logo src='public/assets/구단로고.png' />
-          <Name>구단 이름</Name>
-        </Box>
-        <Box>
-          <Logo src='public/assets/구단로고.png' />
-          <Name>구단 이름</Name>
-        </Box>
-        <Box>
-          <Logo src='public/assets/구단로고.png' />
-          <Name>구단 이름</Name>
-        </Box>
-        <Box>
-          <Logo src='public/assets/구단로고.png' />
-          <Name>구단 이름</Name>
-        </Box>
-        <Box>
-          <Logo src='public/assets/구단로고.png' />
-          <Name>구단 이름</Name>
-        </Box>
-        <Box>
-          <Logo src='public/assets/구단로고.png' />
-          <Name>구단 이름</Name>
-        </Box>
-        <Box>
-          <Logo src='public/assets/구단로고.png' />
-          <Name>구단 이름</Name>
-        </Box>
-        <Box>
-          <Logo src='public/assets/구단로고.png' />
-          <Name>구단 이름</Name>
-        </Box>
-        <Box>
-          <Logo src='public/assets/구단로고.png' />
-          <Name>구단 이름</Name>
-        </Box>
-        <Box>
-          <Logo src='public/assets/구단로고.png' />
-          <Name>구단 이름</Name>
-        </Box>
-      </Container>
+      <Wrap>
+        <Container>
+          {teamList?.data.map((team) => (
+            <Box
+              backgroundColor={teamFilters.includes(team.teamName)}
+              key={team.teamGrade}
+              onClick={() => handleBoxClick(team.teamName)}
+            >
+              <Logo src={team.teamImg} />
+              <Name>{team.teamName}</Name>
+            </Box>
+          ))}
+        </Container>
+      </Wrap>
+      <button onClick={handleClearFilters}>필터 지우기</button>
     </Wrap>
   );
 };
@@ -82,7 +81,7 @@ const Container = styled.div`
   grid-template-columns: repeat(2, 1fr);
   gap: 13px;
 `;
-const Box = styled.div`
+const Box = styled.div<BoxProps>`
   width: 140px;
   gap: 3px;
   display: flex;
@@ -90,6 +89,7 @@ const Box = styled.div`
   justify-content: center;
   align-items: center;
   border-radius: 12px;
+  background-color: ${(props) => (props ? 'green' : 'white')};
 `;
 const Logo = styled.img`
   width: 80px;

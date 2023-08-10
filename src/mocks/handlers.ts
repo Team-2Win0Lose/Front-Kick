@@ -1,5 +1,6 @@
 import { rest } from 'msw';
 import { user } from './dummy';
+import { teams } from './dummy';
 type UserData = {
   email: string;
   name: string;
@@ -42,5 +43,8 @@ export const handlers = [
     };
     user.push(newUser);
     return res(ctx.status(200), ctx.json(newUser));
+  }),
+  rest.get('/api/teams', (req, res, ctx) => {
+    return res(ctx.json(teams));
   }),
 ];

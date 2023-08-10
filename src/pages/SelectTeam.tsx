@@ -36,13 +36,143 @@ const SelectTeam = (props: Props) => {
 
   return (
     <Wrap>
-      <TeamSlide settab={settab} />
-      <BodyContainer>{tabs[tab].content}</BodyContainer>
+      <BodyContainer>
+        <BodyHead>
+          <TeamColor>팀컬러</TeamColor>
+        </BodyHead>
+        <HeadLogo>구단 로고</HeadLogo>
+        <BodyBody>
+          <TeamName>팀 이름</TeamName>
+          <TeamInfo>
+            <TeamCount>
+              <Number>128</Number>
+              <About>모집 중인 동행 팀</About>
+            </TeamCount>
+            <Dot></Dot>
+            <Follower>
+              <Number>12K</Number>
+              <About>팔로워</About>
+            </Follower>
+            <Dot></Dot>
+            <EndTeamCount>
+              <Number>42</Number>
+              <About>마감된 동행 팀</About>
+            </EndTeamCount>
+          </TeamInfo>
+        </BodyBody>
+      </BodyContainer>
     </Wrap>
   );
 };
 const Wrap = styled.div`
+  position: relative;
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
-const BodyContainer = styled.div``;
+const BodyContainer = styled.div`
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 264px;
+  height: 360px;
+  background-color: #d9d9d9;
+  border-radius: 12px;
+`;
+const BodyHead = styled.div`
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  height: 120px;
+  width: 264px;
+  background-color: #cacaca;
+  border-radius: 12px 12px 0 0;
+`;
+const TeamColor = styled.div`
+  color: #929292;
+  font-size: 14px;
+  position: absolute;
+  right: 16px;
+  top: 14px;
+`;
+const HeadLogo = styled.div`
+  z-index: 3;
+
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  font-weight: bold;
+  top: 24px;
+  left: 42px;
+  width: 180px;
+  height: 180px;
+  border: none;
+  border-radius: 90px;
+  background-color: #9b9b9b;
+`;
+const BodyBody = styled.div`
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  top: 120px;
+  z-index: 2;
+  width: 264px;
+  height: 240px;
+  padding: 0 25px 38px;
+  background-color: #d9d9d9;
+  border-radius: 12px;
+  gap: 9px;
+`;
+const TeamName = styled.div`
+  font-size: 18px;
+  font-weight: medium;
+`;
+const TeamInfo = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+`;
+const Dot = styled.div`
+  width: 4px;
+  height: 4px;
+  background-color: #9b9b9b;
+  border: none;
+  border-radius: 100%;
+`;
+const TeamCount = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+`;
+const Follower = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+`;
+const EndTeamCount = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+`;
+const Number = styled.p`
+  font-size: 20px;
+  font-weight: bolder;
+`;
+const About = styled.p`
+  font-size: 9px;
+`;
 export default SelectTeam;
