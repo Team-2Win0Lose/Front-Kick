@@ -45,15 +45,6 @@ const PlaceSearch = ():JSX.Element => {
               <CourseAddBtn>
                 <SearchForm onSubmit={submitKeyword}>
                   <FormLabel htmlFor="place" className="form__label">
-                    <BtnBox>
-                        <CustomIcon
-                          className="btn form__submit"
-                          type="submit"
-                          value="검색"
-                          onClick={valueChecker}
-                        />
-                    </BtnBox>
-
                     <FormInput
                         type="text"
                         id="movie-title"
@@ -63,7 +54,14 @@ const PlaceSearch = ():JSX.Element => {
                         placeholder="장소를 입력해보세요!"
                         required
                     />
-                    
+                    <BtnBox>
+                        <CustomIcon
+                          className="btn form__submit"
+                          type="submit"
+                          value="검색"
+                          onClick={valueChecker}
+                        />
+                    </BtnBox>
                   </FormLabel>
                </SearchForm>
               </CourseAddBtn>
@@ -111,11 +109,11 @@ const CourseAddBtn = styled.div`
   height: 50px;
   font-size: 1rem;
   font-weight: 400;
-  margin-top:40px;
+  margin-top:30px;
   margin-bottom:40px;
   flex-shrink: 0;
   border-radius: 14.163px;
-  background: #1F1F45;
+  /* background: #1F1F45; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -132,9 +130,10 @@ const CourseAddBtn = styled.div`
 `;
 
 const CustomIcon = styled(FaSearch)`
-  color: white;
-  width: 20px;
-  height: 20px;
+  color: #1F1F45;
+  width: 30px;
+  height: 30px;
+  margin-left: 5px;
   margin-right: 5px;
 `;
 
