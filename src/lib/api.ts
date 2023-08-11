@@ -1,6 +1,6 @@
 // api.ts
 
-import axios, { AxiosError } from 'axios';
+import { AxiosError, AxiosResponse } from 'axios';
 import client from './client';
 
 // 로그인 요청을 보내는 함수
@@ -60,7 +60,7 @@ export const getTeam = async () => {
     const res = await client('/api/teams', {
       method: 'get',
     });
-    return res.data;
+    return res;
   } catch (error) {
     if (error instanceof AxiosError) {
       return {

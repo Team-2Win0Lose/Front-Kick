@@ -1,21 +1,22 @@
 import React from 'react';
 import styled from 'styled-components';
 import Calendar from './Calendar';
+import DatePickerRange from './DatePickerRange';
 type Props = {};
 
 const Date = (props: Props) => {
   return (
     <Wrap>
       <Container>
-        <Calendar />
+        {/* <Calendar /> */}
+        <DatePickerRange />
       </Container>
     </Wrap>
   );
 };
 const Wrap = styled.div`
   display: flex;
-  justify-content: center;
-  align-items: center;
+
   position: absolute;
   width: 80%;
   height: 547px;

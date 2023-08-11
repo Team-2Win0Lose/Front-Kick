@@ -5,20 +5,25 @@ import {
   removeTeamFilter,
   clearTeamFilters,
 } from '@/feature/teamFilterSlice';
-import { RootState } from '../../app/store'; // RootState는 Redux 스토어의 전체 상태 타입입니다.
+import { closeModal } from '@/feature/ModalSlice';
+import { teamCheck } from '../../feature/teamFilterSlice';
 import { getTeam } from '@/lib/api';
 import { useEffect, useState } from 'react';
-import { GetTeamList } from '@/lib/interface';
+import { GetTeamType, GetTeamList } from '@/lib/interface';
+
 type Props = {};
+
 interface BoxProps {
   backgroundColor: boolean;
 }
+
 const TeamSelect = (props: Props) => {
-  const [teamList, setteamList] = useState<GetTeamList | undefined>();
+  const [teamList, setteamList] = useState<GetTeamList>();
   const dispatch = useDispatch();
   const teamFilters = useSelector(
-    (state: RootState) => state.teamfilter.teamNames,
+    (state: teamCheck) => state.teamfilter.teamNames,
   );
+  // 박스 클릭 시, state 내의 팀 이름이 있는지 없는지 판별 후 redux에 추가, 삭제
   const handleBoxClick = (teamName: string) => {
     if (teamFilters.includes(teamName)) {
       dispatch(removeTeamFilter(teamName));
@@ -26,42 +31,69 @@ const TeamSelect = (props: Props) => {
       dispatch(addTeamFilter(teamName));
     }
   };
+  // api에서 team 목록 불러오기
   useEffect(() => {
     async function fetchData() {
-      const getTeamList = await getTeam();
-      setteamList(getTeamList);
+      try {
+        const response = await getTeam();
+        setteamList(response);
+      } catch (error) {
+        console.error('Error:', error);
+      }
     }
     fetchData();
-  });
-
+  }, []);
+  // redux state에 저장된 팀들 전부 삭제
   const handleClearFilters = () => {
     dispatch(clearTeamFilters());
+    console.log(teamFilters);
   };
   return (
     <Wrap>
-      <Wrap>
-        <Container>
-          {teamList?.data.map((team) => (
-            <Box
-              backgroundColor={teamFilters.includes(team.teamName)}
-              key={team.teamGrade}
-              onClick={() => handleBoxClick(team.teamName)}
-            >
-              <Logo src={team.teamImg} />
-              <Name>{team.teamName}</Name>
-            </Box>
-          ))}
-        </Container>
-      </Wrap>
-      <button onClick={handleClearFilters}>필터 지우기</button>
+      <Container>
+        {teamList?.data.map((team: GetTeamType) => (
+          <Box
+            backgroundColor={teamFilters.includes(team.teamName)}
+            key={team.teamGrade}
+            onClick={() => handleBoxClick(team.teamName)}
+          >
+            <Logo src={team.teamImg} />
+            <Name>{team.teamName}</Name>
+          </Box>
+        ))}
+      </Container>
+      <ButtonBox>
+        <Button onClick={handleClearFilters}>필터 지우기</Button>
+        <Button onClick={() => dispatch(closeModal())}>찾기</Button>
+      </ButtonBox>
     </Wrap>
   );
 };
-const Wrap = styled.div`
+
+const Button = styled.div`
   display: flex;
+  padding: 10px;
   justify-content: center;
   align-items: center;
-  position: absolute;
+  width: 140px;
+  height: 25px;
+  background-color: #272727;
+  color: white;
+  border-radius: 12px;
+`;
+const ButtonBox = styled.div`
+  display: flex;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+`;
+const Wrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* position: absolute; */
   width: 80%;
   height: 547px;
   background-color: #fff;
@@ -73,15 +105,17 @@ const Wrap = styled.div`
   -ms-overflow-style: none;
   scrollbar-width: none;
   border-radius: 12px;
+  gap: 10px;
 `;
 const Container = styled.div`
   width: 312px;
-  padding: 120px 9px 0;
+  padding: 300px 9px 0;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 13px;
 `;
 const Box = styled.div<BoxProps>`
+  padding: 10px;
   width: 140px;
   gap: 3px;
   display: flex;
@@ -89,7 +123,10 @@ const Box = styled.div<BoxProps>`
   justify-content: center;
   align-items: center;
   border-radius: 12px;
-  background-color: ${(props) => (props ? 'green' : 'white')};
+  background-color: ${(props) => (props.backgroundColor ? '#A4BBF9' : 'white')};
+  border: ${(props) =>
+    props.backgroundColor ? '1px solid #fff' : '1px solid #d9d9d9'};
+  color: ${(props) => (props.backgroundColor ? 'white' : 'black')};
 `;
 const Logo = styled.img`
   width: 80px;
