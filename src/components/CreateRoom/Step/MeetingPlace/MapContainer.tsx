@@ -249,13 +249,13 @@ const MapContainer = (props: propsType) => {
       <MapDiv id="map" className="map" />
       <SearchResult id="search-result">
         <ResultText>
-          <ResultKeyword>{props.searchKeyword}</ResultKeyword> 검색 결과
+          <ResultKeyword>{props.searchKeyword}</ResultKeyword>
         </ResultText>
         <ScrollWrapper>
           <PlacesList id="places-list">
-            <PlaceItem>장소 1</PlaceItem>
-            <PlaceItem>장소 2</PlaceItem>
-            <PlaceItem>장소 3</PlaceItem>
+            <PlaceItem></PlaceItem>
+            <PlaceItem></PlaceItem>
+            <PlaceItem></PlaceItem>
             {/* 여기에 동적으로 리스트 아이템을 추가하면 됩니다 */}
           </PlacesList>
         </ScrollWrapper>
@@ -304,7 +304,7 @@ const ResultText = styled.p`
 `;
 
 const ResultKeyword = styled.span`
-  color: #007bff;
+  color: black;
 `;
 
 const ScrollWrapper = styled.div`
@@ -321,11 +321,11 @@ const PlacesList = styled.ul`
 
 const PlaceItem = styled.li`
   padding: 8px 0;
-  border-bottom: 1px solid #ccc;
+  
 `;
 
 const Pagination = styled.div`
-  /* Pagination 스타일을 추가하세요 (필요한 경우) */
+
 `;
 
 
