@@ -1,6 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
-interface TeamFiltersState {
+export interface TeamFiltersState {
   teamNames: string[];
+}
+export interface teamCheck {
+  teamfilter: TeamFiltersState;
 }
 const initialState: TeamFiltersState = {
   teamNames: [],

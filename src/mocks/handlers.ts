@@ -45,6 +45,6 @@ export const handlers = [
     return res(ctx.status(200), ctx.json(newUser));
   }),
   rest.get('/api/teams', (req, res, ctx) => {
-    return res(ctx.json(teams));
+    return res(ctx.json({ data: teams }));
   }),
 ];
