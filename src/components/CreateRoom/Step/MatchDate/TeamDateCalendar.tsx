@@ -1,8 +1,9 @@
-import React from "react";
+import React,{useState} from "react";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import { EventContentArg } from "@fullcalendar/core/index.js";
 import styled from "styled-components";
+import MatchingInfo from "./MatchingInfo";
 
 interface TeamDateCalendarProps {
   teamName: string;
@@ -10,6 +11,9 @@ interface TeamDateCalendarProps {
 }
 
 const TeamDateCalendar: React.FC<TeamDateCalendarProps> = ({ teamName, teamEvents }) => {    
+  
+  const [selectedEvent, setSelectedEvent] = useState<any | null>(null);
+  
   const filteredEvents = teamEvents.map(event => ({
     ...event,
     start: new Date(event.start)
@@ -17,20 +21,37 @@ const TeamDateCalendar: React.FC<TeamDateCalendarProps> = ({ teamName, teamEvent
 
   const renderEventContent = (eventInfo: EventContentArg) => {
     return (
-      <EventContainer>
-        <EventTitle>{eventInfo.event.title}</EventTitle>
-      </EventContainer>
+        <EventContainer>
+          <EventTitle>{eventInfo.event.title}</EventTitle>
+        </EventContainer>
     );
   };
+
+  const handleEventClick = (eventInfo: any) => {
+    setSelectedEvent(eventInfo.event);
+  };
+
+  const handleCloseMatchingInfo = () => {
+    setSelectedEvent(null);
+  };
+
 
   return (
     <CalendarContainer>
       <FullCalendar
         plugins={[dayGridPlugin]}
         initialView="dayGridMonth"
-        events={teamEvents}
+        events={filteredEvents} 
         eventContent={renderEventContent}
+        eventClick={handleEventClick}
       />
+      {selectedEvent && (
+        <MatchingInfoContainer>
+        <MatchingInfo
+          event={selectedEvent.event}
+          onClose={handleCloseMatchingInfo}
+        /></MatchingInfoContainer>
+      )}
     </CalendarContainer>
   );
 };
@@ -42,6 +63,8 @@ const CalendarContainer = styled.div`
   height: 100%;
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  align-items: center;
   
   .fc {
       width: 100%;
@@ -107,11 +130,11 @@ const CalendarContainer = styled.div`
     border-radius: 4px;
     font-weight: 500;
     font-size: 14px;
+    background-color:#1F1F45;
   }
 `;
 
 const EventContainer = styled.div`
-
   color: #fff;
   padding: 4px;
   border-radius: 4px;
@@ -120,4 +143,9 @@ const EventContainer = styled.div`
 const EventTitle = styled.div`
   font-size: 12px;
   font-weight: bold;
+`;
+
+const MatchingInfoContainer = styled.div`
+  width: 100%;
+  margin-top: 20px;
 `;

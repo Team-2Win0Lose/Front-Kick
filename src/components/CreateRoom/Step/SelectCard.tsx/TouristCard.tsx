@@ -4,14 +4,15 @@ import {AiOutlinePlusCircle} from 'react-icons/ai'
 
 type Props = {
   title: string;
+  onCardClick: () => void;
 };
 
-const TouristCard = ({ title }: Props) => {
+const TouristCard = ({ title, onCardClick }: Props) => {
   return (
-    <DIV>
+    <DIV onClick={onCardClick}>
       <Text>{title}</Text>
       <Container>
-        <CustomIcon></CustomIcon>
+        <CustomIcon />
       </Container>
     </DIV>
   );
