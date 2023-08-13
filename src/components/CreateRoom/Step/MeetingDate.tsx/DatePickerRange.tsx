@@ -45,10 +45,9 @@ export default DatePickerRange
 
 
 const StyledDatePicker = styled(DatePicker)`
-  width: 500px; 
+  width: 350px; 
   height: 40px;
-  font-size: 16px;
+  font-size: 12px;
   border-radius: 10px;
   align-items:center;
-
 `;

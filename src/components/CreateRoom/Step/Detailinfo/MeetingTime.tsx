@@ -4,7 +4,7 @@ type Props = {}
 
 const MeetingTime = (props: Props) => {
   return (
-    <div>MeetingTime</div>
+    <div></div>
   )
 }
 

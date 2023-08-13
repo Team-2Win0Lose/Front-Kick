@@ -16,8 +16,6 @@ function Summary({}: Props) {
         카드정보
         <ContentInput></ContentInput>
 
-        
-
     </Form>
   )
 }
