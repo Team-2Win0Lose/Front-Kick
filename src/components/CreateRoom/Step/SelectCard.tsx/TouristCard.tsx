@@ -25,15 +25,12 @@ const DIV = styled.div`
   margin-left: 20px;
 `;
 
-
-
 const Text = styled.p`
   font-size: 15px;
   margin-top: 5px;
   margin-bottom: 5px;
 
 `;
-
 
 const Container = styled.div`
   display: flex;

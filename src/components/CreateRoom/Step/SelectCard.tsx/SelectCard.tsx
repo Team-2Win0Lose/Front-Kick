@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import TouristCard from './TouristCard';
 import Modal from 'react-modal';
 import { Styles } from 'react-modal';
+import PlaceRecommandInfo from './PlaceRecommandInfo';
 
 const titles = ['숙박', '음식점', '관광지'];
 
@@ -33,11 +34,13 @@ const SelectCard = () => {
         style={customModalStyle}
       >
         <Box>
+          <Title>{selectedTitle} 코스 추가</Title>
           <FlexContainer>
-            <Text>{selectedTitle} 코스 추가</Text>
-            <Text>⚽️ 킥킥 추천 장소</Text>
-            <Btn onClick={closeModal}>닫기</Btn>
+            <PlaceRecommandInfo></PlaceRecommandInfo>
           </FlexContainer>
+          <NextButtonContainer>
+            <RegisterBtn onClick={closeModal}>선택 완료</RegisterBtn>
+          </NextButtonContainer>
         </Box>
         
       </Modal>
@@ -49,20 +52,20 @@ export default SelectCard;
 
 
 const Box = styled.div`
-    justify-content: center;
-    align-items: center;
-    width: 90%;
-    height: 100%;
-    margin: 10px auto;
+  justify-content: center;
+  align-items: center;
+  margin: 10px auto;
 `;
 
 const FlexContainer = styled.div`
-    justify-content: center;
-    align-items: center;
-
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%; 
 `;
 
-const customModalStyle: Styles = {  overlay: {
+const customModalStyle: Styles = {
+  overlay: {
     backgroundColor: " rgba(0, 0, 0, 0.4)",
     width: "100%",
     height: "100%",
@@ -82,31 +85,37 @@ const customModalStyle: Styles = {  overlay: {
     borderRadius: "10px",
     boxShadow: "2px 2px 2px rgba(0, 0, 0, 0.25)",
     backgroundColor: "white",
-    justifyContent: "center",
     overflow: "auto",
   },
 };
 
-const Btn = styled.div`
-    font-size: 15px;
+const Title = styled.div`
+    display:flex;
+    font-size: 25px;
     font-weight: bold;
     justify-content:center;
     align-items:center;
-    margin-left: 5%;
-    margin-right: 5%;
-    margin-top:2%;
-    margin-bottom: 2%;
+    margin-bottom: 20px;
 `;
 
-
-const Text = styled.div`
-    font-size: 18px;
-    font-weight: bold;
-    justify-content:center;
-    align-items:center;
-    margin-left: 5%;
-    margin-right: 5%;
+const RegisterBtn = styled.div`
+  width: 160px;
+  height: 50px;
+  flex-shrink: 0;
+  border-radius: 14px;
+  background: #1F1F45;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
 `;
+
+const NextButtonContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+`;
+
 
 
 

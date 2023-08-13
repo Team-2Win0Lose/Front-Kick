@@ -72,7 +72,6 @@ const StepHeader = () => {
           <NextButton onClick={handleNextClick}/>
         </NextButtonContainer>
       
-        
     </Wrap>
   )
 }

@@ -23,8 +23,6 @@ const TeamCard = () => {
 
 export default TeamCard
 
-
-
 const Title = styled.div`
   border: 1px;
   font-size: 20px;
