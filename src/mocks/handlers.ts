@@ -1,6 +1,7 @@
 import { rest } from 'msw';
 import { user } from './dummy';
 import { teams } from './dummy';
+import { AccompanyMadeByMe } from './dummy';
 type UserData = {
   email: string;
   name: string;
@@ -46,5 +47,8 @@ export const handlers = [
   }),
   rest.get('/api/teams', (req, res, ctx) => {
     return res(ctx.json({ data: teams }));
+  }),
+  rest.get('/api/myaccompany/:userId', (req, res, ctx) => {
+    return res(ctx.json({ data: AccompanyMadeByMe }));
   }),
 ];
