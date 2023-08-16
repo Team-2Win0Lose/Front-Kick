@@ -18,7 +18,7 @@ const Header = () => {
           <Menu></Menu>
         </div>
       </Head>
-      <Navbar></Navbar>
+      <Navbar />
     </div>
   ) : (
     <div>
@@ -28,7 +28,7 @@ const Header = () => {
           <Account></Account>
         </div>
       </Head>
-      <Navbar></Navbar>
+      <Navbar />
     </div>
   );
 };

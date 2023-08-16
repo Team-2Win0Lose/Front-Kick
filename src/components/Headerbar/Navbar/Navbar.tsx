@@ -50,9 +50,9 @@ const Navbar = () => {
         <InfoBox>
           <NavLink
             style={({ isActive }) => (isActive ? activeStyle : defaultStyle)}
-            to='/roominfo'
+            to='/myaccompany'
           >
-            나의 지난 동행
+            내 동행
           </NavLink>
         </InfoBox>
       </DIV>

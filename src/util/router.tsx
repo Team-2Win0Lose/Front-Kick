@@ -4,6 +4,7 @@
 // import Signup from '../pages/Signup';
 import React from 'react';
 import Loading from '../pages/Loading/Loading';
+import MyAccompany from '@/pages/MyAccompany/MyAccompany';
 
 const App = React.lazy(() => import('../App'));
 const EmailLogin = React.lazy(() => import('../pages/Login/EmailLogin'));
@@ -13,7 +14,9 @@ const Signup = React.lazy(() => import('../pages/Signup/Signup'));
 const Onboarding = React.lazy(() => import('../pages/Signup/Onboarding'));
 const FindAccompany = React.lazy(() => import('../pages/FindAccompany'));
 const CreateRoom = React.lazy(() => import('../pages/CreateRoom/CreateRoom'));
-const RoomInfo = React.lazy(() => import('../pages/RoomInfo'));
+const Myaccompany = React.lazy(
+  () => import('../pages/MyAccompany/MyAccompany'),
+);
 const AddCourse = React.lazy(() => import('../pages/CreateRoom/AddCourse'));
 const FindId = React.lazy(() => import('../pages/Login/Find/Id'));
 const UserEmail = React.lazy(() => import('../pages/Login/Find/UserEmail'));
@@ -78,11 +81,11 @@ export const RouterInfo = [
         element: <CreateRoom />,
         label: 'CreateRoom',
       },
-     
+
       {
-        path: '/roominfo',
-        element: <RoomInfo />,
-        label: 'RoomInfo',
+        path: '/myaccompany',
+        element: <Myaccompany />,
+        label: 'Myaccompany',
       },
       {
         path: '/addcourse',

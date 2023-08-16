@@ -69,3 +69,18 @@ export const getTeam = async () => {
     }
   }
 };
+
+export const getMyAccompany = async (userId: number) => {
+  try {
+    const res = await client(`/api/myaccompany/${userId}`, {
+      method: 'get',
+    });
+    return res;
+  } catch (error) {
+    if (error instanceof AxiosError) {
+      return {
+        data: error?.response?.data,
+      };
+    }
+  }
+};
