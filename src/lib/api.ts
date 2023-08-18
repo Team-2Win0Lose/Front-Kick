@@ -84,3 +84,17 @@ export const getMyAccompany = async (userId: number) => {
     }
   }
 };
+export const getMyAccompany2 = async (userId: number) => {
+  try {
+    const res = await client(`/api/myaccompanyapply/${userId}`, {
+      method: 'get',
+    });
+    return res;
+  } catch (error) {
+    if (error instanceof AxiosError) {
+      return {
+        data: error?.response?.data,
+      };
+    }
+  }
+};

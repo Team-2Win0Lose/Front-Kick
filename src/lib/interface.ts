@@ -28,6 +28,7 @@ export interface accompanyType {
   tags: string[];
 }
 export interface AccompanyMadeByMe {
+  id: number;
   hostData: hostType;
   accompanyData: accompanyType;
 }

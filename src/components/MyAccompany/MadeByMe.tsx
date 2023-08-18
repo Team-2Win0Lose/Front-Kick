@@ -18,7 +18,6 @@ const MadeByMe = (props: Props) => {
     }
     fetchData();
   }, []);
-  console.log(accompanyList);
 
   return (
     <Wrap>
@@ -30,6 +29,10 @@ const MadeByMe = (props: Props) => {
     </Wrap>
   );
 };
-const Wrap = styled.div``;
-const Container = styled.div``;
+const Wrap = styled.div`
+  width: 100%;
+`;
+const Container = styled.div`
+  margin: 0 auto;
+`;
 export default MadeByMe;

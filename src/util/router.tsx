@@ -21,6 +21,9 @@ const AddCourse = React.lazy(() => import('../pages/CreateRoom/AddCourse'));
 const FindId = React.lazy(() => import('../pages/Login/Find/Id'));
 const UserEmail = React.lazy(() => import('../pages/Login/Find/UserEmail'));
 const FindPassword = React.lazy(() => import('../pages/Login/Find/Password'));
+const AccompanyManage = React.lazy(
+  () => import('../pages/MyAccompany/ManageAccompany'),
+);
 export const RouterInfo = [
   {
     path: '/',
@@ -86,6 +89,11 @@ export const RouterInfo = [
         path: '/myaccompany',
         element: <Myaccompany />,
         label: 'Myaccompany',
+      },
+      {
+        path: '/myaccompany/manage/:id',
+        element: <AccompanyManage />,
+        label: 'ManageAccompany',
       },
       {
         path: '/addcourse',
