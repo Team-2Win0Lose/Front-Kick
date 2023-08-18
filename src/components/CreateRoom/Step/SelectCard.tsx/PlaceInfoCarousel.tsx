@@ -1,19 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { useNavigate } from 'react-router-dom'
-import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 
-interface itemsProps {
-    rating: number,
-    item: string,
-    name: string,
-    loc: string,
-    follower: number,
-}
 
+export interface itemsProps {
+    rating: number;
+    item: string;
+    name: string;
+    loc: string;
+    follower: number;
+  }
+  
 const items:itemsProps[] = [
   {
     rating: 1,
@@ -54,6 +54,20 @@ const items:itemsProps[] = [
 ]
 
 const PlaceInfoCarousel = () => {
+  const [selectedItem, setSelectedItem] = useState<itemsProps | null>(null);
+
+  const handleCheckboxChange = (item: itemsProps) => {
+    setSelectedItem(item);
+  };
+
+  const handleCompleteSelection = () => {
+    console.log('선택 완료 버튼 클릭됨, selectedItem:', selectedItem);
+    // 선택 완료 버튼 클릭 시, 선택된 아이템 정보로 PlaceCard에 전달
+    if (selectedItem) {
+      // selectedItem이 있을 경우에만 처리
+      setSelectedItem(null); // 선택 완료 후 정보 초기화
+    }
+  };
 
   return (
     <div className="carousel">
@@ -69,15 +83,22 @@ const PlaceInfoCarousel = () => {
                             <Loc>{item.loc}</Loc>    
                         </FlexContainerRight>
                         <CheckboxContainer>
-                            <Checkbox type="checkbox" />
+                            <Checkbox
+                                type="checkbox"
+                                onChange={() => handleCheckboxChange(item)}
+                            />
                         </CheckboxContainer>
                     </InfoContainer>
                 </FlexContainer>
-                
             </Box>
             
         ))}
+
+      <NextButtonContainer>
+        <RegisterBtn onClick={handleCompleteSelection}>선택 완료</RegisterBtn>
+      </NextButtonContainer>
     
+     
     </div>
   )
 }
@@ -143,4 +164,22 @@ const CheckboxContainer = styled.div`
 `;
 
 const Checkbox = styled.input`
+`;
+
+const RegisterBtn = styled.div`
+  width: 160px;
+  height: 50px;
+  flex-shrink: 0;
+  border-radius: 14px;
+  background: #1F1F45;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+`;
+
+const NextButtonContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
 `;

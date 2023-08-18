@@ -94,6 +94,7 @@ const Title = styled.div`
     font-size: 25px;
     font-weight: bold;
     justify-content:center;
+    text-align: center;
     align-items:center;
     margin-bottom: 20px;
 `;
