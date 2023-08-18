@@ -25,5 +25,6 @@ const Wrap = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
+  padding: 10px 25px;
 `;
 export default MyAccompany;
