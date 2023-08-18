@@ -237,18 +237,16 @@ const Box = styled.div`
     overflow:hidden;
 `;
 
-
-
 const IMG = styled.img`
-    width: 80%;
-    height: 80%;
+    width: 70%;
+    height: 70%;
     object-fit: contain;
     justify-content: center;
     align-items: center;
 `;
 
 const Name = styled.div`
-    font-size: 10px;
+    font-size: 12px;
     color:#FFFFFF;
     margin-top: 10%;
     margin-bottom: 10%;

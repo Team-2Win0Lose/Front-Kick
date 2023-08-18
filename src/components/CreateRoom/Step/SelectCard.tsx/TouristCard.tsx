@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import {AiOutlinePlusCircle} from 'react-icons/ai'
+import PlaceCard from './PlaceCard';
 
 type Props = {
   title: string;
@@ -9,12 +10,16 @@ type Props = {
 
 const TouristCard = ({ title, onCardClick }: Props) => {
   return (
-    <DIV onClick={onCardClick}>
+    <DIV>
       <Text>{title}</Text>
-      <Container>
-        <CustomIcon />
-      </Container>
-    </DIV>
+      <Form>
+        <Container onClick={onCardClick}>
+          <CustomIcon />
+        </Container>
+        <PlaceCard selectedItem={null}/>
+      </Form>  
+     </DIV>
+    
   );
 };
 
@@ -32,6 +37,15 @@ const Text = styled.p`
 
 `;
 
+const Form = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+
+`;
+
+
 const Container = styled.div`
   display: flex;
   justify-content: center;
@@ -43,6 +57,8 @@ const Container = styled.div`
   background-color: #1F1F45;
   gap: 15px;
   margin-bottom:20px;
+  margin-right: 10px;
+  cursor: pointer; 
 `;
 
 const CustomIcon = styled(AiOutlinePlusCircle)`
