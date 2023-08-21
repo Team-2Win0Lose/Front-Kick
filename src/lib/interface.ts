@@ -1,11 +1,13 @@
 export interface GetTeamType {
   teamName: string;
   teamImg: string;
-  teamGrade: string;
+  teamGrade: number;
   teamStadium: string;
   location: string;
   teamCardOwner: string;
   totalMatching: string;
+  currentMatching: number;
+  follower: number;
 }
 export interface GetTeamList {
   data: GetTeamType[];
