@@ -20,9 +20,12 @@ const TeamDateCalendar: React.FC<TeamDateCalendarProps> = ({ teamName, teamEvent
   }));
 
   const renderEventContent = (eventInfo: EventContentArg) => {
+    const { title, image, index } = eventInfo.event.extendedProps;
+    
     return (
         <EventContainer>
-          <EventTitle>{eventInfo.event.title}</EventTitle>
+          <EventTitle>{title}</EventTitle>
+          {image && <EventImage src={image} alt={title} />}
         </EventContainer>
     );
   };
@@ -88,8 +91,7 @@ const CalendarContainer = styled.div`
     border: none;
 
     span {
-      font-weight: 300;
-      font-size: 40px;
+      font-size: 30px;
     }
   }
 
@@ -107,7 +109,7 @@ const CalendarContainer = styled.div`
 
   // 오늘 날짜 배경색
   .fc .fc-daygrid-day.fc-day-today {
-    background-color: #fff8bd;
+
     color: #1F1F45;
   }
 
@@ -125,12 +127,11 @@ const CalendarContainer = styled.div`
   // 각 이벤트 요소
   .fc-event {
     cursor: pointer;
-    padding: 5px 8px;
     margin-bottom: 5px;
     border-radius: 4px;
     font-weight: 500;
     font-size: 14px;
-    background-color:#1F1F45;
+    /* background-color:#1F1F45; */
   }
 `;
 
@@ -148,4 +149,9 @@ const EventTitle = styled.div`
 const MatchingInfoContainer = styled.div`
   width: 100%;
   margin-top: 20px;
+`;
+
+const EventImage = styled.img`
+  width: 30px;
+  height: 30px;
 `;

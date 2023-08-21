@@ -17,16 +17,16 @@ interface itemsProps {
  
 const events = {
     '강원FC': [
-      { title: '축구', start: '2023-08-10' },
-      { title: '전북vs서울', start: '2023-08-11' }
+      { title: '축구', start: '2023-08-10',image: 'public/assets/teams/대구FC.png'},
+      { title: '전북vs서울', start: '2023-08-11',image: 'public/assets/teams/대구FC.png' }
   
     ],
     '광주FC': [
-      { title: '야호', start: '2023-08-10' },
+      { title: '야호', start: '2023-08-10', image: 'public/assets/teams/대구FC.png'},
       { title: '승훈vs서울', start: '2023-08-11' }
     ],
     '대구FC': [
-      { title: '휴..', start: '2023-08-10' },
+      { title: '휴..', start: '2023-08-10', image: 'public/assets/teams/대구FC.png'},
       { title: '승훈vs서울', start: '2023-08-13' }
 
     ],
@@ -246,7 +246,7 @@ const IMG = styled.img`
 `;
 
 const Name = styled.div`
-    font-size: 12px;
+    font-size: 10px;
     color:#FFFFFF;
     margin-top: 10%;
     margin-bottom: 10%;

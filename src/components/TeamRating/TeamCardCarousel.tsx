@@ -5,109 +5,15 @@ import { useNavigate } from 'react-router-dom'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { openModal } from 'src/feature/ModalSlice.ts'
-
-
-interface itemsProps {
-    rating: number,
-    item: string,
-    name: string,
-    ing: number,
-    follower: number,
-  }
-  
-const items:itemsProps[] = [
-  {
-    rating: 1,
-    item: 'public/assets/teams/강원FC.png',
-    name: '강원FC',
-    ing: 112,
-    follower: 23,
-    },
-    {
-    rating: 2,
-    item: 'public/assets/teams/광주FC.png',
-    name: '광주FC',
-    ing: 123,
-    follower: 23,
-    },
-    {
-    rating: 3,
-    item: 'public/assets/teams/대구FC.png',
-    name: '대구FC',
-    ing: 312,
-    follower: 23,
-    },
-    {
-    rating: 4,
-    item: 'public/assets/teams/대전하나시티즌.png',
-    name: '대전하나시티즌',
-    ing: 212,
-    follower: 21,
-    },
-    {
-    rating: 5,
-    item: 'public/assets/teams/수원삼성블루윙즈.png',
-    name: '수원삼성블루윙즈',
-    ing: 152,
-    follower: 29,
-    },
-    {
-    rating: 6,
-    item: 'public/assets/teams/수원FC.png',
-    name: '수원FC',
-    ing: 172,
-    follower: 2,
-    },
-    {
-    rating: 7,
-    item: 'public/assets/teams/울산현대.png',
-    name: '울산현대',
-    ing: 112,
-    follower: 264,
-    },
-    {
-    rating: 8,
-    item: 'public/assets/teams/인천유나이티드.png',
-    name: '인천유나이티드',
-    ing: 912,
-    follower: 234,
-    },
-    {
-    rating: 9,
-    item: 'public/assets/teams/전북현대모터스.png',
-    name: '전북현대모터스',
-    ing: 124,
-    follower: 2223,
-
-    },
-    {
-    rating: 10,
-    item: 'public/assets/teams/제주유나이티드.png',
-    name: '제주유나이티드',
-    ing: 992,
-    follower: 213,
-
-    },
-    {
-    rating: 11,
-    item: 'public/assets/teams/포항스틸러스.png',
-    name: '포항스틸러스',
-    ing: 132,
-    follower: 20,
-
-    },
-    {
-    rating: 12,
-    item: 'public/assets/teams/FC서울.png',
-    name: 'FC서울',
-    ing: 12,
-    follower: 243,
-    }  
-]
-
+import { useState, useEffect } from 'react';
+import { GetTeamList } from '@/lib/interface';
+import { getTeam } from '@/lib/api';
 
 const TeamCardCarousel = () => {
-    const sortedItems = items.sort((a, b) => b.ing - a.ing);
+    const [teamList, setteamList] = useState<GetTeamList>();
+
+    const sortedItems = [...(teamList?.data || [])].sort((a, b) => b.currentMatching - a.currentMatching);
+
 
     const settings = {
         dots: true,
@@ -121,6 +27,21 @@ const TeamCardCarousel = () => {
     }
 
     const dispatch = useDispatch();
+
+    // api에서 team 목록 불러오기
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await getTeam();
+                setteamList(response);
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        };
+        fetchData();
+    }, []);
+
+
     const handleOpenSearchModal = () => {
         dispatch(
         openModal({
@@ -135,14 +56,14 @@ const TeamCardCarousel = () => {
             
             <CustomSlider {...settings}>
             
-                {sortedItems.map((item, index) => (
+                {sortedItems?.map((item, index) => (
                     
                     <Box key={index}>
                     <Rate>{index+1}</Rate>
                     <FlexContainer>
-                        <IMG src ={item.item} alt={item.name} />
+                        <IMG src ={item.teamImg} alt={item.teamName} />
                         <FlexContainerRight>
-                            <Name>{item.name}</Name>
+                            <Name>{item.teamName}</Name>
                             <FlexColumnInside>
                                 <FlexColumn>
                                     <FlexText>
@@ -152,7 +73,7 @@ const TeamCardCarousel = () => {
                                 </FlexColumn>
                                 <FlexColumn>
                                     <FlexText>
-                                        <FlexItem>{item.ing}</FlexItem> 
+                                        <FlexItem>{item.currentMatching}</FlexItem> 
                                         <Font>현재 동행팀</Font>
                                     </FlexText>
                                 </FlexColumn>
