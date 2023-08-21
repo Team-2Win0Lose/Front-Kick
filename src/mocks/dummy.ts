@@ -144,7 +144,29 @@ export const teams = [
     follower: 133
   },
 ];
-
+export const AccompanyList = [
+  {
+    postId: 1,
+    hostData: {
+      hostId: '',
+      hostName: '호스트 이름',
+      hostAge: '20대',
+      hostGender: '남성',
+    },
+    accompanyData: {
+      closedDate: '2023-09-11',
+      startDate: '2023-09-11',
+      endDate: '2023-09-12',
+      nowStatus: '모집중',
+      title: '우천으로 취소돼도, 제주 맛집 부수고 돌아가요!',
+      meetingPlace: '서울역 광장',
+      nowHeadCount: 3,
+      totalHeadCount: 4,
+      participate: [''],
+      tags: ['#절대강자', '#축구지존', '#제주도', '#맛집탐방'],
+    },
+  },
+];
 export const AccompanyMadeByMe = [
   {
     id: 1,

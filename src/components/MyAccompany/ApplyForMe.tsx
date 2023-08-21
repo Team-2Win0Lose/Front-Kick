@@ -26,8 +26,11 @@ const ApplyForMe = (props: Props) => {
     <Wrap>
       <Container>
         {accompanyList?.data.map((post: AccompanyMadeByMe) => (
-          <div onClick={() => navigate(`/myaccompany/manage/${post.id}`)}>
-            <AccompanyBox key={post.id} boxdata={post} />
+          <div
+            key={post.id}
+            onClick={() => navigate(`/myaccompany/manage/${post.id}`)}
+          >
+            <AccompanyBox boxdata={post} />
           </div>
         ))}
       </Container>
