@@ -34,7 +34,7 @@ const MatchInfo = (props: Props) => {
 };
 const Container = styled.div`
   width: 100%;
-  padding: 7px 20px;
+  padding: 15px 20px;
   border: 1px solid black;
   border-radius: 12px;
   display: flex;
@@ -44,20 +44,20 @@ const Container = styled.div`
   gap: 15px;
 `;
 const Title = styled.div`
-  font-size: 12px;
+  font-size: 14px;
 `;
 const Content = styled.div`
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  gap: 24px;
+  gap: 3rem;
 `;
 const Info = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  gap: 1px;
+  gap: 3px;
 `;
 const Match = styled.div`
   display: flex;

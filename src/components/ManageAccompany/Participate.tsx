@@ -71,7 +71,7 @@ const Header = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 4px;
+  padding: 10px 4px;
   gap: 13px;
 `;
 const Personnel = styled.div`
@@ -87,10 +87,10 @@ const Apply = styled.div`
   gap: 9px;
 `;
 const Text = styled.p`
-  font-size: 12px;
+  font-size: 14px;
 `;
 const Person = styled.p`
-  font-size: 12px;
+  font-size: 14px;
 `;
 const Body = styled.div`
   display: flex;
