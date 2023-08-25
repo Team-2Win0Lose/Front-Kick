@@ -1,8 +1,8 @@
 import AccompanyInfo from '@/components/ManageAccompany/AccompanyInfo';
 import ContentInfo from '@/components/ManageAccompany/ContentInfo';
 import MatchInfo from '@/components/ManageAccompany/MatchInfo';
-import Participate from '@/components/ManageAccompany/Participate';
-import Rated from '@/components/ManageAccompany/Rated';
+import MeetingRequest from '@/components/ManageAccompany/MeetingRequest';
+import Star from '@/components/ManageAccompany/Star';
 import { IoIosArrowBack } from 'react-icons/io';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
@@ -29,9 +29,8 @@ const ManageAccompany = (props: Props) => {
           </HostInfo>
         </Host>
       </Header>
-      <Rated />
-
-      <Participate />
+      <Star />
+      <MeetingRequest />
       <MatchInfo />
       <AccompanyInfo />
       <ContentInfo />
