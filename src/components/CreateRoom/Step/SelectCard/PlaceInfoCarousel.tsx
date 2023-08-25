@@ -3,69 +3,67 @@ import styled from 'styled-components';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { useNavigate } from 'react-router-dom';
+import { closeModal } from '@/feature/ModalSlice';
+import { useDispatch } from 'react-redux';
+import { SelectedItem } from '@/feature/SelectedItemsSlice';
 
 
 export interface itemsProps {
-    rating: number;
-    item: string;
+    IMG: string;
     name: string;
-    loc: string;
-    follower: number;
+
   }
   
 const items:itemsProps[] = [
   {
-    rating: 1,
-    item: 'public/assets/teams/강원FC.png',
+    IMG: 'public/assets/teams/강원FC.png',
     name: '안녕호텔',
-    loc: '경기도 어디쯤',
-    follower: 23,
+
     },
     {
-    rating: 2,
-    item: 'public/assets/teams/광주FC.png',
+    IMG: 'public/assets/teams/광주FC.png',
     name: '나이스민박',
-    loc: "서울 어디쯤",
-    follower: 23,
+
     },
     {
-    rating: 3,
-    item: 'public/assets/teams/대구FC.png',
+    IMG: 'public/assets/teams/대구FC.png',
     name: '게스트하우스',
-    loc: '대구 어디쯤',
-    follower: 23,
+  
     },
     {
-    rating: 4,
-    item: 'public/assets/teams/대전하나시티즌.png',
+    IMG: 'public/assets/teams/대전하나시티즌.png',
     name: '우리집',
-    loc: '대전 어디쯤',
-    follower: 21,
+
     },
     {
-    rating: 5,
-    item: 'public/assets/teams/수원삼성블루윙즈.png',
+    IMG: 'public/assets/teams/수원삼성블루윙즈.png',
     name: '하이숙박',
-    loc: '수원 어디쯤',
-    follower: 29,
+ 
     }
 
 ]
 
 const PlaceInfoCarousel = () => {
-  const [selectedItem, setSelectedItem] = useState<itemsProps | null>(null);
-
+  const [selectedItems, setSelectedItems] = useState<itemsProps[]>([]);
+  const dispatch = useDispatch();
   const handleCheckboxChange = (item: itemsProps) => {
-    setSelectedItem(item);
+    // 이미 선택된 아이템인지 확인 후 추가하거나 제거
+    if (selectedItems.some(selectedItem => selectedItem.name === item.name)) {
+      setSelectedItems(selectedItems.filter(selectedItem => selectedItem.name !== item.name));
+    } else {
+      setSelectedItems([...selectedItems, item]);
+    }
   };
+  
 
   const handleCompleteSelection = () => {
-    console.log('선택 완료 버튼 클릭됨, selectedItem:', selectedItem);
+    console.log('선택 완료 버튼 클릭됨, selectedItem:', selectedItems);
     // 선택 완료 버튼 클릭 시, 선택된 아이템 정보로 PlaceCard에 전달
-    if (selectedItem) {
-      // selectedItem이 있을 경우에만 처리
-      setSelectedItem(null); // 선택 완료 후 정보 초기화
+    if (selectedItems.length > 0) {
+      // 선택된 아이템들 처리
+      dispatch(SelectedItem(selectedItems)) 
+
+      // setSelectedItems([]); // 선택 완료 후 정보 초기화
     }
   };
 
@@ -76,16 +74,17 @@ const PlaceInfoCarousel = () => {
           
             <Box key={index}>
                 <FlexContainer>
-                    <IMG src ={item.item} alt={item.name} />
+                    
                     <InfoContainer>
+                        <IMG src ={item.IMG} alt={item.name} />
                         <FlexContainerRight>
                             <Name>{item.name}</Name>
-                            <Loc>{item.loc}</Loc>    
+                            {/* <Loc>{item.loc}</Loc>     */}
                         </FlexContainerRight>
                         <CheckboxContainer>
                             <Checkbox
                                 type="checkbox"
-                                onChange={() => handleCheckboxChange(item)}
+                                onChange={() => {handleCheckboxChange(item)}}
                             />
                         </CheckboxContainer>
                     </InfoContainer>
@@ -95,7 +94,7 @@ const PlaceInfoCarousel = () => {
         ))}
 
       <NextButtonContainer>
-        <RegisterBtn onClick={handleCompleteSelection}>선택 완료</RegisterBtn>
+        <RegisterBtn onClick={() => {handleCompleteSelection(), dispatch(closeModal())}}>선택 완료</RegisterBtn>
       </NextButtonContainer>
     
      
@@ -144,13 +143,11 @@ const Name = styled.div`
 const FlexContainer = styled.div`
   display: flex;
 
+  justify-content: space-between;
 `;
 
 const FlexContainerRight = styled.div`
   align-items: center;
-  justify-content: space-between;
-
-
 `;
 
 const Loc = styled.div`
@@ -160,7 +157,7 @@ const Loc = styled.div`
 `;
 
 const CheckboxContainer = styled.div` 
-    margin-left: 50px;
+    margin-left: 10px;
 `;
 
 const Checkbox = styled.input`

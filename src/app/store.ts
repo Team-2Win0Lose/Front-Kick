@@ -8,6 +8,7 @@ import modalReducer from '../feature/ModalSlice';
 import termReducer from '../feature/TermSlice';
 import authReducer from '../feature/authSlice';
 import teamfilterReducer from '../feature/teamFilterSlice';
+import selecteditemReducer from '../feature/SelectedItemsSlice';
 import {
   persistStore,
   persistReducer,
@@ -23,7 +24,7 @@ import storage from 'redux-persist/lib/storage';
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['team', 'modal', 'term', 'auth', 'teamfilter'],
+  whitelist: ['team', 'modal', 'term', 'auth', 'teamfilter','selecteditem'],
 };
 
 const rootReducer = combineReducers({
@@ -32,6 +33,7 @@ const rootReducer = combineReducers({
   term: termReducer,
   auth: authReducer,
   teamfilter: teamfilterReducer,
+  selecteditem: selecteditemReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
