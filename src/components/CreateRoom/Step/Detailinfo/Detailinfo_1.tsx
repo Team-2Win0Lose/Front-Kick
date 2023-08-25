@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 import MinMaxCnt from './MinMaxCnt'
-import MeetingTime from './MeetingTime'
+import MeetingTime from '../MeetingDate.tsx/MeetingTime'
 import DatePickerRange from '../MeetingDate.tsx/DatePickerRange'
-import MeetingDate from '../MeetingDate.tsx/MeetingDate'
+
 
 
 type Props = {}
@@ -12,7 +12,7 @@ function Detailinfo_1({}: Props) {
   return (
     <Form>
         <MinMaxCnt></MinMaxCnt>
-        <MeetingDate></MeetingDate>
+        <DatePickerRange></DatePickerRange>
         <MeetingTime></MeetingTime>
     </Form>
   )

@@ -4,6 +4,7 @@ import Thumbnail from './Thumbnail'
 import TitleName from './TitleName'
 import ContentInput from './ContentInput'
 import TagInput from './TagInput'
+import FilterBox from '@/components/HashTag/FilterBox'
 
 type Props = {}
 
@@ -14,7 +15,7 @@ const Detailinfo_2 = (props: Props) => {
         <Thumbnail></Thumbnail>
         <TitleName></TitleName>
         <ContentInput></ContentInput>
-        <TagInput></TagInput>
+        <FilterBox></FilterBox>
       </SettingBox>
     </Form>
   )

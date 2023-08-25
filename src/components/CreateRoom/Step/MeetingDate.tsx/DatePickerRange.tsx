@@ -9,35 +9,44 @@ type Props = {}
 
 const DatePickerRange = (props: Props) => {
 
-  const [dateRange, setDateRange] = useState<[Date | null, Date | null]>([null, null]);
-  const [startDate, endDate] = dateRange;
+  const [startDate, setStartDate] = useState<Date | null>(new Date());
+  const [endDate, setEndDate] = useState<Date | null>(null);
+
+  const onChange = (dates: [Date, Date] | null) => {
+    if (dates) {
+      const [start, end] = dates;
+      setStartDate(start);
+      setEndDate(end);
+    }
+  };
   
   return (
-    <StyledDatePicker
-      locale={ko} 
-      dateFormat="yyyy년 MM월 dd일 a hh시"
-      dateFormatCalendar="yyyy년 MM월"
-      showTimeSelect
-      timeFormat="HH:mm"
-      timeIntervals={10}
-      timeCaption="시간"
-      shouldCloseOnSelect// 날짜를 선택하면 datepicker가 자동으로 닫힘
-      closeOnScroll={true} // 스크롤을 움직였을 때 자동으로 닫히도록 설정 기본값 false   
-      minDate={new Date()} // minDate 이전 날짜 선택 불가
-      placeholderText="날짜를 선택해주세요."
-      // maxDate={new Date()} // maxDate 이후 날짜 선택 불가
-      selectsRange={true}
-      startDate={startDate}
-      endDate={endDate}
-      onChange={(update) => {
-        if (update instanceof Date) {
-          setDateRange([update, update]);
-        } else if (Array.isArray(update)) {
-          setDateRange(update);
-        }
-      }}
-      withPortal
-    />
+    <div>
+      <SelectedDateBox>
+          {startDate && endDate ? (
+            <>
+              <Font>{startDate.toLocaleDateString('ko-KR')}</Font>
+              <Font> ~ </Font>
+              <Font>{endDate.toLocaleDateString('ko-KR')}</Font>
+            </>
+          ) : (
+            <div>날짜를 선택해주세요.</div>
+          )}
+        </SelectedDateBox>
+      <StyledDatePicker
+        locale={ko} 
+        dateFormat="yyyy년 MM월 dd일"
+        dateFormatCalendar="yyyy년 MM월"
+        minDate={new Date()} // minDate 이전 날짜 선택 불가
+        placeholderText="날짜를 선택해주세요."
+        selected={startDate}
+        onChange={onChange}
+        startDate={startDate}
+        endDate={endDate}
+        selectsRange
+        inline
+      />
+    </div>
   )
 }
 
@@ -50,4 +59,23 @@ const StyledDatePicker = styled(DatePicker)`
   font-size: 12px;
   border-radius: 10px;
   align-items:center;
+
+`;
+
+const SelectedDateBox = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  font-weight: bold;
+`;
+
+const Font = styled.p`
+  font-size: 16px;
+  font-weight: bold;
+  margin: 5px;
 `;
