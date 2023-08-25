@@ -1,21 +1,21 @@
-import React from 'react'
+import React from 'react';
 import styled from 'styled-components';
 import PlaceRecommandInfo from '../CreateRoom/Step/SelectCard/PlaceRecommandInfo';
 
-type Props = {}
+type Props = {};
 
-const HouseSearchModal = (props: Props) => {
+const AttractionSearchModal = (props: Props) => {
   return (
     <Box>
-          <Title>관광지 코스 추가</Title>
-          <FlexContainer>
-            <PlaceRecommandInfo></PlaceRecommandInfo>
-          </FlexContainer>
+      <Title>관광지 코스 추가</Title>
+      <FlexContainer>
+        <PlaceRecommandInfo index={2} />
+      </FlexContainer>
     </Box>
-  )
-}
+  );
+};
 
-export default HouseSearchModal
+export default AttractionSearchModal;
 
 const Box = styled.div`
   justify-content: center;
@@ -35,16 +35,16 @@ const FlexContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%; 
+  width: 100%;
 `;
 
 const Title = styled.div`
-    display:flex;
-    font-size: 25px;
-    font-weight: bold;
-    justify-content:center;
-    text-align: center;
-    align-items:center;
-    margin-top: 20px;
-    margin-bottom: 10px;
+  display: flex;
+  font-size: 25px;
+  font-weight: bold;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 10px;
 `;

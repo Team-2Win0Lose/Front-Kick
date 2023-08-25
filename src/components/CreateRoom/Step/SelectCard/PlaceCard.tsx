@@ -1,32 +1,63 @@
 import React from 'react';
 import styled from 'styled-components';
-import { itemsProps } from './PlaceInfoCarousel';
 import { useSelector } from 'react-redux';
-import { SelectedItemCheck } from '@/feature/SelectedItemsSlice';
-interface Props {
-    selectedItem: itemsProps | null;
+import { RootState } from '@/app/store';
+
+type Props = {
+  index: number;
+};
+
+const PlaceCard = (props: Props) => {
+  let List;
+  if (props.index === 0) {
+    const selecteditemlist = useSelector(
+      (state: RootState) => state.selecteditem.house,
+    );
+    List = selecteditemlist;
+  }
+  if (props.index === 1) {
+    const selecteditemlist = useSelector(
+      (state: RootState) => state.selecteditem.food,
+    );
+    List = selecteditemlist;
+  }
+  if (props.index === 2) {
+    const selecteditemlist = useSelector(
+      (state: RootState) => state.selecteditem.attraction,
+    );
+    List = selecteditemlist;
+  }
+  if (!List) {
+    // 전달받은 아이템이 null인 경우, 처리할 내용
+    return <div>No selected item</div>;
   }
 
-
-  
-const PlaceCard = ({ selectedItem }: Props) => {
-    if (!selectedItem) {
-      // 전달받은 아이템이 null인 경우, 처리할 내용
-      return <div>No selected item</div>;
-    }
-
-    return (
-
-    <Container>
-      <CardIMG selectedItem={selectedItem} />
-      {selectedItem && <CardName>{selectedItem.name}</CardName>}
-    </Container>
+  return (
+    <Wrap>
+      {List.map((item, idx) =>
+        item.name === '' ? (
+          <div key={idx}></div>
+        ) : (
+          <Container key={idx}>
+            <div>
+              <CardIMG src={item.IMG} />
+              <CardName>{item.name}</CardName>
+            </div>
+          </Container>
+        ),
+      )}
+    </Wrap>
   );
 };
 
 export default PlaceCard;
-
-const CardIMG = styled.div<{ selectedItem: itemsProps | null }>`
+const Wrap = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+`;
+const CardIMG = styled.img`
   margin-top: 10px;
   justify-content: center;
   align-items: center;
@@ -34,7 +65,6 @@ const CardIMG = styled.div<{ selectedItem: itemsProps | null }>`
   width: 50px;
   height: 50px;
   border-radius: 100%;
-  background-image: url(${props => (props.selectedItem ? props.selectedItem.IMG : '')});
   background-size: cover;
 `;
 
