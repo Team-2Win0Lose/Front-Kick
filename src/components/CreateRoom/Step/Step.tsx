@@ -9,8 +9,8 @@ import TeamDateSelect from './MatchDate/TeamDateSelect';
 import PlaceSearch from './MeetingPlace/PlaceSearch';
 import Detailinfo_1 from './Detailinfo/Detailinfo_1';
 import Detailinfo_2 from './Detailinfo/Detailinfo_2';
-import SelectCard from './SelectCard.tsx/SelectCard';
 import Summary from './Summary/Summary';
+import SelectCard from './SelectCard/SelectCard';
 
 const StepHeader = () => {
 
@@ -39,6 +39,7 @@ const StepHeader = () => {
       CurrentStepComponent = TeamDateSelect;
       break;
     case 1:
+      // CurrentStepComponent = PlaceSearch;
       CurrentStepComponent = PlaceSearch;
       break;
     case 2:
