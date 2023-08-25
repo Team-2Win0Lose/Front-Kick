@@ -1,3 +1,4 @@
+
 import {useState, useCallback} from 'react'
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
@@ -5,6 +6,7 @@ import MapContainer from './MapContainer';
 import {FaSearch} from 'react-icons/Fa'
 
 export interface propsType {
+  handleLocationSelect(location: string): unknown;
   searchKeyword: string
 }
 
@@ -34,6 +36,10 @@ const PlaceSearch = ():JSX.Element => {
   if (Value === "") {
     alert ("검색어를 입력해주세요.")
   }
+  else{
+    setKeyword(Value);
+  }
+  
   }
 
   return (
@@ -69,7 +75,7 @@ const PlaceSearch = ():JSX.Element => {
               <MapContainer searchKeyword={Keyword} />
             </LandingPageInner>
           </LandingPage>
-    
+
           <CourseAddBtn>
             <input type="text" id="loc" value={loc} onChange={(e) => setLoc(e.target.value)} placeholder="상세 위치를 입력해주세요."/>
           </CourseAddBtn>
@@ -109,8 +115,8 @@ const CourseAddBtn = styled.div`
   height: 50px;
   font-size: 1rem;
   font-weight: 400;
-  margin-top:30px;
-  margin-bottom:40px;
+  margin-top : 10px;
+  margin-bottom : 10px;
   flex-shrink: 0;
   border-radius: 14.163px;
   /* background: #1F1F45; */

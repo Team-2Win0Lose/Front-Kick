@@ -24,7 +24,7 @@ const MapContainer = (props: propsType) => {
         const mapContainer = document.getElementById("map");
         const mapOption = {
         center: new kakao.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
-        level: 3 // 지도의 확대 레벨
+        level: 5 // 지도의 확대 레벨
     };
 
     // 지도를 생성
@@ -206,7 +206,7 @@ const MapContainer = (props: propsType) => {
       }
 
       for (i=1; i<=pagination.last; i++) {
-        const el = document.createElement('a') as HTMLAnchorElement;
+        const el = document.createElement('') as HTMLAnchorElement;
         el.href = "#";
         el.innerHTML = i.toString();
 
@@ -277,7 +277,7 @@ const MapContainer_ = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #f5f5f5;
+  background-color: #e0e0e0;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -304,7 +304,7 @@ const ResultText = styled.p`
 `;
 
 const ResultKeyword = styled.span`
-  color: black;
+  color: #1F1F45;
 `;
 
 const ScrollWrapper = styled.div`
@@ -317,6 +317,7 @@ const PlacesList = styled.ul`
   list-style: none;
   padding: 0;
   margin: 0;
+  color: #1F1F45;
 `;
 
 const PlaceItem = styled.li`
@@ -327,13 +328,4 @@ const PlaceItem = styled.li`
 const Pagination = styled.div`
 
 `;
-
-
-  
-  
-  
-  
-  
-  
-  
 

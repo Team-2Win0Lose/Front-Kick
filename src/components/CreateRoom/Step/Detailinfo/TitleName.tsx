@@ -26,7 +26,7 @@ const StyledInput = styled.div`
   justify-content: center;
   align-items: center;
   margin-bottom: 20px;
-
+  
 
   input {
     border-radius: 10px;
@@ -36,5 +36,6 @@ const StyledInput = styled.div`
     /* border: none; 
     outline: none;  */
     font-size: 16px; 
+    
   }
 `;
