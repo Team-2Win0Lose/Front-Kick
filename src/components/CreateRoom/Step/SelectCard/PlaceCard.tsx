@@ -1,13 +1,22 @@
 import React from 'react';
 import styled from 'styled-components';
 import { itemsProps } from './PlaceInfoCarousel';
-
+import { useSelector } from 'react-redux';
+import { SelectedItemCheck } from '@/feature/SelectedItemsSlice';
 interface Props {
     selectedItem: itemsProps | null;
   }
 
+
+  
 const PlaceCard = ({ selectedItem }: Props) => {
+    if (!selectedItem) {
+      // 전달받은 아이템이 null인 경우, 처리할 내용
+      return <div>No selected item</div>;
+    }
+
     return (
+
     <Container>
       <CardIMG selectedItem={selectedItem} />
       {selectedItem && <CardName>{selectedItem.name}</CardName>}
@@ -25,7 +34,7 @@ const CardIMG = styled.div<{ selectedItem: itemsProps | null }>`
   width: 50px;
   height: 50px;
   border-radius: 100%;
-  background-image: url(${props => (props.selectedItem ? props.selectedItem.item : '')});
+  background-image: url(${props => (props.selectedItem ? props.selectedItem.IMG : '')});
   background-size: cover;
 `;
 

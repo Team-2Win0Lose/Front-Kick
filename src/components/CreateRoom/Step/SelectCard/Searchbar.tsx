@@ -2,7 +2,6 @@ import React from "react";
 import { useState } from "react";
 import styled from "styled-components";
 import {FaSearch} from 'react-icons/Fa';
-import MapContainer from "../MeetingPlace/MapContainer";
 
 const SearchBar = () => {
 
@@ -33,7 +32,7 @@ const SearchBar = () => {
     }
     }
     return (
-        <Form>
+      <Form>
       <SettingBox>
         <BoxContainer>
           <LandingPage>
@@ -59,7 +58,7 @@ const SearchBar = () => {
                         />
                     </BtnBox>
                   </FormLabel>
-               </SearchForm>
+                </SearchForm>
               </CourseAddBtn>
               {/* 제출한 검색어 넘기기
               <MapContainer searchKeyword={Keyword} /> */}
@@ -75,7 +74,7 @@ export default SearchBar;
 
 const Form = styled.div`
   margin: 0 auto;
-  width: 80%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -100,8 +99,8 @@ const CourseAddBtn = styled.div`
   height: 50px;
   font-size: 1rem;
   font-weight: 400;
-  margin-top:30px;
-  margin-bottom:40px;
+  margin-top:10px;
+  /* margin-bottom:40px; */
   flex-shrink: 0;
   border-radius: 14.163px;
   /* background: #1F1F45; */
@@ -112,11 +111,11 @@ const CourseAddBtn = styled.div`
   input {
     border-radius: 10px;
     border: 1px solid #ccc;
-    width: 300px; 
+    width: 260px; 
     padding: 10px; 
     /* border: none; 
     outline: none;  */
-    font-size: 16px; 
+    font-size: 14px; 
   }
 `;
 
@@ -124,8 +123,7 @@ const CustomIcon = styled(FaSearch)`
   color: #1F1F45;
   width: 30px;
   height: 30px;
-  margin-left: 5px;
-  margin-right: 5px;
+  margin-left: 10px;
 `;
 
 
