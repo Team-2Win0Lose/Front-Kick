@@ -13,7 +13,7 @@ import initMockAPI from './mocks';
 const RouterObject = createBrowserRouter(RouterInfo);
 
 if (process.env.NODE_ENV === 'development') {
-    initMockAPI();
+  initMockAPI();
 }
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(

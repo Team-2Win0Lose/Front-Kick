@@ -1,12 +1,11 @@
-import React from 'react'
-import styled from 'styled-components'
-import Thumbnail from './Thumbnail'
-import TitleName from './TitleName'
-import ContentInput from './ContentInput'
-import TagInput from './TagInput'
-import FilterBox from '@/components/HashTag/FilterBox'
+import React from 'react';
+import styled from 'styled-components';
+import Thumbnail from './Thumbnail';
+import TitleName from './TitleName';
+import ContentInput from './ContentInput';
+import FilterBox from '@/components/HashTag/FilterBox';
 
-type Props = {}
+type Props = {};
 
 const Detailinfo_2 = (props: Props) => {
   return (
@@ -18,11 +17,10 @@ const Detailinfo_2 = (props: Props) => {
         <FilterBox></FilterBox>
       </SettingBox>
     </Form>
-  )
-}
+  );
+};
 
-export default Detailinfo_2
-
+export default Detailinfo_2;
 
 const Form = styled.div`
   margin: 0 auto;
