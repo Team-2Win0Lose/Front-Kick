@@ -6,6 +6,10 @@ import { openModal } from '@/feature/ModalSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@/app/store';
 
+type ContainerProps = {
+  index: number;
+};
+
 type Props = {
   title: string;
   index: number;
@@ -42,7 +46,7 @@ const TouristCard = ({ title, index }: Props) => {
     <DIV>
       <Text>{title}</Text>
       <Form>
-        <Container onClick={handleOpenSelectCardModal}>
+      <Container index={index} onClick={handleOpenSelectCardModal}>
           <CustomIcon />
         </Container>
         <PlaceCard index={index} />
@@ -53,6 +57,8 @@ const TouristCard = ({ title, index }: Props) => {
 };
 
 export default TouristCard;
+
+
 
 const DIV = styled.div`
   margin-left: 20px;
@@ -66,11 +72,13 @@ const Text = styled.p`
 
 const Form = styled.div`
   display: flex;
-  justify-content: center;
-  align-items: center;
+  overflow: scroll;
+  width:100%;
+  justify-content: left;
+  align-items: left;
 `;
 
-const Container = styled.div`
+const Container = styled.div<ContainerProps>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -78,10 +86,18 @@ const Container = styled.div`
   height: 120px;
   flex-shrink: 0;
   border-radius: 10px;
-  background-color: #1f1f45;
+  background-color: ${(props) => {
+    switch (props.index) {
+      case 0:
+        return '#F0B86E'; // 첫 번째 카드 배경색
+      case 1:
+        return '#9F91CC'; // 두 번째 카드 배경색
+      case 2:
+        return '#D4E2D4'; // 세 번째 카드 배경색
+    }  
+  }};
   gap: 15px;
   margin-bottom: 20px;
-  margin-right: 10px;
   cursor: pointer;
 `;
 
@@ -90,3 +106,6 @@ const CustomIcon = styled(AiOutlinePlusCircle)`
   height: 40px;
   color: white;
 `;
+
+
+
