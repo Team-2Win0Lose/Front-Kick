@@ -3,6 +3,10 @@ import styled from 'styled-components';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/app/store';
 
+type ContainerProps = {
+  index: number;
+};
+
 type Props = {
   index: number;
 };
@@ -38,11 +42,9 @@ const PlaceCard = (props: Props) => {
         item.name === '' ? (
           <div key={idx}></div>
         ) : (
-          <Container key={idx}>
-            <div>
+          <Container index={props.index}  key={idx}>
               <CardIMG src={item.IMG} />
               <CardName>{item.name}</CardName>
-            </div>
           </Container>
         ),
       )}
@@ -58,27 +60,22 @@ const Wrap = styled.div`
   gap: 10px;
 `;
 const CardIMG = styled.img`
-  margin-top: 10px;
   justify-content: center;
   align-items: center;
   background-color: #ffffff;
-  width: 50px;
-  height: 50px;
+  width: 80px;
+  height: 80px;
   border-radius: 100%;
   background-size: cover;
 `;
 
-const CardName = styled.div`
-  justify-content: center;
-  align-items: center;
-  width: 50px;
-  height: 50px;
+const CardName = styled.p`
   font-size: 15px;
   font-weight: bold;
   color: white;
 `;
 
-const Container = styled.div`
+const Container = styled.div<ContainerProps>`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -87,10 +84,18 @@ const Container = styled.div`
   height: 120px;
   flex-shrink: 0;
   border-radius: 10px;
-  background-color: #1f1f45;
+  background-color: ${(props) => {
+    switch (props.index) {
+      case 0:
+        return '#F0B86E'; // 첫 번째 카드 배경색
+      case 1:
+        return '#9F91CC'; // 두 번째 카드 배경색
+      case 2:
+        return '#D4E2D4'; // 세 번째 카드 배경색
+    }  
+  }};
   gap: 15px;
   margin-bottom: 20px;
-  margin-right: 10px;
 
   & > div {
     justify-content: center;
@@ -107,8 +112,9 @@ const Container = styled.div`
   }
 
   ${CardName} {
-    font-size: 15px;
+    font-size: 10px;
     font-weight: bold;
-    color: white;
+    color: black;
+
   }
 `;

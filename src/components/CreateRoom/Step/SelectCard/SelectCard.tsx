@@ -14,7 +14,7 @@ const SelectCard = () => {
   );
   console.log(selecteditemlist);
   return (
-    <div>
+    <DIV>
       {titles.map((title, index) => (
         <TouristCard key={index} title={title} index={index} />
       ))}
@@ -25,11 +25,17 @@ const SelectCard = () => {
             <PlaceRecommandInfo></PlaceRecommandInfo>
           </FlexContainer>
         </Box> */}
-    </div>
+    </DIV>
   );
 };
 
 export default SelectCard;
+
+const DIV = styled.div`
+  width: 390px;
+  overflow:scroll;
+  
+`;
 
 const Box = styled.div`
   justify-content: center;

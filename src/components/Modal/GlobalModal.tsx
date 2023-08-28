@@ -70,6 +70,7 @@ const GlobalModal = (props: Props) => {
   );
 };
 const Container = styled.div`
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
