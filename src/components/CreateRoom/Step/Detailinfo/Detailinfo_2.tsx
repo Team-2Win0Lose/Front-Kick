@@ -32,6 +32,10 @@ const Form = styled.div`
 `;
 
 const SettingBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   margin-top: 10px;
   width: 100%;
 `;

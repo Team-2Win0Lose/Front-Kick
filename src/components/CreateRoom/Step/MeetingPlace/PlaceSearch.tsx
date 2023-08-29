@@ -96,6 +96,7 @@ const PlaceSearch = (): JSX.Element => {
           </CourseAddBtn>
           <CourseAddBtn>
             <input
+              className='detail'
               type='text'
               id='loc'
               value={loc}
@@ -162,7 +163,7 @@ const CourseAddBtn = styled.div`
     width: 100%;
     min-height: 50px;
   }
-  input {
+  .detail {
     border-radius: 12px;
     border: 1px solid #ccc;
     width: 100%;
