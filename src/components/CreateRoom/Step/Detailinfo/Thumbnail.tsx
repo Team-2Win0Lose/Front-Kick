@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { AiOutlinePlusCircle } from 'react-icons/ai';
+import { useDispatch, useSelector } from 'react-redux';
+import { setDetail2 } from '@/feature/SummarySlice';
+import { RootState } from '@/app/store';
 
 type Props = {};
 
 const Thumbnail = (props: Props) => {
+  const dispatch = useDispatch();
+  const { title, content } = useSelector((state: RootState) => state.summary);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -12,7 +17,15 @@ const Thumbnail = (props: Props) => {
     if (file) {
       const reader = new FileReader();
       reader.onload = () => {
-        setSelectedImage(reader.result as string);
+        const imageDataURL = reader.result as string; // 이미지 데이터 URL 저장
+        setSelectedImage(imageDataURL);
+        dispatch(setDetail2(
+          {
+            img: imageDataURL,
+            title: title,
+            content: content,
+          }
+        ))
       };
       reader.readAsDataURL(file);
     }

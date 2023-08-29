@@ -1,12 +1,16 @@
+import { RootState } from '@/app/store';
+import { setDetail1 } from '@/feature/SummarySlice';
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 
 type Props = {};
 
 const MinMaxCnt = (props: Props) => {
+  const dispatch = useDispatch();
+  const { term } = useSelector((state: RootState) => state.summary);
   const [minValue, setMinValue] = useState<number | undefined>();
   const [maxValue, setMaxValue] = useState<number | undefined>();
-
   return (
     <BoxContainer>
       <SettingTxt>최소</SettingTxt>
@@ -14,7 +18,17 @@ const MinMaxCnt = (props: Props) => {
         <input
           type="number"
           value={minValue}
-          onChange={(e) => setMinValue(Number(e.target.value))}
+          onChange={(e) => {
+            setMinValue(Number(e.target.value))
+            dispatch(setDetail1({
+              term: term,
+              minNum: Number(e.target.value),
+              maxNum: maxValue
+            }
+            ))
+          }}
+            
+          
         />
       </StyledInput>
       <SettingTxt>명</SettingTxt>
@@ -24,7 +38,16 @@ const MinMaxCnt = (props: Props) => {
         <input
           type="number"
           value={maxValue}
-          onChange={(e) => setMaxValue(Number(e.target.value))}
+          onChange={(e) => {
+            setMaxValue(Number(e.target.value))
+            dispatch(setDetail1({
+              term: term,
+              minNum: minValue,
+              maxNum: Number(e.target.value)
+            }
+            ))
+          
+          }}
         />
       </StyledInput>
       <SettingTxt>명</SettingTxt>

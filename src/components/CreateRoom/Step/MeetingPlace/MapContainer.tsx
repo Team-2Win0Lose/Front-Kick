@@ -1,6 +1,9 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { propsType } from './PlaceSearch';
+import { useDispatch, useSelector } from 'react-redux';
+import { setPlace } from '@/feature/SummarySlice';
+import { RootState } from '@/app/store';
 
 interface placeType {
   place_name: string;
@@ -15,6 +18,8 @@ const { kakao } = window as any;
 const MapContainer = (props: propsType) => {
   // 마커를 담는 배열
   let markers: any[] = [];
+  const dispatch = useDispatch();
+  const { detailMeetingPlace } = useSelector((state: RootState) => state.summary);
 
   // 검색어가 바뀔 때마다 재렌더링되도록 useEffect 사용
   useEffect(() => {
@@ -163,6 +168,12 @@ const MapContainer = (props: propsType) => {
       // 클릭 시 체크박스 상태 변경
       const checkbox = el.querySelector('.checkbox-input');
       checkbox?.addEventListener('click', () => {
+        dispatch(setPlace(
+          {
+            meetingPlace: places.place_name,
+            detailMeetingPlace: detailMeetingPlace
+          }
+        ))
         el.classList.toggle('checked');
       });
 
@@ -258,7 +269,7 @@ const MapContainer = (props: propsType) => {
         el.lastChild && el.removeChild(el.lastChild);
       }
     }
-  }, [props.searchKeyword]);
+  }, [props.searchKeyword, detailMeetingPlace]);
 
   return (
     <MapContainer_>
