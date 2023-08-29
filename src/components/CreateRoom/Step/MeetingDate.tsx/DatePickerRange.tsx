@@ -1,17 +1,20 @@
-import React, { Component } from 'react'
+import React, { Component, useEffect } from 'react'
 import { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { ko } from 'date-fns/esm/locale';
 import styled from 'styled-components';
+import { useDispatch, useSelector } from 'react-redux';
+import { setDetail1 } from '@/feature/SummarySlice';
+import { RootState } from '@/app/store';
 
 type Props = {}
 
 const DatePickerRange = (props: Props) => {
-
+  const dispatch = useDispatch();
+  const { minNum, maxNum } = useSelector((state: RootState) => state.summary);
   const [startDate, setStartDate] = useState<Date | null>(new Date());
   const [endDate, setEndDate] = useState<Date | null>(null);
-
   const onChange = (dates: [Date, Date] | null) => {
     if (dates) {
       const [start, end] = dates;
@@ -19,7 +22,18 @@ const DatePickerRange = (props: Props) => {
       setEndDate(end);
     }
   };
-  
+  useEffect(() => {
+    if (startDate && endDate) {
+      const startDateString = startDate.toLocaleDateString('ko-KR');
+      const endDateString = endDate.toLocaleDateString('ko-KR');
+      dispatch(setDetail1({
+         term: `${startDateString} ~ ${endDateString}`,
+         minNum: minNum,
+         maxNum: maxNum
+        }
+      ));
+    }
+  }, [startDate, endDate])
   return (
     <div>
       <SelectedDateBox>

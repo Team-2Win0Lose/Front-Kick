@@ -20,11 +20,12 @@ import {
   PURGE,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage/session';
+import SummaryReducer from '@/feature/SummarySlice';
 
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['team', 'modal', 'term', 'auth', 'teamfilter', 'selecteditem'],
+  whitelist: ['team', 'modal', 'term', 'auth', 'teamfilter', 'selecteditem','summary'],
 };
 
 const rootReducer = combineReducers({
@@ -34,6 +35,7 @@ const rootReducer = combineReducers({
   auth: authReducer,
   teamfilter: teamfilterReducer,
   selecteditem: selecteditemReducer,
+  summary: SummaryReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

@@ -1,19 +1,33 @@
+import { RootState } from '@/app/store'
+import { setDetail2 } from '@/feature/SummarySlice'
 import React from 'react'
 import { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components'
 
 
 type Props = {}
 
 const ContentInput = (props: Props) => {
+  const dispatch = useDispatch();
+  const { title, img } = useSelector((state: RootState) => state.summary);
   let [contents, setContents] = useState<string>('');
   return (
       <StyledInput>
          <StyledTextarea
         value={contents}
-        onChange={(e) => setContents(e.target.value)}
+        onChange={(e) => {
+          setContents(e.target.value)
+          dispatch(setDetail2({
+            img: img,
+            title: title,
+            content:e.target.value
+          }
+          ))
+        }}
+
         placeholder="내용을 입력해주세요."
-        />
+      />
       </StyledInput>
   )
 }
