@@ -3,6 +3,9 @@ import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import MapContainer from './MapContainer';
 import { FaSearch } from 'react-icons/Fa';
+import { useDispatch, useSelector } from 'react-redux';
+import { setPlace } from '@/feature/SummarySlice';
+import { RootState } from '@/app/store';
 
 export interface propsType {
   searchKeyword: string;
@@ -10,6 +13,8 @@ export interface propsType {
 }
 
 const PlaceSearch = (): JSX.Element => {
+  const dispatch = useDispatch();
+  const { meetingPlace } = useSelector((state: RootState) => state.summary);
   const [SearchLocation, setSearchLocation] = useState<string>('');
   const [SearchAddress, setSearchAddress] = useState<string>('');
   const handleSearchLocation = (loc: string, address: string) => {
@@ -17,6 +22,7 @@ const PlaceSearch = (): JSX.Element => {
     setSearchAddress(address);
     // console.log(loc);
   };
+
   let [loc, setLoc] = useState<string>('');
 
   // 입력 폼 변화 감지하여 입력 값 관리
@@ -94,7 +100,14 @@ const PlaceSearch = (): JSX.Element => {
               type='text'
               id='loc'
               value={loc}
-              onChange={(e) => setLoc(e.target.value)}
+              onChange={(e) =>{
+                setLoc(e.target.value);
+                dispatch(
+                  setPlace({
+                  detailMeetingPlace :e.target.value,
+                  meetingPlace:meetingPlace
+                }));
+              }}
               placeholder='상세 위치를 입력해주세요.'
             />
           </CourseAddBtn>

@@ -1,4 +1,6 @@
+import { setMatch } from '@/feature/SummarySlice';
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 
 interface MatchingInfoProps {
@@ -9,7 +11,9 @@ interface MatchingInfoProps {
 interface itemsProps {
   rating: number;
   item: string;
-  name: string;
+  homename: string;
+  awayname: string;
+  date: string;
   stadium: string;
 }
 
@@ -17,31 +21,35 @@ const items: itemsProps[] = [
   {
     rating: 1,
     item: 'public/assets/teams/강원FC.png',
-    name: '강원FC',
+    homename: '강원FC',
+    awayname: '서울FC',
+    date: '2021.08.23',
     stadium: '강원종합운동장',
   },
 ];
 
 const MatchingInfo = (props: MatchingInfoProps) => {
   const [boxColor, setBoxColor] = useState('#eeeeee');
-
-  const handleSelectClick = () => {
+  const dispatch = useDispatch();
+  const handleSelectClick = (item: {date:string, stadium: string, homename:string, awayname:string}) => {
     setBoxColor('#42b72a');
+    dispatch(setMatch(item))
   };
+
   return (
     <div>
       {items.map((item, index) => (
         <Box key={index} style={{ background: boxColor }}>
           <FlexContainer>
             <FlexContainerLeft>
-              <IMG src={item.item} alt={item.name} />
+              <IMG src={item.item} alt={item.homename} />
               <Text> vs </Text>
-              <IMG src={item.item} alt={item.name} />
+              <IMG src={item.item} alt={item.homename} />
             </FlexContainerLeft>
             <FlexContainerRight>
               <FlexText>
                 <DIV>경기 일정</DIV>
-                <FlexItem>{item.stadium}</FlexItem>
+                <FlexItem>{item.date}</FlexItem>
               </FlexText>
               <FlexText>
                 <DIV>경기 장소</DIV>
@@ -50,7 +58,7 @@ const MatchingInfo = (props: MatchingInfoProps) => {
             </FlexContainerRight>
           </FlexContainer>
           <FlexContainer>
-            <Btn onClick={handleSelectClick}>선택</Btn>
+            <Btn onClick={() => handleSelectClick(item)}>선택</Btn>
             {/* <Btn onClick={onClose}>닫기</Btn> */}
           </FlexContainer>
         </Box>
