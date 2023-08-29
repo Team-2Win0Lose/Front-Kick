@@ -23,25 +23,62 @@ const SelectedItemsSlice = createSlice({
   reducers: {
     SelectedHouseItem: (state, action) => {
       const place = action.payload;
-      // immer의 produce 함수를 사용하여 변경 작업 수행
-      return produce(state, (draft) => {
-        draft.house.push(place);
-      });
+      const hasDuplicate = state.house.some((item) => item.name === place.name);
+
+      if (!hasDuplicate) {
+        return produce(state, (draft) => {
+          draft.house.push(place);
+        });
+      }
+      return state;
     },
     SelectedFoodItem: (state, action) => {
       const place = action.payload;
-      return produce(state, (draft) => {
-        draft.food.push(place);
-      });
+      const hasDuplicate = state.food.some((item) => item.name === place.name);
+
+      if (!hasDuplicate) {
+        return produce(state, (draft) => {
+          draft.food.push(place);
+        });
+      }
     },
     SelectedAttractionItem: (state, action) => {
       const place = action.payload;
+      const hasDuplicate = state.attraction.some(
+        (item) => item.name === place.name,
+      );
+
+      if (!hasDuplicate) {
+        return produce(state, (draft) => {
+          draft.attraction.push(place);
+        });
+      }
+    },
+    removeSelectedItem: (state, action) => {
+      const { category, itemToRemove } = action.payload;
+
       return produce(state, (draft) => {
-        draft.attraction.push(place);
+        if (category === 'house') {
+          draft.house = draft.house.filter(
+            (item) => item.name !== itemToRemove.name,
+          );
+        } else if (category === 'food') {
+          draft.food = draft.food.filter(
+            (item) => item.name !== itemToRemove.name,
+          );
+        } else if (category === 'attraction') {
+          draft.attraction = draft.attraction.filter(
+            (item) => item.name !== itemToRemove.name,
+          );
+        }
       });
     },
   },
 });
 export default SelectedItemsSlice.reducer;
-export const { SelectedHouseItem, SelectedFoodItem, SelectedAttractionItem } =
-  SelectedItemsSlice.actions;
+export const {
+  SelectedHouseItem,
+  SelectedFoodItem,
+  SelectedAttractionItem,
+  removeSelectedItem,
+} = SelectedItemsSlice.actions;

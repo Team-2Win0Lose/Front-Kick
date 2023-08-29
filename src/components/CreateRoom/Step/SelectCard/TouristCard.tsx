@@ -1,10 +1,8 @@
-import React from 'react';
 import styled from 'styled-components';
 import { AiOutlinePlusCircle } from 'react-icons/ai';
 import PlaceCard from './PlaceCard';
 import { openModal } from '@/feature/ModalSlice';
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '@/app/store';
+import { useDispatch } from 'react-redux';
 
 type ContainerProps = {
   index: number;
@@ -46,7 +44,7 @@ const TouristCard = ({ title, index }: Props) => {
     <DIV>
       <Text>{title}</Text>
       <Form>
-      <Container index={index} onClick={handleOpenSelectCardModal}>
+        <Container index={index} onClick={handleOpenSelectCardModal}>
           <CustomIcon />
         </Container>
         <PlaceCard index={index} />
@@ -57,8 +55,6 @@ const TouristCard = ({ title, index }: Props) => {
 };
 
 export default TouristCard;
-
-
 
 const DIV = styled.div`
   margin-left: 20px;
@@ -73,9 +69,10 @@ const Text = styled.p`
 const Form = styled.div`
   display: flex;
   overflow: scroll;
-  width:100%;
+  width: 100%;
   justify-content: left;
   align-items: left;
+  padding: 10px 0;
 `;
 
 const Container = styled.div<ContainerProps>`
@@ -94,7 +91,7 @@ const Container = styled.div<ContainerProps>`
         return '#9F91CC'; // 두 번째 카드 배경색
       case 2:
         return '#D4E2D4'; // 세 번째 카드 배경색
-    }  
+    }
   }};
   gap: 15px;
   margin-bottom: 20px;
@@ -106,6 +103,3 @@ const CustomIcon = styled(AiOutlinePlusCircle)`
   height: 40px;
   color: white;
 `;
-
-
-
