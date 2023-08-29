@@ -15,10 +15,9 @@ const MODAL_TYPES = {
   DateModal: 'DateModal',
   CruitModal: 'CruitModal',
   TeamCardModal: 'TeamCardModal',
-  AttractionSearchModal: "AttractionSearchModal",
-  FoodSearchModal: "FoodSearchModal",
-  HouseSearchModal: "HouseSearchModal"
-
+  AttractionSearchModal: 'AttractionSearchModal',
+  FoodSearchModal: 'FoodSearchModal',
+  HouseSearchModal: 'HouseSearchModal',
 };
 const MODAL_COMPONENTS = [
   {
@@ -43,13 +42,12 @@ const MODAL_COMPONENTS = [
   },
   {
     type: MODAL_TYPES.FoodSearchModal,
-    component: <FoodSearchModal/>,
+    component: <FoodSearchModal />,
   },
   {
     type: MODAL_TYPES.HouseSearchModal,
     component: <HouseSearchModal />,
-  }
-
+  },
 ];
 
 const GlobalModal = (props: Props) => {

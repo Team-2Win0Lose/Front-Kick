@@ -24,7 +24,7 @@ import storage from 'redux-persist/lib/storage/session';
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['team', 'modal', 'term', 'auth', 'teamfilter','selecteditem'],
+  whitelist: ['team', 'modal', 'term', 'auth', 'teamfilter', 'selecteditem'],
 };
 
 const rootReducer = combineReducers({
