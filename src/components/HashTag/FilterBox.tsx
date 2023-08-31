@@ -69,7 +69,7 @@ const FilterBox = () => {
       </MainBox>
       {!filterState ? (
         <SearchBox>
-          <SearchBar onChange={searchHandler} />
+          <SearchBar onChange={searchHandler} placeholder="태그 검색하기" />
           <SearchIconSet />
           <ResultBox>
             {resultList?.map((obj) => {
@@ -129,7 +129,6 @@ const MainBox = styled.div`
 
 const FilterBar = styled.div`
   padding: 3px 0;
-  padding-bottom: 11px;
   cursor: pointer;
 `;
 
@@ -141,7 +140,7 @@ const BoldTypo = styled.div`
 
 const ArrowBox = styled.div<IArrowBox>`
   width: 25px;
-  height: 25px;
+  height: 15px;
   float: right;
   background-repeat: no-repeat;
   background-size: cover;
