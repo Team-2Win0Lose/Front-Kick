@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components'
 import { AiOutlineClose } from 'react-icons/ai';
 import { IoIosArrowBack } from 'react-icons/io';
-import NextButton from './NextButton';
 import TeamDateSelect from './MatchDate/TeamDateSelect';
 import PlaceSearch from './MeetingPlace/PlaceSearch';
 import Detailinfo_1 from './Detailinfo/Detailinfo_1';
@@ -29,8 +28,12 @@ const StepHeader = () => {
     if (titleIndex < titles.length - 1) {
       setTitleIndex((prevIndex) => prevIndex + 1);
     }
+    else if (titleIndex === titles.length - 1) {
+      navigate('/myaccompany');
+    }
   };
 
+  const nextButtonText = titleIndex === 5 ? '완료' : '다음';
 
   let CurrentStepComponent = null;
 
@@ -39,7 +42,6 @@ const StepHeader = () => {
       CurrentStepComponent = TeamDateSelect;
       break;
     case 1:
-      // CurrentStepComponent = PlaceSearch;
       CurrentStepComponent = PlaceSearch;
       break;
     case 2:
@@ -70,7 +72,7 @@ const StepHeader = () => {
           <CurrentStepComponent></CurrentStepComponent>
         </Form>
         <NextButtonContainer>
-          <NextButton onClick={handleNextClick}/>
+        <RegisterBtn onClick={handleNextClick}>{nextButtonText}</RegisterBtn>
         </NextButtonContainer>
       
     </Wrap>
@@ -128,4 +130,17 @@ const NextButtonContainer = styled.div`
   display: flex;
   justify-content: center;
   margin-top: 20px;
+`;
+
+const RegisterBtn = styled.div`
+  width: 160px;
+  height: 50px;
+  flex-shrink: 0;
+  border-radius: 14px;
+  background: #1F1F45;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+  color: #ffffff;
 `;
