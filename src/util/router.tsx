@@ -24,6 +24,9 @@ const FindPassword = React.lazy(() => import('../pages/Login/Find/Password'));
 const AccompanyManage = React.lazy(
   () => import('../pages/MyAccompany/ManageAccompany'),
 );
+const KakaoCallback = React.lazy(
+  () => import('src/components/Login/KakaoCallBack'),
+);
 export const RouterInfo = [
   {
     path: '/',
@@ -43,6 +46,11 @@ export const RouterInfo = [
         path: '/login',
         element: <Login />,
         label: 'Login',
+      },
+      {
+        path: '/auth/kakao/callback',
+        element: <KakaoCallback />,
+        label: 'KakaoCallback',
       },
       {
         path: '/emaillogin',

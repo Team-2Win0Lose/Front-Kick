@@ -6,11 +6,13 @@ import MyInfoBox from '../../MyInfo/MyInfoBox';
 import ScheduledAccompany from '../../ScheduledAccompany/ScheduledAccompany';
 import { useDispatch, useSelector } from 'react-redux';
 import { autoCheck, logOutAction } from '@/feature/authSlice';
+import axios from 'axios';
+import { RootState } from '@/app/store';
 
 function Sidebar({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: any }) {
   const outside = useRef<any>();
   const isLogin = useSelector((state: autoCheck) => state.auth.isAuthenticated);
-
+  const access_token = useSelector((state: RootState) => state.auth.token);
   const dispatch = useDispatch();
   useEffect(() => {
     document.addEventListener('mousedown', handlerOutsie);
@@ -24,7 +26,25 @@ function Sidebar({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: any }) {
       toggleSide();
     }
   };
-
+  const KakaoLogout = () => {
+    axios
+      .post(
+        `https://kapi.kakao.com/v1/user/logout`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${access_token}`,
+            'Content-type': 'application/x-www-form-urlencoded',
+          },
+        },
+      )
+      .then((res: any) => {
+        console.log(res);
+      })
+      .catch((Error: any) => {
+        console.error(Error);
+      });
+  };
   const toggleSide = () => {
     setIsOpen(false);
   };
@@ -55,7 +75,7 @@ function Sidebar({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: any }) {
         <Logout>
           <LogoutBtn
             onClick={() => {
-              dispatch(logOutAction()), toggleSide();
+              dispatch(logOutAction()), toggleSide(), KakaoLogout();
             }}
           >
             로그아웃
