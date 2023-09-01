@@ -9,6 +9,7 @@ type ContainerProps = {
 
 type Props = {
   index: number;
+  ischk: boolean;
 };
 
 const PlaceCard = (props: Props) => {
@@ -34,7 +35,7 @@ const PlaceCard = (props: Props) => {
   }
   if (!List) {
     // 전달받은 아이템이 null인 경우, 처리할 내용
-    return <div>No selected item</div>;
+    return <div>카드가 선택되지 않았습니다.</div>;
   }
   const handleDeleteItem = (itemName: string) => {
     if (props.index === 0) {
@@ -71,9 +72,11 @@ const PlaceCard = (props: Props) => {
           <Container index={props.index} key={idx}>
             <CardIMG src={item.IMG} />
             <CardName>{item.name}</CardName>
-            <DeleteBtn onClick={() => handleDeleteItem(item.name)}>
-              <TiDeleteOutline size='30' />
-            </DeleteBtn>
+            {props.ischk && ( 
+              <DeleteBtn onClick={() => handleDeleteItem(item.name)}>
+                <TiDeleteOutline size='30' />
+              </DeleteBtn>
+            )}
           </Container>
         ),
       )}

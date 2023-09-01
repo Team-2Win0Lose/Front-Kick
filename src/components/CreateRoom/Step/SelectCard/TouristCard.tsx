@@ -47,7 +47,7 @@ const TouristCard = ({ title, index }: Props) => {
         <Container index={index} onClick={handleOpenSelectCardModal}>
           <CustomIcon />
         </Container>
-        <PlaceCard index={index} />
+        <PlaceCard index={index} ischk={true} />
         {/* <PlaceCard selectedItem={selecteditemlist?.item?.length > 0 ? selecteditemlist.item[0] : null} /> */}
       </Form>
     </DIV>

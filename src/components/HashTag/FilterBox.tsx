@@ -1,6 +1,9 @@
 import React, { ChangeEventHandler, useState } from "react";
 import { temp } from "./data";
 import styled from "styled-components";
+import { useDispatch } from "react-redux";
+import Detailinfo_2 from "../CreateRoom/Step/Detailinfo/Detailinfo_2";
+import { setDetail2 } from "@/feature/SummarySlice";
 
 interface PinkType {
   idx: number;
@@ -21,6 +24,7 @@ const FilterBox = () => {
   const [resultList, setResultList] = useState([...temp]);
   const [pinkList, setPinktList] = useState<PinkType[]>([]);
   const [hoverState, setHoverState] = useState<number | undefined>();
+  const dispatch = useDispatch();
 
   const searchBoxOpen = () => {
     setResultList([...temp]);
@@ -51,12 +55,15 @@ const FilterBox = () => {
   const pinkHandler = (obj: PinkType) => () => {
     searchBoxOpen();
     const set = new Set([...pinkList, obj]);
+    const newPinkList = [...pinkList, obj];
     setPinktList([...Array.from(set)]);
+    dispatch(setDetail2({ tag: newPinkList.map(item => item.origName) }));
   };
 
   const removeTag = (idx: number) => {
     const removeList = pinkList.filter((obj) => obj.idx !== idx);
     setPinktList([...removeList]);
+    dispatch(setDetail2({ tag: removeList.map(item => item.origName) }));
   };
 
   return (
