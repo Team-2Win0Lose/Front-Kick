@@ -3,9 +3,11 @@ import styled from 'styled-components';
 import { useSelector } from 'react-redux';
 import { AiFillSetting } from 'react-icons/ai';
 import { autoCheck } from '@/feature/authSlice';
+import { RootState } from '@/app/store';
 type Props = {};
 
 const RegisterTeam = (props: Props) => {
+  const profileImg = useSelector((state: RootState) => state.auth.profileImg);
   const navigate = useNavigate();
   const email = useSelector((state: autoCheck) => state.auth.email);
   const name = useSelector((state: autoCheck) => state.auth.name);
@@ -13,7 +15,7 @@ const RegisterTeam = (props: Props) => {
   return isLogin ? (
     <Form>
       <FlexContainer>
-        <IMG></IMG>
+        <IMG src={profileImg} />
         <VerticalContainer>
           <NickName>{name} 님</NickName>
           <ID>ID : {email}</ID>
@@ -83,6 +85,7 @@ const VerticalContainer = styled.div`
 const IMG = styled.img`
   width: 60px;
   height: 60px;
+  border-radius: 100%;
   object-fit: contain;
   margin-right: 5px;
 `;
