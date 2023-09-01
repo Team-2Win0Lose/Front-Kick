@@ -217,7 +217,6 @@ const CarouselContainer = styled.div`
 const BoxWrapper = styled.div`
   justify-content: center;
   align-items: center;
-
 `;
 
 const TeamCalendarContainer = styled.div`
