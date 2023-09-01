@@ -66,6 +66,7 @@ const SummarySlice = createSlice({
         state.img = action.payload.img;
         state.title = action.payload.title;
         state.content = action.payload.content;
+        state.tag = action.payload.tag;
       },
     },
   });
