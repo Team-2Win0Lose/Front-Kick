@@ -9,16 +9,28 @@ import { store } from './app/store';
 import { ThemeProvider } from 'styled-components';
 import GlobalModal from './components/Modal/GlobalModal';
 import initMockAPI from './mocks';
-
+import PacmanLoader from 'react-spinners/PacmanLoader';
+import styled from 'styled-components';
 const RouterObject = createBrowserRouter(RouterInfo);
-
+const Loaders = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+`;
 if (process.env.NODE_ENV === 'development') {
   initMockAPI();
 }
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <Provider store={store}>
-    <React.Suspense fallback={<div>loading...</div>}>
+    <React.Suspense
+      fallback={
+        <Loaders>
+          <PacmanLoader color='#1f1f45' size='75' />
+        </Loaders>
+      }
+    >
       <ThemeProvider theme={theme}>
         <GlobalStyle />
         <GlobalModal />
