@@ -20,13 +20,12 @@ const Main = (props: Props) => {
 };
 export default Main;
 
-
 const BannerCarouselContainer = styled.div`
   height:auto;
   overflow: hidden;
 `;
 
 const TeamCardContainer = styled.div`
-  height:500px;
+  height: 500px;
   overflow-x: hidden;
 `;
