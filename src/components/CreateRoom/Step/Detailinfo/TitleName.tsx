@@ -9,7 +9,7 @@ type Props = {}
 
 const TitleName = (props: Props) => {
   const dispatch = useDispatch();
-  const { img, content } = useSelector((state: RootState) => state.summary);
+  const { img, content, tag } = useSelector((state: RootState) => state.summary);
   let [title, setTitle] = useState<string>('')
   return (
 
@@ -19,7 +19,8 @@ const TitleName = (props: Props) => {
           dispatch(setDetail2({
             img: img,
             title: e.target.value,
-            content: content
+            content: content,
+            tag: tag
             }
           ))
         }}

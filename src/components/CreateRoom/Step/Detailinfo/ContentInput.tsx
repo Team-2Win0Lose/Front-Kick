@@ -10,7 +10,7 @@ type Props = {}
 
 const ContentInput = (props: Props) => {
   const dispatch = useDispatch();
-  const { title, img } = useSelector((state: RootState) => state.summary);
+  const { title, img, tag } = useSelector((state: RootState) => state.summary);
   let [contents, setContents] = useState<string>('');
   return (
       <StyledInput>
@@ -21,7 +21,8 @@ const ContentInput = (props: Props) => {
           dispatch(setDetail2({
             img: img,
             title: title,
-            content:e.target.value
+            content:e.target.value,
+            tag: tag
           }
           ))
         }}

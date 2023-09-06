@@ -27,8 +27,6 @@ const TeamCardCarousel = () => {
     speed: 500,
   };
 
-  const dispatch = useDispatch();
-
   // api에서 team 목록 불러오기
   useEffect(() => {
     const fetchData = async () => {
@@ -204,3 +202,7 @@ const FilterBtn = styled.div`
   align-items: center;
   gap: 5px;
 `;
+function dispatch(arg0: { payload: any; type: "modal/openModal"; }) {
+    throw new Error('Function not implemented.');
+}
+
