@@ -28,7 +28,6 @@ const KakaoCallBack = (props: Props) => {
         },
       )
       .then((res: any) => {
-        console.log(res);
         const { access_token } = res.data;
         axios
           .post(
@@ -42,7 +41,7 @@ const KakaoCallBack = (props: Props) => {
             },
           )
           .then((res: any) => {
-            console.log('2번쨰 : ', res);
+            console.log(res);
             dispatch(
               setUser({
                 token: access_token,
