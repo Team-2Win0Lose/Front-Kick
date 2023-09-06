@@ -27,7 +27,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     <React.Suspense
       fallback={
         <Loaders>
-          <PacmanLoader color='#1f1f45' size='75' />
+          <PacmanLoader color='#1f1f45' size='50' />
         </Loaders>
       }
     >

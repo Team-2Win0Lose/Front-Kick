@@ -22,8 +22,8 @@ export default Main;
 
 
 const BannerCarouselContainer = styled.div`
-  height:200px;
-  overflow-x: hidden;
+  height:auto;
+  overflow: hidden;
 `;
 
 const TeamCardContainer = styled.div`

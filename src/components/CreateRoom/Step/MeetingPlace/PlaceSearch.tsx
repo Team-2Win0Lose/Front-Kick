@@ -146,8 +146,8 @@ const CourseAddBtn = styled.div`
   height: 50px;
   font-size: 1rem;
   font-weight: 400;
-  margin-top: 30px;
-  margin-bottom: 40px;
+  margin-top : 10px;
+  margin-bottom: 20px;
   flex-shrink: 0;
   border-radius: 14.163px;
   /* background: #1F1F45; */
@@ -212,7 +212,9 @@ const FormLabel = styled.label`
 
 const FormInput = styled.input`
   width: 300px;
-  height: 100%;
+  height: 30px;
+  border-radius: 10px;
+  padding : 4px;
 `;
 
 const BtnBox = styled.div``;
