@@ -21,7 +21,7 @@ const Main = (props: Props) => {
 export default Main;
 
 const BannerCarouselContainer = styled.div`
-  height: auto;
+  height:auto;
   overflow: hidden;
 `;
 

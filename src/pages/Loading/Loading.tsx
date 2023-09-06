@@ -9,11 +9,11 @@ const Loading = () => {
   }, SEC);
   return (
     <div>
-      <IMG1 src='public/assets/loading1.png' alt='로딩1' />
-      <IMG2 src='public/assets/loading2.png' alt='로딩2' />
-      <IMG3 src='public/assets/loading3.png' alt='로딩3' />
-      <IMG4 src='public/assets/loading4.png' alt='로딩4' />
-      <IMG5 src='public/assets/loading5.png' alt='로딩5' />
+      <IMG1 src='/public/assets/loading1.png' alt='로딩1' />
+      <IMG2 src='/public/assets/loading2.png' alt='로딩2' />
+      <IMG3 src='/public/assets/loading3.png' alt='로딩3' />
+      <IMG4 src='/public/assets/loading4.png' alt='로딩4' />
+      <IMG5 src='/public/assets/loading5.png' alt='로딩5' />
     </div>
   );
 };
