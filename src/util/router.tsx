@@ -34,7 +34,7 @@ export const RouterInfo = [
     children: [
       {
         index: true,
-        element: <Loading />,
+        element: <App />,
         label: 'loading',
       },
       {

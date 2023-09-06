@@ -1,13 +1,7 @@
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled, { keyframes } from 'styled-components';
 
 const Loading = () => {
-  const SEC = 2000;
-  const navigate = useNavigate();
-  setTimeout(() => {
-    navigate('/home');
-  }, SEC);
   return (
     <div>
       <IMG1 src='public/assets/loading1.png' alt='로딩1' />

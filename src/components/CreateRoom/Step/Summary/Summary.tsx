@@ -1,13 +1,27 @@
-import React from 'react'
-import styled from 'styled-components'
-import { useSelector } from 'react-redux'
-import { RootState } from '@/app/store'
-import PlaceCard from '../SelectCard/PlaceCard'
+import React from 'react';
+import styled from 'styled-components';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/app/store';
+import PlaceCard from '../SelectCard/PlaceCard';
 
-type Props = {}
+type Props = {};
 
 function Summary({}: Props) {
-  const { img, title, stadium, date, homename, awayname, meetingPlace, detailMeetingPlace, term, minNum, maxNum, content, tag } = useSelector((state: RootState) => state.summary);
+  const {
+    img,
+    title,
+    stadium,
+    date,
+    homename,
+    awayname,
+    meetingPlace,
+    detailMeetingPlace,
+    term,
+    minNum,
+    maxNum,
+    content,
+    tag,
+  } = useSelector((state: RootState) => state.summary);
   const cardInfo = useSelector((state: RootState) => state.selecteditem);
 
   const sliderSettings = {
@@ -21,86 +35,96 @@ function Summary({}: Props) {
 
   return (
     <Form>
-        {/* 이미지 박스 */}
-        <ImgBox>
-          <IMG src={img} alt="선택한 배경 사진이 없습니다.(No Image)" />
-        </ImgBox>
+      {/* 이미지 박스 */}
+      <ImgBox>
+        <IMG src={img} alt='선택한 배경 사진이 없습니다.(No Image)' />
+      </ImgBox>
 
-        {/* 제목 */}
-        <Title>
-          {title}
-        </Title>
+      {/* 제목 */}
+      <Title>{title}</Title>
 
-        {/* 매치 정보 */}
-        <Box>
-          <TitleText>🔥 매치 정보</TitleText>
-          <MatchInfo>
-              <FlexContainer>
-                <FlexContainerLeft>
-                  <FlexText>
-                    <FlexItem>{date}</FlexItem>
-                  </FlexText>
-                  <FlexText>
-                    <FlexItem>{stadium}</FlexItem>
-                  </FlexText>
-                </FlexContainerLeft>
-                <FlexContainerRight>
-                    <Text> {homename} vs {awayname} </Text>
-                </FlexContainerRight>
-              </FlexContainer>
-          </MatchInfo>
-        </Box>
-        {/* 동행 정보 */}
-        <Box>
-          <TitleText>🔥 동행 정보</TitleText>
-          <JoinInfo>
-              <FlexContainer>
-                <FlexContainerLeft>
-                  <FlexText>
-                    <Text>희망 인원 </Text>
-                    <Text> {minNum} ~ {maxNum} 명</Text>
-                  </FlexText>
-                </FlexContainerLeft>
-                <FlexContainerRight>
-                  <Text> 동행 장소 {meetingPlace} {detailMeetingPlace}</Text>
-                  <Text> 동행 기간 {term} </Text>
-                </FlexContainerRight>
-              </FlexContainer>
-          </JoinInfo> 
-         </Box>
+      {/* 매치 정보 */}
+      <Box>
+        <TitleText>🔥 매치 정보</TitleText>
+        <MatchInfo>
+          <FlexContainer>
+            <FlexContainerLeft>
+              <FlexText>
+                <FlexItem>{date}</FlexItem>
+              </FlexText>
+              <FlexText>
+                <FlexItem>{stadium}</FlexItem>
+              </FlexText>
+            </FlexContainerLeft>
+            <FlexContainerRight>
+              <Text>
+                {' '}
+                {homename} vs {awayname}{' '}
+              </Text>
+            </FlexContainerRight>
+          </FlexContainer>
+        </MatchInfo>
+      </Box>
+      {/* 동행 정보 */}
+      <Box>
+        <TitleText>🔥 동행 정보</TitleText>
+        <JoinInfo>
+          <FlexContainer>
+            <FlexContainerLeft>
+              <FlexText>
+                <Text>희망 인원 </Text>
+                <Text>
+                  {' '}
+                  {minNum} ~ {maxNum} 명
+                </Text>
+              </FlexText>
+            </FlexContainerLeft>
+            <FlexContainerRight>
+              <Text>
+                {' '}
+                동행 장소 {meetingPlace} {detailMeetingPlace}
+              </Text>
+              <Text> 동행 기간 {term} </Text>
+            </FlexContainerRight>
+          </FlexContainer>
+        </JoinInfo>
+      </Box>
 
-        {/* 태그 정보 */}
-        <Box>
-          <TitleText>🔥 태그 정보</TitleText>
-          <TagInfo>   
+      {/* 태그 정보 */}
+      <Box>
+        <TitleText>🔥 태그 정보</TitleText>
+        {/* <TagInfo>   
             {tag.map((tagItem, index) => (
               <TagWrapper key={index}>{tagItem}</TagWrapper>
             ))}
-          </TagInfo>
-        </Box>
-        {/* 카드 정보 */}
-        <Box>
-          <TitleText>🔥 카드 정보(대표 최대 2개 설정)</TitleText>
-          <CardInfo>
-            <ScrollContainer>
-              <CardContainer>
-                {cardInfo.house.length > 0 && <PlaceCard index={0} ischk={false} />}
-                {cardInfo.food.length > 0 && <PlaceCard index={1} ischk={false} />}
-                {cardInfo.attraction.length > 0 && <PlaceCard index={2} ischk={false} />}
-              </CardContainer>
-            </ScrollContainer>
-          </CardInfo>
-        </Box>
-        {/* 내용 */}
-        <Content>
-          {content}
-        </Content>
+          </TagInfo> */}
+      </Box>
+      {/* 카드 정보 */}
+      <Box>
+        <TitleText>🔥 카드 정보(대표 최대 2개 설정)</TitleText>
+        <CardInfo>
+          <ScrollContainer>
+            <CardContainer>
+              {cardInfo.house.length > 0 && (
+                <PlaceCard index={0} ischk={false} />
+              )}
+              {cardInfo.food.length > 0 && (
+                <PlaceCard index={1} ischk={false} />
+              )}
+              {cardInfo.attraction.length > 0 && (
+                <PlaceCard index={2} ischk={false} />
+              )}
+            </CardContainer>
+          </ScrollContainer>
+        </CardInfo>
+      </Box>
+      {/* 내용 */}
+      <Content>{content}</Content>
     </Form>
-  )
+  );
 }
 
-export default Summary
-
+export default Summary;
 
 const Form = styled.div`
   margin: 0 auto;
@@ -157,9 +181,8 @@ const MatchInfo = styled.div`
   border-radius: 10px;
   border: 1px solid #ccc;
   width: 300px;
-  padding: 20px; 
+  padding: 20px;
 `;
-
 
 const FlexItem = styled.div`
   font-size: 12px;
@@ -176,7 +199,7 @@ const FlexText = styled.div`
 const TitleText = styled.div`
   font-size: 15px;
   font-weight: bold;
-  padding-bottom:10px;
+  padding-bottom: 10px;
 `;
 
 const Text = styled.div`
@@ -185,7 +208,6 @@ const Text = styled.div`
   justify-content: center;
   align-items: center;
 `;
-
 
 const FlexContainer = styled.div`
   display: flex;
@@ -211,7 +233,7 @@ const JoinInfo = styled.div`
   border-radius: 10px;
   border: 1px solid #ccc;
   width: 300px;
-  padding: 20px; 
+  padding: 20px;
 `;
 
 const TagInfo = styled.div`
@@ -222,8 +244,8 @@ const TagInfo = styled.div`
 `;
 
 const TagWrapper = styled.div`
-  background-color: #1F1F45;
-  color : white;
+  background-color: #1f1f45;
+  color: white;
   border-radius: 5px;
   padding: 5px 10px;
   display: inline-block;
@@ -236,12 +258,11 @@ const Content = styled.div`
   border-radius: 10px;
   border: 1px solid #ccc;
   font-size: 16px;
-  padding : 15px;
+  padding: 15px;
   line-height: 1.3;
   /* border: none;
   outline: none; */
 `;
-
 
 const CardInfo = styled.div`
   flex-shrink: 0;
@@ -254,7 +275,6 @@ const CardInfo = styled.div`
   border: 1px solid #ccc;
   width: 300px;
   height: 200px;
-
 `;
 
 const CardContainer = styled.div`
