@@ -9,7 +9,7 @@ type Props = {};
 
 const Thumbnail = (props: Props) => {
   const dispatch = useDispatch();
-  const { title, content } = useSelector((state: RootState) => state.summary);
+  const { title, content, tag } = useSelector((state: RootState) => state.summary);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -24,6 +24,7 @@ const Thumbnail = (props: Props) => {
             img: imageDataURL,
             title: title,
             content: content,
+            tag: tag
           }
         ))
       };

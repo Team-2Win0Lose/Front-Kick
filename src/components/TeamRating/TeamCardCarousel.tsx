@@ -19,7 +19,7 @@ const TeamCardCarousel = () => {
         dots: true,
         autoplay: false,
         infinite: true,
-        slidesToShow: 1.5,
+        slidesToShow: 2,
         slidesToScroll: 2,
         swipeToSlide: true,
         autoplaySpeed:3000,
