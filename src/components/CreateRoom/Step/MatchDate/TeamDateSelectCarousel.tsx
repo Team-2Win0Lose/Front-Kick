@@ -172,16 +172,18 @@ return (
   <CarouselContainer>
     <CustomSlider {...settings}>
       {items.map((item, index) => (
+        <div>
         <BoxWrapper key={index}>
           <Box onClick={() => handleBoxClick(item.name)}>
             <FlexContainer>
               <IMG src={item.item} alt={item.name} />
             </FlexContainer>
           </Box>
-          <NameWrapper>
-            <Name>{item.name}</Name>
-          </NameWrapper>
         </BoxWrapper>
+        <NameWrapper>
+          <Name>{item.name}</Name>
+        </NameWrapper>
+        </div>
       ))}
     </CustomSlider>
     {selectedTeam && (
@@ -215,6 +217,7 @@ const CarouselContainer = styled.div`
 `;
 
 const BoxWrapper = styled.div`
+  display:flex;
   justify-content: center;
   align-items: center;
 `;
@@ -224,7 +227,6 @@ const TeamCalendarContainer = styled.div`
 `;
 
 const Box = styled.div`
-    position: relative; 
     display: flex;
     justify-content: center;
     align-items: center;
@@ -263,4 +265,5 @@ const NameWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+
 `;

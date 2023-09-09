@@ -28,7 +28,7 @@ const MapContainer = (props: propsType) => {
     const mapContainer = document.getElementById('map');
     const mapOption = {
       center: new kakao.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
-      level: 5, // 지도의 확대 레벨
+      level: 3, // 지도의 확대 레벨
     };
     // 지도를 생성
     const map = new kakao.maps.Map(mapContainer, mapOption);
@@ -216,7 +216,7 @@ const MapContainer = (props: propsType) => {
       markers = [];
     }
 
-    // 검색결과 목록 하단에 페이지번호를 표시는 함수
+    // 검색결과 목록 하단에 페이지번호를 표시하는 함수
     function displayPagination(pagination: {
       last: number;
       current: number;
@@ -324,12 +324,13 @@ const SearchResult = styled.div`
 `;
 
 const ResultText = styled.p`
-  font-size: 18px;
+  font-size: 1px;
   font-weight: bold;
 `;
 
 const ResultKeyword = styled.span`
   color: #1f1f45;
+  font-size: 15px;
 `;
 
 const ScrollWrapper = styled.div`
