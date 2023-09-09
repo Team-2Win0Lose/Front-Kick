@@ -4,7 +4,6 @@
 // import Signup from '../pages/Signup';
 import React from 'react';
 import Loading from '../pages/Loading/Loading';
-import MyAccompany from '@/pages/MyAccompany/MyAccompany';
 
 const App = React.lazy(() => import('../App'));
 const EmailLogin = React.lazy(() => import('../pages/Login/EmailLogin'));
@@ -26,6 +25,9 @@ const AccompanyManage = React.lazy(
 );
 const KakaoCallback = React.lazy(
   () => import('src/components/Login/KakaoCallBack'),
+);
+const AccompanyDetail = React.lazy(
+  () => import('../pages/FindAccompanyDetail'),
 );
 export const RouterInfo = [
   {
@@ -86,6 +88,11 @@ export const RouterInfo = [
         path: '/findaccompany',
         element: <FindAccompany />,
         label: 'FindAccompany',
+      },
+      {
+        path: '/findaccompany/detail/:postId',
+        element: <AccompanyDetail />,
+        label: 'FindAccompanyDetail',
       },
       {
         path: '/createroom',

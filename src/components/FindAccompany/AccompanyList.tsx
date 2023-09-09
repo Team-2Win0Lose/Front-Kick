@@ -7,10 +7,10 @@ type Props = {};
 const AccompanyList = (props: Props) => {
   return (
     <ListContainer>
-      <Accompany />
-      <Accompany />
-      <Accompany />
-      <Accompany />
+      <Accompany postId={1} />
+      <Accompany postId={2} />
+      <Accompany postId={3} />
+      <Accompany postId={4} />
     </ListContainer>
   );
 };
