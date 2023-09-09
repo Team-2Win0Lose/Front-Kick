@@ -1,7 +1,11 @@
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-type Props = {};
+type Props = {
+  postId: number;
+};
 
 const DetailInfo = (props: Props) => {
+  const navigate = useNavigate();
   return (
     <Form>
       <Participants>
@@ -22,7 +26,11 @@ const DetailInfo = (props: Props) => {
           <LocationContent>서울역 광장</LocationContent>
         </Location>
       </AccompanyInfo>
-      <DetailBtn>상세정보 &gt; </DetailBtn>
+      <DetailBtn
+        onClick={() => navigate(`/findaccompany/detail/${props.postId}`)}
+      >
+        상세정보 &gt;{' '}
+      </DetailBtn>
     </Form>
   );
 };

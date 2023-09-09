@@ -2,14 +2,16 @@ import styled from 'styled-components';
 import MatchInfo from './Accompany/MatchInfo';
 import ContentInfo from './Accompany/ContentInfo';
 import DetailInfo from './Accompany/DetailInfo';
-type Props = {};
+type Props = {
+  postId: number;
+};
 
 const Accompany = (props: Props) => {
   return (
     <Container>
       <MatchInfo />
       <ContentInfo />
-      <DetailInfo />
+      <DetailInfo postId={props.postId} />
     </Container>
   );
 };

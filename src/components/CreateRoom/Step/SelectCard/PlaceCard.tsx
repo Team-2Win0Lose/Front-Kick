@@ -6,10 +6,14 @@ import { removeSelectedItem } from '@/feature/SelectedItemsSlice';
 type ContainerProps = {
   index: number;
 };
-
+type listType = {
+  name: string;
+  IMG: string;
+};
 type Props = {
   index: number;
   ischk: boolean;
+  list?: listType[];
 };
 
 const PlaceCard = (props: Props) => {
@@ -63,7 +67,25 @@ const PlaceCard = (props: Props) => {
       );
     }
   };
-  return (
+  return props.list !== undefined ? (
+    <Wrap>
+      {props.list.map((item, idx) =>
+        item.name === '' ? (
+          <div key={idx}></div>
+        ) : (
+          <Container index={props.index} key={idx}>
+            <CardIMG src={item.IMG} />
+            <CardName>{item.name}</CardName>
+            {props.ischk && (
+              <DeleteBtn onClick={() => handleDeleteItem(item.name)}>
+                <TiDeleteOutline size='30' />
+              </DeleteBtn>
+            )}
+          </Container>
+        ),
+      )}
+    </Wrap>
+  ) : (
     <Wrap>
       {List.map((item, idx) =>
         item.name === '' ? (
@@ -72,7 +94,7 @@ const PlaceCard = (props: Props) => {
           <Container index={props.index} key={idx}>
             <CardIMG src={item.IMG} />
             <CardName>{item.name}</CardName>
-            {props.ischk && ( 
+            {props.ischk && (
               <DeleteBtn onClick={() => handleDeleteItem(item.name)}>
                 <TiDeleteOutline size='30' />
               </DeleteBtn>
@@ -90,6 +112,7 @@ const Wrap = styled.div`
   justify-content: center;
   align-items: center;
   gap: 10px;
+  margin-right: 10px;
 `;
 const CardIMG = styled.img`
   justify-content: center;

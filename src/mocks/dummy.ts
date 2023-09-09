@@ -19,8 +19,7 @@ export const teams = [
     teamCardOwner: '999',
     totalMatching: '19392',
     currentMatching: 190,
-    follower: 133
-
+    follower: 133,
   },
   {
     teamName: '포항 스틸러스',
@@ -31,7 +30,7 @@ export const teams = [
     teamCardOwner: '1289',
     totalMatching: '19392',
     currentMatching: 9,
-    follower: 133
+    follower: 133,
   },
   {
     teamName: 'FC 서울',
@@ -42,7 +41,7 @@ export const teams = [
     teamCardOwner: '1289',
     totalMatching: '19392',
     currentMatching: 6,
-    follower: 133
+    follower: 133,
   },
   {
     teamName: '제주 유나이티드 FC',
@@ -53,7 +52,7 @@ export const teams = [
     teamCardOwner: '1289',
     totalMatching: '19392',
     currentMatching: 12,
-    follower: 133
+    follower: 133,
   },
   {
     teamName: '전북 현대 모터스',
@@ -64,7 +63,7 @@ export const teams = [
     teamCardOwner: '1289',
     totalMatching: '19392',
     currentMatching: 112,
-    follower: 133
+    follower: 133,
   },
   {
     teamName: '대구 FC',
@@ -75,7 +74,7 @@ export const teams = [
     teamCardOwner: '1289',
     totalMatching: '19392',
     currentMatching: 972,
-    follower: 133
+    follower: 133,
   },
   {
     teamName: '대전 하나 시티즌',
@@ -86,7 +85,7 @@ export const teams = [
     teamCardOwner: '1289',
     totalMatching: '19392',
     currentMatching: 912,
-    follower: 133
+    follower: 133,
   },
   {
     teamName: '광주 FC',
@@ -97,7 +96,7 @@ export const teams = [
     teamCardOwner: '1289',
     totalMatching: '19392',
     currentMatching: 912,
-    follower: 133
+    follower: 133,
   },
   {
     teamName: '인천 유나이티드 FC',
@@ -108,7 +107,7 @@ export const teams = [
     teamCardOwner: '1289',
     totalMatching: '19392',
     currentMatching: 12,
-    follower: 133
+    follower: 133,
   },
   {
     teamName: '수원 FC',
@@ -119,7 +118,7 @@ export const teams = [
     teamCardOwner: '1289',
     totalMatching: '19392',
     currentMatching: 12,
-    follower: 133
+    follower: 133,
   },
   {
     teamName: '강원 FC',
@@ -130,7 +129,7 @@ export const teams = [
     teamCardOwner: '1289',
     totalMatching: '19392',
     currentMatching: 12,
-    follower: 133
+    follower: 133,
   },
   {
     teamName: '수원 삼성 블루윙즈',
@@ -141,7 +140,7 @@ export const teams = [
     teamCardOwner: '1289',
     totalMatching: '19392',
     currentMatching: 12,
-    follower: 133
+    follower: 133,
   },
 ];
 export const AccompanyList = [
@@ -288,3 +287,34 @@ export const AccompanyApplyForMe = [
     },
   },
 ];
+export const accompanyDetail = {
+  data: {
+    //대표 이미지
+    img: '/public/assets/dummyBanner.png',
+    //제목
+    title: '가짜데이터가짜데이터가짜데이터',
+    //매치정보(날짜, 경기장, 홈 이름, 어웨이 이름)
+    date: '2023-99-99',
+    stadium: '여기가어디게요',
+    homename: '토트넘 핫스퍼',
+    awayname: '맨체스터 유나이티드',
+    //모임정보(장소, 세부장소, 동행기간, 태그, 최소 인원, 최대 인원)
+    meetingPlace: '박지성의집',
+    detailMeetingPlace: '주방에서봐요',
+    term: '2023-99-99 ~ 2023-99-99',
+    tag: ['짱짱', '짱짱', '짱짱'],
+    minNum: 1,
+    maxNum: 55,
+    //내용
+    content:
+      '박지성 집에서 출발해서 토트넘이랑 맨유 뜨는 거 보러가실 분들 구함 작성자는 맨유팬임.',
+    cardInfo: {
+      house: [
+        { name: '반포자이', IMG: '' },
+        { name: '한남더힐', IMG: '' },
+      ],
+      food: [{ name: '푸아그라', IMG: '' }],
+      attraction: [{ name: 'T익스프레스', IMG: '' }],
+    },
+  },
+};

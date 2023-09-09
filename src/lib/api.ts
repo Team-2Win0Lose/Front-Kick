@@ -98,3 +98,17 @@ export const getMyAccompany2 = async (userId: number) => {
     }
   }
 };
+export const getAccompanyDetail = async (postId: string) => {
+  try {
+    const res = await client(`/api/findaccompany/detail/${postId}`, {
+      method: 'get',
+    });
+    return res;
+  } catch (error) {
+    if (error instanceof AxiosError) {
+      return {
+        data: error?.response?.data,
+      };
+    }
+  }
+};
