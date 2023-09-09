@@ -90,6 +90,7 @@ const Wrap = styled.div`
   justify-content: center;
   align-items: center;
   gap: 10px;
+ 
 `;
 const CardIMG = styled.img`
   justify-content: center;

@@ -45,13 +45,16 @@ const PlaceSearch = (): JSX.Element => {
     setKeyword(Value);
   };
 
-  // 검색어를 입력하지 않고 검색 버튼을 눌렀을 경우
-  const valueChecker = () => {
+  const searchWithIcon = () => {
+    // 검색어를 입력하지 않고 검색 버튼을 눌렀을 경우
     if (Value === '') {
       alert('검색어를 입력해주세요.');
     }
+    else{
+      submitKeyword({ preventDefault: () => {} });
+    }
   };
-
+  
   return (
     <Form>
       <SettingBox>
@@ -75,7 +78,7 @@ const PlaceSearch = (): JSX.Element => {
                         className='btn form__submit'
                         type='submit'
                         value='검색'
-                        onClick={valueChecker}
+                        onClick={searchWithIcon}
                       />
                     </BtnBox>
                   </FormLabel>
@@ -88,13 +91,13 @@ const PlaceSearch = (): JSX.Element => {
               />
             </LandingPageInner>
           </LandingPage>
-          <CourseAddBtn>
+          <Detailinput>
             <div className='SearchContainer'>
               <LocationName>{SearchLocation}</LocationName>
               <LocationAddress>{SearchAddress}</LocationAddress>
             </div>
-          </CourseAddBtn>
-          <CourseAddBtn>
+          </Detailinput>
+          <Detailinput>
             <input
               className='detail'
               type='text'
@@ -110,7 +113,7 @@ const PlaceSearch = (): JSX.Element => {
               }}
               placeholder='상세 위치를 입력해주세요.'
             />
-          </CourseAddBtn>
+          </Detailinput>
         </BoxContainer>
       </SettingBox>
     </Form>
@@ -174,6 +177,41 @@ const CourseAddBtn = styled.div`
   }
 `;
 
+const Detailinput = styled.div`
+  width: 326px;
+  height: 60px;
+  font-size: 1rem;
+  font-weight: 400;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  flex-shrink: 0;
+  border-radius: 14.163px;
+  /* background: #1F1F45; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+
+  .SearchContainer {
+    border-radius: 12px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 100%;
+    min-height: 50px;
+  }
+  .detail {
+    border-radius: 12px;
+    border: 1px solid #ccc;
+    width: 100%;
+    padding: 10px;
+    /* border: none; 
+    outline: none;  */
+    font-size: 16px;
+  }
+`;
+
+
+
 const CustomIcon = styled(FaSearch)`
   color: #1f1f45;
   width: 30px;
@@ -212,7 +250,7 @@ const FormLabel = styled.label`
 
 const FormInput = styled.input`
   width: 300px;
-  height: 30px;
+  height: 40px;
   border-radius: 10px;
   padding : 4px;
 `;

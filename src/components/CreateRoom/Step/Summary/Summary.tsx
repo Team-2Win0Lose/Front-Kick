@@ -93,15 +93,15 @@ function Summary({}: Props) {
       {/* 태그 정보 */}
       <Box>
         <TitleText>🔥 태그 정보</TitleText>
-        {/* <TagInfo>   
+        <TagInfo>   
             {tag.map((tagItem, index) => (
               <TagWrapper key={index}>{tagItem}</TagWrapper>
             ))}
-          </TagInfo> */}
+          </TagInfo>
       </Box>
       {/* 카드 정보 */}
       <Box>
-        <TitleText>🔥 카드 정보(대표 최대 2개 설정)</TitleText>
+        <TitleText>🔥 카드 정보</TitleText>
         <CardInfo>
           <ScrollContainer>
             <CardContainer>
