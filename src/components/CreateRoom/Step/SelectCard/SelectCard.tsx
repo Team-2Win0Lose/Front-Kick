@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import TouristCard from './TouristCard';
 
-const titles = ['숙박', '음식점', '관광지'];
+const titles = ['🏠 숙박', '🍚 음식점', '🏖️ 관광지'];
 
 const SelectCard = () => {
   return (
@@ -16,6 +16,8 @@ const SelectCard = () => {
 export default SelectCard;
 
 const DIV = styled.div`
-  width: 390px;
-  overflow: scroll;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 `;

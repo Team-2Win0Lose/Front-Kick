@@ -35,7 +35,7 @@ const MatchingInfo = (props: MatchingInfoProps) => {
     setBoxColor('#42b72a');
     dispatch(setMatch(item))
   };
-
+  
   return (
     <div>
       {items.map((item, index) => (
