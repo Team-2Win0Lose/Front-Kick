@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setDetail2 } from '@/feature/SummarySlice';
 import { RootState } from '@/app/store';
 
-interface PinkType {
+export interface PinkType {
   idx: number;
   name: string;
   origName: string;

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components'
@@ -10,9 +10,14 @@ import Detailinfo_1 from './Detailinfo/Detailinfo_1';
 import Detailinfo_2 from './Detailinfo/Detailinfo_2';
 import Summary from './Summary/Summary';
 import SelectCard from './SelectCard/SelectCard';
+import { useSelector } from 'react-redux';
+import { Root } from 'react-dom/client';
+import { RootState } from '@/app/store';
+import { Accomand_Post } from '@/lib/api';
+import { AccommandPost, AccompanyPost } from '@/lib/interface';
 
 const StepHeader = () => {
-
+  const [check, setcheck] = useState(false);
   const navigate = useNavigate();
 
   const titles = ['경기 일정 선택', '모임장소', '일정 카드 선택', '상세 내용', '상세 내용', '내 동행 일정'];
@@ -23,12 +28,28 @@ const StepHeader = () => {
       setTitleIndex((prevIndex) => prevIndex - 1);
     }
   };
-
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await Accomand_Post(data);
+        setaccompanyPost(response);
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    }
+    fetchData();
+  }, [check]);
+  const host = useSelector((state:RootState) => state.auth.name);
+  const {img,title,date,stadium, homename, awayname, meetingPlace,meetingPlaceAddress,detailMeetingPlace,term,tag,minNum,maxNum,content } = useSelector((state:RootState) => state.summary);
+  const {house,food,attraction} = useSelector((state:RootState) => state.selecteditem);
+  const [accompanyPost, setaccompanyPost] = useState<AccommandPost>();
+  const data = {host,img,title,date,stadium, homename, awayname, meetingPlace,meetingPlaceAddress,detailMeetingPlace,term,tag,minNum,maxNum,content,house,food,attraction }
   const handleNextClick = () => {
     if (titleIndex < titles.length - 1) {
       setTitleIndex((prevIndex) => prevIndex + 1);
     }
     else if (titleIndex === titles.length - 1) {
+      setcheck(true)
       navigate('/myaccompany');
     }
   };

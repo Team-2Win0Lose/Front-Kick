@@ -2,6 +2,7 @@
 
 import { AxiosError, AxiosResponse } from 'axios';
 import client from './client';
+import { AccompanyPost } from './interface';
 
 // 로그인 요청을 보내는 함수
 export const login = async (email: string, password: string) => {
@@ -108,6 +109,26 @@ export const getAccompanyDetail = async (postId: string) => {
       method: 'get',
     });
     return res;
+  } catch (error) {
+    if (error instanceof AxiosError) {
+      return {
+        data: error?.response?.data,
+      };
+    }
+  }
+};
+
+//동행만들기 정보
+export const Accomand_Post = async (data: AccompanyPost) => {
+  const { host,img,title,date,stadium, homename, awayname, meetingPlace,meetingPlaceAddress,detailMeetingPlace,term,tag,minNum,maxNum,content,house,food,attraction } = data;
+  try {
+    const res = await client('/api/recruitments/details', {
+      method: 'post',
+      data: {
+        host,img,title,date,stadium, homename, awayname, meetingPlace,meetingPlaceAddress,detailMeetingPlace,term,tag,minNum,maxNum,content,house,food,attraction 
+      },
+    });
+    return { data: res.data };
   } catch (error) {
     if (error instanceof AxiosError) {
       return {
