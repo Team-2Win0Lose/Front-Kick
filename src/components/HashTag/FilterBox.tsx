@@ -26,7 +26,7 @@ const FilterBox = () => {
   const [pinkList, setPinktList] = useState<PinkType[]>([]);
   const [hoverState, setHoverState] = useState<number | undefined>();
   const dispatch = useDispatch();
-  const { img, content, title } = useSelector((state: RootState) => state.summary);
+  const { img, content, title, tag } = useSelector((state: RootState) => state.summary);
 
   const searchBoxOpen = () => {
     setResultList([...temp]);
@@ -60,7 +60,7 @@ const FilterBox = () => {
     const newPinkList = [...pinkList, obj];
     setPinktList([...Array.from(set)]);
     dispatch(setDetail2({
-      tag: newPinkList.map(item => item.origName),
+      tag: newPinkList.map(item => item),
       img: img,
       content: content,
       title: title
@@ -68,15 +68,17 @@ const FilterBox = () => {
   };
 
   const removeTag = (idx: number) => {
-    const removeList = pinkList.filter((obj) => obj.idx !== idx);
+    const removeList = itemsToDisplay.filter((obj) => (obj.idx !== idx));
     setPinktList([...removeList]);
     dispatch(setDetail2({
-      tag: removeList.map(item => item.origName),
+      tag: removeList.map(item => item),
       img: img,
       content: content,
       title: title
     }));
   };
+
+  const itemsToDisplay = (tag.length === 0) ? pinkList : tag;
 
   return (
     <NormalBox>
@@ -104,7 +106,7 @@ const FilterBox = () => {
         </SearchBox>
       ) : (
         <PickBox>
-          {pinkList?.map((obj) => {
+          {itemsToDisplay?.map((obj) => {
             return (
               <PickTag
                 hover={obj.idx === hoverState}
@@ -217,13 +219,12 @@ const PickTag = styled.div<HoverEvent>`
   cursor: pointer;
   font-weight: 500;
   height: 30px;
-  ${(props) =>
-    props.hover &&
+  ${() =>
     `
     &:after {
       position: absolute;
       right: -5px;
-      top: -10px;
+      top: -7px;
       content: '✖︎';
       font-size: 10px;
       transition: all 0.2s ease;

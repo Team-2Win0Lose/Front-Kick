@@ -27,6 +27,11 @@ const events = {
       start: '2023-08-11',
       image: 'public/assets/teams/대구FC.png',
     },
+    {
+      title: '전북vs서울',
+      start: '2023-09-11',
+      image: 'public/assets/teams/대구FC.png',
+    },
   ],
   광주FC: [
     {

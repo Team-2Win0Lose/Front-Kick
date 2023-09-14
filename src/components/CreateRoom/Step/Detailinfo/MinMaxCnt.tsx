@@ -8,7 +8,7 @@ type Props = {};
 
 const MinMaxCnt = (props: Props) => {
   const dispatch = useDispatch();
-  const { term } = useSelector((state: RootState) => state.summary);
+  const { term,minNum,maxNum } = useSelector((state: RootState) => state.summary);
   const [minValue, setMinValue] = useState<number | undefined>();
   const [maxValue, setMaxValue] = useState<number | undefined>();
   return (
@@ -17,18 +17,17 @@ const MinMaxCnt = (props: Props) => {
       <StyledInput>
         <input
           type="number"
-          value={minValue}
+          value={minValue || minNum}
           onChange={(e) => {
-            setMinValue(Number(e.target.value))
+            setMinValue(Number(e.target.value) || minNum)
             dispatch(setDetail1({
               term: term,
-              minNum: Number(e.target.value),
-              maxNum: maxValue
+              minNum: Number(e.target.value) || minNum,
+              maxNum: maxValue || maxNum
             }
             ))
           }}
             
-          
         />
       </StyledInput>
       <SettingTxt>명</SettingTxt>
@@ -37,13 +36,13 @@ const MinMaxCnt = (props: Props) => {
       <StyledInput>
         <input
           type="number"
-          value={maxValue}
+          value={maxValue || maxNum}
           onChange={(e) => {
-            setMaxValue(Number(e.target.value))
+            setMaxValue(Number(e.target.value) || maxNum)
             dispatch(setDetail1({
               term: term,
-              minNum: minValue,
-              maxNum: Number(e.target.value)
+              minNum: minValue || minNum,
+              maxNum: Number(e.target.value) || maxNum
             }
             ))
           
@@ -84,7 +83,7 @@ const StyledInput = styled.div`
   input {
     border-radius: 10px;
     border: 1px solid #ccc;
-    width: 40px;
+    width: 50px;
     padding: 10px;
     font-size: 16px;
   }

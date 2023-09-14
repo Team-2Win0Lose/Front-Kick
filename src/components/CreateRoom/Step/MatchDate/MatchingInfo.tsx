@@ -1,6 +1,7 @@
+import { RootState } from '@/app/store';
 import { setMatch } from '@/feature/SummarySlice';
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch} from 'react-redux';
 import styled from 'styled-components';
 
 interface MatchingInfoProps {

@@ -12,15 +12,20 @@ export interface InitialState {
   awayname: string;
   //모임정보(장소, 세부장소, 동행기간, 태그, 최소 인원, 최대 인원)
   meetingPlace: string;
+  meetingPlaceAddress: string;
   detailMeetingPlace: string;
   term: string;
-  tag: string[];
+  tag: tagType[];
   minNum: number;
   maxNum: number;
   //내용
   content: string;
 }
-
+interface tagType {
+  idx: number;
+  name: string;
+  origName: string;
+}
 const initialState: InitialState = {
   //대표 이미지
   img: '',
@@ -31,8 +36,9 @@ const initialState: InitialState = {
   stadium: '',
   homename: '',
   awayname: '',
-  //모임정보(장소, 세부장소, 동행기간, 태그, 최소 인원, 최대 인원)
+  //모임정보(장소, 세부장소, 세부장소 주소, 동행기간, 태그, 최소 인원, 최대 인원)
   meetingPlace: '',
+  meetingPlaceAddress: '',
   detailMeetingPlace: '',
   term: '',
   tag: [],
@@ -55,6 +61,7 @@ const SummarySlice = createSlice({
     setPlace: (state: InitialState, action) => {
       state.meetingPlace = action.payload.meetingPlace;
       state.detailMeetingPlace = action.payload.detailMeetingPlace;
+      state.meetingPlaceAddress = action.payload.meetingPlaceAddress;
     },
     setDetail1: (state: InitialState, action) => {
       state.minNum = action.payload.minNum;
