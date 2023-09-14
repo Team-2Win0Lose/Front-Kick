@@ -10,11 +10,13 @@ import { useSelector } from 'react-redux';
 import { signup } from '@/lib/api';
 interface IAuthForm {
   email: string;
-  nickname: string;
-  phonenumber: string;
+  name: string;
+  phone_number: string;
   password: string;
   passwordConfirm: string;
   gender: string;
+  birth_date: string;
+  agree_terms_of_service: boolean;
   extraError?: string;
 }
 
@@ -23,7 +25,6 @@ const SignupForm = (props: any) => {
   const [isClicked, setisClicked] = useState(0);
   const handleClick = () => {
     setisClicked(isClicked + 1);
-    console.log('click');
   };
   const isChecked = useSelector((state: any) => state.term.isAllChecked);
   const {
@@ -51,7 +52,15 @@ const SignupForm = (props: any) => {
   const handleGenderChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setselectedGender(event.target.value);
   };
-
+  const dummySignUp = {
+    email: 'whtmdgn1409@naver.com',
+    name: '조승후',
+    password: 'tmdgn-1409!',
+    phone_number: '010-8239-3757',
+    gender: '남성',
+    birth_date: '1998-06-13',
+    agree_terms_of_service: true,
+  };
   const onValid = async (data: IAuthForm) => {
     if (data.password !== data.passwordConfirm) {
       setError(
@@ -61,24 +70,30 @@ const SignupForm = (props: any) => {
       );
     } else {
       try {
-        const { email, password, nickname, phonenumber, gender } = data;
-        await signup(email, password, nickname, phonenumber, gender);
-        handleClick();
-        checkEffect;
+        const {
+          email,
+          name,
+          password,
+          phone_number,
+          gender,
+          birth_date,
+          agree_terms_of_service,
+        } = dummySignUp;
+        await signup(
+          email,
+          name,
+          password,
+          phone_number,
+          gender,
+          birth_date,
+          agree_terms_of_service,
+        );
       } catch (error) {
         console.error(error);
       }
     }
   };
-  // const onSubmit: SubmitHandler<IAuthForm> = async (data) => {
-  //   try {
-  //     const { email, password, nickname, phonenumber, gender } = data;
-  //     await signup(email, password, nickname, phonenumber, gender);
-  //     navigate('/signup/onboarding');
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
+
   const autoHyphen = (event: React.ChangeEvent<HTMLInputElement>) => {
     const target = event.target as HTMLInputElement;
     target.value = target.value
@@ -141,8 +156,8 @@ const SignupForm = (props: any) => {
           />
           <Warn>{errors?.passwordConfirm?.message}</Warn>
           <Input
-            {...register('nickname', {
-              required: '닉네임을 입력해주세요',
+            {...register('name', {
+              required: '이름을 입력해주세요',
               minLength: {
                 value: 3,
                 message: '3글자 이상 입력해주세요.',
@@ -152,12 +167,12 @@ const SignupForm = (props: any) => {
                 message: '가능한 문자: 영문 대소문자, 글자 단위 한글, 숫자',
               },
             })}
-            placeholder='닉네임을 입력해주세요.'
+            placeholder='이름을 입력해주세요.'
           />
-          <Warn>{errors?.nickname?.message}</Warn>
+          <Warn>{errors?.name?.message}</Warn>
           <PhoneNumberForm>
             <InputPhonenumber
-              {...register('phonenumber', {
+              {...register('phone_number', {
                 required: '휴대폰 번호를 올바르게 입력해주세요.',
                 pattern: {
                   value: /^[0-9]{3}-[0-9]{4}-[0-9]{4}$/,
@@ -169,7 +184,7 @@ const SignupForm = (props: any) => {
             />
             <AuthBtn>인증 요청</AuthBtn>
           </PhoneNumberForm>
-          <Warn>{errors?.phonenumber?.message}</Warn>
+          <Warn>{errors?.phone_number?.message}</Warn>
           <GenderWrap
             id='gender'
             {...register('gender', {
@@ -199,18 +214,15 @@ const SignupForm = (props: any) => {
             month={nowMonth}
             day={nowDay}
             onChange={handleDateChange}
+            {...(register('birth_date'),
+            {
+              required: true,
+            })}
           />
         </Field>
       </div>
-      <Terms />
-      <SubmitBtn
-        type='submit'
-        // onClick={() => {
-        //   handleClick(), checkEffect;
-        // }}
-      >
-        가입하기
-      </SubmitBtn>
+      <Terms {...(register('agree_terms_of_service'), {})} />
+      <SubmitBtn type='submit'>가입하기</SubmitBtn>
       {errors?.extraError?.message && <p>{errors?.extraError?.message}</p>}
     </Form>
   );

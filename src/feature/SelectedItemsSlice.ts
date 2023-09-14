@@ -3,7 +3,7 @@ import { itemsProps } from '@/components/CreateRoom/Step/SelectCard/PlaceInfoCar
 import produce from 'immer'; // immer 라이브러리 import
 
 export interface SelectedItemsState {
-  map(arg0: (card: any, idx: any) => JSX.Element): import("react").ReactNode;
+  map(arg0: (card: any, idx: any) => JSX.Element): import('react').ReactNode;
   house: itemsProps[];
   food: itemsProps[];
   attraction: itemsProps[];

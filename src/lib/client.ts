@@ -1,12 +1,9 @@
 import axios from 'axios';
-import { getCookie } from '@/util/cookieFn';
 
-export const token = getCookie('accessToken');
 const client = axios.create({
-  baseURL: 'http://localhost:5173',
+  baseURL: 'https://kick-back.azurewebsites.net',
   headers: {
     'Content-Type': 'application/json',
-    Authorization: `Bearer ${token}`,
   },
 });
 
