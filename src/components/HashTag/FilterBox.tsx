@@ -6,7 +6,7 @@ import Detailinfo_2 from "../CreateRoom/Step/Detailinfo/Detailinfo_2";
 import { setDetail2 } from "@/feature/SummarySlice";
 import { RootState } from "@/app/store";
 
-interface PinkType {
+export interface PinkType {
   idx: number;
   name: string;
   origName: string;
