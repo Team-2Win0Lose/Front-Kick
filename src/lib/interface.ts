@@ -1,3 +1,6 @@
+import { itemsProps } from "@/components/CreateRoom/Step/SelectCard/PlaceInfoCarousel";
+import { PinkType } from "@/components/HashTag/FilterBox";
+
 export interface GetTeamType {
   teamName: string;
   teamImg: string;
@@ -36,4 +39,33 @@ export interface AccompanyMadeByMe {
 }
 export interface AccompanyMadeByMeList {
   data: AccompanyMadeByMe[];
+}
+
+export interface AccompanyPost {
+  host: string,
+			img: string;
+			//제목
+			title: string;
+			//매치정보(날짜, 경기장, 홈 이름, 어웨이 이름)
+			date: string;
+			stadium: string;
+			homename: string;
+			awayname: string;
+			//모임정보(장소, 세부장소, 동행기간, 태그, 최소 인원, 최대 인원)
+			meetingPlace: string;
+			meetingPlaceAddress: string;
+			detailMeetingPlace: string;
+			term: string;
+			tag: PinkType[];
+			minNum: number;
+			maxNum: number;
+			//내용
+			content: string;
+			house: itemsProps[];
+		  food: itemsProps[];
+		  attraction: itemsProps[];
+}
+
+export interface AccommandPost {
+  data: AccompanyPost;
 }

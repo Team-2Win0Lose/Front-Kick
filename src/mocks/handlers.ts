@@ -59,4 +59,10 @@ export const handlers = [
   rest.get('/api/findaccompany/detail/:postId', (req, res, ctx) => {
     return res(ctx.json({ data: accompanyDetail }));
   }),
+  rest.post('/api/recruitments/details',(req: any, res, ctx) => {
+    const { newPost } = req;
+    return res(
+      ctx.json({ message: "게시글이 등록되었습니다", data: newPost})
+    )
+  })
 ];
