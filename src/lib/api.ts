@@ -32,18 +32,22 @@ export const signup = async (
   email: string,
   password: string,
   name: string,
-  phonenumber: string,
+  phone_number: string,
   gender: string,
+  birth_date: string,
+  agree_terms_of_service: boolean,
 ) => {
   try {
-    const res = await client('/api/user/signup', {
+    const res = await client('/api/user/signup/', {
       method: 'post',
       data: {
         email,
         password,
         name,
-        phonenumber,
+        phone_number,
         gender,
+        birth_date,
+        agree_terms_of_service,
       },
     });
     return { data: res.data };

@@ -34,19 +34,19 @@ export const handlers = [
       ctx.json(mockUserData),
     );
   }),
-  rest.post('/api/user/signup', (req, res, ctx) => {
-    const newUser = {
-      email: 'abc@naver.com',
-      password: '12345678',
-      nickname: '킥킥',
-      phonenumber: '010-1234-5689',
-      gender: 'male',
-      birth: '1998-01-01',
-      term: true,
-    };
-    user.push(newUser);
-    return res(ctx.status(200), ctx.json(newUser));
-  }),
+  // rest.post('/api/user/signup', (req, res, ctx) => {
+  //   const newUser = {
+  //     email: 'abc@naver.com',
+  //     password: '12345678',
+  //     nickname: '킥킥',
+  //     phonenumber: '010-1234-5689',
+  //     gender: 'male',
+  //     birth: '1998-01-01',
+  //     term: true,
+  //   };
+  //   user.push(newUser);
+  //   return res(ctx.status(200), ctx.json(newUser));
+  // }),
   rest.get('/api/teams', (req, res, ctx) => {
     return res(ctx.json({ data: teams }));
   }),

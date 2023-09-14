@@ -1,10 +1,9 @@
-import React, { ChangeEventHandler, useState } from "react";
-import { temp } from "./data";
-import styled from "styled-components";
-import { useDispatch, useSelector } from "react-redux";
-import Detailinfo_2 from "../CreateRoom/Step/Detailinfo/Detailinfo_2";
-import { setDetail2 } from "@/feature/SummarySlice";
-import { RootState } from "@/app/store";
+import React, { ChangeEventHandler, useState } from 'react';
+import { temp } from './data';
+import styled from 'styled-components';
+import { useDispatch, useSelector } from 'react-redux';
+import { setDetail2 } from '@/feature/SummarySlice';
+import { RootState } from '@/app/store';
 
 export interface PinkType {
   idx: number;
@@ -26,7 +25,9 @@ const FilterBox = () => {
   const [pinkList, setPinktList] = useState<PinkType[]>([]);
   const [hoverState, setHoverState] = useState<number | undefined>();
   const dispatch = useDispatch();
-  const { img, content, title, tag } = useSelector((state: RootState) => state.summary);
+  const { img, content, title, tag } = useSelector(
+    (state: RootState) => state.summary,
+  );
 
   const searchBoxOpen = () => {
     setResultList([...temp]);
@@ -45,7 +46,7 @@ const FilterBox = () => {
         tempObj.name = replaceAll(
           tempObj.name,
           tx,
-          `<b style='color:black'>${tx}</b>`
+          `<b style='color:black'>${tx}</b>`,
         );
       }
       return tempObj;
@@ -59,26 +60,30 @@ const FilterBox = () => {
     const set = new Set([...pinkList, obj]);
     const newPinkList = [...pinkList, obj];
     setPinktList([...Array.from(set)]);
-    dispatch(setDetail2({
-      tag: newPinkList.map(item => item),
-      img: img,
-      content: content,
-      title: title
-    }));
+    dispatch(
+      setDetail2({
+        tag: newPinkList.map((item) => item),
+        img: img,
+        content: content,
+        title: title,
+      }),
+    );
   };
 
   const removeTag = (idx: number) => {
-    const removeList = itemsToDisplay.filter((obj) => (obj.idx !== idx));
+    const removeList = itemsToDisplay.filter((obj) => obj.idx !== idx);
     setPinktList([...removeList]);
-    dispatch(setDetail2({
-      tag: removeList.map(item => item),
-      img: img,
-      content: content,
-      title: title
-    }));
+    dispatch(
+      setDetail2({
+        tag: removeList.map((item) => item),
+        img: img,
+        content: content,
+        title: title,
+      }),
+    );
   };
 
-  const itemsToDisplay = (tag.length === 0) ? pinkList : tag;
+  const itemsToDisplay = tag.length === 0 ? pinkList : tag;
 
   return (
     <NormalBox>
@@ -90,7 +95,7 @@ const FilterBox = () => {
       </MainBox>
       {!filterState ? (
         <SearchBox>
-          <SearchBar onChange={searchHandler} placeholder="태그 검색하기" />
+          <SearchBar onChange={searchHandler} placeholder='태그 검색하기' />
           <SearchIconSet />
           <ResultBox>
             {resultList?.map((obj) => {
@@ -145,7 +150,6 @@ const MainBox = styled.div`
   &:last-child {
     padding-bottom: 10px;
   }
-
 `;
 
 const FilterBar = styled.div`
@@ -154,7 +158,7 @@ const FilterBar = styled.div`
 `;
 
 const BoldTypo = styled.div`
-  font-size: 15px; 
+  font-size: 15px;
   float: left;
   color: #8e8e8e;
 `;
@@ -165,11 +169,10 @@ const ArrowBox = styled.div<IArrowBox>`
   float: right;
   background-repeat: no-repeat;
   background-size: cover;
-
 `;
 
 const SearchIconSet = styled.div`
-  color: #1F1F45;
+  color: #1f1f45;
   font-size: 29px;
   position: absolute;
 `;
@@ -207,10 +210,10 @@ const SearchBox = styled.div`
 
 const PickTag = styled.div<HoverEvent>`
   display: inline-flex;
-  align-items : center;
+  align-items: center;
   padding: 4px 8px;
   position: relative;
-  background-color: #1F1F45;
+  background-color: #1f1f45;
   color: white;
   border-radius: 6px;
   font-size: 14px;
@@ -230,15 +233,14 @@ const PickTag = styled.div<HoverEvent>`
       transition: all 0.2s ease;
       color: black;
     }
-    `
-  }
+    `}
 `;
 
 const ResultTypo = styled.div`
   padding: 8px;
   cursor: pointer;
   &:hover {
-    background-color: #1F1F45;
+    background-color: #1f1f45;
     color: black;
   }
 `;
