@@ -14,7 +14,7 @@ export interface propsType {
 
 const PlaceSearch = (): JSX.Element => {
   const dispatch = useDispatch();
-  const { meetingPlace } = useSelector((state: RootState) => state.summary);
+  const { meetingPlace,detailMeetingPlace, meetingPlaceAddress } = useSelector((state: RootState) => state.summary);
   const [SearchLocation, setSearchLocation] = useState<string>('');
   const [SearchAddress, setSearchAddress] = useState<string>('');
   const handleSearchLocation = (loc: string, address: string) => {
@@ -22,7 +22,6 @@ const PlaceSearch = (): JSX.Element => {
     setSearchAddress(address);
     // console.log(loc);
   };
-
   let [loc, setLoc] = useState<string>('');
 
   // 입력 폼 변화 감지하여 입력 값 관리
@@ -93,8 +92,8 @@ const PlaceSearch = (): JSX.Element => {
           </LandingPage>
           <Detailinput>
             <div className='SearchContainer'>
-              <LocationName>{SearchLocation}</LocationName>
-              <LocationAddress>{SearchAddress}</LocationAddress>
+              <LocationName>{SearchLocation || meetingPlace}</LocationName>
+              <LocationAddress>{SearchAddress || meetingPlaceAddress}</LocationAddress>
             </div>
           </Detailinput>
           <Detailinput>
@@ -102,7 +101,7 @@ const PlaceSearch = (): JSX.Element => {
               className='detail'
               type='text'
               id='loc'
-              value={loc}
+              value={loc || detailMeetingPlace}
               onChange={(e) =>{
                 setLoc(e.target.value);
                 dispatch(

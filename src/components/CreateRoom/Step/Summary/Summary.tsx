@@ -95,7 +95,7 @@ function Summary({}: Props) {
         <TitleText>🔥 태그 정보</TitleText>
         <TagInfo>   
             {tag.map((tagItem, index) => (
-              <TagWrapper key={index}>{tagItem}</TagWrapper>
+              <TagWrapper key={index}>{tagItem.origName}</TagWrapper>
             ))}
           </TagInfo>
       </Box>

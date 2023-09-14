@@ -4,13 +4,16 @@ import { AiOutlinePlusCircle } from 'react-icons/ai';
 import { useDispatch, useSelector } from 'react-redux';
 import { setDetail2 } from '@/feature/SummarySlice';
 import { RootState } from '@/app/store';
+import { Link } from 'react-router-dom';
 
 type Props = {};
 
 const Thumbnail = (props: Props) => {
   const dispatch = useDispatch();
-  const { title, content, tag } = useSelector((state: RootState) => state.summary);
+  const { title, content, tag, img } = useSelector((state: RootState) => state.summary);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
+  
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -28,6 +31,7 @@ const Thumbnail = (props: Props) => {
           }
         ))
       };
+      
       reader.readAsDataURL(file);
     }
   };
@@ -36,8 +40,8 @@ const Thumbnail = (props: Props) => {
     <StyledInput>
       <label htmlFor="imageInput">
         <UploadBox>
-          {selectedImage ? (
-            <ImagePreview src={selectedImage} alt="Selected" />
+          {(selectedImage || img) ? (
+            <ImagePreview src={selectedImage || img} alt="Selected" />
           ) : (
             <>
               <CustomIcon />
