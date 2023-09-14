@@ -12,7 +12,7 @@ type Props = {}
 
 const DatePickerRange = (props: Props) => {
   const dispatch = useDispatch();
-  const { minNum, maxNum } = useSelector((state: RootState) => state.summary);
+  const { minNum, maxNum, term } = useSelector((state: RootState) => state.summary);
   const [startDate, setStartDate] = useState<Date | null>(new Date());
   const [endDate, setEndDate] = useState<Date | null>(null);
   const onChange = (dates: [Date, Date] | null) => {
@@ -22,12 +22,15 @@ const DatePickerRange = (props: Props) => {
       setEndDate(end);
     }
   };
+
   useEffect(() => {
     if (startDate && endDate) {
       const startDateString = startDate.toLocaleDateString('ko-KR');
       const endDateString = endDate.toLocaleDateString('ko-KR');
+      const term = `${startDateString} ~ ${endDateString}`
+      
       dispatch(setDetail1({
-         term: `${startDateString} ~ ${endDateString}`,
+         term: term,
          minNum: minNum,
          maxNum: maxNum
         }
@@ -37,16 +40,18 @@ const DatePickerRange = (props: Props) => {
   return (
     <div>
       <SelectedDateBox>
-          {startDate && endDate ? (
+          {(startDate && endDate || term) ? (
+            term ? <><Font>{term}</Font></> : 
             <>
-              <Font>{startDate.toLocaleDateString('ko-KR')}</Font>
+              <Font>{startDate?.toLocaleDateString('ko-KR')}</Font>
               <Font> ~ </Font>
-              <Font>{endDate.toLocaleDateString('ko-KR')}</Font>
+              <Font>{endDate?.toLocaleDateString('ko-KR')}</Font>
             </>
           ) : (
             <div>날짜를 선택해주세요.</div>
           )}
         </SelectedDateBox>
+        
       <StyledDatePicker
         locale={ko} 
         dateFormat="yyyy년 MM월 dd일"

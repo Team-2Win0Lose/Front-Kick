@@ -19,7 +19,7 @@ const MapContainer = (props: propsType) => {
   // 마커를 담는 배열
   let markers: any[] = [];
   const dispatch = useDispatch();
-  const { detailMeetingPlace } = useSelector(
+  const { detailMeetingPlace, meetingPlace } = useSelector(
     (state: RootState) => state.summary,
   );
 
@@ -174,6 +174,7 @@ const MapContainer = (props: propsType) => {
           setPlace({
             meetingPlace: places.place_name,
             detailMeetingPlace: detailMeetingPlace,
+            meetingPlaceAddress: places.address_name
           }),
         );
         el.classList.toggle('checked');

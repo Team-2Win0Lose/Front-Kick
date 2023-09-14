@@ -1,6 +1,5 @@
 import { RootState } from '@/app/store'
 import { setDetail2 } from '@/feature/SummarySlice'
-import React from 'react'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components'
@@ -9,12 +8,13 @@ type Props = {}
 
 const TitleName = (props: Props) => {
   const dispatch = useDispatch();
-  const { img, content, tag } = useSelector((state: RootState) => state.summary);
-  let [title, setTitle] = useState<string>('')
+  const { img, content, tag, title } = useSelector((state: RootState) => state.summary);
+  let [titlename, setTitle] = useState<string>('')
+
   return (
 
       <StyledInput>
-        <input type="text" id="title" value={title} placeholder="제목을 입력해주세요." onChange={(e) => {
+        <input type="text" id="title" value={titlename || title} placeholder="제목을 입력해주세요." onChange={(e) => {
           setTitle(e.target.value) 
           dispatch(setDetail2({
             img: img,

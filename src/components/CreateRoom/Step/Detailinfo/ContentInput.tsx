@@ -1,6 +1,5 @@
 import { RootState } from '@/app/store'
 import { setDetail2 } from '@/feature/SummarySlice'
-import React from 'react'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components'
@@ -10,12 +9,13 @@ type Props = {}
 
 const ContentInput = (props: Props) => {
   const dispatch = useDispatch();
-  const { title, img, tag } = useSelector((state: RootState) => state.summary);
+  const { title, img, tag, content } = useSelector((state: RootState) => state.summary);
   let [contents, setContents] = useState<string>('');
+
   return (
       <StyledInput>
          <StyledTextarea
-        value={contents}
+        value={contents || content}
         onChange={(e) => {
           setContents(e.target.value)
           dispatch(setDetail2({
