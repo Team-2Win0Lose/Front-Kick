@@ -3,6 +3,7 @@ import { AccompanyMadeByMe, accompanyType, hostType } from '@/lib/interface';
 import { useNavigate } from 'react-router-dom';
 import { BsPeopleFill } from 'react-icons/bs';
 import { calculateDday } from '@/util/calculateDday';
+import { ReactElement, JSXElementConstructor, ReactFragment, ReactPortal, Key } from 'react';
 type Props = {
   boxdata: AccompanyMadeByMe;
 };
@@ -14,7 +15,7 @@ const AccompanyBox = (props: Props) => {
       <Header>
         <Host>
           <HostImg></HostImg>
-          <HostName>{props.boxdata.hostData.hostName}</HostName>
+          <HostName>{props.boxdata.host}</HostName>
         </Host>
         <Partition></Partition>
         <Match>
@@ -30,13 +31,13 @@ const AccompanyBox = (props: Props) => {
         </Match>
         <Status>
           <DDay>
-            📅 D-{calculateDday(props.boxdata.accompanyData.closedDate)}
+            📅 D-{calculateDday(props.boxdata.closeDate)}
           </DDay>
-          <CurrentStatus>{props.boxdata.accompanyData.nowStatus}</CurrentStatus>
+          <CurrentStatus>{props.boxdata.nowStatus}</CurrentStatus>
         </Status>
       </Header>
       <Body>
-        <Title>{props.boxdata.accompanyData.title}</Title>
+        <Title>{props.boxdata.title}</Title>
         <Cards>
           <Card>
             <CardImg>카드 사진</CardImg>
@@ -44,7 +45,7 @@ const AccompanyBox = (props: Props) => {
           </Card>
         </Cards>
         <Tags>
-          {props?.boxdata.accompanyData.tags.map((tag, index) => (
+          {props?.boxdata.tag.map((tag: string | null | undefined, index: Key | null | undefined) => (
             <Tag key={index}>{tag}</Tag>
           ))}
         </Tags>
@@ -55,23 +56,22 @@ const AccompanyBox = (props: Props) => {
             <BsPeopleFill />
           </PeopleImg>
           <PeopleCount>
-            {props.boxdata.accompanyData.nowHeadCount}/
-            {props.boxdata.accompanyData.totalHeadCount}
+            {props.boxdata.nowHeadCount}/
+            {props.boxdata.maxNum}
           </PeopleCount>
         </Personnel>
         <Accompany>
           <AccompanyInfo>
             <AccompanyTitle>동행 일자</AccompanyTitle>
             <AccompanyData>
-              {props.boxdata.accompanyData.startDate} ~{' '}
-              {props.boxdata.accompanyData.endDate}
+              {props.boxdata.date}
             </AccompanyData>
           </AccompanyInfo>
           <Accompany>
             <AccompanyInfo>
               <AccompanyTitle>동행 장소</AccompanyTitle>
               <AccompanyData>
-                {props.boxdata.accompanyData.meetingPlace}
+                {props.boxdata.meetingPlace}
               </AccompanyData>
             </AccompanyInfo>
           </Accompany>
@@ -93,9 +93,11 @@ const Box = styled.div`
   align-items: center;
   border: none;
   border-radius: 12px;
-  margin: 10px 0;
-
-  background-color: #d9d9d9;
+  margin: 15px 0;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+  background-color: #1F1F45;
+  color: white;
+  font-weight: bold;
 `;
 const Partition = styled.div`
   width: 1px;
@@ -110,6 +112,7 @@ const Header = styled.div`
   align-items: center;
   gap: 30px;
   padding: 4px;
+  
 `;
 const Host = styled.div`
   display: flex;
@@ -161,7 +164,7 @@ const TeamLogo = styled.img`
 `;
 const Versus = styled.p`
   font-size: 8px;
-  color: #9b9b9b;
+  color: white;
 `;
 const DDay = styled.div`
   display: flex;
@@ -179,7 +182,7 @@ const CurrentStatus = styled.div`
   background-color: #898989;
   border-radius: 8px;
   border: none;
-  color: #fff;
+  color:  white;
   font-size: 8px;
   font-weight: 350;
 `;
@@ -193,7 +196,7 @@ const Body = styled.div`
   align-items: flex-start;
   padding: 8px 15px;
   gap: 8px;
-  background-color: #eaeaea;
+  background-color: #ffffff;
 `;
 const Title = styled.p`
   font-size: 12px;
