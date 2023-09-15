@@ -168,124 +168,136 @@ export const AccompanyList = [
 ];
 export const AccompanyMadeByMe = [
   {
-    id: 1,
-    hostData: {
-      hostName: '호스트 이름',
-      hostAge: '20대',
-      hostGender: '남성',
-    },
-    accompanyData: {
-      closedDate: '2023-09-11',
-      startDate: '2023-09-11',
-      endDate: '2023-09-12',
-      nowStatus: '모집중',
-      title: '우천으로 취소돼도, 제주 맛집 부수고 돌아가요!',
-      meetingPlace: '서울역 광장',
-      nowHeadCount: 3,
-      totalHeadCount: 4,
-      tags: ['#절대강자', '#축구지존', '#제주도', '#맛집탐방'],
-    },
+    host: '1',
+    img: 'ㅇㅇ',
+    date: '2023.09.11 ~ 2023.09.12',
+    //nowStatus,closeDate,nowheadCount 변경 필요
+    nowStatus: '모집중',
+    closeDate: '2023-09-12',
+    title: '우천으로 취소돼도, 제주 맛집 부수고 돌아가요!',
+    meetingPlace: '서울역 광장',
+    nowHeadCount: 3,
+    tag: ['#절대강자', '#축구지존', '#제주도', '#맛집탐방'],
+    minNum: 10,
+    maxNum: 12,
+    content: '제발 같이가주세요'
   },
-  {
-    id: 2,
-    hostData: {
-      hostName: '호스트 이름',
-      hostAge: '20대',
-      hostGender: '남성',
-    },
-    accompanyData: {
-      closedDate: '2023-09-11',
+  // {
+  //   id: 2,
+  //   hostData: {
+  //     hostName: '김진',
+  //     hostAge: '20대',
+  //     hostGender: '남성',
+  //   },
+  //   accompanyData: {
+  //     closedDate: '2023-09-11',
 
-      startDate: '2023-09-11',
-      endDate: '2023-09-12',
-      nowStatus: '모집중',
-      title: '우천으로 취소돼도, 제주 맛집 부수고 돌아가요!',
-      meetingPlace: '서울역 광장',
-      nowHeadCount: 3,
-      totalHeadCount: 4,
-      tags: ['#절대강자', '#축구지존', '#제주도', '#맛집탐방'],
-    },
-  },
-  {
-    id: 3,
-    hostData: {
-      hostName: '호스트 이름',
-      hostAge: '20대',
-      hostGender: '남성',
-    },
-    accompanyData: {
-      closedDate: '2023-09-11',
+  //     startDate: '2023-09-11',
+  //     endDate: '2023-09-12',
+  //     nowStatus: '모집중',
+  //     title: '우천으로 취소돼도, 제주 맛집 부수고 돌아가요!',
+  //     meetingPlace: '서울역 광장',
+  //     nowHeadCount: 3,
+  //     totalHeadCount: 4,
+  //     tags: ['#절대강자', '#축구지존', '#제주도', '#맛집탐방'],
+  //   },
+  // },
+  // {
+  //   id: 3,
+  //   hostData: {
+  //     hostName: '정승훈',
+  //     hostAge: '20대',
+  //     hostGender: '남성',
+  //   },
+  //   accompanyData: {
+  //     closedDate: '2023-09-11',
 
-      startDate: '2023-09-11',
-      endDate: '2023-09-12',
-      nowStatus: '모집중',
-      title: '우천으로 취소돼도, 제주 맛집 부수고 돌아가요!',
-      meetingPlace: '서울역 광장',
-      nowHeadCount: 3,
-      totalHeadCount: 4,
-      tags: ['#절대강자', '#축구지존', '#제주도', '#맛집탐방'],
-    },
-  },
+  //     startDate: '2023-09-11',
+  //     endDate: '2023-09-12',
+  //     nowStatus: '모집중',
+  //     title: '우천으로 취소돼도, 제주 맛집 부수고 돌아가요!',
+  //     meetingPlace: '서울역 광장',
+  //     nowHeadCount: 3,
+  //     totalHeadCount: 4,
+  //     tags: ['#절대강자', '#축구지존', '#제주도', '#맛집탐방'],
+  //   },
+  // },
+  // {
+  //   id: 4,
+  //   hostData: {
+  //     hostName: '조승후',
+  //     hostAge: '20대',
+  //     hostGender: '남성',
+  //   },
+  //   accompanyData: {
+  //     closedDate: '2023-09-11',
+
+  //     startDate: '2023-09-11',
+  //     endDate: '2023-09-12',
+  //     nowStatus: '모집중',
+  //     title: '우천으로 취소돼도, 제주 맛집 부수고 돌아가요!',
+  //     meetingPlace: '서울역 광장',
+  //     nowHeadCount: 3,
+  //     totalHeadCount: 4,
+  //     tags: ['#절대강자', '#축구지존', '#제주도', '#맛집탐방'],
+  //   },
+  // },
 ];
 
 export const AccompanyApplyForMe = [
-  {
-    id: 4,
-    hostData: {
-      hostName: '김채원',
-      hostAge: '20대',
-      hostGender: '여성',
-    },
-    accompanyData: {
-      closedDate: '2023-09-11',
-      startDate: '2023-09-11',
-      endDate: '2023-09-12',
+    {
+      host: '2',
+      img: 'ㅇㅇ',
+      date: '2023.09.11 ~ 2023.09.12',
+      //nowStatus,closeDate,nowheadCount 변경 필요
       nowStatus: '모집중',
+      closeDate: '2023-09-11',
       title: '우천으로 취소돼도, 제주 맛집 부수고 돌아가요!',
       meetingPlace: '서울역 광장',
       nowHeadCount: 3,
-      totalHeadCount: 4,
-      tags: ['#절대강자', '#축구지존', '#제주도', '#맛집탐방'],
+      tag: ['#절대강자', '#축구지존', '#제주도', '#맛집탐방'],
+      minNum: 10,
+      maxNum: 12,
+      content: '제발 같이가주세요'
     },
-  },
-  {
-    id: 5,
-    hostData: {
-      hostName: '사쿠라',
-      hostAge: '20대',
-      hostGender: '여성',
-    },
-    accompanyData: {
-      closedDate: '2023-10-11',
-      startDate: '2023-10-11',
-      endDate: '2023-10-12',
-      nowStatus: '모집중',
-      title: '우천으로 취소돼도, 제주 맛집 부수고 돌아가요!',
-      meetingPlace: '서울역 광장',
-      nowHeadCount: 3,
-      totalHeadCount: 4,
-      tags: ['#절대강자', '#축구지존', '#제주도', '#맛집탐방'],
-    },
-  },
-  {
-    id: 6,
-    hostData: {
-      hostName: '허윤진',
-      hostAge: '20대',
-      hostGender: '여성',
-    },
-    accompanyData: {
-      closedDate: '2023-11-11',
-      startDate: '2023-11-11',
-      endDate: '2023-11-12',
-      nowStatus: '모집중',
-      title: '우천으로 취소돼도, 제주 맛집 부수고 돌아가요!',
-      meetingPlace: '서울역 광장',
-      nowHeadCount: 3,
-      totalHeadCount: 4,
-      tags: ['#절대강자', '#축구지존', '#제주도', '#맛집탐방'],
-    },
-  },
+  //  {
+  //   id: 4,
+  //   hostData: {
+  //     hostName: '김채원',
+  //     hostAge: '20대',
+  //     hostGender: '여성',
+  //   },
+  //   accompanyData: {
+  //     closedDate: '2023-09-11',
+  //     startDate: '2023-09-11',
+  //     endDate: '2023-09-12',
+  //     nowStatus: '모집중',
+  //     title: '우천으로 취소돼도, 제주 맛집 부수고 돌아가요!',
+  //     meetingPlace: '서울역 광장',
+  //     nowHeadCount: 3,
+  //     totalHeadCount: 4,
+  //     tags: ['#절대강자', '#축구지존', '#제주도', '#맛집탐방'],
+  //   },
+  // },
+  // {
+  //   id: 5,
+  //   hostData: {
+  //     hostName: '사쿠라',
+  //     hostAge: '20대',
+  //     hostGender: '여성',
+  //   },
+  //   accompanyData: {
+  //     closedDate: '2023-10-11',
+  //     startDate: '2023-10-11',
+  //     endDate: '2023-10-12',
+  //     nowStatus: '모집중',
+  //     title: '우천으로 취소돼도, 제주 맛집 부수고 돌아가요!',
+  //     meetingPlace: '서울역 광장',
+  //     nowHeadCount: 3,
+  //     totalHeadCount: 4,
+  //     tags: ['#절대강자', '#축구지존', '#제주도', '#맛집탐방'],
+  //   },
+  // },
 ];
 export const accompanyDetail = {
   data: {

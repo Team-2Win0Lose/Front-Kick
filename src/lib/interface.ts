@@ -33,6 +33,16 @@ export interface accompanyType {
   tags: string[];
 }
 export interface AccompanyMadeByMe {
+  date: ReactNode;
+  closeDate: string;
+  title: ReactNode;
+  nowStatus: ReactNode;
+  closedDate(closedDate: any): import("react").ReactNode;
+  meetingPlace: ReactNode;
+  tag: any;
+  nowHeadCount: ReactNode;
+  maxNum: ReactNode;
+  host: ReactNode;
   id: number;
   hostData: hostType;
   accompanyData: accompanyType;
