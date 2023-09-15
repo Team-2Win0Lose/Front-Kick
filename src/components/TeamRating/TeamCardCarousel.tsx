@@ -11,7 +11,7 @@ import { getTeam } from '@/lib/api';
 
 const TeamCardCarousel = () => {
   const [teamList, setteamList] = useState<GetTeamList>();
-
+  const dispatch = useDispatch();
   const sortedItems = [...(teamList?.data || [])].sort(
     (a, b) => b.currentMatching - a.currentMatching,
   );
@@ -202,7 +202,6 @@ const FilterBtn = styled.div`
   align-items: center;
   gap: 5px;
 `;
-function dispatch(arg0: { payload: any; type: "modal/openModal"; }) {
-    throw new Error('Function not implemented.');
+function dispatch(arg0: { payload: any; type: 'modal/openModal' }) {
+  throw new Error('Function not implemented.');
 }
-
