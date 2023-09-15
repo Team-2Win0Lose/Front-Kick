@@ -4,7 +4,6 @@ import produce from 'immer'; // immer 라이브러리 import
 import { ReactNode } from 'react';
 
 export interface SelectedItemsState {
-  map(arg0: (card: any, idx: any) => JSX.Element): import('react').ReactNode;
   house: itemsProps[];
   food: itemsProps[];
   attraction: itemsProps[];
@@ -17,9 +16,6 @@ const initialState: SelectedItemsState = {
   house: [{ IMG: '', name: '' }],
   food: [{ IMG: '', name: '' }],
   attraction: [{ IMG: '', name: '' }],
-  map: function (arg0: (card: any, idx: any) => JSX.Element): ReactNode {
-    throw new Error('Function not implemented.');
-  },
 };
 
 const SelectedItemsSlice = createSlice({
@@ -78,6 +74,13 @@ const SelectedItemsSlice = createSlice({
         }
       });
     },
+    removeAll: (state) => {
+      return produce(state, (draft) => {
+        draft.house = [];
+        draft.food = [];
+        draft.attraction = [];
+      });
+    },
   },
 });
 export default SelectedItemsSlice.reducer;
@@ -86,4 +89,5 @@ export const {
   SelectedFoodItem,
   SelectedAttractionItem,
   removeSelectedItem,
+  removeAll,
 } = SelectedItemsSlice.actions;
