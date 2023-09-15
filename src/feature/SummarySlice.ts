@@ -74,9 +74,30 @@ const SummarySlice = createSlice({
       state.content = action.payload.content;
       state.tag = action.payload.tag;
     },
+    removeSummary: (state) => {
+      //대표 이미지
+      state.img = '';
+      //제목
+      state.title = '';
+      //매치정보(날짜, 경기장, 홈 이름, 어웨이 이름)
+      state.date = '';
+      state.stadium = '';
+      state.homename = '';
+      state.awayname = '';
+      //모임정보(장소, 세부장소, 세부장소 주소, 동행기간, 태그, 최소 인원, 최대 인원)
+      state.meetingPlace = '';
+      state.meetingPlaceAddress = '';
+      state.detailMeetingPlace = '';
+      state.term = '';
+      state.tag = [];
+      state.minNum = 0;
+      state.maxNum = 0;
+      //내용
+      state.content = '';
+    },
   },
 });
 
 export default SummarySlice.reducer;
-export const { setMatch, setPlace, setDetail1, setDetail2 } =
+export const { setMatch, setPlace, setDetail1, setDetail2, removeSummary } =
   SummarySlice.actions;

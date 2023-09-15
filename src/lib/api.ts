@@ -120,12 +120,48 @@ export const getAccompanyDetail = async (postId: string) => {
 
 //동행만들기 정보
 export const Accomand_Post = async (data: AccompanyPost) => {
-  const { host,img,title,date,stadium, homename, awayname, meetingPlace,meetingPlaceAddress,detailMeetingPlace,term,tag,minNum,maxNum,content,house,food,attraction } = data;
+  const {
+    host,
+    img,
+    title,
+    date,
+    stadium,
+    homename,
+    awayname,
+    meetingPlace,
+    meetingPlaceAddress,
+    detailMeetingPlace,
+    term,
+    tag,
+    minNum,
+    maxNum,
+    content,
+    house,
+    food,
+    attraction,
+  } = data;
   try {
     const res = await client('/api/recruitments/details', {
       method: 'post',
       data: {
-        host,img,title,date,stadium, homename, awayname, meetingPlace,meetingPlaceAddress,detailMeetingPlace,term,tag,minNum,maxNum,content,house,food,attraction 
+        host,
+        img,
+        title,
+        date,
+        stadium,
+        homename,
+        awayname,
+        meetingPlace,
+        meetingPlaceAddress,
+        detailMeetingPlace,
+        term,
+        tag,
+        minNum,
+        maxNum,
+        content,
+        house,
+        food,
+        attraction,
       },
     });
     return { data: res.data };

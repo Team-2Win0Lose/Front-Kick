@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react'
+import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import styled from 'styled-components'
+import styled from 'styled-components';
 import { AiOutlineClose } from 'react-icons/ai';
 import { IoIosArrowBack } from 'react-icons/io';
 import TeamDateSelect from './MatchDate/TeamDateSelect';
@@ -10,17 +10,24 @@ import Detailinfo_1 from './Detailinfo/Detailinfo_1';
 import Detailinfo_2 from './Detailinfo/Detailinfo_2';
 import Summary from './Summary/Summary';
 import SelectCard from './SelectCard/SelectCard';
-import { useSelector } from 'react-redux';
-import { Root } from 'react-dom/client';
+import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@/app/store';
 import { Accomand_Post } from '@/lib/api';
 import { AccommandPost, AccompanyPost } from '@/lib/interface';
-
+import { removeAll } from '@/feature/SelectedItemsSlice';
+import { removeSummary } from '@/feature/SummarySlice';
 const StepHeader = () => {
   const [check, setcheck] = useState(false);
   const navigate = useNavigate();
-
-  const titles = ['경기 일정 선택', '모임장소', '일정 카드 선택', '상세 내용', '상세 내용', '내 동행 일정'];
+  const dispatch = useDispatch();
+  const titles = [
+    '경기 일정 선택',
+    '모임장소',
+    '일정 카드 선택',
+    '상세 내용',
+    '상세 내용',
+    '내 동행 일정',
+  ];
   const [titleIndex, setTitleIndex] = useState(0);
 
   const handleBackClick = () => {
@@ -39,17 +46,54 @@ const StepHeader = () => {
     }
     fetchData();
   }, [check]);
-  const host = useSelector((state:RootState) => state.auth.name);
-  const {img,title,date,stadium, homename, awayname, meetingPlace,meetingPlaceAddress,detailMeetingPlace,term,tag,minNum,maxNum,content } = useSelector((state:RootState) => state.summary);
-  const {house,food,attraction} = useSelector((state:RootState) => state.selecteditem);
+  const host = useSelector((state: RootState) => state.auth.name);
+  const {
+    img,
+    title,
+    date,
+    stadium,
+    homename,
+    awayname,
+    meetingPlace,
+    meetingPlaceAddress,
+    detailMeetingPlace,
+    term,
+    tag,
+    minNum,
+    maxNum,
+    content,
+  } = useSelector((state: RootState) => state.summary);
+  const { house, food, attraction } = useSelector(
+    (state: RootState) => state.selecteditem,
+  );
   const [accompanyPost, setaccompanyPost] = useState<AccommandPost>();
-  const data = {host,img,title,date,stadium, homename, awayname, meetingPlace,meetingPlaceAddress,detailMeetingPlace,term,tag,minNum,maxNum,content,house,food,attraction }
+  const data = {
+    host,
+    img,
+    title,
+    date,
+    stadium,
+    homename,
+    awayname,
+    meetingPlace,
+    meetingPlaceAddress,
+    detailMeetingPlace,
+    term,
+    tag,
+    minNum,
+    maxNum,
+    content,
+    house,
+    food,
+    attraction,
+  };
   const handleNextClick = () => {
     if (titleIndex < titles.length - 1) {
       setTitleIndex((prevIndex) => prevIndex + 1);
-    }
-    else if (titleIndex === titles.length - 1) {
-      setcheck(true)
+    } else if (titleIndex === titles.length - 1) {
+      setcheck(true);
+      dispatch(removeAll());
+      dispatch(removeSummary());
       navigate('/myaccompany');
     }
   };
@@ -81,34 +125,30 @@ const StepHeader = () => {
       CurrentStepComponent = TeamDateSelect;
   }
 
-
   return (
     <Wrap>
-        <DIV>
-          <BackIcon onClick={handleBackClick}/>
-          <RoomTitle>{titles[titleIndex]}</RoomTitle>
-          <CloseIcon onClick = {() => navigate('/home')} />
-        </DIV>
-        <Form>
-          <CurrentStepComponent></CurrentStepComponent>
-        </Form>
-        <NextButtonContainer>
+      <DIV>
+        <BackIcon onClick={handleBackClick} />
+        <RoomTitle>{titles[titleIndex]}</RoomTitle>
+        <CloseIcon onClick={() => navigate('/home')} />
+      </DIV>
+      <Form>
+        <CurrentStepComponent></CurrentStepComponent>
+      </Form>
+      <NextButtonContainer>
         <RegisterBtn onClick={handleNextClick}>{nextButtonText}</RegisterBtn>
-        </NextButtonContainer>
-      
+      </NextButtonContainer>
     </Wrap>
-  )
-}
+  );
+};
 
-export default StepHeader
-
+export default StepHeader;
 
 const RoomTitle = styled.h1`
   display: flex;
   color: #000;
   font-size: 24px;
   font-weight: bold;
-
 `;
 
 const DIV = styled.div`
@@ -116,35 +156,29 @@ const DIV = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 20px;
-
 `;
 
 const Wrap = styled.div`
   font-weight: bold;
-  background-color: #FFFFFF;
-  `;
-
+  background-color: #ffffff;
+`;
 
 const BackIcon = styled(IoIosArrowBack)`
-    width: 30px;
-    height: 30px;
-    color: #000000;
-
+  width: 30px;
+  height: 30px;
+  color: #000000;
 `;
-
 
 const CloseIcon = styled(AiOutlineClose)`
-    width: 30px;
-    height: 30px;
-    color: #000000;
-    justify-content: right;
-    align-items: right;
+  width: 30px;
+  height: 30px;
+  color: #000000;
+  justify-content: right;
+  align-items: right;
 `;
-
 
 const Form = styled.div`
   display: flex;
-
 `;
 
 const NextButtonContainer = styled.div`
@@ -158,7 +192,7 @@ const RegisterBtn = styled.div`
   height: 50px;
   flex-shrink: 0;
   border-radius: 14px;
-  background: #1F1F45;
+  background: #1f1f45;
   display: flex;
   justify-content: center;
   align-items: center;
