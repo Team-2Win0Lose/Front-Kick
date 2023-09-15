@@ -14,7 +14,9 @@ export interface propsType {
 
 const PlaceSearch = (): JSX.Element => {
   const dispatch = useDispatch();
-  const { meetingPlace,detailMeetingPlace, meetingPlaceAddress } = useSelector((state: RootState) => state.summary);
+  const { meetingPlace, detailMeetingPlace, meetingPlaceAddress } = useSelector(
+    (state: RootState) => state.summary,
+  );
   const [SearchLocation, setSearchLocation] = useState<string>('');
   const [SearchAddress, setSearchAddress] = useState<string>('');
   const handleSearchLocation = (loc: string, address: string) => {
@@ -48,12 +50,11 @@ const PlaceSearch = (): JSX.Element => {
     // 검색어를 입력하지 않고 검색 버튼을 눌렀을 경우
     if (Value === '') {
       alert('검색어를 입력해주세요.');
-    }
-    else{
+    } else {
       submitKeyword({ preventDefault: () => {} });
     }
   };
-  
+
   return (
     <Form>
       <SettingBox>
@@ -93,7 +94,9 @@ const PlaceSearch = (): JSX.Element => {
           <Detailinput>
             <div className='SearchContainer'>
               <LocationName>{SearchLocation || meetingPlace}</LocationName>
-              <LocationAddress>{SearchAddress || meetingPlaceAddress}</LocationAddress>
+              <LocationAddress>
+                {SearchAddress || meetingPlaceAddress}
+              </LocationAddress>
             </div>
           </Detailinput>
           <Detailinput>
@@ -102,13 +105,15 @@ const PlaceSearch = (): JSX.Element => {
               type='text'
               id='loc'
               value={loc || detailMeetingPlace}
-              onChange={(e) =>{
+              onChange={(e) => {
                 setLoc(e.target.value);
                 dispatch(
                   setPlace({
-                  detailMeetingPlace :e.target.value,
-                  meetingPlace:meetingPlace
-                }));
+                    detailMeetingPlace: e.target.value,
+                    meetingPlace: meetingPlace,
+                    meetingPlaceAddress: meetingPlaceAddress,
+                  }),
+                );
               }}
               placeholder='상세 위치를 입력해주세요.'
             />
@@ -148,7 +153,7 @@ const CourseAddBtn = styled.div`
   height: 50px;
   font-size: 1rem;
   font-weight: 400;
-  margin-top : 10px;
+  margin-top: 10px;
   margin-bottom: 20px;
   flex-shrink: 0;
   border-radius: 14.163px;
@@ -209,8 +214,6 @@ const Detailinput = styled.div`
   }
 `;
 
-
-
 const CustomIcon = styled(FaSearch)`
   color: #1f1f45;
   width: 30px;
@@ -251,7 +254,7 @@ const FormInput = styled.input`
   width: 300px;
   height: 40px;
   border-radius: 10px;
-  padding : 4px;
+  padding: 4px;
 `;
 
 const BtnBox = styled.div``;

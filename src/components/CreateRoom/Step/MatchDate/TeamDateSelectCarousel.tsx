@@ -171,7 +171,7 @@ const TeamDateSelectCarousel = () => {
     <CarouselContainer>
       <CustomSlider {...settings}>
         {items.map((item, index) => (
-          <div>
+          <div key={index}>
             <BoxWrapper key={index}>
               <Box onClick={() => handleBoxClick(item.name)}>
                 <FlexContainer>

@@ -1,10 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { itemsProps } from '@/components/CreateRoom/Step/SelectCard/PlaceInfoCarousel';
 import produce from 'immer'; // immer 라이브러리 import
-import { ReactNode } from 'react';
 
 export interface SelectedItemsState {
-  map(arg0: (card: any, idx: any) => JSX.Element): import('react').ReactNode;
   house: itemsProps[];
   food: itemsProps[];
   attraction: itemsProps[];
@@ -14,12 +12,9 @@ export interface SelectedItemCheck {
 }
 
 const initialState: SelectedItemsState = {
-  house: [{ IMG: '', name: '' }],
-  food: [{ IMG: '', name: '' }],
-  attraction: [{ IMG: '', name: '' }],
-  map: function (arg0: (card: any, idx: any) => JSX.Element): ReactNode {
-    throw new Error('Function not implemented.');
-  },
+  house: [],
+  food: [],
+  attraction: [],
 };
 
 const SelectedItemsSlice = createSlice({
@@ -78,6 +73,13 @@ const SelectedItemsSlice = createSlice({
         }
       });
     },
+    removeAll: (state) => {
+      return produce(state, (draft) => {
+        draft.house = [];
+        draft.food = [];
+        draft.attraction = [];
+      });
+    },
   },
 });
 export default SelectedItemsSlice.reducer;
@@ -86,4 +88,5 @@ export const {
   SelectedFoodItem,
   SelectedAttractionItem,
   removeSelectedItem,
+  removeAll,
 } = SelectedItemsSlice.actions;
