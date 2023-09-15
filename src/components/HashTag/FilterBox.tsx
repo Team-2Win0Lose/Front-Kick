@@ -22,7 +22,7 @@ interface IArrowBox {
 const FilterBox = () => {
   const [filterState, setFilterState] = useState(true);
   const [resultList, setResultList] = useState([...temp]);
-  const [pinkList, setPinktList] = useState<PinkType[]>([]);
+  let [pinkList, setPinktList] = useState<PinkType[]>([]);
   const [hoverState, setHoverState] = useState<number | undefined>();
   const dispatch = useDispatch();
   const { img, content, title, tag } = useSelector(
@@ -57,21 +57,25 @@ const FilterBox = () => {
 
   const pinkHandler = (obj: PinkType) => () => {
     searchBoxOpen();
-    const set = new Set([...pinkList, obj]);
-    const newPinkList = [...pinkList, obj];
-    setPinktList([...Array.from(set)]);
-    dispatch(
-      setDetail2({
-        tag: newPinkList.map((item) => item),
-        img: img,
-        content: content,
-        title: title,
-      }),
-    );
+    const isDuplicate = pinkList.some((item) => item.idx === obj.idx);
+
+    if (!isDuplicate) {
+      const set = new Set([...pinkList, obj]);
+      const newPinkList = [...pinkList, obj];
+      setPinktList([...Array.from(set)]);
+      dispatch(
+        setDetail2({
+          tag: newPinkList.map((item) => item),
+          img: img,
+          content: content,
+          title: title,
+        }),
+      );
+    }
   };
 
   const removeTag = (idx: number) => {
-    const removeList = itemsToDisplay.filter((obj) => obj.idx !== idx);
+    const removeList = pinkList.filter((obj) => obj.idx !== idx);
     setPinktList([...removeList]);
     dispatch(
       setDetail2({
@@ -82,8 +86,9 @@ const FilterBox = () => {
       }),
     );
   };
-
-  const itemsToDisplay = tag.length === 0 ? pinkList : tag;
+  if (tag.length !== 0) {
+    pinkList = [...tag];
+  }
 
   return (
     <NormalBox>
@@ -111,7 +116,7 @@ const FilterBox = () => {
         </SearchBox>
       ) : (
         <PickBox>
-          {itemsToDisplay?.map((obj) => {
+          {pinkList?.map((obj) => {
             return (
               <PickTag
                 hover={obj.idx === hoverState}
