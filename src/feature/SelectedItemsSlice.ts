@@ -1,7 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { itemsProps } from '@/components/CreateRoom/Step/SelectCard/PlaceInfoCarousel';
 import produce from 'immer'; // immer 라이브러리 import
-import { ReactNode } from 'react';
 
 export interface SelectedItemsState {
   house: itemsProps[];
@@ -13,9 +12,9 @@ export interface SelectedItemCheck {
 }
 
 const initialState: SelectedItemsState = {
-  house: [{ IMG: '', name: '' }],
-  food: [{ IMG: '', name: '' }],
-  attraction: [{ IMG: '', name: '' }],
+  house: [],
+  food: [],
+  attraction: [],
 };
 
 const SelectedItemsSlice = createSlice({
