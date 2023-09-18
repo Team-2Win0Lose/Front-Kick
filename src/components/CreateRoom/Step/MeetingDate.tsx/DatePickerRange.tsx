@@ -79,6 +79,7 @@ const StyledDatePicker = styled(DatePicker)`
   border-radius: 10px;
   align-items:center;
 
+
 `;
 
 const SelectedDateBox = styled.div`

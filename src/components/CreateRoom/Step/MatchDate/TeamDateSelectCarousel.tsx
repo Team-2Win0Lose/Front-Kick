@@ -4,6 +4,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import TeamDateCalendar from './TeamDateCalendar';
 import { useState } from 'react';
+import { customMedia } from '@/util/GlobalStyle';
 
 type TeamName = keyof typeof events;
 
@@ -29,7 +30,7 @@ const events = {
     },
     {
       title: '전북vs서울',
-      start: '2023-09-11',
+      start: '2023-09-12 13:00:00',
       image: 'public/assets/teams/대구FC.png',
     },
   ],
@@ -152,7 +153,7 @@ const TeamDateSelectCarousel = () => {
     dots: false,
     autoplay: false,
     infinite: true,
-    slidesToShow: 5,
+    slidesToShow: 7,
     slidesToScroll: 2,
     swipeToSlide: true,
     autoplaySpeed: 3000,
@@ -180,7 +181,7 @@ const TeamDateSelectCarousel = () => {
               </Box>
             </BoxWrapper>
             <NameWrapper>
-              <Name>{item.name}</Name>
+                <Name>{item.name}</Name>
             </NameWrapper>
           </div>
         ))}
@@ -212,12 +213,18 @@ const CustomSlider = styled(Slider)`
   }
 `;
 
+const DIV = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
 const CarouselContainer = styled.div`
   display: flex;
   flex-direction: column;
 `;
 
 const BoxWrapper = styled.div`
+  display:flex;
   justify-content: center;
   align-items: center;
 `;
@@ -229,10 +236,10 @@ const TeamCalendarContainer = styled.div`
 const Box = styled.div`
   position: relative;
   display: flex;
-  justify-content: center;
-  align-items: center;
   width: 70px;
   height: 70px;
+  justify-content: center;
+  align-items: center;
   background: #eeeeee;
   border-radius: 50%;
   margin-top: 10%;
@@ -240,18 +247,21 @@ const Box = styled.div`
 `;
 
 const IMG = styled.img`
-  width: 70%;
-  height: 70%;
+  width: 70px;
+  height: 70px;
   object-fit: contain;
   justify-content: center;
   align-items: center;
 `;
 
 const Name = styled.div`
-  font-size: 10px;
+  font-size: 15px;
   color: #ffffff;
   margin-top: 10%;
   margin-bottom: 10%;
+  ${customMedia.lessThan('tablet')`
+		font-size: 10px;
+	`}
 `;
 
 const FlexContainer = styled.div`

@@ -73,9 +73,9 @@ const TeamCardCarousel = () => {
                     </FlexText>
                   </FlexColumn>
                 </FlexColumnInside>
-                <FilterBtn onClick={handleOpenSearchModal}>
+                {/* <FilterBtn onClick={handleOpenSearchModal}>
                   <InfoBox>상세정보</InfoBox>
-                </FilterBtn>
+                </FilterBtn> */}
               </FlexContainerRight>
             </FlexContainer>
           </Box>
@@ -148,11 +148,12 @@ const FlexContainerRight = styled.div`
 const FlexColumn = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
+
 `;
 
 const FlexColumnInside = styled.div`
   display: flex;
+  flex-direction: column;
 `;
 
 const FlexItem = styled.div`

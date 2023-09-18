@@ -14,7 +14,7 @@ const Account = () => {
       {isLogin ? (
         <>
           {' '}
-          <CustomIcon1 />
+          {/* <CustomIcon1 /> */}
         </>
       ) : (
         <>

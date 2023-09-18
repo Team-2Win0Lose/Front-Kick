@@ -147,7 +147,7 @@ export default StepHeader;
 const RoomTitle = styled.h1`
   display: flex;
   color: #000;
-  font-size: 24px;
+  font-size: 30px;
   font-weight: bold;
 `;
 
@@ -170,8 +170,8 @@ const BackIcon = styled(IoIosArrowBack)`
 `;
 
 const CloseIcon = styled(AiOutlineClose)`
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   color: #000000;
   justify-content: right;
   align-items: right;

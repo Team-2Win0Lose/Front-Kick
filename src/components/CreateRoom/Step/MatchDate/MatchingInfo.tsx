@@ -33,7 +33,7 @@ const MatchingInfo = (props: MatchingInfoProps) => {
   const [boxColor, setBoxColor] = useState('#eeeeee');
   const dispatch = useDispatch();
   const handleSelectClick = (item: {date:string, stadium: string, homename:string, awayname:string}) => {
-    setBoxColor('#42b72a');
+    setBoxColor('#2a71b7');
     dispatch(setMatch(item))
   };
   
@@ -91,8 +91,8 @@ const Box = styled.div`
   position: relative;
   justify-content: center;
   align-items: center;
-  width: 90%;
-  height: 100%;
+  width: 100%;
+  height: 00%;
   background: #eeeeee;
   border-radius: 20px;
   margin: 10px auto;
