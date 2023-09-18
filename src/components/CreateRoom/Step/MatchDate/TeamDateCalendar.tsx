@@ -101,27 +101,27 @@ const CalendarContainer = styled.div`
     padding-top: 3.5px;
     background: #e5edff;
     border: 1px solid #dddee0;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 19px;
-    color: #7b7b7b;
+    font-weight: 1000;
+    font-size: 26px;
+    color: black;
   }
 
   // 오늘 날짜 배경색
   .fc .fc-daygrid-day.fc-day-today {
-
     color: #1F1F45;
   }
 
   // 날짜별 그리드
   .fc .fc-daygrid-day-frame {
     padding: 10px;
+    
+    
   }
-
+  
   // 날짜  ex) 2일
   .fc .fc-daygrid-day-top {
     flex-direction: row;
-    margin-bottom: 2px;
+    margin-bottom: 10px;
   }
 
   // 각 이벤트 요소
@@ -133,11 +133,23 @@ const CalendarContainer = styled.div`
     font-size: 14px;
     /* background-color:#1F1F45; */
   }
+    /* 일요일 날짜 빨간색 */
+  .fc-day-sun a {
+    color: red;
+    text-decoration: none;
+  }
+
+  /* 토요일 날짜 파란색 */
+  .fc-day-sat a {
+    color: blue;
+    text-decoration: none;
+  }
 `;
 
 const EventContainer = styled.div`
+  justify-content:center;
+  align-items: center;
   color: #fff;
-  padding: 4px;
   border-radius: 4px;
 `;
 
@@ -152,6 +164,9 @@ const MatchingInfoContainer = styled.div`
 `;
 
 const EventImage = styled.img`
-  width: 30px;
-  height: 30px;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;

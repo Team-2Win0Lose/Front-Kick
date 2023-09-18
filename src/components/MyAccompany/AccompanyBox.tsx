@@ -200,6 +200,7 @@ const Body = styled.div`
 `;
 const Title = styled.p`
   font-size: 12px;
+  color: black;
 `;
 const Cards = styled.div`
   display: flex;

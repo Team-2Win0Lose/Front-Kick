@@ -41,7 +41,8 @@
     "react-tagify": "^1.0.7",
     "redux-persist": "^6.0.0",
     "slick-carousel": "^1.8.1",
-    "styled-components": "^5.3.10",
+    "styled-components": "^5.3.11",
+    "styled-media-query": "^2.1.2",
     "styled-reset": "^4.4.7"
   },
   "devDependencies": {
@@ -52,7 +53,7 @@
     "@types/react-dom": "^18.0.10",
     "@types/react-icons": "^3.0.0",
     "@types/react-modal": "^3.16.0",
-    "@types/styled-components": "^5.1.26",
+    "@types/styled-components": "^5.1.27",
     "@types/yaireo__tagify": "^4.17.1",
     "@typescript-eslint/eslint-plugin": "^5.54.1",
     "@vitejs/plugin-react": "^3.1.0",

@@ -5,35 +5,31 @@ import Account from '../Headerbar/Account';
 import Navbar from '../Headerbar/Navbar/Navbar';
 import { useSelector } from 'react-redux';
 import { autoCheck } from '@/feature/authSlice';
+import { customMedia } from '@/util/GlobalStyle';
 
 const Header = () => {
   const isLogin = useSelector((state: autoCheck) => state.auth.isAuthenticated);
 
-  return isLogin ? (
-    <div>
-      <Head>
-        <Logo></Logo>
-        <div style={{ display: 'flex' }}>
-          <Account></Account>
-          <Menu></Menu>
-        </div>
+  return (
+    <Container>
+      <Head className={isLogin ? '' : 'no-header'}>
+        <Logo />
+        <Account />
+        {isLogin && <Menu />}
       </Head>
+      <Separator />
       <Navbar />
-    </div>
-  ) : (
-    <div>
-      <Head>
-        <Logo></Logo>
-        <div style={{ display: 'flex' }}>
-          <Account></Account>
-        </div>
-      </Head>
-      <Navbar />
-    </div>
+    </Container>
   );
 };
 
 export default Header;
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
 
 const Head = styled.header`
   height: 100%;
@@ -48,4 +44,20 @@ const Head = styled.header`
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  ${customMedia.lessThan('mobile')`
+		font-size: 15px;
+	`}
+
 `;
+
+const Separator = styled.div`
+  height: 1px; 
+  background-color: #ccc; 
+  margin: 10px 0;
+  ${customMedia.lessThan('mobile')`
+		margin: 2px 0;
+	`}
+`;
+
+
+
