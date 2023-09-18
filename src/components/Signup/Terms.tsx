@@ -1,13 +1,10 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { useDispatch } from 'react-redux';
-import { isChecked, isNotChecked } from '../../feature/TermSlice';
 
 type Props = {};
 
 const Terms = (props: Props) => {
-  const dispatch = useDispatch();
   const [allAgreed, setallAgreed] = useState(false);
   const [agreements, setagreements] = useState({
     termsAgreed: false,
@@ -46,9 +43,6 @@ const Terms = (props: Props) => {
     );
     setallAgreed(checked);
   };
-  useEffect(() => {
-    allAgreed ? dispatch(isChecked()) : dispatch(isNotChecked());
-  }, [allAgreed]);
 
   return (
     <TermsWrap>

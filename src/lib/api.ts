@@ -7,16 +7,14 @@ import { AccompanyPost } from './interface';
 // 로그인 요청을 보내는 함수
 export const login = async (email: string, password: string) => {
   try {
-    const res = await client('/api/user/login', {
+    const res = await client('/api/user/auth/', {
       method: 'post',
       data: {
         email,
         password,
       },
     });
-    return {
-      data: res.data,
-    };
+    return res;
   } catch (error) {
     if (error instanceof AxiosError) {
       return {
@@ -50,7 +48,7 @@ export const signup = async (
         agree_terms_of_service,
       },
     });
-    return { data: res.data };
+    return res;
   } catch (error) {
     if (error instanceof AxiosError) {
       return {

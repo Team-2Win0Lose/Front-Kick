@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const client = axios.create({
-  baseURL: 'http://localhost:5173/',
+  baseURL: 'https://kick-back.azurewebsites.net',
   headers: {
     'Content-Type': 'application/json',
   },

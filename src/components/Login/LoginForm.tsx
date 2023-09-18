@@ -34,11 +34,18 @@ const LoginForm = (props: any) => {
   const onSubmit: SubmitHandler<FormValue> = async (data) => {
     try {
       const { email, password } = data;
-      await login(email, password);
+      const res = await login(email, password);
+      console.log(res);
 
-      let token = getCookie('accessToken');
-      const res = { email, password, token };
-      dispatch(setUser(res));
+      dispatch(
+        setUser({
+          id: res.user.id,
+          email: res.user.email,
+          name: res.user.name,
+          token: res.token.access,
+          isAuthenticated: true,
+        }),
+      );
       location.reload();
       navigate('/home');
     } catch (error) {

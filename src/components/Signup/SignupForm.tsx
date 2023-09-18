@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { SubmitHandler, useForm } from 'react-hook-form';
-import SelectBox from './SelectBox';
-import Icon_checked from './asset/icon_checked';
-import Icon_unchecked from './asset/icon_unchecked';
+import { SubmitHandler, useForm, Controller } from 'react-hook-form';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import { ko } from 'date-fns/esm/locale';
+
 import Terms from './Terms';
 import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { signup } from '@/lib/api';
+import { setUser } from '@/feature/authSlice';
 interface IAuthForm {
   email: string;
   name: string;
@@ -17,51 +19,25 @@ interface IAuthForm {
   gender: string;
   birth_date: string;
   agree_terms_of_service: boolean;
+  agree_terms_of_service1: boolean;
+  agree_terms_of_service2: boolean;
   extraError?: string;
 }
 
 const SignupForm = (props: any) => {
   const navigate = useNavigate();
-  const [isClicked, setisClicked] = useState(0);
-  const handleClick = () => {
-    setisClicked(isClicked + 1);
-  };
-  const isChecked = useSelector((state: any) => state.term.isAllChecked);
+  const dispatch = useDispatch();
   const {
     register,
     formState: { errors },
     handleSubmit,
     setError,
+    control,
+    getValues,
   } = useForm<IAuthForm>({ mode: 'onBlur' });
-  const [selectedGender, setselectedGender] = useState<string>('male');
-  const handleDateChange = (year: number, month: number, day: number) => {
-    // 선택된 생년월일 값들을 처리하는 로직을 작성합니다.
-    console.log('Year:', year);
-    console.log('Month:', month);
-    console.log('Day:', day);
-  };
 
-  const checkEffect = useEffect(() => {
-    if (isChecked === true && isClicked !== 0) {
-      navigate('/signup/onboarding');
-    } else if (isChecked === false && isClicked !== 0) {
-      alert('약관 동의를 해주세요');
-    }
-  }, [isClicked]);
-
-  const handleGenderChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setselectedGender(event.target.value);
-  };
-  const dummySignUp = {
-    email: 'whtmdgn1409@naver.com',
-    name: '조승후',
-    password: 'tmdgn-1409!',
-    phone_number: '010-8239-3757',
-    gender: '남성',
-    birth_date: '1998-06-13',
-    agree_terms_of_service: true,
-  };
   const onValid = async (data: IAuthForm) => {
+    const { agree_terms_of_service1, agree_terms_of_service2 } = getValues();
     if (data.password !== data.passwordConfirm) {
       setError(
         'passwordConfirm', // 에러 핸들링할 input요소 name
@@ -70,24 +46,49 @@ const SignupForm = (props: any) => {
       );
     } else {
       try {
-        const {
+        let {
           email,
-          name,
           password,
+          name,
           phone_number,
           gender,
           birth_date,
           agree_terms_of_service,
-        } = dummySignUp;
-        await signup(
+        } = data;
+        const date = new Date(birth_date);
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
+
+        const formattedDate = `${year}-${month}-${day}`;
+        if (agree_terms_of_service1 && agree_terms_of_service2) {
+          agree_terms_of_service = true;
+        } else {
+          setError(
+            'agree_terms_of_service',
+            { message: '약관에 모두 동의해야합니다.' },
+            { shouldFocus: true },
+          );
+        }
+        const res = await signup(
           email,
-          name,
           password,
+          name,
           phone_number,
           gender,
-          birth_date,
+          formattedDate,
           agree_terms_of_service,
         );
+        dispatch(
+          setUser({
+            id: res.user.id,
+            email: res.user.email,
+            name: res.user.name,
+            token: res.token.access,
+            isAuthenticated: true,
+          }),
+        );
+        navigate('/signup/onboarding');
       } catch (error) {
         console.error(error);
       }
@@ -102,10 +103,6 @@ const SignupForm = (props: any) => {
       .replace(/(\-{1,2})$/g, '');
   };
 
-  let now = new Date();
-  let nowYear = now.getFullYear();
-  let nowMonth = now.getMonth() + 1;
-  let nowDay = now.getDate();
   return (
     <Form onSubmit={handleSubmit(onValid)}>
       <FormTitle>입력사항</FormTitle>
@@ -131,12 +128,12 @@ const SignupForm = (props: any) => {
                 message:
                   '비밀번호는 숫자, 영문 대문자, 소문자, 특수문자를 포함한 8글자 이상이어야 합니다.',
               },
-              pattern: {
-                value:
-                  /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
-                message:
-                  '비밀번호는 숫자, 영문 대문자, 소문자, 특수문자를 포함한 8글자 이상이어야 합니다.',
-              },
+              // pattern: {
+              //   value:
+              //     /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
+              //   message:
+              //     '비밀번호는 숫자, 영문 대문자, 소문자, 특수문자를 포함한 8글자 이상이어야 합니다.',
+              // },
             })}
             placeholder='비밀번호를 입력해주세요.'
           />
@@ -192,36 +189,56 @@ const SignupForm = (props: any) => {
             })}
           >
             <RadioWrap id='male'>
-              {selectedGender === 'male' ? (
-                <Icon_checked />
-              ) : (
-                <Icon_unchecked />
-              )}
               <span>남성</span>
             </RadioWrap>
             <RadioWrap id='female'>
-              {selectedGender === 'female' ? (
-                <Icon_checked />
-              ) : (
-                <Icon_unchecked />
-              )}
-
               <span>여성</span>
             </RadioWrap>
           </GenderWrap>
-          <SelectBox
-            year={nowYear}
-            month={nowMonth}
-            day={nowDay}
-            onChange={handleDateChange}
-            {...(register('birth_date'),
-            {
-              required: true,
-            })}
+          <Controller
+            name='birth_date'
+            control={control}
+            render={({ field }) => (
+              <StyledDatePicker2
+                locale={ko}
+                selected={field.value ? new Date(field.value) : null}
+                onChange={(date) => field.onChange(date)}
+                showYearDropdown
+                dateFormatCalendar='MMMM'
+                yearDropdownItemNumber={15}
+                scrollableYearDropdown
+              />
+            )}
           />
         </Field>
       </div>
-      <Terms {...(register('agree_terms_of_service'), {})} />
+      <div>
+        <label>
+          <input
+            type='checkbox'
+            {...register('agree_terms_of_service1', {
+              required: '약관을 동의해주세요',
+            })}
+          />
+          [필수] 약관 1에 동의합니다.
+        </label>
+      </div>
+      <div>
+        <label>
+          <input
+            type='checkbox'
+            {...register('agree_terms_of_service2', {
+              required: '약관을 동의해주세요',
+            })}
+          />
+          [필수] 약관 2에 동의합니다.
+        </label>
+      </div>
+      <Warn>
+        {errors?.agree_terms_of_service1?.message ||
+          errors?.agree_terms_of_service2?.message}
+      </Warn>
+
       <SubmitBtn type='submit'>가입하기</SubmitBtn>
       {errors?.extraError?.message && <p>{errors?.extraError?.message}</p>}
     </Form>
@@ -325,4 +342,40 @@ const RadioWrap = styled.option`
     margin-top: 1px;
   }
 `;
+const StyledDatePicker2 = styled(DatePicker)`
+  width: 275px;
+  height: 40px;
+  font-size: 12px;
+  border-radius: 10px;
+  align-items: center;
+`;
+
+const SelectedDateBox = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  font-weight: bold;
+`;
+
+const InputDate = styled.div`
+  width: 275px;
+  background-color: #f5f5f5;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 3px;
+  border: none;
+  text-align: center;
+`;
+const InputDateDiv = styled.div`
+  font-size: 16px;
+  font-weight: bold;
+  margin: 5px;
+  text-align: center;
+`;
+
 export default SignupForm;
