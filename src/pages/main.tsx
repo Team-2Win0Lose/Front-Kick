@@ -17,7 +17,7 @@ const Main = (props: Props) => {
         isLogin ? (
           <div>
             <P>
-              👋 나의 동행일정 (0)
+              👋 현재 나의 동행일정 (0)
             </P>
             <Mypage>
             </Mypage>
@@ -51,7 +51,7 @@ const P = styled.div`
   justify-content: center;
   align-items: center;
   margin: 10px;
-  font-size: 25px;
+  font-size: 20px;
   font-weight: bold;
 `;
 
