@@ -37,7 +37,7 @@ export interface AccompanyMadeByMe {
   closeDate: string;
   title: ReactNode;
   nowStatus: ReactNode;
-  closedDate(closedDate: any): import("react").ReactNode;
+  closedDate(closedDate: any): import('react').ReactNode;
   meetingPlace: ReactNode;
   tag: any;
   nowHeadCount: ReactNode;
