@@ -65,6 +65,9 @@ function Sidebar({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: any }) {
   };
 
   return isLogin ? (
+    <>
+    {isOpen && <Backdrop onClick={toggleSide} />}
+   
     <SideBarWrap id='sidebar' ref={outside} className={isOpen ? 'open' : ''}>
       <AiOutlineClose
         size='30'
@@ -103,6 +106,7 @@ function Sidebar({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: any }) {
         </Logout>
       </ul>
     </SideBarWrap>
+    </>
   ) : (
     <SideBarWrap id='sidebar' ref={outside} className={isOpen ? 'open' : ''}>
       <AiOutlineClose
@@ -128,11 +132,10 @@ export default Sidebar;
 const SideBarWrap = styled.div`
   z-index: 5;
   padding: 10px;
-  border-radius: 15px 0 0 15px;
   background-color: #1f1f45;
   height: 100%;
-  width: 90%;
-  right: -90%;
+  width: 25%;
+  right: -25%;
   top: 0;
   position: fixed;
   transition: 0.5s ease;
@@ -168,4 +171,14 @@ const LogoutBtn = styled.div`
   border: 1px solid white;
   color: white;
   border-radius: 12px;
+`;
+
+const Backdrop = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* 어두운 배경색과 투명도 조절 */
+  z-index: 4; /* 배경 레이어가 사이드바 레이어 위에 나타나도록 설정 */
 `;

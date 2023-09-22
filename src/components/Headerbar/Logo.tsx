@@ -18,10 +18,10 @@ const Logo = () => {
 export default Logo
 
 const IMG = styled.img`
-  height: 40px;
+  height: 30px;
   font-size: 20px;
   ${customMedia.lessThan('mobile')`
-		height: 30px;
+		height: 20px;
 	`}
 `;
 

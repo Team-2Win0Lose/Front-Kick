@@ -77,7 +77,15 @@ const SignupForm = (props: any) => {
           formattedDate,
           agree_terms_of_service,
         );
-        dispatch(setUser({ res }));
+        dispatch(
+          setUser({
+            id: res.user.id,
+            email: res.user.email,
+            name: res.user.name,
+            token: res.token.access,
+            isAuthenticated: true,
+          }),
+        );
         navigate('/signup/onboarding');
       } catch (error) {
         console.error(error);

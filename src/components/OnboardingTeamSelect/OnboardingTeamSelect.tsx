@@ -4,6 +4,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useState } from "react";
 import SelectTeamCard from "./SelectTeamCard";
+import { customMedia } from "@/util/GlobalStyle";
 
 interface itemsProps {
   rating: number;
@@ -15,11 +16,10 @@ interface itemsProps {
   end: number;
 }
 
-
 const items:itemsProps[] = [
   {
     rating: 1,
-    logo: '/public/assets/teams/강원FC.png',
+    logo: 'https://kickstorage.blob.core.windows.net/logo/gangwon_fc.png',
     teamcolor: '#8e2424',
     name: '강원FC',
     ing: 112,
@@ -28,7 +28,7 @@ const items:itemsProps[] = [
     },
     {
     rating: 2,
-    logo: '/public/assets/teams/광주FC.png',
+    logo: 'https://kickstorage.blob.core.windows.net/logo/gwangju_fc.png',
     teamcolor: '#20ac1b',
     name: '광주FC',
     ing: 123,
@@ -37,7 +37,7 @@ const items:itemsProps[] = [
     },
     {
     rating: 3,
-    logo: '/public/assets/teams/대구FC.png',
+    logo: 'https://kickstorage.blob.core.windows.net/logo/daegu_fc.png',
     teamcolor: '#8e14cb',
     name: '대구FC',
     ing: 312,
@@ -46,7 +46,7 @@ const items:itemsProps[] = [
     },
     {
     rating: 4,
-    logo: '/public/assets/teams/대전하나시티즌.png',
+    logo: 'https://kickstorage.blob.core.windows.net/logo/daejun_hana_citizen.png',
     teamcolor: '#320195',
     name: '대전하나시티즌',
     ing: 212,
@@ -55,7 +55,7 @@ const items:itemsProps[] = [
     },
     {
     rating: 5,
-    logo: '/public/assets/teams/수원삼성블루윙즈.png',
+    logo: 'https://kickstorage.blob.core.windows.net/logo/suwon_samsung_bluewings.png',
     teamcolor: '#47c18c',
     name: '수원삼성블루윙즈',
     ing: 152,
@@ -64,7 +64,7 @@ const items:itemsProps[] = [
     },
     {
     rating: 6,
-    logo: '/public/assets/teams/수원FC.png',
+    logo: 'https://kickstorage.blob.core.windows.net/logo/suwon_fc.png',
     teamcolor: '#99fce1',
     name: '수원FC',
     ing: 172,
@@ -73,7 +73,7 @@ const items:itemsProps[] = [
     },
     {
     rating: 7,
-    logo: '/public/assets/teams/울산현대.png',
+    logo: 'https://kickstorage.blob.core.windows.net/logo/ulsan_hyundai.png',
     teamcolor: '#e600cb',
     name: '울산현대',
     ing: 112,
@@ -82,7 +82,7 @@ const items:itemsProps[] = [
     },
     {
     rating: 8,
-    logo: '/public/assets/teams/인천유나이티드.png',
+    logo: 'https://kickstorage.blob.core.windows.net/logo/incheon_united.png',
     teamcolor: '#184fe6',
     name: '인천유나이티드',
     ing: 912,
@@ -91,7 +91,7 @@ const items:itemsProps[] = [
     },
     {
     rating: 9,
-    logo: '/public/assets/teams/전북현대모터스.png',
+    logo: 'https://kickstorage.blob.core.windows.net/logo/jeonbuk_hyundai_motors.png',
     teamcolor: '#0c3b1a3d',
     name: '전북현대모터스',
     ing: 124,
@@ -101,7 +101,7 @@ const items:itemsProps[] = [
     },
     {
     rating: 10,
-    logo: '/public/assets/teams/제주유나이티드.png',
+    logo: 'https://kickstorage.blob.core.windows.net/logo/jeju_united.png',
     teamcolor: '#0effe3',
     name: '제주유나이티드',
     ing: 992,
@@ -111,7 +111,7 @@ const items:itemsProps[] = [
     },
     {
     rating: 11,
-    logo: '/public/assets/teams/포항스틸러스.png',
+    logo: 'https://kickstorage.blob.core.windows.net/logo/pohang_stealus.png',
     teamcolor: '#3f07a7',
     name: '포항스틸러스',
     ing: 132,
@@ -121,7 +121,7 @@ const items:itemsProps[] = [
     },
     {
     rating: 12,
-    logo: '/public/assets/teams/FC서울.png',
+    logo: 'https://kickstorage.blob.core.windows.net/logo/fc_seoul.png',
     teamcolor: '#ff0000',
     name: 'FC서울',
     ing: 12,
@@ -143,27 +143,33 @@ const OnboardingTeamSelect = () => {
     dots: false,
     autoplay: false,
     infinite: true,
-    slidesToShow: 5,
+    slidesToShow: 7,
     slidesToScroll: 2,
     swipeToSlide: true,
     autoplaySpeed: 3000,
     speed: 500,
+    accessibility: true, 
+    prevArrow: <PrevArrow>&#8249;</PrevArrow>, 
+    nextArrow: <NextArrow>&#8250;</NextArrow>,
+    
   }
   
   return (
     <CarouselContainer>
       <CustomSlider {...settings}>
         {items.map((item, index) => (
+          <div key={index}>
           <BoxWrapper key={index}>
             <Box onClick={() => handleBoxClick(item.name)}>
               <FlexContainer>
-                <LogoImage src={item.logo} alt={item.name} />
+                <IMG src={item.logo} alt={item.name} />
               </FlexContainer>
             </Box>
-            <NameWrapper>
-              <Name>{item.name}</Name>
-            </NameWrapper>
           </BoxWrapper>
+          <NameWrapper>
+              <Name>{item.name}</Name>
+          </NameWrapper>
+        </div>
         ))}
       </CustomSlider>
       {selectedTeam && (
@@ -197,43 +203,54 @@ const CustomSlider = styled(Slider)`
   }
 `;
 
+const DIV = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
 const CarouselContainer = styled.div`
   display: flex;
   flex-direction: column;
 `;
 
 const BoxWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display:flex;
   justify-content: center;
+  align-items: center;
+`;
+
+const TeamCalendarContainer = styled.div`
+  background-color: white;
 `;
 
 const Box = styled.div`
   position: relative;
   display: flex;
-  justify-content: center;
-  align-items: center;
   width: 70px;
   height: 70px;
-  background: #eeeeee;
+  justify-content: center;
+  align-items: center;
   border-radius: 50%;
-  margin-top: 15%;
-  margin-bottom: 5%;
+  margin-top: 10%;
   overflow: hidden;
 `;
 
-const LogoImage = styled.img`
-  width: 80%;
-  height: 80%;
+const IMG = styled.img`
+  width: 70px;
+  height: 70px;
   object-fit: contain;
+  justify-content: center;
+  align-items: center;
 `;
 
 const Name = styled.div`
-  font-size: 10px;
+  font-size: 15px;
   color: #ffffff;
   margin-top: 10%;
   margin-bottom: 10%;
+  ${customMedia.lessThan('tablet')`
+		font-size: 10px;
+	`}
 `;
 
 const FlexContainer = styled.div`
@@ -247,4 +264,24 @@ const NameWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+`;
+
+const PrevArrow = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  z-index: 1;
+  cursor: pointer;
+  font-size: 24px;
+`;
+
+const NextArrow = styled.div`
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  z-index: 1;
+  cursor: pointer;
+  font-size: 24px;
 `;

@@ -17,11 +17,11 @@ const BannerCarousel = () => {
     }
   
     return (
-        <div className="carousel">
+        <Container className="carousel">
             <Slider {...settings}>
                 <Box>
                     <CenteredContent>
-                    <IMG src='/assets/banner1.png' alt='logo'/>
+                    <IMG src='/assets/banner3.png' alt='logo'/>
                     </CenteredContent>
                 </Box>
                 <Box>
@@ -31,12 +31,12 @@ const BannerCarousel = () => {
                 </Box>
                 <Box>
                     <CenteredContent>
-                    <IMG src='/assets/banner3.png' alt='logo'/>
+                    <IMG src='/assets/banner1.png' alt='logo'/>
                     </CenteredContent>
                 </Box>
 
             </Slider>
-        </div>
+        </Container>
     );
 }
 
@@ -59,7 +59,10 @@ const CenteredContent = styled.div`
 
 const IMG = styled.img`
   width: 100%;
-  height: 70%;
+  height: 100%;
   border-radius: 20px;
   object-fit: contain;
 `;
+const Container = styled.div`
+    width: 100%;
+`
