@@ -17,8 +17,11 @@ const SelectTeamCard = (props: SelectTeamCardProps) => {
   return (
     <Wrap>
       <BodyContainer>
-        <BodyHead teamcolor={props.teamcolor}></BodyHead>
-        <HeadLogo logo={props.logo}></HeadLogo>
+        <BodyHead teamcolor={props.teamcolor}>
+        </BodyHead>
+        <HeadLogo>
+          <IMG src={props.logo} />
+        </HeadLogo>
         <BodyBody>
           <TeamName>{props.name}</TeamName>
           <TeamInfo>
@@ -48,6 +51,7 @@ export default SelectTeamCard;
 const Wrap = styled.div`
   position: relative;
   width: 100%;
+  padding: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -75,24 +79,27 @@ const BodyHead = styled.div<{ teamcolor: string }>`
   border-radius: 12px 12px 0 0;
 `;
 
-const HeadLogo = styled.div<{ logo: string }>`
+const HeadLogo = styled.div`
   z-index: 3;
-  position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 16px;
+  object-fit: cover;
   font-weight: bold;
-  top: 24px;
-  left: 42px;
+  margin-bottom: 120px;
   width: 180px;
   height: 180px;
   border: none;
   border-radius: 90px;
-  background-image: url(${({ logo }) => logo}); 
-  background-size: cover; 
-  background-repeat: no-repeat; 
-  background-color: transparent; 
+
+`;
+
+const IMG = styled.img`
+  width: 180px;
+  height: 180px;
+  object-fit: contain;
+  
 `;
 
 const BodyBody = styled.div`
@@ -157,4 +164,5 @@ const Number = styled.p`
 `;
 const About = styled.p`
   font-size: 10px;
+  font-weight: bolder;
 `;

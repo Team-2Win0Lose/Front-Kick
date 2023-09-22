@@ -156,8 +156,11 @@ const TeamDateSelectCarousel = () => {
     slidesToShow: 7,
     slidesToScroll: 2,
     swipeToSlide: true,
+    accessibility: true, 
     autoplaySpeed: 3000,
     speed: 500,
+    prevArrow: <PrevArrow>&#8249;</PrevArrow>,
+    nextArrow: <NextArrow>&#8250;</NextArrow>, 
   };
 
   const [selectedTeam, setSelectedTeam] = useState<keyof typeof events | null>(
@@ -240,7 +243,6 @@ const Box = styled.div`
   height: 70px;
   justify-content: center;
   align-items: center;
-  background: #eeeeee;
   border-radius: 50%;
   margin-top: 10%;
   overflow: hidden;
@@ -275,4 +277,24 @@ const NameWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+`;
+
+const PrevArrow = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  z-index: 1;
+  cursor: pointer;
+  font-size: 24px;
+`;
+
+const NextArrow = styled.div`
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  z-index: 1;
+  cursor: pointer;
+  font-size: 24px;
 `;

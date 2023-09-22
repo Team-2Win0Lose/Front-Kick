@@ -40,14 +40,14 @@ const TeamCardCarousel = () => {
     fetchData();
   }, []);
 
-  const handleOpenSearchModal = () => {
-    dispatch(
-      openModal({
-        modalType: 'TeamCardModal',
-        isOpen: true,
-      }),
-    );
-  };
+  // const handleOpenSearchModal = () => {
+  //   dispatch(
+  //     openModal({
+  //       modalType: 'TeamCardModal',
+  //       isOpen: true,
+  //     }),
+  //   );
+  // };
 
   return (
     <div className='carousel'>
