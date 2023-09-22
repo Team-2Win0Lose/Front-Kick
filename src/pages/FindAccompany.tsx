@@ -20,5 +20,4 @@ const Form = styled.div`
   flex-direction: column;
   justify-content: center;
   align-content: center;
-  margin: 0 auto;
 `;

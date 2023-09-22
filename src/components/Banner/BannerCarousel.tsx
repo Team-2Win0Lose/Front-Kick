@@ -21,17 +21,17 @@ const BannerCarousel = () => {
             <Slider {...settings}>
                 <Box>
                     <CenteredContent>
-                    <IMG src='/assets/banner5.png' alt='logo'/>
+                    <IMG src='/assets/banner1.png' alt='logo'/>
                     </CenteredContent>
                 </Box>
                 <Box>
                     <CenteredContent>
-                    <IMG src='/assets/banner4.png' alt='logo'/>
+                    <IMG src='/assets/banner2.png' alt='logo'/>
                     </CenteredContent>
                 </Box>
                 <Box>
                     <CenteredContent>
-                    <IMG src='/assets/banner5.png' alt='logo'/>
+                    <IMG src='/assets/banner3.png' alt='logo'/>
                     </CenteredContent>
                 </Box>
 
@@ -58,7 +58,8 @@ const CenteredContent = styled.div`
 `;
 
 const IMG = styled.img`
-  width: 90%;
-  height: 90%;
+  width: 100%;
+  height: 70%;
   border-radius: 20px;
+  object-fit: contain;
 `;

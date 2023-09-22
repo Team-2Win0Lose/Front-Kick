@@ -17,15 +17,13 @@ const Account = () => {
           {/* <CustomIcon1 /> */}
         </>
       ) : (
-        <>
-          <P
-            onClick={() => {
-              navigate('/login');
-            }}
-          >
-            로그인
-          </P>
-        </>
+        <P
+          onClick={() => {
+            navigate('/login');
+          }}
+        >
+          로그인
+        </P>
       )}
     </div>
   );
@@ -39,12 +37,10 @@ const CustomIcon1 = styled(VscAccount)`
 `;
 const P = styled.div`
   //color: white;
-  width: 50px;
-  height: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-right: 10px;
+  font-size: 22px;
 `;
 
 export default Account;
