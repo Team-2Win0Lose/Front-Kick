@@ -40,7 +40,7 @@ const P = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 22px;
+  font-size: 20px;
 `;
 
 export default Account;

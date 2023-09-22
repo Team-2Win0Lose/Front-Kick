@@ -22,7 +22,7 @@ const AccompanyList = (props: Props) => {
 const ListContainer = styled.div`
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4열로 배치 */
+  grid-template-columns: repeat(3, 1fr); /* 4열로 배치 */
   justify-content: center;
   align-content: center; 
   gap:10px;

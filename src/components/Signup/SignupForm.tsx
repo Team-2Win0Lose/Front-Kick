@@ -80,12 +80,7 @@ const SignupForm = (props: any) => {
           agree_terms_of_service,
         );
         dispatch(
-          setUser({
-            id: res.user.id,
-            email: res.user.email,
-            name: res.user.name,
-            token: res.token.access,
-            isAuthenticated: true,
+          setUser({res
           }),
         );
         navigate('/signup/onboarding');

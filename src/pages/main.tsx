@@ -22,6 +22,9 @@ const Main = (props: Props) => {
               👋 현재 나의 동행일정 (0)
             </P>
             <Mypage>
+              <Font>
+              예정 중인 동행이 없어요 🥲
+              </Font>
             </Mypage>
           </div>
       ) : (
@@ -68,7 +71,15 @@ const Container = styled.div`
 const P = styled.div`
   justify-content: center;
   align-items: center;
+  font-size: 20px;
+  font-weight: bold;
+`;
+
+const Font = styled.div`
+  justify-content: center;
+  align-items: center;
   margin: 10px;
+  color:#5c5c5c;
   font-size: 20px;
   font-weight: bold;
 `;
@@ -77,10 +88,11 @@ const Mypage = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 10px 0;
   width: 100%;
-  height: 10vh;
-  background: #eae9e9;
-  margin: 10px;
+  height: 30vh;
+  background: #eeeeee;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
   border-radius: 40px;
 `;
 

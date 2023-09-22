@@ -18,7 +18,7 @@ const GlobalStyle = createGlobalStyle`
     @font-face {
     font-family: "Line";
     font-weight: 50;
-    src: url( "./public/fonts/LINESeedKR-Bd.ttf") format("truetype");
+    src: url( "./public/fonts/NanumBarunGothicBold.ttf") format("truetype");
     }
     #root {
         overflow: hidden;
@@ -33,7 +33,7 @@ const GlobalStyle = createGlobalStyle`
 
   @media only screen and (min-width: 768px) {
   body {
-    max-width: 1500px;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 0 50px;
     font-family: "Line", sans-serif;

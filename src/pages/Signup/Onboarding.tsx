@@ -50,7 +50,7 @@ const TitleForm = styled.div`
   margin-bottom: 20px;
 `;
 const H1 = styled.h1`
-  font-size: 18px;
+  font-size: 22px;
   font-weight: bold;
 `;
 
@@ -60,7 +60,7 @@ const ButtonContainer = styled.div`
   justify-content: center;
   align-items: center;
   gap: 16px;
-  margin-top: 24px;
+  padding: 10px;
 `;
 
 const SelectButton = styled.button`
