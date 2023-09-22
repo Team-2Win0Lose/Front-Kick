@@ -4,8 +4,6 @@ import { SubmitHandler, useForm, Controller } from 'react-hook-form';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { ko } from 'date-fns/esm/locale';
-
-import Terms from './Terms';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { signup } from '@/lib/api';
@@ -80,7 +78,12 @@ const SignupForm = (props: any) => {
           agree_terms_of_service,
         );
         dispatch(
-          setUser({res
+          setUser({
+            id: res.user.id,
+            email: res.user.email,
+            name: res.user.name,
+            token: res.token.access,
+            isAuthenticated: true,
           }),
         );
         navigate('/signup/onboarding');
@@ -183,12 +186,14 @@ const SignupForm = (props: any) => {
               required: true,
             })}
           >
-            <RadioWrap id='male'>
-              <span>남성</span>
-            </RadioWrap>
-            <RadioWrap id='female'>
-              <span>여성</span>
-            </RadioWrap>
+            <optgroup label='gender'>
+              <RadioWrap id='male' value='male'>
+                남성
+              </RadioWrap>
+              <RadioWrap id='female' value='female'>
+                여성
+              </RadioWrap>
+            </optgroup>
           </GenderWrap>
           <Controller
             name='birth_date'
