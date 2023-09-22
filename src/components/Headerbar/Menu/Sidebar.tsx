@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState, SetStateAction } from 'react';
 import { AiOutlineClose } from 'react-icons/ai';
 import styled from 'styled-components';
 import RegisterTeam from '../../RegisterTeam/RegisterTeam';
@@ -8,11 +8,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { autoCheck, logOutAction } from '@/feature/authSlice';
 import axios from 'axios';
 import { RootState } from '@/app/store';
+import { profile } from '@/lib/api';
+import { Profile } from '@/lib/interface';
 
 function Sidebar({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: any }) {
   const outside = useRef<any>();
+  const [profileData, setprofileData] = useState<Profile>();
   const isLogin = useSelector((state: autoCheck) => state.auth.isAuthenticated);
-  const access_token = useSelector((state: RootState) => state.auth.token);
+  const { token, id } = useSelector((state: RootState) => state.auth);
   const dispatch = useDispatch();
   useEffect(() => {
     document.addEventListener('mousedown', handlerOutsie);
@@ -20,6 +23,18 @@ function Sidebar({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: any }) {
       document.removeEventListener('mousedown', handlerOutsie);
     };
   });
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const res = await profile(id);
+        setprofileData(res as SetStateAction<Profile | undefined>);
+      } catch (error) {
+        console.error('Error', error);
+      }
+    }
+    fetchData();
+  }, [id]);
+  console.log(profileData);
 
   const handlerOutsie = (e: any) => {
     if (!outside.current.contains(e.target)) {
@@ -33,7 +48,7 @@ function Sidebar({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: any }) {
         {},
         {
           headers: {
-            Authorization: `Bearer ${access_token}`,
+            Authorization: `Bearer ${token}`,
             'Content-type': 'application/x-www-form-urlencoded',
           },
         },
@@ -62,11 +77,16 @@ function Sidebar({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: any }) {
       <ul>
         <DIV>
           <Menu>내 정보</Menu>
-          <MyInfoBox />
+          <MyInfoBox
+            profileImg={profileData?.profileImg}
+            name={profileData?.name}
+            nickname={profileData?.nickname}
+            email={profileData?.email}
+          />
         </DIV>
         <DIV>
           <Menu>나의 응원팀</Menu>
-          <RegisterTeam />
+          <RegisterTeam cheering_team_id={profileData?.cheering_team_id} />
         </DIV>
         <DIV>
           <Menu>알림 (0)</Menu>
