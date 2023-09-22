@@ -1,9 +1,13 @@
+import { getCookie } from '@/util/cookieFn';
 import axios from 'axios';
+const token = getCookie('token');
+console.log(token);
 
 const client = axios.create({
   baseURL: 'https://kick-back.azurewebsites.net',
   headers: {
     'Content-Type': 'application/json',
+    Authorization: `${token}`,
   },
 });
 

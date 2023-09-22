@@ -1,5 +1,7 @@
 import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
+axios.defaults.withCredentials = true;
+
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { RouterInfo } from './util/router';
 import GlobalStyle from './util/GlobalStyle';
@@ -11,6 +13,7 @@ import GlobalModal from './components/Modal/GlobalModal';
 import initMockAPI from './mocks';
 import PacmanLoader from 'react-spinners/PacmanLoader';
 import styled from 'styled-components';
+import axios from 'axios';
 const RouterObject = createBrowserRouter(RouterInfo);
 const Loaders = styled.div`
   display: flex;

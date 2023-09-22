@@ -4,21 +4,27 @@ import { useSelector } from 'react-redux';
 import { AiFillSetting } from 'react-icons/ai';
 import { autoCheck } from '@/feature/authSlice';
 import { RootState } from '@/app/store';
-type Props = {};
+type Props = {
+  profileImg?: string;
+  nickname?: string;
+  name?: string;
+  email?: string;
+};
 
 const RegisterTeam = (props: Props) => {
-  const profileImg = useSelector((state: RootState) => state.auth.profileImg);
   const navigate = useNavigate();
-  const email = useSelector((state: autoCheck) => state.auth.email);
-  const name = useSelector((state: autoCheck) => state.auth.name);
+  // const profileImg = useSelector((state: RootState) => state.auth.profileImg);
+  // const email = useSelector((state: autoCheck) => state.auth.email);
+  // const name = useSelector((state: autoCheck) => state.auth.name);
   const isLogin = useSelector((state: autoCheck) => state.auth.isAuthenticated);
   return isLogin ? (
     <Form>
       <FlexContainer>
-        <IMG src={profileImg} />
+        <IMG src={props.profileImg} />
         <VerticalContainer>
-          <NickName>{name} 님</NickName>
-          <ID>ID : {email}</ID>
+          <NickName>{props.name} 님</NickName>
+          <NickName>{props.nickname} 님</NickName>
+          <ID>ID : {props.email}</ID>
         </VerticalContainer>
         <AiFillSetting
           size='30'

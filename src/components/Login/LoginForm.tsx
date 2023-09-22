@@ -3,7 +3,7 @@ import { useForm, SubmitErrorHandler, SubmitHandler } from 'react-hook-form';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { login } from '@/lib/api';
-import { getCookie } from '@/util/cookieFn';
+import { setCookie } from '@/util/cookieFn';
 import { useDispatch, useSelector } from 'react-redux';
 import { autoCheck, setUser } from '@/feature/authSlice';
 
@@ -35,19 +35,20 @@ const LoginForm = (props: any) => {
     try {
       const { email, password } = data;
       const res = await login(email, password);
-      console.log(res);
-
       dispatch(
         setUser({
-          id: res.user.id,
-          email: res.user.email,
-          name: res.user.name,
-          token: res.token.access,
+          id: res?.user?.id,
+          email: res?.user?.email,
+          name: res?.user?.name,
+          token: res?.token?.access,
           isAuthenticated: true,
         }),
       );
-      location.reload();
-      navigate('/home');
+      if (res?.token.access) {
+        setCookie('token', `${res.token.access}`, {
+          path: '/',
+        });
+      }
     } catch (error) {
       console.error(error);
     }

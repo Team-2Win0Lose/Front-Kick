@@ -4,26 +4,24 @@ import { useSelector, useDispatch } from 'react-redux';
 import { deleteAction } from '../../feature/TeamSlice';
 import { useEffect } from 'react';
 
-type Props = {};
+type Props = {
+  cheering_team_id?: number;
+};
 
 const RegisterTeam = (props: Props) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const states = useSelector((state: any) => {
-    return state.team;
-  });
 
-  return states.teamName === '' ? (
-      <Form>
-        <Comment>아직 선택한 구단 카드가 없어요</Comment>
-        <RegistBtn onClick={() => navigate('/selectteam')}>
-          함께 응원할 구단 정하기
-        </RegistBtn>
-      </Form>
-   
+  return props.cheering_team_id ? (
+    <Form>
+      <Comment>아직 선택한 구단 카드가 없어요</Comment>
+      <RegistBtn onClick={() => navigate('/selectteam')}>
+        함께 응원할 구단 정하기
+      </RegistBtn>
+    </Form>
   ) : (
     <TeamWrap>
-      <TeamForm>
+      {/* <TeamForm>
         <TeamContainer1>
           <TeamImg>
             <Img src={states.teamImg} />
@@ -67,11 +65,13 @@ const RegisterTeam = (props: Props) => {
             <Blue>달려갈 준비가 끝난 동행 팀</Blue>
             <Black>수원삼성보다 4팀이나 적어요</Black>
             <FindBtn>
-              <BtnText onClick={() => navigate('/matchmaking')}>동행찾기</BtnText>
+              <BtnText onClick={() => navigate('/matchmaking')}>
+                동행찾기
+              </BtnText>
             </FindBtn>
           </Find>
         </TeamContainer2>
-      </TeamForm>
+      </TeamForm> */}
     </TeamWrap>
   );
 };

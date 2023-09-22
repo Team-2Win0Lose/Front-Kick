@@ -79,3 +79,11 @@ export interface AccompanyPost {
 export interface AccommandPost {
   data: AccompanyPost;
 }
+
+export interface Profile {
+  name: string;
+  email: string;
+  nickname: string;
+  profileImg: string;
+  cheering_team_id: number;
+}

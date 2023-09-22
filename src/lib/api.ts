@@ -1,6 +1,6 @@
 // api.ts
 
-import { AxiosError, AxiosResponse } from 'axios';
+import axios, { AxiosError } from 'axios';
 import client from './client';
 import { AccompanyPost } from './interface';
 
@@ -47,6 +47,21 @@ export const signup = async (
         birth_date,
         agree_terms_of_service,
       },
+    });
+    return res;
+  } catch (error) {
+    if (error instanceof AxiosError) {
+      return {
+        data: error?.response?.data,
+      };
+    }
+  }
+};
+export const profile = async (id: string) => {
+  try {
+    const res = await client('/api/user/profile/', {
+      method: 'get',
+      params: { id },
     });
     return res;
   } catch (error) {
