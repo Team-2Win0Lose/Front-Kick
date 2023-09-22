@@ -5,6 +5,7 @@ import { AccompanyMadeByMe } from './dummy';
 import { AccompanyApplyForMe } from './dummy';
 import { accompanyDetail } from './dummy';
 type UserData = {
+  id: string;
   email: string;
   name: string;
   token: string;
@@ -19,13 +20,14 @@ interface SignupData {
   term: boolean;
 }
 const mockUserData: UserData = {
+  id: 'sfsfsfds',
   email: 'admin@admin.com',
   name: 'admin',
   token: '9124697214798124798',
 };
 
 export const handlers = [
-  rest.post('/api/user/login', (req, res, ctx) => {
+  rest.post('/api/user/auth', (req, res, ctx) => {
     // Here you can check the credentials and return appropriate responses.
     // For simplicity, this example always returns the same mocked user data.
     return res(

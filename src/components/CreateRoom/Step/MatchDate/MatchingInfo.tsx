@@ -21,7 +21,7 @@ interface itemsProps {
 const items: itemsProps[] = [
   {
     rating: 1,
-    item: 'public/assets/teams/강원FC.png',
+    item: 'public/assets/final_logo/강원FC.png',
     homename: '강원FC',
     awayname: '서울FC',
     date: '2021.08.23',

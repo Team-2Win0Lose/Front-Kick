@@ -20,8 +20,8 @@ const TeamCardCarousel = () => {
     dots: true,
     autoplay: true,
     infinite: true,
-    slidesToShow: 2,
-    slidesToScroll: 2,
+    slidesToShow: 4,
+    slidesToScroll: 4,
     swipeToSlide: true,
     autoplaySpeed: 3000,
     speed: 500,
@@ -54,24 +54,22 @@ const TeamCardCarousel = () => {
       <CustomSlider {...settings}>
         {sortedItems?.map((item, index) => (
           <Box key={index}>
-            <Rate>{index + 1}</Rate>
+            <TitleBox>
+              <Rate>{index + 1}</Rate>
+            </TitleBox>
             <FlexContainer>
               <IMG src={item.teamImg} alt={item.teamName} />
               <FlexContainerRight>
                 <Name>{item.teamName}</Name>
                 <FlexColumnInside>
-                  <FlexColumn>
                     <FlexText>
-                      <FlexItem>{item.follower}</FlexItem>
                       <Font>팔로워</Font>
+                      <FlexItem>{item.follower}</FlexItem>
                     </FlexText>
-                  </FlexColumn>
-                  <FlexColumn>
                     <FlexText>
-                      <FlexItem>{item.currentMatching}</FlexItem>
                       <Font>현재 동행팀</Font>
+                      <FlexItem>{item.currentMatching}</FlexItem>
                     </FlexText>
-                  </FlexColumn>
                 </FlexColumnInside>
                 {/* <FilterBtn onClick={handleOpenSearchModal}>
                   <InfoBox>상세정보</InfoBox>
@@ -101,12 +99,12 @@ const CustomSlider = styled(Slider)`
 `;
 
 const Box = styled.div`
-  position: relative;
+  position:relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 90%;
-  height: 150px;
+  width: 150px;
+  height: 343px;
   background: #eeeeee;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
   border-radius: 20px;
@@ -115,62 +113,90 @@ const Box = styled.div`
   margin-bottom: 20px;
 `;
 
+const TitleBox = styled.div`
+  display: flex;
+  top: 0;
+  left: 0;
+  flex-direction: column;
+  padding: 5px;
+  height: 120px;
+  background: #1F1F45; /* 원하는 배경색으로 변경하세요 */
+  border-radius: 20px 20px 0 0;
+  width: 100%;
+`;
+
+
 const Rate = styled.div`
-  font-size: 30px;
+  justify-content: left;
+  align-items: left;
+  font-size: 50px;
   font-weight: bold;
-  color: #1f1f45;
+  padding: 3px;
+  color: white;
+  @font-face {
+    font-family: 'Giants-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-1@1.1/Giants-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
 `;
 
 const IMG = styled.img`
-  width: 60px;
-  height: 60px;
+  width: 150px;
+  height: 150px;
   object-fit: contain;
-  margin-right: 8px;
+  position: absolute; /* 절대 위치 설정 */
+  top: 30%; /* 수직 가운데로 배치 */
+  left: 50%; /* 수평 가운데로 배치 */
+  transform: translate(-50%, -50%); /* 가운데 정렬 */
+
 `;
 
 const Name = styled.div`
-  font-size: 14px;
-  font-weight: bold;
-  margin-bottom: 10px;
+  justify-content:center;
+  align-items:center;
+  font-size: 30px;
+  padding: 5px;
+  color : black;
 `;
 
 const FlexContainer = styled.div`
   display: flex;
+  padding:5px;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 10px;
 `;
 
 const FlexContainerRight = styled.div`
+  display:flex;
+  flex-direction:column;
   align-items: center;
+  margin-top: 70px;
 `;
 
-const FlexColumn = styled.div`
-  display: flex;
-  flex-direction: column;
-
-`;
 
 const FlexColumnInside = styled.div`
   display: flex;
   flex-direction: column;
+  padding:5px;
 `;
 
 const FlexItem = styled.div`
-  font-size: 14px;
-  font-weight: bold;
-  text-align: center;
+  font-size: 20px;
+  color: #1F1F45;
 `;
 
 const FlexText = styled.div`
-  margin-right: 10px;
   display: flex;
+  width: 230px;
+  padding: 5px;
   align-items: center;
+  justify-content: space-between;
 `;
 
 const Font = styled.div`
-  margin-left: 3px;
-  font-size: 2px;
+  font-size: 25px;
 `;
 
 const InfoBox = styled.div`
@@ -188,8 +214,6 @@ const InfoBox = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-
-  cursor: pointer;
 `;
 
 const FilterBtn = styled.div`
@@ -203,6 +227,4 @@ const FilterBtn = styled.div`
   align-items: center;
   gap: 5px;
 `;
-function dispatch(arg0: { payload: any; type: 'modal/openModal' }) {
-  throw new Error('Function not implemented.');
-}
+

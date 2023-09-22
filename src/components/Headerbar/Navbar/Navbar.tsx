@@ -76,7 +76,7 @@ const Navbar = () => {
 export default Navbar;
 
 const InfoBox = styled.div`
-  font-size: 20px;
+  font-size: 25px;
   ${customMedia.lessThan('mobile')`
 		font-size: 15px;
 	`}

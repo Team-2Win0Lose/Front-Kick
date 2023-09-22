@@ -25,16 +25,15 @@ export default TeamCard
 
 const Title = styled.div`
   border: 1px;
-  font-size: 20px;
+  font-size: 25px;
   margin-left: 20px;
   margin-Top: 50px;
   margin-bottom: 10px;
-  font-weight: bold;
+
 `;
 
 const SubTitle = styled.div` 
-  font-size: 12px;
+  font-size: 18px;
   margin-left: 20px;
   margin-bottom: 30px;
-  font-weight: bold;
 `;
