@@ -3,7 +3,6 @@
 // import Main from '../pages/Main';
 // import Signup from '../pages/Signup';
 import React from 'react';
-import Loading from '../pages/Loading/Loading';
 
 const App = React.lazy(() => import('../App'));
 const EmailLogin = React.lazy(() => import('../pages/Login/EmailLogin'));
@@ -34,13 +33,14 @@ export const RouterInfo = [
     path: '/',
     element: <App />,
     children: [
+      // {
+      //   index: true,
+      //   element: <Loading />,
+      //   label: 'loading',
+      // },
       {
         index: true,
-        element: <Loading />,
-        label: 'loading',
-      },
-      {
-        path: '/home',
+        path: '/',
         element: <Main />,
         label: 'main',
       },

@@ -18,7 +18,7 @@ const LoginForm = (props: any) => {
   const isLogin = useSelector((state: autoCheck) => state.auth.isAuthenticated);
   useEffect(() => {
     if (isLogin) {
-      navigate('/home');
+      navigate('/');
     }
   }, [isLogin]);
   const {
