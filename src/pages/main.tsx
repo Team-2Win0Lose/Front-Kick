@@ -5,6 +5,8 @@ import BannerCarousel from '../components/Banner/BannerCarousel';
 import TeamCard from '../components/TeamRating/TeamCard';
 import { useSelector } from 'react-redux';
 import { autoCheck } from '@/feature/authSlice';
+import TeamCardCarousel from '@/components/TeamRating/TeamCardCarousel';
+import FindAccompany from './FindAccompany';
 type Props = {};
 
 const Main = (props: Props) => {
@@ -29,22 +31,38 @@ const Main = (props: Props) => {
       <BannerCarouselContainer>
         <BannerCarousel />
       </BannerCarouselContainer>
-      <TeamCardContainer>
-        <TeamCard />
-      </TeamCardContainer>
+      <Container>
+        <Title>
+          🏆 구단별 응원순위
+        </Title>
+        <SubTitle>
+            구단별 모집이 완료된 동행팀 수
+        </SubTitle>
+        <TeamCardCarousel/>
+      </Container>
+      <Container>
+        <Title>
+            🙋‍♂️ 동행 구경하기
+          </Title>
+          <SubTitle>
+            나의 동행을 찾아보세요!
+          </SubTitle>
+        <FindAccompany/>
+      </Container>
+
     </div>
   );
 };
 export default Main;
 
 const BannerCarouselContainer = styled.div`
-  height:auto;
+  height: auto;
   overflow: hidden;
 `;
 
-const TeamCardContainer = styled.div`
-  height: 500px;
-  overflow-x: hidden;
+const Container = styled.div`
+  display : flex;
+  flex-direction: column;
 `;
 
 const P = styled.div`
@@ -64,4 +82,19 @@ const Mypage = styled.div`
   background: #eae9e9;
   margin: 10px;
   border-radius: 40px;
+`;
+
+const Title = styled.div`
+  border: 1px;
+  font-size: 25px;
+  margin-left: 20px;
+  margin-Top: 50px;
+  margin-bottom: 10px;
+
+`;
+
+const SubTitle = styled.div` 
+  font-size: 18px;
+  margin-left: 20px;
+  margin-bottom: 30px;
 `;

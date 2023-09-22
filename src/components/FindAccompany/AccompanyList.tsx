@@ -11,15 +11,20 @@ const AccompanyList = (props: Props) => {
       <Accompany postId={2} />
       <Accompany postId={3} />
       <Accompany postId={4} />
+      <Accompany postId={4} />
+      <Accompany postId={4} />
+      <Accompany postId={4} />
+      <Accompany postId={4} />
+      <Accompany postId={4} />
     </ListContainer>
   );
 };
 const ListContainer = styled.div`
   margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4열로 배치 */
   justify-content: center;
-  align-content: center;
+  align-content: center; 
+  gap:10px;
 `;
 export default AccompanyList;

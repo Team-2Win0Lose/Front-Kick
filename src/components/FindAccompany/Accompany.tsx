@@ -17,10 +17,10 @@ const Accompany = (props: Props) => {
 };
 
 const Container = styled.div`
-  width: 312px;
+  width: 330px;
   display: flex;
   flex-direction: column;
-  padding: 16px 0;
+  padding: 16px;
   border-radius: 12px;
 `;
 export default Accompany;

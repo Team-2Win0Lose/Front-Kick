@@ -16,9 +16,10 @@ const AccompanyHeader = (props: Props) => {
 const Header = styled.div`
   margin: 0 auto;
   display: flex;
-  width: 60%;
+  width: auto;
   justify-content: center;
   align-content: center;
-  gap: 10px;
+  gap: 20px;
+  margin-bottom: 10px;
 `;
 export default AccompanyHeader;
