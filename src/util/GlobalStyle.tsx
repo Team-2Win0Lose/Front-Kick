@@ -18,7 +18,7 @@ const GlobalStyle = createGlobalStyle`
     @font-face {
     font-family: "Line";
     font-weight: 50;
-    src: url( "./public/fonts/NanumBarunGothicBold.ttf") format("truetype");
+    src: url( "/fonts/NanumBarunGothicBold.ttf") format("truetype");
     }
     #root {
         overflow: hidden;

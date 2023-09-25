@@ -8,7 +8,7 @@ const Onboarding = () => {
   const navigate = useNavigate();
 
   const handleSelectButtonClick = () => {
-    navigate('/home'); // Navigate to the '/home' route when the button is clicked
+    navigate('/'); // Navigate to the '/home' route when the button is clicked
   };
 
   return (

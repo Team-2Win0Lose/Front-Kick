@@ -25,7 +25,7 @@ const Navbar = () => {
         <InfoBox>
           <NavLink
             style={({ isActive }) => (isActive ? activeStyle : defaultStyle)}
-            to='/home'
+            to='/'
           >
             홈
           </NavLink>
