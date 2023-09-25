@@ -28,6 +28,9 @@ const KakaoCallback = React.lazy(
 const AccompanyDetail = React.lazy(
   () => import('../pages/FindAccompanyDetail'),
 );
+const ModifyPersonalData = React.lazy(
+  () => import('src/pages/ModifyPersonalData/ModifyPersonalData'),
+);
 export const RouterInfo = [
   {
     path: '/',
@@ -113,6 +116,11 @@ export const RouterInfo = [
       {
         path: '/addcourse',
         element: <AddCourse />,
+        label: 'AddCourse',
+      },
+      {
+        path: '/mypage',
+        element: <ModifyPersonalData />,
         label: 'AddCourse',
       },
     ],
