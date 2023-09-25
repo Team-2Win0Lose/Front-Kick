@@ -1,20 +1,37 @@
 // api.ts
 
-import axios, { AxiosError } from 'axios';
+import { AxiosError } from 'axios';
 import client from './client';
 import { AccompanyPost } from './interface';
-
+interface Login {
+  user: {
+    id: string;
+    email: string;
+    name: string;
+    phone_number: string;
+    gender: string;
+    birth_date: string;
+    agree_terms_of_service: boolean;
+  };
+  message: string;
+  token: {
+    access: string;
+    refresh: string;
+  };
+}
 // 로그인 요청을 보내는 함수
 export const login = async (email: string, password: string) => {
   try {
-    const res = await client('/api/user/auth/', {
+    const res: Login = await client('/api/user/auth/', {
       method: 'post',
       data: {
         email,
         password,
       },
     });
-    return res;
+    if (res !== undefined) {
+      return res;
+    }
   } catch (error) {
     if (error instanceof AxiosError) {
       return {
