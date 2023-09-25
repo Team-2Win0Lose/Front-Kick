@@ -35,19 +35,25 @@ const LoginForm = (props: any) => {
     try {
       const { email, password } = data;
       const res = await login(email, password);
-      dispatch(
-        setUser({
-          id: res?.user?.id,
-          email: res?.user?.email,
-          name: res?.user?.name,
-          token: res?.token?.access,
-          isAuthenticated: true,
-        }),
-      );
-      if (res?.token.access) {
-        setCookie('token', `${res.token.access}`, {
-          path: '/',
-        });
+      if (res !== undefined) {
+        if ('user' in res) {
+          dispatch(
+            setUser({
+              id: res.user.id,
+              email: res?.user?.email,
+              name: res?.user?.name,
+              token: res?.token?.access,
+              isAuthenticated: true,
+            }),
+          );
+          if (res.token.access) {
+            setCookie('token', `${res.token.access}`, {
+              path: '/',
+            });
+          }
+        }
+      } else {
+        console.log('res is undefined');
       }
     } catch (error) {
       console.error(error);
