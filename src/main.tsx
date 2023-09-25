@@ -14,6 +14,8 @@ import initMockAPI from './mocks';
 import PacmanLoader from 'react-spinners/PacmanLoader';
 import styled from 'styled-components';
 import axios from 'axios';
+import { CookiesProvider } from 'react-cookie';
+
 const RouterObject = createBrowserRouter(RouterInfo);
 const Loaders = styled.div`
   display: flex;
@@ -34,11 +36,13 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
         </Loaders>
       }
     >
-      <ThemeProvider theme={theme}>
-        <GlobalStyle />
-        <GlobalModal />
-        <RouterProvider router={RouterObject} />
-      </ThemeProvider>
+      <CookiesProvider>
+        <ThemeProvider theme={theme}>
+          <GlobalStyle />
+          <GlobalModal />
+          <RouterProvider router={RouterObject} />
+        </ThemeProvider>
+      </CookiesProvider>
     </React.Suspense>
   </Provider>,
 );
