@@ -9,7 +9,7 @@ const Logo = () => {
     const navigate = useNavigate();
 
   return (
-    <Button onClick={() => { navigate('/home'); }}>
+    <Button onClick={() => { navigate('/'); }}>
         <IMG src='/assets/officiallogo.png' alt='logo'/>
     </Button>
   )

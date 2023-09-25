@@ -98,7 +98,7 @@ const Mypage = styled.div`
 
 const Title = styled.div`
   border: 1px;
-  font-size: 25px;
+  font-size: 20px;
   margin-left: 20px;
   margin-Top: 50px;
   margin-bottom: 10px;
@@ -106,7 +106,7 @@ const Title = styled.div`
 `;
 
 const SubTitle = styled.div` 
-  font-size: 18px;
+  font-size: 15px;
   margin-left: 20px;
   margin-bottom: 30px;
 `;
