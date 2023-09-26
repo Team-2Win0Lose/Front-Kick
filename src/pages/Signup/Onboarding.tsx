@@ -1,10 +1,8 @@
-import React from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import OnboardingTeamSelect from '@/components/OnboardingTeamSelect/OnboardingTeamSelect';
 
 const Onboarding = () => {
-
   const navigate = useNavigate();
 
   const handleSelectButtonClick = () => {
@@ -31,13 +29,13 @@ const Onboarding = () => {
 };
 
 const TeamCardContainer = styled.div`
-  height:100%;
+  height: 100%;
   overflow-x: hidden;
 `;
 
 const CarouselContainer = styled.div`
-  height:100%;
-  background-color: #1F1F45;
+  height: 100%;
+  background-color: #1f1f45;
   overflow-x: hidden;
 `;
 
@@ -46,7 +44,7 @@ const TitleForm = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap:12px;
+  gap: 12px;
   margin-bottom: 20px;
 `;
 const H1 = styled.h1`
@@ -56,7 +54,7 @@ const H1 = styled.h1`
 
 const ButtonContainer = styled.div`
   display: flex;
-  flex-direction:column;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 16px;

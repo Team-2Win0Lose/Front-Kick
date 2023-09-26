@@ -7,12 +7,15 @@ import 'slick-carousel/slick/slick-theme.css';
 import { openModal } from 'src/feature/ModalSlice.ts';
 import { useState, useEffect } from 'react';
 import { GetTeamList } from '@/lib/interface';
-import { getTeam } from '@/lib/api';
-
+import { getTeamDetail } from '@/lib/api';
+import { teams } from '@/mocks/dummy';
 const TeamCardCarousel = () => {
-  const [teamList, setteamList] = useState<GetTeamList>();
+  // const [teamList, setteamList] = useState<GetTeamList>();
   const dispatch = useDispatch();
-  const sortedItems = [...(teamList?.data || [])].sort(
+  // const sortedItems = [...(teamList?.data || [])].sort(
+  //   (a, b) => b.currentMatching - a.currentMatching,
+  // );
+  const sortedItems = [...(teams || [])].sort(
     (a, b) => b.currentMatching - a.currentMatching,
   );
 
@@ -27,18 +30,18 @@ const TeamCardCarousel = () => {
     speed: 500,
   };
 
-  // api에서 team 목록 불러오기
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await getTeam();
-        setteamList(response);
-      } catch (error) {
-        console.error('Error:', error);
-      }
-    };
-    fetchData();
-  }, []);
+  // // api에서 team 목록 불러오기
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await getTeamDetail();
+  //       setteamList(response);
+  //     } catch (error) {
+  //       console.error('Error:', error);
+  //     }
+  //   };
+  //   fetchData();
+  // }, []);
 
   // const handleOpenSearchModal = () => {
   //   dispatch(
@@ -62,14 +65,14 @@ const TeamCardCarousel = () => {
               <FlexContainerRight>
                 <Name>{item.teamName}</Name>
                 <FlexColumnInside>
-                    <FlexText>
-                      <Font>팔로워</Font>
-                      <FlexItem>{item.follower}</FlexItem>
-                    </FlexText>
-                    <FlexText>
-                      <Font>현재 동행팀</Font>
-                      <FlexItem>{item.currentMatching}</FlexItem>
-                    </FlexText>
+                  <FlexText>
+                    <Font>팔로워</Font>
+                    <FlexItem>{item.follower}</FlexItem>
+                  </FlexText>
+                  <FlexText>
+                    <Font>현재 동행팀</Font>
+                    <FlexItem>{item.currentMatching}</FlexItem>
+                  </FlexText>
                 </FlexColumnInside>
                 {/* <FilterBtn onClick={handleOpenSearchModal}>
                   <InfoBox>상세정보</InfoBox>
@@ -99,7 +102,7 @@ const CustomSlider = styled(Slider)`
 `;
 
 const Box = styled.div`
-  position:relative;
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -120,11 +123,10 @@ const TitleBox = styled.div`
   flex-direction: column;
   padding: 5px;
   height: 120px;
-  background: #1F1F45; /* 원하는 배경색으로 변경하세요 */
+  background: #1f1f45; /* 원하는 배경색으로 변경하세요 */
   border-radius: 20px 20px 0 0;
   width: 100%;
 `;
-
 
 const Rate = styled.div`
   justify-content: left;
@@ -135,10 +137,11 @@ const Rate = styled.div`
   color: white;
   @font-face {
     font-family: 'Giants-Bold';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-1@1.1/Giants-Bold.woff2') format('woff2');
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-1@1.1/Giants-Bold.woff2')
+      format('woff2');
     font-weight: 700;
     font-style: normal;
-}
+  }
 `;
 
 const IMG = styled.img`
@@ -149,7 +152,6 @@ const IMG = styled.img`
   top: 30%; /* 수직 가운데로 배치 */
   left: 50%; /* 수평 가운데로 배치 */
   transform: translate(-50%, -50%); /* 가운데 정렬 */
-
 `;
 
 const Name = styled.div`
@@ -157,24 +159,23 @@ const Name = styled.div`
   align-items:center;
   font-size: 25px;
   padding: 5px;
-  color : black;
+  color: black;
 `;
 
 const FlexContainer = styled.div`
   display: flex;
-  padding:5px;
+  padding: 5px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 `;
 
 const FlexContainerRight = styled.div`
-  display:flex;
-  flex-direction:column;
+  display: flex;
+  flex-direction: column;
   align-items: center;
   margin-top: 70px;
 `;
-
 
 const FlexColumnInside = styled.div`
   display: flex;
@@ -184,7 +185,7 @@ const FlexColumnInside = styled.div`
 
 const FlexItem = styled.div`
   font-size: 20px;
-  color: #1F1F45;
+  color: #1f1f45;
 `;
 
 const FlexText = styled.div`
@@ -227,4 +228,3 @@ const FilterBtn = styled.div`
   align-items: center;
   gap: 5px;
 `;
-
