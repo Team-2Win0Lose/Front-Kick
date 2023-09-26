@@ -28,7 +28,7 @@ const RegisterTeam = (props: Props) => {
         </VerticalContainer>
         <AiFillSetting
           size='30'
-          onClick={() => navigate('/selectteam')}
+          onClick={() => navigate('/mypage')}
         ></AiFillSetting>
       </FlexContainer>
     </Form>

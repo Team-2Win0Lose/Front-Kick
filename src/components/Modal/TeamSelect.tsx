@@ -7,10 +7,10 @@ import {
 } from '@/feature/teamFilterSlice';
 import { closeModal } from '@/feature/ModalSlice';
 import { teamCheck } from '../../feature/teamFilterSlice';
-import { getTeam } from '@/lib/api';
+import { getTeamDetail } from '@/lib/api';
 import { useEffect, useState } from 'react';
 import { GetTeamType, GetTeamList } from '@/lib/interface';
-
+import { teams } from '@/mocks/dummy';
 type Props = {};
 
 interface BoxProps {
@@ -18,7 +18,7 @@ interface BoxProps {
 }
 
 const TeamSelect = (props: Props) => {
-  const [teamList, setteamList] = useState<GetTeamList>();
+  // const [teamList, setteamList] = useState<GetTeamList>();
   const dispatch = useDispatch();
   const teamFilters = useSelector(
     (state: teamCheck) => state.teamfilter.teamNames,
@@ -32,17 +32,17 @@ const TeamSelect = (props: Props) => {
     }
   };
   // api에서 team 목록 불러오기
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const response = await getTeam();
-        setteamList(response);
-      } catch (error) {
-        console.error('Error:', error);
-      }
-    }
-    fetchData();
-  }, []);
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     try {
+  //       const response = await getTeamDetail();
+  //       setteamList(response);
+  //     } catch (error) {
+  //       console.error('Error:', error);
+  //     }
+  //   }
+  //   fetchData();
+  // }, []);
   // redux state에 저장된 팀들 전부 삭제
   const handleClearFilters = () => {
     dispatch(clearTeamFilters());
@@ -51,7 +51,7 @@ const TeamSelect = (props: Props) => {
   return (
     <Wrap>
       <Container>
-        {teamList?.data.map((team: GetTeamType) => (
+        {teams.map((team: GetTeamType) => (
           <Box
             backgroundColor={teamFilters.includes(team.teamName)}
             key={team.teamGrade}
