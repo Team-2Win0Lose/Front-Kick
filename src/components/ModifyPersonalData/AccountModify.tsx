@@ -1,14 +1,23 @@
 import styled from 'styled-components';
 import { BiDownArrow, BiUpArrow } from 'react-icons/bi';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/app/store';
+import { useNavigate } from 'react-router-dom';
 type Props = {};
 
 const AccountModify = (props: Props) => {
-  const [isOpen, setisOpen] = useState(true);
+  const [isOpen, setisOpen] = useState(false);
   const handleOpen = () => {
     setisOpen(!isOpen);
   };
-
+  const navigate = useNavigate();
+  const isLogin = useSelector((state: RootState) => state.auth.isAuthenticated);
+  useEffect(() => {
+    if (!isLogin) {
+      navigate('/');
+    }
+  }, [isLogin]);
   return (
     <Container>
       <Header>
@@ -47,11 +56,11 @@ const Container = styled.div`
   gap: 35px;
 `;
 const Header = styled.div`
-  width: 90%;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 0;
+  padding: 10px 20px;
 `;
 const Title = styled.h1`
   font-size: 32px;

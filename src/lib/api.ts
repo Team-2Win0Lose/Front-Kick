@@ -1,8 +1,9 @@
-// api.ts
-
 import { AxiosError } from 'axios';
 import client from './client';
 import { AccompanyPost } from './interface';
+import { getCookie } from '@/util/cookieFn';
+const token = getCookie('token');
+
 interface Login {
   user: {
     id: string;
@@ -40,7 +41,24 @@ export const login = async (email: string, password: string) => {
     }
   }
 };
-
+export const logout = async (email: string, password: string) => {
+  try {
+    const res = await client('/api/user/auth/', {
+      method: 'delete',
+      data: {
+        email,
+        password,
+      },
+    });
+    return res;
+  } catch (error) {
+    if (error instanceof AxiosError) {
+      return {
+        data: error?.response?.data,
+      };
+    }
+  }
+};
 // 다른 API 요청들을 필요에 따라 추가할 수 있습니다.
 // 예를 들어 회원 가입, 로그아웃, 사용자 정보 조회 등의 기능을 추가할 수 있습니다.
 export const signup = async (
@@ -78,6 +96,9 @@ export const profile = async (id: string) => {
   try {
     const res = await client('/api/user/profile/', {
       method: 'get',
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
       params: { id },
     });
     return res;
@@ -89,10 +110,35 @@ export const profile = async (id: string) => {
     }
   }
 };
-
-export const getTeam = async () => {
+export const modifyCheeringTeam = async (
+  id: string,
+  nickname: string,
+  cheering_team: number,
+) => {
   try {
-    const res = await client('/api/teams', {
+    const res = await client('/api/user/profile/', {
+      method: 'put',
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      data: {
+        id,
+        nickname,
+        cheering_team,
+      },
+    });
+    return res;
+  } catch (error) {
+    if (error instanceof AxiosError) {
+      return {
+        data: error?.response?.data,
+      };
+    }
+  }
+};
+export const getTeamDetail = async () => {
+  try {
+    const res = await client('/api/teaminfo/listdetail', {
       method: 'get',
     });
     return res;
