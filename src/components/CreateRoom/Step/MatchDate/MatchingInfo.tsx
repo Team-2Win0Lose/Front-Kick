@@ -80,7 +80,7 @@ const Text = styled.div`
 `;
 
 const Btn = styled.div`
-  font-size: 15px;
+  font-size: 20px;
   font-weight: bold;
   justify-content: center;
   align-items: center;
@@ -92,7 +92,7 @@ const Box = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 00%;
+  height: 100%;
   background: #eeeeee;
   border-radius: 20px;
   margin: 10px auto;
@@ -100,8 +100,8 @@ const Box = styled.div`
 `;
 
 const IMG = styled.img`
-  width: 40px;
-  height: 40px;
+  width: 70px;
+  height: 70px;
   object-fit: contain;
 `;
 
@@ -127,7 +127,7 @@ const FlexContainerRight = styled.div`
 `;
 
 const FlexItem = styled.div`
-  font-size: 10px;
+  font-size: 18px;
   font-weight: bold;
   text-align: center;
 `;
@@ -139,5 +139,5 @@ const FlexText = styled.div`
 `;
 
 const DIV = styled.div`
-  font-size: 5px;
+  font-size: 20px;
 `;

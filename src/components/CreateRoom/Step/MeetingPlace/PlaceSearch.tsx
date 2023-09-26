@@ -128,7 +128,7 @@ export default PlaceSearch;
 
 const Form = styled.div`
   margin: 0 auto;
-  width: 80%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -244,10 +244,10 @@ const SearchForm = styled.form`
 
 const FormLabel = styled.label`
   display: flex;
+  width:100%;
+  height:100%;
   justify-content: center;
   align-items: center;
-  /* Add your styles for the form label here */
-  /* For example: display, flex-direction, etc. */
 `;
 
 const FormInput = styled.input`

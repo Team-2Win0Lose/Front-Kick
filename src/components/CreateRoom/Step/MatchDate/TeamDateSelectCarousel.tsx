@@ -20,18 +20,33 @@ const events = {
   강원FC: [
     {
       title: '축구',
-      start: '2023-08-10',
-      image: 'public/assets/final_logo/대구FC.png',
+      start: '2023-09-1',
+      image: 'https://kickstorage.blob.core.windows.net/logo/gwangju_fc.png',
     },
     {
       title: '전북vs서울',
-      start: '2023-08-11',
-      image: 'public/assets/final_logo/대구FC.png',
+      start: '2023-09-6',
+      image: 'https://kickstorage.blob.core.windows.net/logo/daegu_fc.png',
     },
     {
       title: '전북vs서울',
-      start: '2023-09-12 13:00:00',
-      image: 'public/assets/final_logo/대구FC.png',
+      start: '2023-09-11',
+      image: 'https://kickstorage.blob.core.windows.net/logo/jeju_united.png',
+    },
+    {
+      title: '전북vs서울',
+      start: '2023-09-19 13:00:00',
+      image: 'https://kickstorage.blob.core.windows.net/logo/suwon_fc.png',
+    },
+    {
+      title: '전북vs서울',
+      start: '2023-09-28 13:00:00',
+      image: 'https://kickstorage.blob.core.windows.net/logo/suwon_samsung_bluewings.png',
+    },
+    {
+      title: '전북vs서울',
+      start: '2023-10-1 13:00:00',
+      image: 'https://kickstorage.blob.core.windows.net/logo/ulsan_hyundai.png',
     },
   ],
   광주FC: [
@@ -64,84 +79,84 @@ const events = {
 const items: itemsProps[] = [
   {
     rating: 1,
-    item: 'public/assets/final_logo/강원FC.png',
+    item: 'https://kickstorage.blob.core.windows.net/logo/gangwon_fc.png',
     name: '강원FC',
     ing: 112,
     follower: 23,
   },
   {
     rating: 2,
-    item: 'public/assets/final_logo/광주FC.png',
+    item: 'https://kickstorage.blob.core.windows.net/logo/gwangju_fc.png',
     name: '광주FC',
     ing: 123,
     follower: 23,
   },
   {
     rating: 3,
-    item: 'public/assets/final_logo/대구FC.png',
+    item: 'https://kickstorage.blob.core.windows.net/logo/daegu_fc.png',
     name: '대구FC',
     ing: 312,
     follower: 23,
   },
   {
     rating: 4,
-    item: 'public/assets/final_logo/대전하나시티즌.png',
+    item: 'https://kickstorage.blob.core.windows.net/logo/daejun_hana_citizen.png',
     name: '대전하나시티즌',
     ing: 212,
     follower: 21,
   },
   {
     rating: 5,
-    item: 'public/assets/final_logo/수원삼성블루윙즈.png',
+    item: 'https://kickstorage.blob.core.windows.net/logo/suwon_samsung_bluewings.png',
     name: '수원삼성블루윙즈',
     ing: 152,
     follower: 29,
   },
   {
     rating: 6,
-    item: 'public/assets/final_logo/수원FC.png',
+    item: 'https://kickstorage.blob.core.windows.net/logo/suwon_fc.png',
     name: '수원FC',
     ing: 172,
     follower: 2,
   },
   {
     rating: 7,
-    item: 'public/assets/final_logo/울산현대.png',
+    item: 'https://kickstorage.blob.core.windows.net/logo/ulsan_hyundai.png',
     name: '울산현대',
     ing: 112,
     follower: 264,
   },
   {
     rating: 8,
-    item: 'public/assets/final_logo/인천유나이티드.png',
+    item: 'https://kickstorage.blob.core.windows.net/logo/incheon_united.png',
     name: '인천유나이티드',
     ing: 912,
     follower: 234,
   },
   {
     rating: 9,
-    item: 'public/assets/final_logo/전북현대모터스.png',
+    item: 'https://kickstorage.blob.core.windows.net/logo/jeonbuk_hyundai_motors.png',
     name: '전북현대모터스',
     ing: 124,
     follower: 2223,
   },
   {
     rating: 10,
-    item: 'public/assets/final_logo/제주유나이티드.png',
+    item: 'https://kickstorage.blob.core.windows.net/logo/jeju_united.png',
     name: '제주유나이티드',
     ing: 992,
     follower: 213,
   },
   {
     rating: 11,
-    item: 'public/assets/final_logo/포항스틸러스.png',
+    item: 'https://kickstorage.blob.core.windows.net/logo/pohang_stealus.png',
     name: '포항스틸러스',
     ing: 132,
     follower: 20,
   },
   {
     rating: 12,
-    item: 'public/assets/final_logo/FC서울.png',
+    item: 'https://kickstorage.blob.core.windows.net/logo/fc_seoul.png',
     name: 'FC서울',
     ing: 12,
     follower: 243,
@@ -171,22 +186,24 @@ const TeamDateSelectCarousel = () => {
     setSelectedTeam(teamName);
   };
 
+
   return (
     <CarouselContainer>
       <CustomSlider {...settings}>
         {items.map((item, index) => (
-          <div key={index}>
+          <DIV key={index} onClick={() => handleBoxClick(item.name)}
+          isSelected={selectedTeam === item.name}>
             <BoxWrapper key={index}>
-              <Box onClick={() => handleBoxClick(item.name)}>
+              <Box>
                 <FlexContainer>
                   <IMG src={item.item} alt={item.name} />
                 </FlexContainer>
               </Box>
-            </BoxWrapper>
-            <NameWrapper>
+              <NameWrapper>
                 <Name>{item.name}</Name>
-            </NameWrapper>
-          </div>
+               </NameWrapper>
+            </BoxWrapper>  
+          </DIV>
         ))}
       </CustomSlider>
       {selectedTeam && (
@@ -214,11 +231,20 @@ const CustomSlider = styled(Slider)`
   .slick-slide > div {
     margin-right: 20%;
   }
+  display: 100px;
 `;
 
-const DIV = styled.div`
-  display: flex;
-  flex-direction: column;
+interface BoxProps {
+  isSelected?: boolean;
+}
+
+
+const DIV = styled.div<BoxProps>`
+  display:flex;
+  width:100%;
+  height:100%;
+  background-color: ${(props) => (props.isSelected ? '#49496d' : 'transparent')};
+
 `;
 
 const CarouselContainer = styled.div`
@@ -226,8 +252,10 @@ const CarouselContainer = styled.div`
   flex-direction: column;
 `;
 
+
 const BoxWrapper = styled.div`
   display:flex;
+  flex-direction:column;
   justify-content: center;
   align-items: center;
 `;
@@ -236,14 +264,16 @@ const TeamCalendarContainer = styled.div`
   background-color: white;
 `;
 
+
+
 const Box = styled.div`
   position: relative;
   display: flex;
-  width: 70px;
-  height: 70px;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
   justify-content: center;
   align-items: center;
-  border-radius: 50%;
   margin-top: 10%;
   overflow: hidden;
 `;
@@ -254,6 +284,10 @@ const IMG = styled.img`
   object-fit: contain;
   justify-content: center;
   align-items: center;
+  ${customMedia.lessThan('mobile')`
+      width: 40px;
+      height: 40px;
+	`}
 `;
 
 const Name = styled.div`
@@ -261,8 +295,8 @@ const Name = styled.div`
   color: #ffffff;
   margin-top: 10%;
   margin-bottom: 10%;
-  ${customMedia.lessThan('tablet')`
-		font-size: 10px;
+  ${customMedia.lessThan('mobile')`
+      font-size: 5px;
 	`}
 `;
 

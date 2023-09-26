@@ -13,7 +13,6 @@ const TeamDateSelect = () => {
         <TeamDateSelectCarousel/>
       </CarouselContainer>
     </TeamCardContainer>
-  
 
   )
 }

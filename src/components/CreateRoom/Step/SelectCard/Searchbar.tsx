@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import styled from "styled-components";
 import {FaSearch} from 'react-icons/Fa';
+import MapContainer from "../MeetingPlace/MapContainer";
 
 const SearchBar = () => {
 
@@ -60,8 +61,8 @@ const SearchBar = () => {
                   </FormLabel>
                 </SearchForm>
               </CourseAddBtn>
-              {/* 제출한 검색어 넘기기
-              <MapContainer searchKeyword={Keyword} /> */}
+              {/* 제출한 검색어 넘기기 */}
+              <MapContainer searchKeyword={Keyword} />
             </LandingPageInner>
           </LandingPage>
         </BoxContainer>

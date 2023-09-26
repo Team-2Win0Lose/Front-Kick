@@ -155,7 +155,7 @@ const IMG = styled.img`
 const Name = styled.div`
   justify-content:center;
   align-items:center;
-  font-size: 30px;
+  font-size: 25px;
   padding: 5px;
   color : black;
 `;
@@ -179,7 +179,7 @@ const FlexContainerRight = styled.div`
 const FlexColumnInside = styled.div`
   display: flex;
   flex-direction: column;
-  padding:5px;
+  padding:20px 0;
 `;
 
 const FlexItem = styled.div`
@@ -196,7 +196,7 @@ const FlexText = styled.div`
 `;
 
 const Font = styled.div`
-  font-size: 25px;
+  font-size: 20px;
 `;
 
 const InfoBox = styled.div`
