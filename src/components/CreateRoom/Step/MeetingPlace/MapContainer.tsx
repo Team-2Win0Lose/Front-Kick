@@ -275,6 +275,7 @@ const MapContainer = (props: propsType) => {
   }, [props.searchKeyword, detailMeetingPlace]);
 
   return (
+    <MapWrapper>
     <MapContainer_>
       <MapDiv id='map' className='map' />
       <SearchResult id='search-result'>
@@ -289,14 +290,15 @@ const MapContainer = (props: propsType) => {
         <Pagination id='pagination' />
       </SearchResult>
     </MapContainer_>
+    </MapWrapper>
   );
 };
 
 export default MapContainer;
 
 const MapWrapper = styled.div`
-  width: 100%;
-  height: 400px;
+  align-items: center;
+  justify-content: center;
 `;
 
 const MapContainer_ = styled.div`
