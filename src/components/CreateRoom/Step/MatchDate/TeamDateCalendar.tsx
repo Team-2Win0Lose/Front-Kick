@@ -77,6 +77,7 @@ const CalendarContainer = styled.div`
       height: 100%;
   }
 
+
   // toolbar container
   .fc .fc-toolbar.fc-header-toolbar {
   margin-top: 20px;
