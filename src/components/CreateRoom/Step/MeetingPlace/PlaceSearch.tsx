@@ -6,6 +6,7 @@ import { FaSearch } from 'react-icons/Fa';
 import { useDispatch, useSelector } from 'react-redux';
 import { setPlace } from '@/feature/SummarySlice';
 import { RootState } from '@/app/store';
+import { customMedia } from '@/util/GlobalStyle';
 
 export interface propsType {
   searchKeyword: string;
@@ -212,6 +213,19 @@ const Detailinput = styled.div`
     outline: none;  */
     font-size: 16px;
   }
+
+  ${customMedia.lessThan('mobile')`
+    .detail {
+      border-radius: 12px;
+      border: 1px solid #ccc;
+      width: 100%;
+      padding: 10px;
+      /* border: none; 
+      outline: none;  */
+      font-size: 16px;
+    }
+     
+	`}
 `;
 
 const CustomIcon = styled(FaSearch)`

@@ -1,5 +1,6 @@
 import { RootState } from '@/app/store';
 import { setMatch } from '@/feature/SummarySlice';
+import { customMedia } from '@/util/GlobalStyle';
 import React, { useState } from 'react';
 import { useDispatch} from 'react-redux';
 import styled from 'styled-components';
@@ -24,7 +25,7 @@ const items: itemsProps[] = [
     item: 'public/assets/final_logo/강원FC.png',
     homename: '강원FC',
     awayname: '서울FC',
-    date: '2021.08.23',
+    date: '2021.08.23 12:00',
     stadium: '강원종합운동장',
   },
 ];
@@ -33,7 +34,7 @@ const MatchingInfo = (props: MatchingInfoProps) => {
   const [boxColor, setBoxColor] = useState('#eeeeee');
   const dispatch = useDispatch();
   const handleSelectClick = (item: {date:string, stadium: string, homename:string, awayname:string}) => {
-    setBoxColor('#2a71b7');
+    setBoxColor('#1F1F4D');
     dispatch(setMatch(item))
   };
   
@@ -45,7 +46,7 @@ const MatchingInfo = (props: MatchingInfoProps) => {
             <FlexContainerLeft>
               <IMG src={item.item} alt={item.homename} />
               <Text> vs </Text>
-              <IMG src={item.item} alt={item.homename} />
+              <IMG src={item.item} alt={item.awayname} />
             </FlexContainerLeft>
             <FlexContainerRight>
               <FlexText>
@@ -71,20 +72,21 @@ const MatchingInfo = (props: MatchingInfoProps) => {
 export default MatchingInfo;
 
 const Text = styled.div`
-  font-size: 18px;
+  font-size: 30px;
+  padding: 30px;
   font-weight: bold;
   justify-content: center;
   align-items: center;
-  margin-left: 5%;
-  margin-right: 5%;
+  color : white;
 `;
 
 const Btn = styled.div`
-  font-size: 20px;
+  font-size: 25px;
   font-weight: bold;
   justify-content: center;
   align-items: center;
-  padding-top: 20px;
+  padding: 10px;
+  color : white;
 `;
 
 const Box = styled.div`
@@ -97,11 +99,14 @@ const Box = styled.div`
   border-radius: 20px;
   margin: 10px auto;
   padding: 10px;
+  ${customMedia.lessThan('mobile')`
+
+	`}
 `;
 
 const IMG = styled.img`
-  width: 70px;
-  height: 70px;
+  width: 100px;
+  height: 100px;
   object-fit: contain;
 `;
 
@@ -114,15 +119,18 @@ const FlexContainer = styled.div`
 
 const FlexContainerLeft = styled.div`
   display: flex;
+  padding: 10px;
+  margin-right:10%;
   align-items: center;
   justify-content: center;
 `;
 
 const FlexContainerRight = styled.div`
   display: flex;
+  padding:10px;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: left;
   gap: 15px;
 `;
 
@@ -135,9 +143,12 @@ const FlexItem = styled.div`
 const FlexText = styled.div`
   display: flex;
   align-items: center;
-  gap: 10px;
+  padding:10px;
+  gap: 20px;
+  color : white;
 `;
 
 const DIV = styled.div`
+  align-items: center;
   font-size: 20px;
 `;

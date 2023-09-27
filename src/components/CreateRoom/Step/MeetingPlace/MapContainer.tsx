@@ -4,6 +4,7 @@ import { propsType } from './PlaceSearch';
 import { useDispatch, useSelector } from 'react-redux';
 import { setPlace } from '@/feature/SummarySlice';
 import { RootState } from '@/app/store';
+import { customMedia } from '@/util/GlobalStyle';
 
 interface placeType {
   place_name: string;
@@ -303,27 +304,37 @@ const MapWrapper = styled.div`
 
 const MapContainer_ = styled.div`
   display: flex;
-  flex-direction: column;
   align-items: center;
   background-color: #e0e0e0;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  ${customMedia.lessThan('mobile')`
+      flex-direction: column;
+	`}
 `;
 
 const MapDiv = styled.div`
-  width: 100%;
-  height: 300px;
+  width: 600px;
+  height: 600px;
   background-color: #e0e0e0;
   border-radius: 4px;
   margin-bottom: 20px;
+  ${customMedia.lessThan('mobile')`
+    width: 100%;
+    height: 300px;
+	`}
 `;
 
 const SearchResult = styled.div`
   width: 100%;
+  padding: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  ${customMedia.lessThan('mobile')`
+      padding: 0px;
+	`}
 `;
 
 const ResultText = styled.p`
@@ -333,13 +344,16 @@ const ResultText = styled.p`
 
 const ResultKeyword = styled.span`
   color: #1f1f45;
-  font-size: 15px;
+  font-size: 20px;
 `;
 
 const ScrollWrapper = styled.div`
   width: 100%;
-  max-height: 200px;
+  max-height: 600px;
   overflow-y: auto;
+  ${customMedia.lessThan('mobile')`
+      max-height: 200px;
+	`}
 `;
 
 const PlacesList = styled.ul`
