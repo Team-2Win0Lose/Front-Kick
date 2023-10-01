@@ -1,3 +1,4 @@
+import MultiFilter from '../Filter/MultiFilter';
 import CruitFilter from './Header/CruitFilter';
 import DateFilter from './Header/DateFilter';
 import TeamFilter from './Header/TeamFilter';
@@ -7,9 +8,10 @@ type Props = {};
 const AccompanyHeader = (props: Props) => {
   return (
     <Header>
-      <TeamFilter />
+      {/* <TeamFilter />
       <DateFilter />
-      <CruitFilter />
+      <CruitFilter /> */}
+      <MultiFilter />
     </Header>
   );
 };
