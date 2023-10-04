@@ -59,7 +59,8 @@ function Summary({}: Props) {
             <FlexContainerRight>
               <Text>
                 {' '}
-                {homename} vs {awayname}{' '}
+                {homename && awayname ? homename + ' vs ' + awayname : ''}
+                {' '}
               </Text>
             </FlexContainerRight>
           </FlexContainer>
@@ -67,28 +68,31 @@ function Summary({}: Props) {
       </Box>
       {/* 동행 정보 */}
       <Box>
-        <TitleText>🔥 동행 정보</TitleText>
-        <JoinInfo>
-          <FlexContainer>
-            <FlexContainerLeft>
-              <FlexText>
-                <Text>희망 인원 </Text>
+      <TitleText>🔥 동행 정보</TitleText>
+      <JoinInfo>
+        {minNum && maxNum && meetingPlace && detailMeetingPlace && term ?       
+            <FlexContainer>
+              <FlexContainerLeft>
+                <FlexText>
+                  <Text>희망 인원 </Text>
+                  <Text>
+                    {' '}
+                    {minNum} ~ {maxNum} 명
+                  </Text>
+                </FlexText>
+              </FlexContainerLeft>
+              <FlexContainerRight>
                 <Text>
                   {' '}
-                  {minNum} ~ {maxNum} 명
+                  동행 장소 {meetingPlace} {detailMeetingPlace}
                 </Text>
-              </FlexText>
-            </FlexContainerLeft>
-            <FlexContainerRight>
-              <Text>
-                {' '}
-                동행 장소 {meetingPlace} {detailMeetingPlace}
-              </Text>
-              <Text> 동행 기간 {term} </Text>
-            </FlexContainerRight>
-          </FlexContainer>
-        </JoinInfo>
-      </Box>
+                <Text> 동행 기간 {term} </Text>
+              </FlexContainerRight>
+            </FlexContainer>
+          : <></>}
+       </JoinInfo>
+       </Box>
+
 
       {/* 태그 정보 */}
       <Box>
@@ -157,6 +161,7 @@ const IMG = styled.img`
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
+  font-size: 12px;
 `;
 
 const Title = styled.div`

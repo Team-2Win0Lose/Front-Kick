@@ -62,7 +62,7 @@ const SearchBar = () => {
                 </SearchForm>
               </CourseAddBtn>
               {/* 제출한 검색어 넘기기 */}
-              <MapContainer searchKeyword={Keyword} />
+              {/* <MapContainer searchKeyword={Keyword} /> */}
             </LandingPageInner>
           </LandingPage>
         </BoxContainer>

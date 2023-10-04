@@ -112,6 +112,7 @@ const Wrap = styled.div`
   justify-content: center;
   align-items: center;
   gap: 10px;
+  margin-left: 10px;
   margin-right: 10px;
 `;
 const CardIMG = styled.img`

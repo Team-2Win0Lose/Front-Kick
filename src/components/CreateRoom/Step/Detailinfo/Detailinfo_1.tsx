@@ -22,7 +22,7 @@ export default Detailinfo_1
 
 
 const Form = styled.div`
-margin: 0 auto;
+margin: 20px auto;
 width: 80%;
 display: flex;
 flex-direction: column;
