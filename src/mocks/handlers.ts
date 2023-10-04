@@ -59,12 +59,17 @@ export const handlers = [
     return res(ctx.json({ data: AccompanyApplyForMe }));
   }),
   rest.get('/api/findaccompany/detail/:postId', (req, res, ctx) => {
-    return res(ctx.json({ data: accompanyDetail }));
+    const postId = req.params.postId;
+    if (postId === '1') {
+      return res(ctx.json({ data: accompanyDetail[0] }));
+    } else if (postId === '2') {
+      return res(ctx.json({ data: accompanyDetail[1] }));
+    } else {
+      return res(ctx.json({ data: accompanyDetail[2] }));
+    }
   }),
-  rest.post('/api/recruitments/details',(req: any, res, ctx) => {
+  rest.post('/api/recruitments/details', (req: any, res, ctx) => {
     const { newPost } = req;
-    return res(
-      ctx.json({ message: "게시글이 등록되었습니다", data: newPost})
-    )
-  })
+    return res(ctx.json({ message: '게시글이 등록되었습니다', data: newPost }));
+  }),
 ];
