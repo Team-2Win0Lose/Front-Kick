@@ -150,7 +150,7 @@ const BoxContainer = styled.div`
 `;
 
 const CourseAddBtn = styled.div`
-  width: 326px;
+  width: 100%;
   height: 50px;
   font-size: 1rem;
   font-weight: 400;
@@ -183,11 +183,11 @@ const CourseAddBtn = styled.div`
 `;
 
 const Detailinput = styled.div`
-  width: 326px;
-  height: 60px;
+  width: 100%;
+  height: 70px;
   font-size: 1rem;
   font-weight: 400;
-  margin-top: 20px;
+  margin-top: 10px;
   margin-bottom: 10px;
   flex-shrink: 0;
   border-radius: 14.163px;
@@ -242,8 +242,6 @@ const LandingPage = styled.div`
 `;
 
 const LandingPageInner = styled.div`
-  /* Add your styles for the landing page inner container here */
-  /* For example: padding, width, etc. */
 `;
 
 const SearchFormContainer = styled.div`
@@ -252,8 +250,7 @@ const SearchFormContainer = styled.div`
 `;
 
 const SearchForm = styled.form`
-  /* Add your styles for the search form here */
-  /* For example: display, flex-direction, etc. */
+  width: 100%;
 `;
 
 const FormLabel = styled.label`
@@ -265,13 +262,19 @@ const FormLabel = styled.label`
 `;
 
 const FormInput = styled.input`
-  width: 300px;
-  height: 40px;
-  border-radius: 10px;
-  padding: 4px;
+  display: flex;
+  width: 100%;
+  height: 50px;
+  border-radius: 10px ;
+  padding: 5px 10px;
+  border: none;
+  font-size:16px;
+  background-color: rgb(248, 248, 248);
 `;
 
-const BtnBox = styled.div``;
+const BtnBox = styled.div`
+  padding: 10px;
+`;
 
 const FormSubmitButton = styled.input`
   /* Add your styles for the form submit button here */

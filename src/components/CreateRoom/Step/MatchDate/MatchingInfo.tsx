@@ -34,7 +34,7 @@ const MatchingInfo = (props: MatchingInfoProps) => {
   const [boxColor, setBoxColor] = useState('#eeeeee');
   const dispatch = useDispatch();
   const handleSelectClick = (item: {date:string, stadium: string, homename:string, awayname:string}) => {
-    setBoxColor('#1F1F4D');
+    setBoxColor('#FFCD40');
     dispatch(setMatch(item))
   };
   
@@ -77,7 +77,7 @@ const Text = styled.div`
   font-weight: bold;
   justify-content: center;
   align-items: center;
-  color : white;
+  color : black;
 `;
 
 const Btn = styled.div`
@@ -86,7 +86,7 @@ const Btn = styled.div`
   justify-content: center;
   align-items: center;
   padding: 10px;
-  color : white;
+  color : black;
 `;
 
 const Box = styled.div`
@@ -145,7 +145,7 @@ const FlexText = styled.div`
   align-items: center;
   padding:10px;
   gap: 20px;
-  color : white;
+  color : black;
 `;
 
 const DIV = styled.div`

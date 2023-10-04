@@ -33,7 +33,7 @@ const GlobalStyle = createGlobalStyle`
 
   @media only screen and (min-width: 768px) {
   body {
-    max-width: 1200px;
+    max-width: 1300px;
     margin: 0 auto;
     padding: 0 50px;
     font-family: "Line", sans-serif;
