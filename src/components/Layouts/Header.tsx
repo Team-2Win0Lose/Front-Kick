@@ -30,11 +30,11 @@ const Container = styled.div`
   flex-direction: column;
 `;
 
-
 const Head = styled.header`
-  height: 100%;
+  width: 100%;
+
+  /* height: 100%; */
   justify-content: space-between;
-  top: 0;
   margin: 0px;
   display: flex;
   align-items: center;
@@ -47,17 +47,13 @@ const Head = styled.header`
   ${customMedia.lessThan('mobile')`
 		font-size: 15px;
 	`}
-
 `;
 
 const Separator = styled.div`
-  height: 1px; 
-  background-color: #ccc; 
+  height: 1px;
+  background-color: #ccc;
   margin: 10px 0;
   ${customMedia.lessThan('mobile')`
 		margin: 2px 0;
 	`}
 `;
-
-
-

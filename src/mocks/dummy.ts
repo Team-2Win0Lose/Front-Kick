@@ -23,7 +23,8 @@ export const teams = [
   },
   {
     teamName: '포항 스틸러스',
-    teamImg: 'https://kickstorage.blob.core.windows.net/logo/pohang_stealus.png',
+    teamImg:
+      'https://kickstorage.blob.core.windows.net/logo/pohang_stealus.png',
     teamGrade: 2,
     teamStadium: '포항스틸야드',
     location: '포항시',
@@ -56,7 +57,8 @@ export const teams = [
   },
   {
     teamName: '전북 현대 모터스',
-    teamImg: 'https://kickstorage.blob.core.windows.net/logo/jeonbuk_hyundai_motors.png',
+    teamImg:
+      'https://kickstorage.blob.core.windows.net/logo/jeonbuk_hyundai_motors.png',
     teamGrade: 5,
     teamStadium: '전주월드컵경기장',
     location: '전라북도',
@@ -78,7 +80,8 @@ export const teams = [
   },
   {
     teamName: '대전 하나 시티즌',
-    teamImg: 'https://kickstorage.blob.core.windows.net/logo/daejun_hana_citizen.png',
+    teamImg:
+      'https://kickstorage.blob.core.windows.net/logo/daejun_hana_citizen.png',
     teamGrade: 7,
     teamStadium: '대전월드컵경기장',
     location: '대전광역시',
@@ -100,7 +103,8 @@ export const teams = [
   },
   {
     teamName: '인천 유나이티드 FC',
-    teamImg: 'https://kickstorage.blob.core.windows.net/logo/incheon_united.png',
+    teamImg:
+      'https://kickstorage.blob.core.windows.net/logo/incheon_united.png',
     teamGrade: 9,
     teamStadium: '인천축구전용경기장',
     location: '인천광역시',
@@ -133,7 +137,8 @@ export const teams = [
   },
   {
     teamName: '수원 삼성 블루윙즈',
-    teamImg: 'https://kickstorage.blob.core.windows.net/logo/suwon_samsung_bluewings.png',
+    teamImg:
+      'https://kickstorage.blob.core.windows.net/logo/suwon_samsung_bluewings.png',
     teamGrade: 12,
     teamStadium: '수원월드컵경기장',
     location: '수원시',
@@ -144,6 +149,69 @@ export const teams = [
   },
 ];
 export const AccompanyList = [
+  {
+    postId: 1,
+    hostData: {
+      hostId: '',
+      hostName: '호스트 이름',
+      hostAge: '20대',
+      hostGender: '남성',
+    },
+    accompanyData: {
+      closedDate: '2023-09-11',
+      startDate: '2023-09-11',
+      endDate: '2023-09-12',
+      nowStatus: '모집중',
+      title: '우천으로 취소돼도, 제주 맛집 부수고 돌아가요!',
+      meetingPlace: '서울역 광장',
+      nowHeadCount: 3,
+      totalHeadCount: 4,
+      participate: [''],
+      tags: ['#절대강자', '#축구지존', '#제주도', '#맛집탐방'],
+    },
+  },
+  {
+    postId: 1,
+    hostData: {
+      hostId: '',
+      hostName: '호스트 이름',
+      hostAge: '20대',
+      hostGender: '남성',
+    },
+    accompanyData: {
+      closedDate: '2023-09-11',
+      startDate: '2023-09-11',
+      endDate: '2023-09-12',
+      nowStatus: '모집중',
+      title: '우천으로 취소돼도, 제주 맛집 부수고 돌아가요!',
+      meetingPlace: '서울역 광장',
+      nowHeadCount: 3,
+      totalHeadCount: 4,
+      participate: [''],
+      tags: ['#절대강자', '#축구지존', '#제주도', '#맛집탐방'],
+    },
+  },
+  {
+    postId: 1,
+    hostData: {
+      hostId: '',
+      hostName: '호스트 이름',
+      hostAge: '20대',
+      hostGender: '남성',
+    },
+    accompanyData: {
+      closedDate: '2023-09-11',
+      startDate: '2023-09-11',
+      endDate: '2023-09-12',
+      nowStatus: '모집중',
+      title: '우천으로 취소돼도, 제주 맛집 부수고 돌아가요!',
+      meetingPlace: '서울역 광장',
+      nowHeadCount: 3,
+      totalHeadCount: 4,
+      participate: [''],
+      tags: ['#절대강자', '#축구지존', '#제주도', '#맛집탐방'],
+    },
+  },
   {
     postId: 1,
     hostData: {
@@ -180,7 +248,7 @@ export const AccompanyMadeByMe = [
     tag: ['#절대강자', '#축구지존', '#제주도', '#맛집탐방'],
     minNum: 10,
     maxNum: 12,
-    content: '제발 같이가주세요'
+    content: '제발 같이가주세요',
   },
   // {
   //   id: 2,
@@ -245,21 +313,55 @@ export const AccompanyMadeByMe = [
 ];
 
 export const AccompanyApplyForMe = [
-    {
-      host: '2',
-      img: 'ㅇㅇ',
-      date: '2023.09.11 ~ 2023.09.12',
-      //nowStatus,closeDate,nowheadCount 변경 필요
-      nowStatus: '모집중',
-      closeDate: '2023-09-11',
-      title: '우천으로 취소돼도, 제주 맛집 부수고 돌아가요!',
-      meetingPlace: '서울역 광장',
-      nowHeadCount: 3,
-      tag: ['#절대강자', '#축구지존', '#제주도', '#맛집탐방'],
-      minNum: 10,
-      maxNum: 12,
-      content: '제발 같이가주세요'
-    },
+  {
+    id: '1',
+    host: '2',
+    img: 'ㅇㅇ',
+    date: '2023.09.11 ~ 2023.09.12',
+    //nowStatus,closeDate,nowheadCount 변경 필요
+    nowStatus: '모집중',
+    closeDate: '2023-09-11',
+    title: '우천으로 취소돼도, 제주 맛집 부수고 돌아가요!',
+    meetingPlace: '서울역 광장',
+    nowHeadCount: 3,
+    tag: ['#절대강자', '#축구지존', '#제주도', '#맛집탐방'],
+    minNum: 10,
+    maxNum: 12,
+    content: '제발 같이가주세요',
+  },
+  {
+    id: '2',
+    host: '2',
+    img: 'ㅇㅇ',
+    date: '2023.09.11 ~ 2023.09.12',
+    //nowStatus,closeDate,nowheadCount 변경 필요
+    nowStatus: '모집중',
+    closeDate: '2023-09-11',
+    title: '우천으로 취소돼도, 제주 맛집 부수고 돌아가요!',
+    meetingPlace: '서울역 광장',
+    nowHeadCount: 3,
+    tag: ['#절대강자', '#축구지존', '#제주도', '#맛집탐방'],
+    minNum: 10,
+    maxNum: 12,
+    content: '제발 같이가주세요',
+  },
+  {
+    id: '3',
+    host: '2',
+    img: 'ㅇㅇ',
+    date: '2023.09.11 ~ 2023.09.12',
+    //nowStatus,closeDate,nowheadCount 변경 필요
+    nowStatus: '모집중',
+    closeDate: '2023-09-11',
+    title: '우천으로 취소돼도, 제주 맛집 부수고 돌아가요!',
+    meetingPlace: '서울역 광장',
+    nowHeadCount: 3,
+    tag: ['#절대강자', '#축구지존', '#제주도', '#맛집탐방'],
+    minNum: 10,
+    maxNum: 12,
+    content: '제발 같이가주세요',
+  },
+
   //  {
   //   id: 4,
   //   hostData: {
@@ -299,34 +401,98 @@ export const AccompanyApplyForMe = [
   //   },
   // },
 ];
-export const accompanyDetail = {
-  data: {
-    //대표 이미지
-    img: '/public/assets/dummyBanner.png',
-    //제목
-    title: '가짜데이터가짜데이터가짜데이터',
-    //매치정보(날짜, 경기장, 홈 이름, 어웨이 이름)
-    date: '2023-99-99',
-    stadium: '여기가어디게요',
-    homename: '토트넘 핫스퍼',
-    awayname: '맨체스터 유나이티드',
-    //모임정보(장소, 세부장소, 동행기간, 태그, 최소 인원, 최대 인원)
-    meetingPlace: '박지성의집',
-    detailMeetingPlace: '주방에서봐요',
-    term: '2023-99-99 ~ 2023-99-99',
-    tag: ['짱짱', '짱짱', '짱짱'],
-    minNum: 1,
-    maxNum: 55,
-    //내용
-    content:
-      '박지성 집에서 출발해서 토트넘이랑 맨유 뜨는 거 보러가실 분들 구함 작성자는 맨유팬임.',
-    cardInfo: {
-      house: [
-        { name: '반포자이', IMG: '' },
-        { name: '한남더힐', IMG: '' },
-      ],
-      food: [{ name: '푸아그라', IMG: '' }],
-      attraction: [{ name: 'T익스프레스', IMG: '' }],
+export const accompanyDetail = [
+  {
+    data: {
+      //대표 이미지
+      img: '/public/assets/dummyBanner.png',
+      //제목
+      title: '가짜데이터가짜데이터가짜데이터',
+      //매치정보(날짜, 경기장, 홈 이름, 어웨이 이름)
+      date: '2023-99-99',
+      stadium: '여기가어디게요',
+      homename: '토트넘 핫스퍼',
+      awayname: '맨체스터 유나이티드',
+      //모임정보(장소, 세부장소, 동행기간, 태그, 최소 인원, 최대 인원)
+      meetingPlace: '박지성의집',
+      detailMeetingPlace: '주방에서봐요',
+      term: '2023-99-99 ~ 2023-99-99',
+      tag: ['짱짱', '짱짱', '짱짱'],
+      minNum: 1,
+      maxNum: 55,
+      //내용
+      content:
+        '박지성 집에서 출발해서 토트넘이랑 맨유 뜨는 거 보러가실 분들 구함 작성자는 맨유팬임.',
+      cardInfo: {
+        house: [
+          { name: '반포자이', IMG: '' },
+          { name: '한남더힐', IMG: '' },
+        ],
+        food: [{ name: '푸아그라', IMG: '' }],
+        attraction: [{ name: 'T익스프레스', IMG: '' }],
+      },
     },
   },
-};
+  {
+    data: {
+      //대표 이미지
+      img: '/public/assets/dummyBanner.png',
+      //제목
+      title: '가짜데이터가짜데이터가짜데이터',
+      //매치정보(날짜, 경기장, 홈 이름, 어웨이 이름)
+      date: '2023-99-99',
+      stadium: '여기가어디게요',
+      homename: '토트넘 핫스퍼',
+      awayname: '맨체스터 유나이티드',
+      //모임정보(장소, 세부장소, 동행기간, 태그, 최소 인원, 최대 인원)
+      meetingPlace: '손흥민의집',
+      detailMeetingPlace: '주방에서봐요',
+      term: '2023-99-99 ~ 2023-99-99',
+      tag: ['짱짱', '짱짱', '짱짱'],
+      minNum: 1,
+      maxNum: 55,
+      //내용
+      content:
+        '손흥민 집에서 출발해서 토트넘이랑 맨유 뜨는 거 보러가실 분들 구함 작성자는 맨유팬임.',
+      cardInfo: {
+        house: [
+          { name: '반포자이', IMG: '' },
+          { name: '한남더힐', IMG: '' },
+        ],
+        food: [{ name: '푸아그라', IMG: '' }],
+        attraction: [{ name: 'T익스프레스', IMG: '' }],
+      },
+    },
+  },
+  {
+    data: {
+      //대표 이미지
+      img: '/public/assets/dummyBanner.png',
+      //제목
+      title: '가짜데이터가짜데이터가짜데이터',
+      //매치정보(날짜, 경기장, 홈 이름, 어웨이 이름)
+      date: '2023-99-99',
+      stadium: '여기가어디게요',
+      homename: '울버햄튼',
+      awayname: '맨체스터 시티',
+      //모임정보(장소, 세부장소, 동행기간, 태그, 최소 인원, 최대 인원)
+      meetingPlace: '황희찬의집',
+      detailMeetingPlace: '주방에서봐요',
+      term: '2023-99-99 ~ 2023-99-99',
+      tag: ['짱짱', '짱짱', '짱짱'],
+      minNum: 1,
+      maxNum: 55,
+      //내용
+      content:
+        '황희찬 집에서 출발해서 울버햄튼이랑 맨시티 뜨는 거 보러가실 분들 구함 작성자는 맨유팬임.',
+      cardInfo: {
+        house: [
+          { name: '반포자이', IMG: '' },
+          { name: '한남더힐', IMG: '' },
+        ],
+        food: [{ name: '푸아그라', IMG: '' }],
+        attraction: [{ name: 'T익스프레스', IMG: '' }],
+      },
+    },
+  },
+];

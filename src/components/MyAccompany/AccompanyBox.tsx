@@ -1,9 +1,10 @@
 import styled from 'styled-components';
-import { AccompanyMadeByMe, accompanyType, hostType } from '@/lib/interface';
+import { AccompanyMadeByMe } from '@/lib/interface';
 import { useNavigate } from 'react-router-dom';
 import { BsPeopleFill } from 'react-icons/bs';
-import { calculateDday } from '@/util/calculateDday';
-import { ReactElement, JSXElementConstructor, ReactFragment, ReactPortal, Key } from 'react';
+import { Key } from 'react';
+import { sliceTitle, sliceDate } from '@/util/sliceTitle';
+
 type Props = {
   boxdata: AccompanyMadeByMe;
 };
@@ -11,13 +12,46 @@ type Props = {
 const AccompanyBox = (props: Props) => {
   const navigate = useNavigate();
   return (
-    <Box>
+    <Box onClick={() => navigate(`/findaccompany/detail/${props.boxdata.id}`)}>
       <Header>
         <Host>
-          <HostImg></HostImg>
-          <HostName>{props.boxdata.host}</HostName>
+          <HostImg src='' alt='' />
         </Host>
-        <Partition></Partition>
+        <div>
+          <Title>{sliceTitle(props.boxdata.title)}</Title>
+          <Tags>
+            {props?.boxdata.tag.map(
+              (
+                tag: string | null | undefined,
+                index: Key | null | undefined,
+              ) => (
+                <Tag key={index}>{tag}</Tag>
+              ),
+            )}
+          </Tags>
+        </div>
+      </Header>
+      <Body>
+        <Cards>
+          <Card>
+            <CardImg>카드 사진</CardImg>
+            <CardName>카드 이름</CardName>
+          </Card>
+        </Cards>
+        <Cards>
+          <Card>
+            <CardImg>카드 사진</CardImg>
+            <CardName>카드 이름</CardName>
+          </Card>
+        </Cards>
+        <Cards>
+          <Card>
+            <CardImg>카드 사진</CardImg>
+            <CardName>카드 이름</CardName>
+          </Card>
+        </Cards>
+      </Body>
+      <Footer>
         <Match>
           <HomeTeam>
             <TeamLogo src='' />
@@ -29,58 +63,33 @@ const AccompanyBox = (props: Props) => {
             <Versus>Away</Versus>
           </AwayTeam>
         </Match>
-        <Status>
-          <DDay>
-            📅 D-{calculateDday(props.boxdata.closeDate)}
-          </DDay>
-          <CurrentStatus>{props.boxdata.nowStatus}</CurrentStatus>
-        </Status>
-      </Header>
-      <Body>
-        <Title>{props.boxdata.title}</Title>
-        <Cards>
-          <Card>
-            <CardImg>카드 사진</CardImg>
-            <CardName>카드 이름</CardName>
-          </Card>
-        </Cards>
-        <Tags>
-          {props?.boxdata.tag.map((tag: string | null | undefined, index: Key | null | undefined) => (
-            <Tag key={index}>{tag}</Tag>
-          ))}
-        </Tags>
-      </Body>
-      <Footer>
-        <Personnel>
-          <PeopleImg>
-            <BsPeopleFill />
-          </PeopleImg>
-          <PeopleCount>
-            {props.boxdata.nowHeadCount}/
-            {props.boxdata.maxNum}
-          </PeopleCount>
-        </Personnel>
+        <Partition></Partition>
+
         <Accompany>
           <AccompanyInfo>
-            <AccompanyTitle>동행 일자</AccompanyTitle>
-            <AccompanyData>
-              {props.boxdata.date}
-            </AccompanyData>
+            <AccompanyData>{sliceDate(props.boxdata.date)}</AccompanyData>
           </AccompanyInfo>
           <Accompany>
             <AccompanyInfo>
-              <AccompanyTitle>동행 장소</AccompanyTitle>
-              <AccompanyData>
-                {props.boxdata.meetingPlace}
-              </AccompanyData>
+              <AccompanyData>{props.boxdata.meetingPlace}</AccompanyData>
             </AccompanyInfo>
           </Accompany>
         </Accompany>
-        <DetailBtn
-          onClick={() => navigate(`/myaccompany/manage/${props.boxdata.id}`)}
-        >
-          상세정보 ＞
-        </DetailBtn>
+
+        <Personnel>
+          <People>
+            <PeopleImg>
+              <BsPeopleFill />
+            </PeopleImg>
+            <PeopleCount>
+              {props.boxdata.nowHeadCount}/{props.boxdata.maxNum}
+            </PeopleCount>
+          </People>
+
+          <Status>
+            <CurrentStatus>{props.boxdata.nowStatus}</CurrentStatus>
+          </Status>
+        </Personnel>
       </Footer>
     </Box>
   );
@@ -93,9 +102,11 @@ const Box = styled.div`
   align-items: center;
   border: none;
   border-radius: 12px;
+  padding: 15px 10px;
   margin: 15px 0;
+  gap: 10px;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
-  background-color: #1F1F45;
+  background-color: #1f1f45;
   color: white;
   font-weight: bold;
 `;
@@ -110,9 +121,8 @@ const Header = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 30px;
+  gap: 20px;
   padding: 4px;
-  
 `;
 const Host = styled.div`
   display: flex;
@@ -120,21 +130,18 @@ const Host = styled.div`
   align-items: center;
   gap: 5px;
 `;
-const HostImg = styled.div`
-  width: 30px;
-  height: 30px;
+const HostImg = styled.img`
+  width: 40px;
+  height: 40px;
   background-color: #9b9b9b;
   border: none;
   border-radius: 100%;
-`;
-const HostName = styled.p`
-  font-size: 10px;
 `;
 const Match = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 15px;
+  gap: 5px;
 `;
 const Status = styled.div`
   display: flex;
@@ -158,31 +165,26 @@ const AwayTeam = styled.div`
 const TeamLogo = styled.img`
   width: 27px;
   height: 27px;
+
   border: none;
   border-radius: 100%;
   background-color: #9b9b9b;
 `;
 const Versus = styled.p`
   font-size: 8px;
-  color: white;
+  color: black;
 `;
-const DDay = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 10px;
-  font-weight: bold;
-`;
+
 const CurrentStatus = styled.div`
   width: 40px;
   height: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #898989;
+  background-color: #ffa500;
   border-radius: 8px;
   border: none;
-  color:  white;
+  color: white;
   font-size: 8px;
   font-weight: 350;
 `;
@@ -191,16 +193,16 @@ const CurrentStatus = styled.div`
 const Body = styled.div`
   display: flex;
   width: 100%;
-  flex-direction: column;
+  /* flex-direction: column; */
   justify-content: center;
   align-items: flex-start;
-  padding: 8px 15px;
+  padding: 8px 0;
   gap: 8px;
-  background-color: #ffffff;
+  /* background-color: #ffffff; */
 `;
 const Title = styled.p`
-  font-size: 12px;
-  color: black;
+  font-size: 16px;
+  color: white;
 `;
 const Cards = styled.div`
   display: flex;
@@ -214,7 +216,7 @@ const Card = styled.div`
   justify-content: center;
   gap: 10px;
   align-items: center;
-  background-color: #d9d9d9;
+  background-color: #fff;
   border: none;
   border-radius: 25px;
   width: 108px;
@@ -234,36 +236,43 @@ const CardImg = styled.div`
 `;
 const CardName = styled.p`
   font-size: 10px;
+  color: black;
 `;
 const Tags = styled.div`
+  margin-top: 7px;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   gap: 15px;
 `;
 const Tag = styled.p`
-  font-size: 8px;
+  font-size: 11px;
   font-weight: 350;
-  color: #898989;
+  color: #d8d7d7;
 `;
 
 // 카드 푸터 부분
 const Footer = styled.div`
+  color: black;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 30px;
-  padding: 4px 15px;
+  padding: 4px 0;
+  background-color: white;
+  border-radius: 180px;
 `;
 const Personnel = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 3px;
+  /* gap: 3px; */
 `;
 const PeopleImg = styled.div``;
 const PeopleCount = styled.p`
-  font-size: 10px;
+  font-size: 12px;
 `;
 
 const Accompany = styled.div`
@@ -271,30 +280,24 @@ const Accompany = styled.div`
   justify-content: center;
   align-items: flex-start;
   flex-direction: column;
+  font-size: 14px;
+  gap: 5px;
 `;
 const AccompanyInfo = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 5px;
+  font-size: 14px;
 `;
-const AccompanyTitle = styled.p`
-  font-size: 11px;
-`;
-const AccompanyData = styled.p`
-  font-size: 9px;
-`;
-const DetailBtn = styled.div`
-  width: 60px;
-  height: 24px;
+const People = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #fff;
-  background-color: #898989;
-  border: none;
-  border-radius: 8px;
-  font-weight: 350;
-  font-size: 8px;
+  gap: 3px;
 `;
+const AccompanyData = styled.p`
+  font-size: 12px;
+`;
+
 export default AccompanyBox;

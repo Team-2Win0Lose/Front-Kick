@@ -23,7 +23,6 @@ const MatchInfo = (props: Props) => {
         </AwayTeam>
       </MatchTeam>
       <NowInfo>
-        <Dday>📅 D-3</Dday>
         <Now>
           <Info>모집중</Info>
         </Now>
