@@ -136,24 +136,24 @@ const MapContainer = (props: propsType) => {
     function getListItem(index: number, places: placeType) {
       const el = document.createElement('li');
       let itemStr = `
-    <div class="info" style="display: flex; justify-content: flex-start; align-items: center;gap:10px; border: 1px solid black; border-radius: 12px; padding: 3px;">
+    <div class="info" style="display: flex; justify-content: flex-start; align-items: center;gap:10px; border-bottom:1px solid gray; padding: 5px;">
       <div>
         <label class="checkbox-container" style="display: flex; justify-content: center; align-items: center; gap: 10px;">
           <input type="radio" name="place" class="checkbox-input">
           <div class="checkbox-custom"></div>
           <div>        
-            <h5 class="info-item place-name" style="font-size: 16px;">${
+            <h5 class="info-item place-name" style="font-size: 16px; ">${
               places.place_name
             }</h5>
             ${
               places.road_address_name
-                ? `<p class="info-item road-address-name" style="font-size:12px; font-weight: 400;">
+                ? `<p class="info-item road-address-name" style="font-size:12px; padding: 5px 0; font-weight: 400; color: #666666;">
                     ${places.road_address_name}
                   </p>
-                  <p class="info-item address-name" style="font-size:12px; font-weight: 400;">
+                  <p class="info-item address-name" style="font-size:12px; padding: 5px 0;  font-weight: 400; color: #666666;">
                     ${places.address_name}
                     </p>`
-                : `<p class="info-item address-name" style="font-size:12px; font-weight: 400;">
+                : `<p class="info-item address-name" style="font-size:12px; padding: 5px 0; font-weight: 400; color: #666666;">
                     ${places.address_name}
                   </p>`
             }
@@ -304,21 +304,22 @@ const MapWrapper = styled.div`
 
 const MapContainer_ = styled.div`
   display: flex;
-  align-items: center;
-  background-color: #e0e0e0;
+  align-items: flex-start;
+  /* background-color: #e6e3e3; */
   padding: 20px;
+  height: 100%;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
   ${customMedia.lessThan('mobile')`
       flex-direction: column;
 	`}
 `;
 
 const MapDiv = styled.div`
-  width: 600px;
-  height: 600px;
+  width: 700px;
+  height: 700px;
   background-color: #e0e0e0;
-  border-radius: 4px;
+  border-radius: 10px 0 0 10px;
   margin-bottom: 20px;
   ${customMedia.lessThan('mobile')`
     width: 100%;
@@ -327,10 +328,12 @@ const MapDiv = styled.div`
 `;
 
 const SearchResult = styled.div`
-  width: 100%;
-  padding: 10px;
+  width: 60%;
+  height: 700px;
   display: flex;
   flex-direction: column;
+  background-color: rgb(248,248,248);
+  border-radius: 0 10px 10px 0;
   align-items: center;
   ${customMedia.lessThan('mobile')`
       padding: 0px;
@@ -339,17 +342,19 @@ const SearchResult = styled.div`
 
 const ResultText = styled.p`
   font-size: 1px;
+  padding: 10px;
   font-weight: bold;
 `;
 
 const ResultKeyword = styled.span`
-  color: #1f1f45;
+  color: black;
   font-size: 20px;
 `;
 
 const ScrollWrapper = styled.div`
   width: 100%;
   max-height: 600px;
+  padding: 10px;
   overflow-y: auto;
   ${customMedia.lessThan('mobile')`
       max-height: 200px;
@@ -358,11 +363,14 @@ const ScrollWrapper = styled.div`
 
 const PlacesList = styled.ul`
   list-style: none;
-  padding: 0;
-  margin: 3px 0;
+  padding: 10px;
   color: #1f1f45;
-  & > li {
-    padding: 8px 0;
+  .item {
+    div{
+      color: black;
+
+    }
+    padding: 3px 0;
   }
 `;
 
