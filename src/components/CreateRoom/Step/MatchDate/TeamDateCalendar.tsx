@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React,{useEffect, useState} from "react";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import { EventContentArg } from "@fullcalendar/core/index.js";
@@ -13,12 +13,15 @@ interface TeamDateCalendarProps {
 
 const TeamDateCalendar: React.FC<TeamDateCalendarProps> = ({ teamName, teamEvents }) => {    
   
-  const [selectedEvent, setSelectedEvent] = useState<any | null>(null);
+  const [selectedEvent, setSelectedEvent] = useState<any | null>(
+  );
   
   const filteredEvents = teamEvents.map(event => ({
     ...event,
     start: new Date(event.start)
   }));
+
+  
 
   const renderEventContent = (eventInfo: EventContentArg) => {
     const { title, image, index } = eventInfo.event.extendedProps;
@@ -38,7 +41,6 @@ const TeamDateCalendar: React.FC<TeamDateCalendarProps> = ({ teamName, teamEvent
   const handleCloseMatchingInfo = () => {
     setSelectedEvent(null);
   };
-
 
   return (
     <CalendarContainer>

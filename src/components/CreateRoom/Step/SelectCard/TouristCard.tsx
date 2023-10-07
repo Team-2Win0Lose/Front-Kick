@@ -57,7 +57,8 @@ const TouristCard = ({ title, index }: Props) => {
 export default TouristCard;
 
 const DIV = styled.div`
-  margin-left: 20px;
+  width:100%;
+  padding: 10px;
 `;
 
 const Text = styled.p`

@@ -9,6 +9,7 @@ import { useState, useEffect } from 'react';
 import { GetTeamList } from '@/lib/interface';
 import { getTeamDetail } from '@/lib/api';
 import { teams } from '@/mocks/dummy';
+import { customMedia } from '@/util/GlobalStyle';
 const TeamCardCarousel = () => {
   // const [teamList, setteamList] = useState<GetTeamList>();
   const dispatch = useDispatch();
@@ -28,7 +29,10 @@ const TeamCardCarousel = () => {
     swipeToSlide: true,
     autoplaySpeed: 3000,
     speed: 500,
+    
   };
+  
+
 
   // // api에서 team 목록 불러오기
   // useEffect(() => {
@@ -54,7 +58,7 @@ const TeamCardCarousel = () => {
 
   return (
     <div className='carousel'>
-      <CustomSlider {...settings}>
+      <CustomSlider {...settings} >
         {sortedItems?.map((item, index) => (
           <Box key={index}>
             <TitleBox>
@@ -135,12 +139,16 @@ const Rate = styled.div`
   font-weight: bold;
   padding: 3px;
   color: white;
+  ${customMedia.lessThan('mobile')`
+		font-size: 30px;
+	`}
   @font-face {
     font-family: 'Giants-Bold';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-1@1.1/Giants-Bold.woff2')
       format('woff2');
     font-weight: 700;
     font-style: normal;
+   
   }
 `;
 
@@ -151,7 +159,11 @@ const IMG = styled.img`
   position: absolute; /* 절대 위치 설정 */
   top: 30%; /* 수직 가운데로 배치 */
   left: 50%; /* 수평 가운데로 배치 */
-  transform: translate(-50%, -50%); /* 가운데 정렬 */
+  transform: translate(-50%, -50%);
+  ${customMedia.lessThan('mobile')`
+		width:100px;
+    height:100px;
+	`}
 `;
 
 const Name = styled.div`
@@ -160,6 +172,9 @@ const Name = styled.div`
   font-size: 25px;
   padding: 5px;
   color: black;
+  ${customMedia.lessThan('mobile')`
+		font-size: 20px;
+	`}
 `;
 
 const FlexContainer = styled.div`
@@ -198,6 +213,9 @@ const FlexText = styled.div`
 
 const Font = styled.div`
   font-size: 20px;
+  ${customMedia.lessThan('mobile')`
+		font-size: 10px;
+	`}
 `;
 
 const InfoBox = styled.div`

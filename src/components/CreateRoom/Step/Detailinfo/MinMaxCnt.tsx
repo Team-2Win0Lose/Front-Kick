@@ -62,7 +62,6 @@ const BoxContainer = styled.div`
   justify-content: center;
   align-items: center;
   gap: 10px;
-  margin-bottom:10px;
 `;
 
 const SettingTxt = styled.div`
@@ -83,8 +82,18 @@ const StyledInput = styled.div`
   input {
     border-radius: 10px;
     border: 1px solid #ccc;
-    width: 50px;
+    width: 40px;
     padding: 10px;
     font-size: 16px;
+    appearance: none;
+    -webkit-appearance: none;
+    text-align: center;
+    
+  }
+  input::-webkit-inner-spin-button,
+  input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0;
   }
 `;
