@@ -1,21 +1,32 @@
-import React from 'react';
-import { RefObject, useEffect, useRef, useState } from 'react';
+import { RefObject, useCallback, useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { getCookie } from '@/util/cookieFn';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/app/store';
+const token = getCookie('token');
+const headers = {
+  Authorization: `Bearer ${token}`,
+};
 type Props = {};
 
 const MultiFilter = (props: Props) => {
+  const id = useSelector((state: RootState) => state.auth.id);
   const [dateRange, setDateRange] = useState([null, null]);
   const [startDate, endDate] = dateRange;
+  const [cardList, setCardList] = useState([]);
+  const navigate = useNavigate();
+  const { search } = useLocation();
 
   const filterDom = useRef<HTMLUListElement | null>(null);
-
+  const [nowRecruitState, setnowRecruitState] = useState<boolean>();
   const [isContentsShowed, setIsContentsShowed] = useState(false);
   const [clickedCategory, setClickedCategory] = useState(Number);
   const [isSelectedTeam, setisSelectedTeam] = useState<string[]>([]);
   const [clickedCheckList, setClickedCheckList] = useState<
-    { id: number; content: string; sortType: string }[]
+    { id: number; content: string; sort_type: string }[]
   >([]);
   const appendTeam = (team: string) => {
     const isTeamSelected = isSelectedTeam.includes(team);
@@ -25,28 +36,61 @@ const MultiFilter = (props: Props) => {
       setisSelectedTeam([...isSelectedTeam, team]);
     }
   };
-  const handleCheckList = (
-    e: any,
-    content: string,
-    idx: number,
-    sort_type: string,
-  ) => {
-    e.target.checked
-      ? setClickedCheckList([
-          ...clickedCheckList,
-          { id: idx, content, sortType: sort_type },
-        ])
-      : setClickedCheckList(
-          clickedCheckList.filter((list) => list.content !== content),
-        );
+  const handleCheckList = (id: number, content: string, sort_type: string) => {
+    const index = clickedCheckList.findIndex(
+      (item) => item.content === content,
+    );
+    if (index !== -1) {
+      // 이미 있으면 해당 항목을 제거
+      setClickedCheckList((prevCheckList) =>
+        prevCheckList.filter((item, idx) => idx !== index),
+      );
+    } else {
+      // 없으면 새 항목을 추가
+      setClickedCheckList((prevCheckList) => [
+        ...prevCheckList,
+        { id, content, sort_type },
+      ]);
+    }
   };
   useOutsideClick(filterDom, () => setIsContentsShowed(false));
+  const getCardListData = useCallback(async () => {
+    const res = await fetch(
+      `https://kick-back.azurewebsites.net/api/recruitments/?${id}${search}`,
+      {
+        method: 'GET',
+        headers: headers,
+      },
+    );
 
+    const data = await res.json();
+
+    setCardList(data.result);
+  }, [search]);
+
+  useEffect(() => {
+    getCardListData();
+  }, [getCardListData]);
+
+  const makeQueryString = () => {
+    const queryString = clickedCheckList
+      .map(({ id, sort_type }) => {
+        if (sort_type === 'home_team') {
+          return `${sort_type}_id=${id + 1}`;
+        }
+      })
+      .map((item) => {
+        return '&' + item;
+      })
+      .join('');
+
+    navigate(`?${queryString}`);
+  };
   return (
     <Wrapper>
       <FilterList ref={filterDom}>
         {FILTER_CATEGORYS.map(({ sort_type, title, contents }, idx) => {
-          if (sort_type === 'teams') {
+          if (sort_type === 'home_team') {
             return (
               <Filter key={idx}>
                 <Title
@@ -68,8 +112,8 @@ const MultiFilter = (props: Props) => {
                   {contents.map((content, idx) => (
                     <TeamContent
                       key={idx}
-                      onClick={(e: any) =>
-                        handleCheckList(e, content[1], idx, sort_type)
+                      onClick={() =>
+                        handleCheckList(idx, content[1], sort_type)
                       }
                     >
                       <TeamLabel
@@ -82,7 +126,14 @@ const MultiFilter = (props: Props) => {
                     </TeamContent>
                   ))}
                   <Btns>
-                    <Button>필터 적용</Button>
+                    <Button
+                      onClick={() => {
+                        makeQueryString();
+                        setIsContentsShowed(false);
+                      }}
+                    >
+                      필터 적용
+                    </Button>
                   </Btns>
                 </TeamContents>
               </Filter>
@@ -110,7 +161,7 @@ const MultiFilter = (props: Props) => {
                     <Content
                       key={idx}
                       onClick={(e: any) =>
-                        handleCheckList(e, content[1], idx, sort_type)
+                        handleCheckList(idx, content[1], sort_type)
                       }
                     >
                       <Label>
@@ -144,7 +195,7 @@ const MultiFilter = (props: Props) => {
                       : 'hide'
                   }
                 >
-                  <CustomDatePicker
+                  {/* <CustomDatePicker
                     selectsRange={true}
                     startDate={startDate}
                     endDate={endDate}
@@ -158,7 +209,7 @@ const MultiFilter = (props: Props) => {
                       }
                     }}
                     isClearable={true}
-                  />
+                  /> */}
                   <Btns>
                     <Button>필터 적용</Button>
                   </Btns>
@@ -173,7 +224,7 @@ const MultiFilter = (props: Props) => {
 };
 const FILTER_CATEGORYS = [
   {
-    sort_type: 'teams',
+    sort_type: 'home_team',
     title: '구단별',
     contents: [
       [
@@ -220,7 +271,7 @@ const FILTER_CATEGORYS = [
   {
     sort_type: 'recruit',
     title: '모집 여부',
-    contents: [['모집중'], ['마감임박'], ['모집마감']],
+    contents: [['모집중'], ['모집마감']],
   },
   {
     sort_type: 'date',
