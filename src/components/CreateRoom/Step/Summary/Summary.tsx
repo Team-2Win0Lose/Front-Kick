@@ -154,7 +154,6 @@ const ImgBox = styled.div`
   height: 200px;
   padding: 10px;
   font-size: 16px;
-  margin-bottom: 20px;
 `;
 
 const IMG = styled.img`

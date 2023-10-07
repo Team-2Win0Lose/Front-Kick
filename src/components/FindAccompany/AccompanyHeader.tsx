@@ -24,4 +24,5 @@ const Header = styled.div`
   gap: 20px;
   margin-bottom: 10px;
 `;
+
 export default AccompanyHeader;

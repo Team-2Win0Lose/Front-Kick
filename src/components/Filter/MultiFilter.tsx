@@ -253,8 +253,6 @@ const Wrapper = styled.div`
 `;
 const FilterList = styled.ul`
   display: flex;
-  justify-content: flex-start;
-  align-items: center;
 `;
 const Filter = styled.li`
   position: relative;

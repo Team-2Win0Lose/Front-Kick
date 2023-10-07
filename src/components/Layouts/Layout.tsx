@@ -9,11 +9,11 @@ const Layout = (props: { children: React.ReactNode }) => {
 
       <Main>{props.children}</Main>
 
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };
 const Main = styled.main`
-  padding: 200px 0;
+  /* padding: 200px 0; */
 `;
 export default Layout;
