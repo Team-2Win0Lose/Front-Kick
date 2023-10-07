@@ -342,7 +342,7 @@ const SearchResult = styled.div`
 
 const ResultText = styled.p`
   font-size: 1px;
-  padding: 10px;
+  padding: 20px;
   font-weight: bold;
 `;
 

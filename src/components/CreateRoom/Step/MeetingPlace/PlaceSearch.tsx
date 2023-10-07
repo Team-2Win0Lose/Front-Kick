@@ -208,7 +208,7 @@ const Detailinput = styled.div`
     border-radius: 12px;
     border: 1px solid #ccc;
     width: 100%;
-    padding: 10px;
+    padding: 15px;
     /* border: none; 
     outline: none;  */
     font-size: 16px;

@@ -41,6 +41,6 @@ const ListContainer = styled.div`
   grid-template-columns: repeat(3, 1fr); /* 4열로 배치 */
   justify-content: center;
   align-content: center;
-  gap: 10px;
+  gap: 30px;
 `;
 export default AccompanyList;

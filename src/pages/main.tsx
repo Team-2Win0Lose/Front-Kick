@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux';
 import { autoCheck } from '@/feature/authSlice';
 import TeamCardCarousel from '@/components/TeamRating/TeamCardCarousel';
 import FindAccompany from './FindAccompany';
+import { customMedia } from '@/util/GlobalStyle';
 type Props = {};
 
 const Main = (props: Props) => {
@@ -44,7 +45,7 @@ const Main = (props: Props) => {
         <TeamCardCarousel/>
       </Container>
       <Container>
-        <Title>
+          <Title>
             🙋‍♂️ 동행 구경하기
           </Title>
           <SubTitle>
@@ -52,7 +53,6 @@ const Main = (props: Props) => {
           </SubTitle>
         <FindAccompany/>
       </Container>
-
     </div>
   );
 };
@@ -98,10 +98,14 @@ const Mypage = styled.div`
 
 const Title = styled.div`
   border: 1px;
-  font-size: 20px;
+  font-size: 25px;
   margin-left: 20px;
   margin-Top: 50px;
   margin-bottom: 10px;
+  ${customMedia.lessThan('mobile')`
+		font-size: 20px;
+    border: 1px;
+	`}
 
 `;
 
