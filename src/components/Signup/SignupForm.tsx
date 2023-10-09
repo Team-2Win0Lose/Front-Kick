@@ -7,7 +7,7 @@ import { ko } from 'date-fns/esm/locale';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { signup } from '@/lib/api';
-import { setUser } from '@/feature/authSlice';
+import { InitialState, setUser } from '@/feature/authSlice';
 interface IAuthForm {
   email: string;
   name: string;
@@ -77,12 +77,7 @@ const SignupForm = (props: any) => {
           formattedDate,
           agree_terms_of_service,
         );
-        dispatch(
-          setUser({
-            isAuthenticated: true,
-          }),
-        );
-        navigate('/signup/onboarding');
+        navigate('/login');
       } catch (error) {
         console.error(error);
       }
