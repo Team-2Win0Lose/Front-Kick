@@ -3,163 +3,80 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import TeamDateCalendar from './TeamDateCalendar';
-import { useState } from 'react';
+import { useState,useEffect, useCallback } from 'react';
 import { customMedia } from '@/util/GlobalStyle';
 
-type TeamName = keyof typeof events;
-
 interface itemsProps {
-  rating: number;
   item: string;
-  name: TeamName;
-  ing: number;
-  follower: number;
+  home_team_name: string;
+  name: string;
 }
 
-const events = {
-  강원FC: [
-    {
-      title: '축구',
-      start: '2023-09-1',
-      image: 'https://kickstorage.blob.core.windows.net/logo/gwangju_fc.png',
-    },
-    {
-      title: '전북vs서울',
-      start: '2023-09-6',
-      image: 'https://kickstorage.blob.core.windows.net/logo/daegu_fc.png',
-    },
-    {
-      title: '전북vs서울',
-      start: '2023-09-11',
-      image: 'https://kickstorage.blob.core.windows.net/logo/jeju_united.png',
-    },
-    {
-      title: '전북vs서울',
-      start: '2023-09-19 13:00:00',
-      image: 'https://kickstorage.blob.core.windows.net/logo/suwon_fc.png',
-    },
-    {
-      title: '전북vs서울',
-      start: '2023-09-28 13:00:00',
-      image: 'https://kickstorage.blob.core.windows.net/logo/suwon_samsung_bluewings.png',
-    },
-    {
-      title: '전북vs서울',
-      start: '2023-10-1 13:00:00',
-      image: 'https://kickstorage.blob.core.windows.net/logo/ulsan_hyundai.png',
-    },
-  ],
-  광주FC: [
-    {
-      title: '야호',
-      start: '2023-08-10',
-      image: 'public/assets/final_logo/대구FC.png',
-    },
-    { title: '승훈vs서울', start: '2023-08-11' },
-  ],
-  대구FC: [
-    {
-      title: '휴..',
-      start: '2023-08-10',
-      image: 'public/assets/final_logo/대구FC.png',
-    },
-    { title: '승훈vs서울', start: '2023-08-13' },
-  ],
-  대전하나시티즌: [],
-  수원삼성블루윙즈: [],
-  수원FC: [],
-  울산현대: [],
-  인천유나이티드: [],
-  전북현대모터스: [],
-  제주유나이티드: [],
-  포항스틸러스: [],
-  FC서울: [],
-};
 
 const items: itemsProps[] = [
   {
-    rating: 1,
     item: 'https://kickstorage.blob.core.windows.net/logo/gangwon_fc.png',
-    name: '강원FC',
-    ing: 112,
-    follower: 23,
+    home_team_name: '강원',
+    name: '강원FC'
   },
   {
-    rating: 2,
     item: 'https://kickstorage.blob.core.windows.net/logo/gwangju_fc.png',
-    name: '광주FC',
-    ing: 123,
-    follower: 23,
+    home_team_name: '광주',
+    name: '광주FC'
   },
   {
-    rating: 3,
     item: 'https://kickstorage.blob.core.windows.net/logo/daegu_fc.png',
-    name: '대구FC',
-    ing: 312,
-    follower: 23,
+    home_team_name: '대구',
+    name: '대구FC'
   },
   {
-    rating: 4,
     item: 'https://kickstorage.blob.core.windows.net/logo/daejun_hana_citizen.png',
-    name: '대전하나시티즌',
-    ing: 212,
-    follower: 21,
+    home_team_name: '대전',
+    name: '대전하나시티즌'
   },
   {
-    rating: 5,
     item: 'https://kickstorage.blob.core.windows.net/logo/suwon_samsung_bluewings.png',
-    name: '수원삼성블루윙즈',
-    ing: 152,
-    follower: 29,
+    home_team_name: '수원',
+    name: '수원삼성블루윙즈'
   },
   {
-    rating: 6,
     item: 'https://kickstorage.blob.core.windows.net/logo/suwon_fc.png',
-    name: '수원FC',
-    ing: 172,
-    follower: 2,
+    home_team_name: '수원FC',
+    name: '수원FC'
   },
   {
-    rating: 7,
     item: 'https://kickstorage.blob.core.windows.net/logo/ulsan_hyundai.png',
-    name: '울산현대',
-    ing: 112,
-    follower: 264,
+    home_team_name: '울산',
+    name: '울산현대'
   },
   {
-    rating: 8,
     item: 'https://kickstorage.blob.core.windows.net/logo/incheon_united.png',
-    name: '인천유나이티드',
-    ing: 912,
-    follower: 234,
+    home_team_name: '인천',
+    name: '인천유나이티드'
+
   },
   {
-    rating: 9,
     item: 'https://kickstorage.blob.core.windows.net/logo/jeonbuk_hyundai_motors.png',
-    name: '전북현대모터스',
-    ing: 124,
-    follower: 2223,
+    home_team_name: '전북',
+    name: '전북현대모터스'
+
   },
   {
-    rating: 10,
     item: 'https://kickstorage.blob.core.windows.net/logo/jeju_united.png',
-    name: '제주유나이티드',
-    ing: 992,
-    follower: 213,
+    home_team_name: '제주',
+    name: '제주유나이티드'
   },
   {
-    rating: 11,
     item: 'https://kickstorage.blob.core.windows.net/logo/pohang_stealus.png',
-    name: '포항스틸러스',
-    ing: 132,
-    follower: 20,
+    home_team_name: '포항',
+    name: '포항스틸러스'
+
   },
   {
-    rating: 12,
     item: 'https://kickstorage.blob.core.windows.net/logo/fc_seoul.png',
-    name: 'FC서울',
-    ing: 12,
-    follower: 243,
+    home_team_name: '서울',
+    name: 'FC서울'
+
   },
 ];
 
@@ -177,26 +94,36 @@ const TeamDateSelectCarousel = () => {
     prevArrow: <PrevArrow>&#8249;</PrevArrow>,
     nextArrow: <NextArrow>&#8250;</NextArrow>, 
   };
+  const [matchData, setmatchData] = useState([])
+  const [selectedTeam, setSelectedTeam] = useState<string>();
 
-  const [selectedTeam, setSelectedTeam] = useState<keyof typeof events | null>(
-    null,
-  );
-
-  const handleBoxClick = (teamName: TeamName) => {
+  const handleBoxClick = (teamName: string) => {
     setSelectedTeam(teamName);
   };
 
+  const getMatchData = useCallback(async (home_team_name:string) => {
+    const res = await fetch(
+      `https://kick-back.azurewebsites.net/api/game_schedule/?home_team_name=${home_team_name}`,
+      {
+        method: 'GET',
+      },
+    );
+
+    const data = await res.json();
+      
+    setmatchData(data);
+  }, []);
 
   return (
     <CarouselContainer>
       <CustomSlider {...settings}>
         {items.map((item, index) => (
-          <DIV key={index} onClick={() => handleBoxClick(item.name)}
-          isSelected={selectedTeam === item.name}>
+          <DIV key={index} onClick={() => {handleBoxClick(item.home_team_name), getMatchData(item.home_team_name)}}
+          isSelected={selectedTeam === item.home_team_name}>
             <BoxWrapper key={index}>
               <Box>
                 <FlexContainer>
-                  <IMG src={item.item} alt={item.name} />
+                  <IMG src={item.item} alt="정보가 없습니다." />
                 </FlexContainer>
               </Box>
               <NameWrapper>
@@ -210,7 +137,7 @@ const TeamDateSelectCarousel = () => {
         <TeamCalendarContainer>
           <TeamDateCalendar
             teamName={selectedTeam}
-            teamEvents={events[selectedTeam]}
+            teamEvents={matchData}
           />
         </TeamCalendarContainer>
       )}
@@ -238,7 +165,6 @@ interface BoxProps {
   isSelected?: boolean;
 }
 
-
 const DIV = styled.div<BoxProps>`
   display:flex;
   width:100%;
@@ -263,8 +189,6 @@ const BoxWrapper = styled.div`
 const TeamCalendarContainer = styled.div`
   background-color: white;
 `;
-
-
 
 const Box = styled.div`
   position: relative;
