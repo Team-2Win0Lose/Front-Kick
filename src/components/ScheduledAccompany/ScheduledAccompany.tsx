@@ -11,7 +11,7 @@ const ScheduledAccompany = (props: Props) => {
   const navigate = useNavigate();
 
   return (
-    <Form>
+    <Form onClick={()=>navigate('/signup/onboarding')}>
       <HiPlusCircle size='60' onClick={() => {}} />
     </Form>
   );

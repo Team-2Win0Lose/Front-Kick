@@ -21,8 +21,8 @@ const Header = styled.div`
   width: auto;
   justify-content: center;
   align-content: center;
-  gap: 20px;
-  margin-bottom: 10px;
+  /* gap: 20px;
+  margin-bottom: 10px; */
 `;
 
 export default AccompanyHeader;

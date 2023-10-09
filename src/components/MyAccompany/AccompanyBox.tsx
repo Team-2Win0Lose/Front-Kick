@@ -110,7 +110,7 @@ const Box = styled.div`
   border: none;
   border-radius: 12px;
   padding: 15px 10px;
-  margin: 15px 0;
+  margin-top: 20px;
   gap: 10px;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
   background-color: #1f1f45;

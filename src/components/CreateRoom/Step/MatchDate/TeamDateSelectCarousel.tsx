@@ -158,7 +158,7 @@ const CustomSlider = styled(Slider)`
   .slick-slide > div {
     margin-right: 20%;
   }
-  display: 100px;
+
 `;
 
 interface BoxProps {

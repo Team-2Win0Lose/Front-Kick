@@ -34,7 +34,7 @@ const RegisterTeam = (props: Props) => {
         <VerticalContainer>
           {props.name !== '' && <NickName>{props.name} 님</NickName>}
           {props.nickname !== '' && <NickName>{props.nickname} 님</NickName>}
-          <ID>ID : {props.email}</ID>
+          <ID>{props.email}</ID>
         </VerticalContainer>
         <AiFillSetting
           size='30'
@@ -79,7 +79,7 @@ const NickName = styled.p`
 
 const ID = styled.p`
   font-weight: 500;
-  font-size: 15px;
+  font-size: 12px;
   font-weight: bold;
   text-align: center;
   color: #585858;
