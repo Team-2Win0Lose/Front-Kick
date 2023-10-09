@@ -18,7 +18,7 @@ const Main = (props: Props) => {
     <div>
       {
         isLogin ? (
-          <div>
+          <DIV>
             <P>
               👋 현재 나의 동행일정 (0)
             </P>
@@ -27,7 +27,7 @@ const Main = (props: Props) => {
               예정 중인 동행이 없어요 🥲
               </Font>
             </Mypage>
-          </div>
+          </DIV>
       ) : (
         <>
         </>
@@ -58,19 +58,27 @@ const Main = (props: Props) => {
 };
 export default Main;
 
+const DIV = styled.div`
+  margin-bottom:30px;
+`
+
+
 const RatingContainer = styled.div`
   background-color:#1F1F45;
   border-radius:15px;
+  padding: 10px 0;
 `
 
 const BannerCarouselContainer = styled.div`
   height: auto;
   overflow: hidden;
+  margin-bottom: 20px;
 `;
 
 const Container = styled.div`
   display : flex;
   flex-direction: column;
+  padding: 10px 0;
 `;
 
 const P = styled.div`
@@ -97,8 +105,8 @@ const Mypage = styled.div`
   width: 100%;
   height: 30vh;
   background: #eeeeee;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 40px;
+  /* box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25); */
+  border-radius: 20px;
 `;
 
 const Title = styled.div`
@@ -127,7 +135,6 @@ const RatingTitle = styled.div`
 const SubTitle = styled.div` 
   font-size: 15px;
   margin-left: 20px;
-  margin-bottom: 30px;
 `;
 
 const RatingSubTitle = styled.div` 

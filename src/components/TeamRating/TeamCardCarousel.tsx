@@ -38,7 +38,7 @@ const TeamCardCarousel = () => {
     (a, b) => b.recruit_ing - a.recruit_ing,
   );
   const settings = {
-    dots: true,
+    dots: false,
     autoplay: true,
     infinite: true,
     slidesToShow: 4,
@@ -46,6 +46,8 @@ const TeamCardCarousel = () => {
     swipeToSlide: true,
     autoplaySpeed: 3000,
     speed: 500,
+    prevArrow: <PrevArrow>&#8249;</PrevArrow>,
+    nextArrow: <NextArrow>&#8250;</NextArrow>, 
   };
 
   // // api에서 team 목록 불러오기
@@ -71,7 +73,7 @@ const TeamCardCarousel = () => {
   // };
 
   return (
-    <div className='carousel'>
+    <DIV className='carousel'>
       <CustomSlider {...settings}>
         {sortedItems?.map((item, index) => (
           <Box key={index}>
@@ -103,22 +105,26 @@ const TeamCardCarousel = () => {
           </Box>
         ))}
       </CustomSlider>
-    </div>
+    </DIV>
   );
 };
 
 export default TeamCardCarousel;
+
+const DIV = styled.div`
+  padding: 0 30px;
+`
 
 const CustomSlider = styled(Slider)`
   .slick-slide {
   }
 
   .slick-list {
-    margin-right: -20px;
+    margin-right: -15px;
   }
 
   .slick-slide > div {
-    margin-right: 20px;
+    margin-right: 40px;
   }
 `;
 
@@ -262,3 +268,24 @@ const FilterBtn = styled.div`
   align-items: center;
   gap: 5px;
 `;
+
+const PrevArrow = styled.div`
+  position: absolute;
+  top: 50%;
+  left: -20px;
+  transform: translateY(-50%);
+  z-index: 999;
+  cursor: pointer;
+  font-size: 24px;
+`;
+
+const NextArrow = styled.div`
+  position: absolute;
+  top: 50%;
+  right: -20px;
+  transform: translateY(-50%);
+  z-index: 999;
+  cursor: pointer;
+  font-size: 24px;
+`;
+

@@ -1,14 +1,20 @@
 import styled from 'styled-components';
 
 const Footer = () => {
-  return <Footers></Footers>;
+  return (
+    <>
+      <footer>
+        <DIV></DIV>
+      </footer>
+    </>
+  );
 };
 
 export default Footer;
 
-const Footers = styled.footer`
+const DIV = styled.div`
   display: flex;
-  width: 1280px;
+  width: 100%;
   height: 200px;
   margin-top: 10px;
   min-height: 300px;
