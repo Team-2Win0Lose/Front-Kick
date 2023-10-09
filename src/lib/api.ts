@@ -150,7 +150,20 @@ export const getTeamDetail = async () => {
     }
   }
 };
-
+export const getAllAccompany = async () => {
+  try {
+    const res = await client(`/api/recruitments/list`, {
+      method: 'get',
+    });
+    return res;
+  } catch (error) {
+    if (error instanceof AxiosError) {
+      return {
+        data: error?.response?.data,
+      };
+    }
+  }
+};
 export const getMyAccompany = async (userId: number) => {
   try {
     const res = await client(`/api/myaccompany/${userId}`, {
