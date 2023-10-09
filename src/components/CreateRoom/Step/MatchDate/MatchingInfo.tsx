@@ -3,7 +3,7 @@ import { setMatch } from '@/feature/SummarySlice';
 import { customMedia } from '@/util/GlobalStyle';
 import { teamnameConvertImg } from '@/util/teamnameConvertImg';
 import React, { useState } from 'react';
-import { useDispatch} from 'react-redux';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 
 export interface MatchingInfoProps {
@@ -22,45 +22,54 @@ const MatchingInfo = (props: MatchingInfoProps) => {
   const [boxColor, setBoxColor] = useState('#eeeeee');
   const dispatch = useDispatch();
   const handleSelectClick = (item: {
-    home_team_name: string,
-    away_team_name: string,
-    date: Date,
-    stadium: string}) => {
+    home_team_name: string;
+    away_team_name: string;
+    date: Date;
+    stadium: string;
+  }) => {
     setBoxColor('#FFCD40');
-    dispatch(setMatch({
-      homename: props.event.extendedProps.home_team_name,
-      awayname: props.event.extendedProps.away_team_name,
-      date: props.event.start.toLocaleString('ko-KR'),
-      stadium: props.event.extendedProps.stadium,
-    }))
+    dispatch(
+      setMatch({
+        homename: props.event.extendedProps.home_team_name,
+        awayname: props.event.extendedProps.away_team_name,
+        date: props.event.start.toLocaleString('ko-KR'),
+        stadium: props.event.extendedProps.stadium,
+      }),
+    );
   };
-  console.log(props.event.extendedProps);
-  
+  // console.log(props.event.extendedProps);
+
   return (
     <div>
-        <Box style={{ background: boxColor }}>
-          <FlexContainer>
-            <FlexContainerLeft>
-              <IMG src={teamnameConvertImg(props.event.extendedProps.home_team_name)} alt={props.event.extendedProps.home_team_name} />
-              <Text> vs </Text>
-              <IMG src={teamnameConvertImg(props.event.extendedProps.away_team_name)} alt={props.event.extendedProps.away_team_name} />
-            </FlexContainerLeft>
-            <FlexContainerRight>
-              <FlexText>
-                <DIV>경기 일정</DIV>
-                <FlexItem>{props.event.start.toLocaleString('ko-KR')}</FlexItem>
-              </FlexText>
-              <FlexText>
-                <DIV>경기 장소</DIV>
-                <FlexItem>{props.event.extendedProps.stadium}</FlexItem>
-              </FlexText>
-            </FlexContainerRight>
-          </FlexContainer>
-          <FlexContainer>
-            <Btn onClick={() => handleSelectClick(props.event)}>선택</Btn>
-            <Btn onClick={props.onClose}>닫기</Btn>
-          </FlexContainer>
-        </Box>
+      <Box style={{ background: boxColor }}>
+        <FlexContainer>
+          <FlexContainerLeft>
+            <IMG
+              src={teamnameConvertImg(props.event.extendedProps.home_team_name)}
+              alt={props.event.extendedProps.home_team_name}
+            />
+            <Text> vs </Text>
+            <IMG
+              src={teamnameConvertImg(props.event.extendedProps.away_team_name)}
+              alt={props.event.extendedProps.away_team_name}
+            />
+          </FlexContainerLeft>
+          <FlexContainerRight>
+            <FlexText>
+              <DIV>경기 일정</DIV>
+              <FlexItem>{props.event.start.toLocaleString('ko-KR')}</FlexItem>
+            </FlexText>
+            <FlexText>
+              <DIV>경기 장소</DIV>
+              <FlexItem>{props.event.extendedProps.stadium}</FlexItem>
+            </FlexText>
+          </FlexContainerRight>
+        </FlexContainer>
+        <FlexContainer>
+          <Btn onClick={() => handleSelectClick(props.event)}>선택</Btn>
+          <Btn onClick={props.onClose}>닫기</Btn>
+        </FlexContainer>
+      </Box>
     </div>
   );
 };
@@ -73,7 +82,7 @@ const Text = styled.div`
   font-weight: bold;
   justify-content: center;
   align-items: center;
-  color : black;
+  color: black;
 `;
 
 const Btn = styled.div`
@@ -82,7 +91,7 @@ const Btn = styled.div`
   justify-content: center;
   align-items: center;
   padding: 10px;
-  color : black;
+  color: black;
 `;
 
 const Box = styled.div`
@@ -116,14 +125,14 @@ const FlexContainer = styled.div`
 const FlexContainerLeft = styled.div`
   display: flex;
   padding: 10px;
-  margin-right:10%;
+  margin-right: 10%;
   align-items: center;
   justify-content: center;
 `;
 
 const FlexContainerRight = styled.div`
   display: flex;
-  padding:10px;
+  padding: 10px;
   flex-direction: column;
   justify-content: center;
   align-items: left;
@@ -139,9 +148,9 @@ const FlexItem = styled.div`
 const FlexText = styled.div`
   display: flex;
   align-items: center;
-  padding:10px;
+  padding: 10px;
   gap: 20px;
-  color : black;
+  color: black;
 `;
 
 const DIV = styled.div`

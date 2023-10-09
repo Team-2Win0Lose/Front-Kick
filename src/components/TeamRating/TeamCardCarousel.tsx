@@ -1,25 +1,42 @@
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import Slider from 'react-slick';
-import { useNavigate } from 'react-router-dom';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import { openModal } from 'src/feature/ModalSlice.ts';
-import { useState, useEffect } from 'react';
-import { GetTeamList } from '@/lib/interface';
-import { getTeamDetail } from '@/lib/api';
-import { teams } from '@/mocks/dummy';
+import { useState, useEffect, useCallback } from 'react';
+
 import { customMedia } from '@/util/GlobalStyle';
+import { teamnameConvertImg } from '@/util/teamnameConvertImg';
 const TeamCardCarousel = () => {
   // const [teamList, setteamList] = useState<GetTeamList>();
   const dispatch = useDispatch();
-  // const sortedItems = [...(teamList?.data || [])].sort(
-  //   (a, b) => b.currentMatching - a.currentMatching,
-  // );
-  const sortedItems = [...(teams || [])].sort(
-    (a, b) => b.currentMatching - a.currentMatching,
-  );
 
+  const [rating, setrating] = useState<
+    {
+      football_team_id: number;
+      original_team_name: string;
+      follower: number;
+      recruit_ing: number;
+      logo_img_url: string;
+    }[]
+  >([]);
+  const ratingList = useCallback(async () => {
+    const res = await fetch(
+      `https://kick-back.azurewebsites.net/api/team_info/list_detail`,
+      {
+        method: 'GET',
+      },
+    );
+    const data = await res.json();
+    setrating(data);
+  }, []);
+
+  useEffect(() => {
+    ratingList();
+  }, [ratingList]);
+  const sortedItems = [...(rating || [])].sort(
+    (a, b) => b.recruit_ing - a.recruit_ing,
+  );
   const settings = {
     dots: true,
     autoplay: true,
@@ -29,10 +46,7 @@ const TeamCardCarousel = () => {
     swipeToSlide: true,
     autoplaySpeed: 3000,
     speed: 500,
-    
   };
-  
-
 
   // // api에서 team 목록 불러오기
   // useEffect(() => {
@@ -58,16 +72,19 @@ const TeamCardCarousel = () => {
 
   return (
     <div className='carousel'>
-      <CustomSlider {...settings} >
+      <CustomSlider {...settings}>
         {sortedItems?.map((item, index) => (
           <Box key={index}>
             <TitleBox>
               <Rate>{index + 1}</Rate>
             </TitleBox>
             <FlexContainer>
-              <IMG src={item.teamImg} alt={item.teamName} />
+              <IMG
+                src={teamnameConvertImg(item.original_team_name)}
+                alt={item.original_team_name}
+              />
               <FlexContainerRight>
-                <Name>{item.teamName}</Name>
+                <Name>{item.original_team_name}</Name>
                 <FlexColumnInside>
                   <FlexText>
                     <Font>팔로워</Font>
@@ -75,7 +92,7 @@ const TeamCardCarousel = () => {
                   </FlexText>
                   <FlexText>
                     <Font>현재 동행팀</Font>
-                    <FlexItem>{item.currentMatching}</FlexItem>
+                    <FlexItem>{item.recruit_ing}</FlexItem>
                   </FlexText>
                 </FlexColumnInside>
                 {/* <FilterBtn onClick={handleOpenSearchModal}>
@@ -148,7 +165,6 @@ const Rate = styled.div`
       format('woff2');
     font-weight: 700;
     font-style: normal;
-   
   }
 `;
 
@@ -167,8 +183,8 @@ const IMG = styled.img`
 `;
 
 const Name = styled.div`
-  justify-content:center;
-  align-items:center;
+  justify-content: center;
+  align-items: center;
   font-size: 25px;
   padding: 5px;
   color: black;
@@ -195,7 +211,7 @@ const FlexContainerRight = styled.div`
 const FlexColumnInside = styled.div`
   display: flex;
   flex-direction: column;
-  padding:20px 0;
+  padding: 20px 0;
 `;
 
 const FlexItem = styled.div`

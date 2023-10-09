@@ -6,18 +6,18 @@ import AccompanyBox from './AccompanyBox';
 type Props = {};
 
 const MadeByMe = (props: Props) => {
-  const [accompanyList, setaccompanyList] = useState<AccompanyMadeByMeList>();
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const response = await getMyAccompany(123);
-        setaccompanyList(response);
-      } catch (error) {
-        console.error('Error:', error);
-      }
-    }
-    fetchData();
-  }, []);
+  // const [accompanyList, setaccompanyList] = useState<AccompanyMadeByMeList>();
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     try {
+  //       const response = await getMyAccompany(123);
+  //       setaccompanyList(response);
+  //     } catch (error) {
+  //       console.error('Error:', error);
+  //     }
+  //   }
+  //   fetchData();
+  // }, []);
 
   return (
     <Wrap>

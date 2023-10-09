@@ -19,7 +19,7 @@ const MultiFilter = (props: Props) => {
 
   const [dateRange, setDateRange] = useState([null, null]);
   const [startDate, endDate] = dateRange;
-  const [cardList, setCardList] = useState([]);
+  const [cardList, setCardList] = useState<[]>();
   const navigate = useNavigate();
   const { search } = useLocation();
 
@@ -60,7 +60,7 @@ const MultiFilter = (props: Props) => {
   const getCardListData = useCallback(async () => {
     if (clickedCheckList.length === 0) {
       const res = await fetch(
-        `https://kick-back.azurewebsites.net/api/recruitments/list`,
+        `https://kick-back.azurewebsites.net/api/recruitments/?${id}`,
         {
           method: 'GET',
           headers: headers,
@@ -79,11 +79,12 @@ const MultiFilter = (props: Props) => {
       const data = await res.json();
       setCardList(data);
     }
-  }, [search, clickedCheckList]);
+  }, []);
 
   useEffect(() => {
     getCardListData();
-  }, [getCardListData]);
+  }, []);
+  console.log(cardList);
 
   const makeQueryString = () => {
     const queryString = clickedCheckList
@@ -101,6 +102,7 @@ const MultiFilter = (props: Props) => {
 
     navigate(`?${queryString}`);
   };
+
   return (
     <Wrapper>
       <FilterList ref={filterDom}>
@@ -241,14 +243,18 @@ const MultiFilter = (props: Props) => {
         })}
       </FilterList>
       <ListContainer>
-        {/* {cardList?.map((post: AccompanyPost, idx) => (
-          <div
-            key={idx}
-            onClick={() => navigate(`/findaccompany/detail/${post.id}`)}
-          >
-            <AccompanyBox boxdata={post} />
-          </div>
-        ))} */}
+        {cardList?.length !== 0 && cardList !== undefined ? (
+          cardList?.map((post, idx) => (
+            <div
+              key={idx}
+              // onClick={() => navigate(`/findaccompany/detail/${post.id}`)}
+            >
+              <AccompanyBox boxdata={post} />
+            </div>
+          ))
+        ) : (
+          <div></div>
+        )}
       </ListContainer>
     </Wrapper>
   );
@@ -332,6 +338,9 @@ const Wrapper = styled.div`
   width: 100%;
   margin-top: 5%;
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 `;
 const FilterList = styled.ul`
   display: flex;

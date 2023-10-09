@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { AiFillSetting } from 'react-icons/ai';
 import { autoCheck } from '@/feature/authSlice';
 import { RootState } from '@/app/store';
+import { IoPersonCircleSharp } from 'react-icons/io5';
 type Props = {
   profileImg?: string;
   nickname?: string;
@@ -17,13 +18,22 @@ const RegisterTeam = (props: Props) => {
   // const email = useSelector((state: autoCheck) => state.auth.email);
   // const name = useSelector((state: autoCheck) => state.auth.name);
   const isLogin = useSelector((state: autoCheck) => state.auth.isAuthenticated);
+  // console.log(props.profileImg);
+
   return isLogin ? (
     <Form>
       <FlexContainer>
-        <IMG src={props.profileImg} />
+        {props.profileImg !== undefined || '' ? (
+          <IMG src={props.profileImg} />
+        ) : (
+          <Circle>
+            <IoPersonCircleSharp size='60' />
+          </Circle>
+        )}
+
         <VerticalContainer>
-          <NickName>{props.name} 님</NickName>
-          <NickName>{props.nickname} 님</NickName>
+          {props.name !== '' && <NickName>{props.name} 님</NickName>}
+          {props.nickname !== '' && <NickName>{props.nickname} 님</NickName>}
           <ID>ID : {props.email}</ID>
         </VerticalContainer>
         <AiFillSetting
@@ -83,7 +93,9 @@ const FlexContainer = styled.div`
 `;
 
 const VerticalContainer = styled.div`
-  align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   margin-left: 10px;
   margin-right: 10px;
 `;
@@ -95,5 +107,12 @@ const IMG = styled.img`
   object-fit: contain;
   margin-right: 5px;
 `;
-
+const Circle = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 100%;
+`;
 export default RegisterTeam;

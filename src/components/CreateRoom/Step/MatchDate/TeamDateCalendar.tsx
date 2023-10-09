@@ -1,44 +1,53 @@
-import React,{useEffect, useState} from "react";
-import FullCalendar from "@fullcalendar/react";
-import dayGridPlugin from "@fullcalendar/daygrid";
-import { EventContentArg } from "@fullcalendar/core/index.js";
-import styled from "styled-components";
-import MatchingInfo from "./MatchingInfo";
-import { customMedia } from "@/util/GlobalStyle";
-import { teamnameConvertImg } from "@/util/teamnameConvertImg";
+import React, { useEffect, useState } from 'react';
+import FullCalendar from '@fullcalendar/react';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import { EventContentArg } from '@fullcalendar/core/index.js';
+import styled from 'styled-components';
+import MatchingInfo from './MatchingInfo';
+import { customMedia } from '@/util/GlobalStyle';
+import { teamnameConvertImg } from '@/util/teamnameConvertImg';
 interface TeamDateCalendarProps {
   teamName: string;
-  teamEvents: { date: Date; home_team_name: string; away_team_name: string; stadium: string; }[];
+  teamEvents: {
+    date: Date;
+    home_team_name: string;
+    away_team_name: string;
+    stadium: string;
+  }[];
 }
 
-const TeamDateCalendar: React.FC<TeamDateCalendarProps> = ({ teamName, teamEvents }) => {    
-  
-  const [selectedEvent, setSelectedEvent] = useState<any | null>(
-  );
-  
-  const filteredEvents = teamEvents.map(event => ({
+const TeamDateCalendar: React.FC<TeamDateCalendarProps> = ({
+  teamName,
+  teamEvents,
+}) => {
+  const [selectedEvent, setSelectedEvent] = useState<any | null>();
+
+  const filteredEvents = teamEvents.map((event) => ({
     ...event,
-    start: new Date(event.date)
+    start: new Date(event.date),
   }));
   // console.log(filteredEvents);
 
-  
-
   const renderEventContent = (eventInfo: EventContentArg) => {
-    const { home_team_name} = eventInfo.event.extendedProps;
-    
+    const { home_team_name } = eventInfo.event.extendedProps;
+
     return (
-        <EventContainer>
-          {/* <EventTitle>{home_team_name}</EventTitle> */}
-          {home_team_name && <EventImage src={teamnameConvertImg(home_team_name)} alt={home_team_name} />}
-        </EventContainer>
+      <EventContainer>
+        {/* <EventTitle>{home_team_name}</EventTitle> */}
+        {home_team_name && (
+          <EventImage
+            src={teamnameConvertImg(home_team_name)}
+            alt={home_team_name}
+          />
+        )}
+      </EventContainer>
     );
   };
 
-  const handleEventClick = (eventInfo: any) => {    
+  const handleEventClick = (eventInfo: any) => {
     setSelectedEvent(eventInfo.event);
   };
-console.log(selectedEvent);
+  // console.log(selectedEvent);
 
   const handleCloseMatchingInfo = () => {
     setSelectedEvent(null);
@@ -48,18 +57,18 @@ console.log(selectedEvent);
     <CalendarContainer>
       <FullCalendar
         plugins={[dayGridPlugin]}
-        initialView="dayGridMonth"
-        events={filteredEvents} 
+        initialView='dayGridMonth'
+        events={filteredEvents}
         eventContent={renderEventContent}
         eventClick={handleEventClick}
-        
       />
       {selectedEvent && (
         <MatchingInfoContainer>
-        <MatchingInfo
-          event={selectedEvent}
-          onClose={handleCloseMatchingInfo}
-        /></MatchingInfoContainer>
+          <MatchingInfo
+            event={selectedEvent}
+            onClose={handleCloseMatchingInfo}
+          />
+        </MatchingInfoContainer>
       )}
     </CalendarContainer>
   );
@@ -74,30 +83,29 @@ const CalendarContainer = styled.div`
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  
+
   //캘린더 전체 사이즈
   .fc {
-      width: 100%;
-      height: 100%;
+    width: 100%;
+    height: 100%;
   }
-
 
   // toolbar container
   .fc .fc-toolbar.fc-header-toolbar {
-  margin-top: 20px;
-  padding: 0 30px;
-  background-color: #1F1F45;
-  height: 63px;
-  font-weight: 600;
-  font-size: 13px;
-  /* line-height: 29px; */
-  color: white;
-  border-radius: 20px 20px 20px 20px;
-  ${customMedia.lessThan('mobile')`
+    margin-top: 20px;
+    padding: 0 30px;
+    background-color: #1f1f45;
+    height: 63px;
+    font-weight: 600;
+    font-size: 13px;
+    /* line-height: 29px; */
+    color: white;
+    border-radius: 20px 20px 20px 20px;
+    ${customMedia.lessThan('mobile')`
       font-size:10px;
       padding: 0 20px;
 	`}
-  } 
+  }
 
   // toolbar 버튼
   .fc .fc-button-primary {
@@ -117,7 +125,7 @@ const CalendarContainer = styled.div`
   .fc-theme-standard th {
     height: 32px;
     padding-top: 3.5px;
-    background: #1F1F45;
+    background: #1f1f45;
     border: 1px solid #dddee0;
     font-weight: 100;
     font-size: 16px;
@@ -126,14 +134,13 @@ const CalendarContainer = styled.div`
 
   // 오늘 날짜 배경색
   .fc .fc-daygrid-day.fc-day-today {
-    color: #1F1F45;
+    color: #1f1f45;
   }
 
   // 날짜별 그리드
   .fc .fc-daygrid-day-frame {
-    
   }
-  
+
   // 날짜  ex) 2일
   .fc .fc-daygrid-day-top {
     flex-direction: row;
@@ -149,7 +156,7 @@ const CalendarContainer = styled.div`
     font-size: 14px;
     /* background-color:#1F1F45; */
   }
-    /* 일요일 날짜 빨간색 */
+  /* 일요일 날짜 빨간색 */
   .fc-day-sun a {
     color: red;
     text-decoration: none;
@@ -163,11 +170,11 @@ const CalendarContainer = styled.div`
 `;
 
 const EventContainer = styled.div`
-  justify-content:center;
+  justify-content: center;
   align-items: center;
   display: flex;
-  width:100%;
-  height:100%;
+  width: 100%;
+  height: 100%;
   color: black;
 `;
 

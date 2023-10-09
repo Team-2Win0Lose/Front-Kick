@@ -89,10 +89,6 @@ function Sidebar({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: any }) {
           </DIV>
           <DIV>
             <Menu>나의 응원팀</Menu>
-            <RegisterTeam cheering_team_id={profileData?.cheering_team_id} />
-          </DIV>
-          <DIV>
-            <Menu>알림 (0)</Menu>
             <ScheduledAccompany></ScheduledAccompany>
           </DIV>
           <Logout>
@@ -158,6 +154,9 @@ const DIV = styled.div`
 `;
 const Logout = styled.div`
   width: 85%;
+  position: absolute;
+  bottom: 50px;
+  right: 50px;
   display: flex;
   justify-content: flex-end;
   align-items: center;
