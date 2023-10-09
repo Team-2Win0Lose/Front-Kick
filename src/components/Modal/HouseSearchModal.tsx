@@ -23,8 +23,7 @@ const Box = styled.div`
   margin: 10px auto;
   background-color: #fff;
   border-radius: 10px;
-
-  width: 354px;
+  width: 30%;
   height: 547px;
   overflow-x: hidden;
   overflow-y: auto;

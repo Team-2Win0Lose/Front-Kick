@@ -53,7 +53,7 @@ function Summary({}: Props) {
                 <FlexItem>{date}</FlexItem>
               </FlexText>
               <FlexText>
-                <FlexItem>{stadium}</FlexItem>
+                <FlexItem>{stadium} 경기장</FlexItem>
               </FlexText>
             </FlexContainerLeft>
             <FlexContainerRight>
