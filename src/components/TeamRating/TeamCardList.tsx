@@ -150,6 +150,7 @@ export default TeamCardBox
 
 const Box = styled.div`
     position: relative; 
+    
     display: flex;
     justify-content: center;
     align-items: center;
