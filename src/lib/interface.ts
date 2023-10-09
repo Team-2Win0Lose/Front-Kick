@@ -52,6 +52,7 @@ export interface AccompanyMadeByMeList {
 }
 
 export interface AccompanyPost {
+  id: number;
   host: string;
   img: string;
   //제목
@@ -74,6 +75,7 @@ export interface AccompanyPost {
   house: itemsProps[];
   food: itemsProps[];
   attraction: itemsProps[];
+  nowStatus: string;
 }
 
 export interface AccommandPost {

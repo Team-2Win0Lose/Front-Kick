@@ -1,12 +1,11 @@
 import styled from 'styled-components';
-import { AccompanyMadeByMe } from '@/lib/interface';
+import { AccompanyPost } from '@/lib/interface';
 import { useNavigate } from 'react-router-dom';
 import { BsPeopleFill } from 'react-icons/bs';
-import { Key } from 'react';
 import { sliceTitle, sliceDate } from '@/util/sliceTitle';
 
 type Props = {
-  boxdata: AccompanyMadeByMe;
+  boxdata: AccompanyPost;
 };
 
 const AccompanyBox = (props: Props) => {
@@ -20,14 +19,9 @@ const AccompanyBox = (props: Props) => {
         <div>
           <Title>{sliceTitle(props.boxdata.title)}</Title>
           <Tags>
-            {props?.boxdata.tag.map(
-              (
-                tag: string | null | undefined,
-                index: Key | null | undefined,
-              ) => (
-                <Tag key={index}>{tag}</Tag>
-              ),
-            )}
+            {props?.boxdata.tag.map((item) => (
+              <Tag key={item.idx}>{item.origName}</Tag>
+            ))}
           </Tags>
         </div>
       </Header>
@@ -82,7 +76,7 @@ const AccompanyBox = (props: Props) => {
               <BsPeopleFill />
             </PeopleImg>
             <PeopleCount>
-              {props.boxdata.nowHeadCount}/{props.boxdata.maxNum}
+              {props.boxdata.minNum}/{props.boxdata.maxNum}
             </PeopleCount>
           </People>
 

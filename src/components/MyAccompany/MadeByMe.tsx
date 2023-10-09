@@ -22,9 +22,9 @@ const MadeByMe = (props: Props) => {
   return (
     <Wrap>
       <Container>
-        {accompanyList?.data.map((post: AccompanyMadeByMe, idx) => (
+        {/* {accompanyList?.data.map((post: AccompanyMadeByMe, idx) => (
           <AccompanyBox key={idx} boxdata={post} />
-        ))}
+        ))} */}
       </Container>
     </Wrap>
   );

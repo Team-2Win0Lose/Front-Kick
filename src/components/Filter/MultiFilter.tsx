@@ -6,6 +6,8 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { getCookie } from '@/util/cookieFn';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/app/store';
+import AccompanyBox from '../MyAccompany/AccompanyBox';
+import { AccompanyPost } from '@/lib/interface';
 const token = getCookie('token');
 const headers = {
   Authorization: `Bearer ${token}`,
@@ -13,7 +15,8 @@ const headers = {
 type Props = {};
 
 const MultiFilter = (props: Props) => {
-  const id = useSelector((state: RootState) => state.auth.id);
+  const id = `id=${useSelector((state: RootState) => state.auth.id)}`;
+
   const [dateRange, setDateRange] = useState([null, null]);
   const [startDate, endDate] = dateRange;
   const [cardList, setCardList] = useState([]);
@@ -55,18 +58,28 @@ const MultiFilter = (props: Props) => {
   };
   useOutsideClick(filterDom, () => setIsContentsShowed(false));
   const getCardListData = useCallback(async () => {
-    const res = await fetch(
-      `https://kick-back.azurewebsites.net/api/recruitments/?id=${id}${search}`,
-      {
-        method: 'GET',
-        headers: headers,
-      },
-    );
-
-    const data = await res.json();
-
-    setCardList(data.result);
-  }, [search]);
+    if (clickedCheckList.length === 0) {
+      const res = await fetch(
+        `https://kick-back.azurewebsites.net/api/recruitments/list`,
+        {
+          method: 'GET',
+          headers: headers,
+        },
+      );
+      const data = await res.json();
+      setCardList(data);
+    } else {
+      const res = await fetch(
+        `https://kick-back.azurewebsites.net/api/recruitments/?${id}${search}`,
+        {
+          method: 'GET',
+          headers: headers,
+        },
+      );
+      const data = await res.json();
+      setCardList(data);
+    }
+  }, [search, clickedCheckList]);
 
   useEffect(() => {
     getCardListData();
@@ -77,6 +90,8 @@ const MultiFilter = (props: Props) => {
       .map(({ id, sort_type }) => {
         if (sort_type === 'home_team') {
           return `${sort_type}_id=${id + 1}`;
+        } else if (sort_type === 'recruit') {
+          return `now_status=${nowRecruitState}`;
         }
       })
       .map((item) => {
@@ -160,8 +175,8 @@ const MultiFilter = (props: Props) => {
                   {contents.map((content, idx) => (
                     <Content
                       key={idx}
-                      onClick={(e: any) =>
-                        handleCheckList(idx, content[1], sort_type)
+                      onClick={() =>
+                        setnowRecruitState(content[1] === '모집중')
                       }
                     >
                       <Label>
@@ -171,7 +186,13 @@ const MultiFilter = (props: Props) => {
                     </Content>
                   ))}
                   <Btns>
-                    <Button>필터 적용</Button>
+                    <Button
+                      onClick={() => {
+                        makeQueryString(), setIsContentsShowed(false);
+                      }}
+                    >
+                      필터 적용
+                    </Button>
                   </Btns>
                 </Contents>
               </Filter>
@@ -219,6 +240,16 @@ const MultiFilter = (props: Props) => {
           }
         })}
       </FilterList>
+      <ListContainer>
+        {/* {cardList?.map((post: AccompanyPost, idx) => (
+          <div
+            key={idx}
+            onClick={() => navigate(`/findaccompany/detail/${post.id}`)}
+          >
+            <AccompanyBox boxdata={post} />
+          </div>
+        ))} */}
+      </ListContainer>
     </Wrapper>
   );
 };
@@ -432,5 +463,13 @@ const CustomDatePicker = styled(DatePicker)`
   width: 250px;
   /* height: 46px; */
   text-align: center;
+`;
+const ListContainer = styled.div`
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 4열로 배치 */
+  justify-content: center;
+  align-content: center;
+  gap: 30px;
 `;
 export default MultiFilter;
