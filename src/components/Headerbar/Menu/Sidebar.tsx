@@ -34,7 +34,7 @@ function Sidebar({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: any }) {
     }
     fetchData();
   }, [id]);
-  console.log(profileData);
+  // console.log(profileData);
 
   const handlerOutsie = (e: any) => {
     if (!outside.current.contains(e.target)) {
@@ -66,46 +66,46 @@ function Sidebar({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: any }) {
 
   return isLogin ? (
     <>
-    {isOpen && <Backdrop onClick={toggleSide} />}
-   
-    <SideBarWrap id='sidebar' ref={outside} className={isOpen ? 'open' : ''}>
-      <AiOutlineClose
-        size='30'
-        color='#ffffff'
-        alt='close'
-        onClick={toggleSide}
-        onKeyDown={toggleSide}
-      />
+      {isOpen && <Backdrop onClick={toggleSide} />}
 
-      <ul>
-        <DIV>
-          <Menu>내 정보</Menu>
-          <MyInfoBox
-            profileImg={profileData?.profileImg}
-            name={profileData?.name}
-            nickname={profileData?.nickname}
-            email={profileData?.email}
-          />
-        </DIV>
-        <DIV>
-          <Menu>나의 응원팀</Menu>
-          <RegisterTeam cheering_team_id={profileData?.cheering_team_id} />
-        </DIV>
-        <DIV>
-          <Menu>알림 (0)</Menu>
-          <ScheduledAccompany></ScheduledAccompany>
-        </DIV>
-        <Logout>
-          <LogoutBtn
-            onClick={() => {
-              dispatch(logOutAction()), toggleSide(), KakaoLogout();
-            }}
-          >
-            로그아웃
-          </LogoutBtn>
-        </Logout>
-      </ul>
-    </SideBarWrap>
+      <SideBarWrap id='sidebar' ref={outside} className={isOpen ? 'open' : ''}>
+        <AiOutlineClose
+          size='30'
+          color='#ffffff'
+          alt='close'
+          onClick={toggleSide}
+          onKeyDown={toggleSide}
+        />
+
+        <ul>
+          <DIV>
+            <Menu>내 정보</Menu>
+            <MyInfoBox
+              profileImg={profileData?.profileImg}
+              name={profileData?.name}
+              nickname={profileData?.nickname}
+              email={profileData?.email}
+            />
+          </DIV>
+          <DIV>
+            <Menu>나의 응원팀</Menu>
+            <RegisterTeam cheering_team_id={profileData?.cheering_team_id} />
+          </DIV>
+          <DIV>
+            <Menu>알림 (0)</Menu>
+            <ScheduledAccompany></ScheduledAccompany>
+          </DIV>
+          <Logout>
+            <LogoutBtn
+              onClick={() => {
+                dispatch(logOutAction()), toggleSide(), KakaoLogout();
+              }}
+            >
+              로그아웃
+            </LogoutBtn>
+          </Logout>
+        </ul>
+      </SideBarWrap>
     </>
   ) : (
     <SideBarWrap id='sidebar' ref={outside} className={isOpen ? 'open' : ''}>
