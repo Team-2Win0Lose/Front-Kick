@@ -52,7 +52,7 @@ const MatchingInfo = (props: MatchingInfoProps) => {
               </FlexText>
               <FlexText>
                 <DIV>경기 장소</DIV>
-                <FlexItem>{props.event.extendedProps.stadium}</FlexItem>
+                <FlexItem>{props.event.extendedProps.stadium} 경기장</FlexItem>
               </FlexText>
             </FlexContainerRight>
           </FlexContainer>
@@ -81,8 +81,10 @@ const Btn = styled.div`
   font-weight: bold;
   justify-content: center;
   align-items: center;
-  padding: 10px;
+  padding: 12px;
   color : black;
+  /* background-color: white;
+  border-radius: 15px; */
 `;
 
 const Box = styled.div`
@@ -94,7 +96,7 @@ const Box = styled.div`
   background: #eeeeee;
   border-radius: 20px;
   margin: 10px auto;
-  padding: 10px;
+  padding: 5px;
   ${customMedia.lessThan('mobile')`
 
 	`}
@@ -110,6 +112,7 @@ const FlexContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 10px;
   gap: 10%;
 `;
 
