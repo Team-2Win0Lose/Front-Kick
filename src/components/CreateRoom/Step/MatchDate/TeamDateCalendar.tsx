@@ -5,10 +5,10 @@ import { EventContentArg } from "@fullcalendar/core/index.js";
 import styled from "styled-components";
 import MatchingInfo from "./MatchingInfo";
 import { customMedia } from "@/util/GlobalStyle";
-
+import { teamnameConvertImg } from "@/util/teamnameConvertImg";
 interface TeamDateCalendarProps {
   teamName: string;
-  teamEvents: { title: string; start: string }[];
+  teamEvents: { date: Date; home_team_name: string; away_team_name: string; stadium: string; }[];
 }
 
 const TeamDateCalendar: React.FC<TeamDateCalendarProps> = ({ teamName, teamEvents }) => {    
@@ -18,25 +18,27 @@ const TeamDateCalendar: React.FC<TeamDateCalendarProps> = ({ teamName, teamEvent
   
   const filteredEvents = teamEvents.map(event => ({
     ...event,
-    start: new Date(event.start)
+    start: new Date(event.date)
   }));
+  // console.log(filteredEvents);
 
   
 
   const renderEventContent = (eventInfo: EventContentArg) => {
-    const { title, image, index } = eventInfo.event.extendedProps;
+    const { home_team_name} = eventInfo.event.extendedProps;
     
     return (
         <EventContainer>
-          <EventTitle>{title}</EventTitle>
-          {image && <EventImage src={image} alt={title} />}
+          {/* <EventTitle>{home_team_name}</EventTitle> */}
+          {home_team_name && <EventImage src={teamnameConvertImg(home_team_name)} alt={home_team_name} />}
         </EventContainer>
     );
   };
 
-  const handleEventClick = (eventInfo: any) => {
+  const handleEventClick = (eventInfo: any) => {    
     setSelectedEvent(eventInfo.event);
   };
+console.log(selectedEvent);
 
   const handleCloseMatchingInfo = () => {
     setSelectedEvent(null);
@@ -55,7 +57,7 @@ const TeamDateCalendar: React.FC<TeamDateCalendarProps> = ({ teamName, teamEvent
       {selectedEvent && (
         <MatchingInfoContainer>
         <MatchingInfo
-          event={selectedEvent.event}
+          event={selectedEvent}
           onClose={handleCloseMatchingInfo}
         /></MatchingInfoContainer>
       )}
@@ -166,7 +168,7 @@ const EventContainer = styled.div`
   display: flex;
   width:100%;
   height:100%;
-  color: #fff;
+  color: black;
 `;
 
 const EventTitle = styled.div`

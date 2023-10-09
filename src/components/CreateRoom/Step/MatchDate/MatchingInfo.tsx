@@ -1,70 +1,66 @@
 import { RootState } from '@/app/store';
 import { setMatch } from '@/feature/SummarySlice';
 import { customMedia } from '@/util/GlobalStyle';
+import { teamnameConvertImg } from '@/util/teamnameConvertImg';
 import React, { useState } from 'react';
 import { useDispatch} from 'react-redux';
 import styled from 'styled-components';
 
-interface MatchingInfoProps {
+export interface MatchingInfoProps {
   event: any;
   onClose: () => void;
 }
 
-interface itemsProps {
-  rating: number;
-  item: string;
-  homename: string;
-  awayname: string;
-  date: string;
+export interface itemsProps {
+  home_team_name: string;
+  away_team_name: string;
+  date: Date;
   stadium: string;
 }
-
-const items: itemsProps[] = [
-  {
-    rating: 1,
-    item: 'public/assets/final_logo/강원FC.png',
-    homename: '강원FC',
-    awayname: '서울FC',
-    date: '2021.08.23 12:00',
-    stadium: '강원종합운동장',
-  },
-];
 
 const MatchingInfo = (props: MatchingInfoProps) => {
   const [boxColor, setBoxColor] = useState('#eeeeee');
   const dispatch = useDispatch();
-  const handleSelectClick = (item: {date:string, stadium: string, homename:string, awayname:string}) => {
+  const handleSelectClick = (item: {
+    home_team_name: string,
+    away_team_name: string,
+    date: Date,
+    stadium: string}) => {
     setBoxColor('#FFCD40');
-    dispatch(setMatch(item))
+    dispatch(setMatch({
+      homename: props.event.extendedProps.home_team_name,
+      awayname: props.event.extendedProps.away_team_name,
+      date: props.event.start.toLocaleString('ko-KR'),
+      stadium: props.event.extendedProps.stadium,
+    }))
   };
+  console.log(props.event.extendedProps);
   
   return (
     <div>
-      {items.map((item, index) => (
-        <Box key={index} style={{ background: boxColor }}>
+        <Box style={{ background: boxColor }}>
           <FlexContainer>
             <FlexContainerLeft>
-              <IMG src={item.item} alt={item.homename} />
+              <IMG src={teamnameConvertImg(props.event.extendedProps.home_team_name)} alt={props.event.extendedProps.home_team_name} />
               <Text> vs </Text>
-              <IMG src={item.item} alt={item.awayname} />
+              <IMG src={teamnameConvertImg(props.event.extendedProps.away_team_name)} alt={props.event.extendedProps.away_team_name} />
             </FlexContainerLeft>
             <FlexContainerRight>
               <FlexText>
                 <DIV>경기 일정</DIV>
-                <FlexItem>{item.date}</FlexItem>
+                <FlexItem>{props.event.start.toLocaleString('ko-KR')}</FlexItem>
               </FlexText>
               <FlexText>
                 <DIV>경기 장소</DIV>
-                <FlexItem>{item.stadium}</FlexItem>
+                <FlexItem>{props.event.extendedProps.stadium}</FlexItem>
               </FlexText>
             </FlexContainerRight>
           </FlexContainer>
           <FlexContainer>
-            <Btn onClick={() => handleSelectClick(item)}>선택</Btn>
-            {/* <Btn onClick={onClose}>닫기</Btn> */}
+            <Btn onClick={() => handleSelectClick(props.event)}>선택</Btn>
+            <Btn onClick={props.onClose}>닫기</Btn>
           </FlexContainer>
         </Box>
-      ))}
     </div>
   );
 };
