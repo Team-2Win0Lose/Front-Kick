@@ -56,7 +56,7 @@ const MultiFilter = (props: Props) => {
   useOutsideClick(filterDom, () => setIsContentsShowed(false));
   const getCardListData = useCallback(async () => {
     const res = await fetch(
-      `https://kick-back.azurewebsites.net/api/recruitments/?${id}${search}`,
+      `https://kick-back.azurewebsites.net/api/recruitments/?id=${id}${search}`,
       {
         method: 'GET',
         headers: headers,

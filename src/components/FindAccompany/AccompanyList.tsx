@@ -21,17 +21,16 @@ const AccompanyList = (props: Props) => {
     }
     fetchData();
   }, []);
-  console.log(accompanyList);
   return (
     <ListContainer>
-      {accompanyList?.data.map((post: AccompanyMadeByMe) => (
+      {/* {accompanyList?.data.map((post: AccompanyMadeByMe) => (
         <div
           key={post.id}
           onClick={() => navigate(`/findaccompany/detail/${post.id}`)}
         >
           <AccompanyBox boxdata={post} />
         </div>
-      ))}
+      ))} */}
     </ListContainer>
   );
 };
