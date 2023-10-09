@@ -35,15 +35,15 @@ const Main = (props: Props) => {
       <BannerCarouselContainer>
         <BannerCarousel />
       </BannerCarouselContainer>
-      <Container>
-        <Title>
+      <RatingContainer>
+        <RatingTitle>
           🏆 구단별 응원순위
-        </Title>
-        <SubTitle>
+        </RatingTitle>
+        <RatingSubTitle>
             구단별 모집이 완료된 동행팀 수
-        </SubTitle>
+        </RatingSubTitle>
         <TeamCardCarousel/>
-      </Container>
+      </RatingContainer>
       <Container>
           <Title>
             🙋‍♂️ 동행 구경하기
@@ -57,6 +57,11 @@ const Main = (props: Props) => {
   );
 };
 export default Main;
+
+const RatingContainer = styled.div`
+  background-color:#1F1F45;
+  border-radius:15px;
+`
 
 const BannerCarouselContainer = styled.div`
   height: auto;
@@ -99,9 +104,19 @@ const Mypage = styled.div`
 const Title = styled.div`
   border: 1px;
   font-size: 25px;
-  margin-left: 20px;
-  margin-Top: 50px;
-  margin-bottom: 10px;
+  padding: 20px;
+  ${customMedia.lessThan('mobile')`
+		font-size: 20px;
+    border: 1px;
+	`}
+
+`;
+
+const RatingTitle = styled.div`
+  border: 1px;
+  font-size: 25px;
+  padding: 20px;
+  color: white;
   ${customMedia.lessThan('mobile')`
 		font-size: 20px;
     border: 1px;
@@ -113,4 +128,11 @@ const SubTitle = styled.div`
   font-size: 15px;
   margin-left: 20px;
   margin-bottom: 30px;
+`;
+
+const RatingSubTitle = styled.div` 
+  font-size: 15px;
+  margin-left: 20px;
+  margin-bottom: 30px;
+  color: white;
 `;

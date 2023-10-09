@@ -112,7 +112,8 @@ const Box = styled.div`
   align-items: center;
   width: 150px;
   height: 343px;
-  background: #eeeeee;
+  /* 팀컬러 적용 */
+  background: white;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
   border-radius: 20px;
   margin-left: 5%;
@@ -127,7 +128,8 @@ const TitleBox = styled.div`
   flex-direction: column;
   padding: 5px;
   height: 120px;
-  background: #1f1f45; /* 원하는 배경색으로 변경하세요 */
+  /* 팀컬러 적용 상단 */
+  background: #15b6a3;
   border-radius: 20px 20px 0 0;
   width: 100%;
 `;
@@ -173,7 +175,7 @@ const Name = styled.div`
   padding: 5px;
   color: black;
   ${customMedia.lessThan('mobile')`
-		font-size: 20px;
+		font-size: 15px;
 	`}
 `;
 
@@ -205,10 +207,13 @@ const FlexItem = styled.div`
 
 const FlexText = styled.div`
   display: flex;
-  width: 230px;
-  padding: 5px;
+  gap: 50px;
+  padding: 10px;
   align-items: center;
   justify-content: space-between;
+  ${customMedia.lessThan('mobile')`
+		gap: 20px;
+	`}
 `;
 
 const Font = styled.div`

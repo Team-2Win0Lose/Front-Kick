@@ -7,21 +7,25 @@ const TeamCard = () => {
   
 
   return (
-    <div>
-    <Title>
-        🏆 구단별 응원순위
-    </Title>
-    <SubTitle>
-        구단별 모집이 완료된 동행팀 수
-    </SubTitle>
-    <TeamCardCarousel/>
+    <DIV>
+      <Title>
+          🏆 구단별 응원순위
+      </Title>
+      <SubTitle>
+          구단별 모집이 완료된 동행팀 수
+      </SubTitle>
+      <TeamCardCarousel/>
 
-    </div>
+    </DIV>
     
   )
 }
 
 export default TeamCard
+
+const DIV = styled.div`
+
+`
 
 const Title = styled.div`
   border: 1px;
