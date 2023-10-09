@@ -21,7 +21,7 @@ const TeamCardCarousel = () => {
   );
 
   const settings = {
-    dots: true,
+    dots: false,
     autoplay: true,
     infinite: true,
     slidesToShow: 4,
@@ -29,6 +29,8 @@ const TeamCardCarousel = () => {
     swipeToSlide: true,
     autoplaySpeed: 3000,
     speed: 500,
+    prevArrow: <PrevArrow>&#8249;</PrevArrow>,
+    nextArrow: <NextArrow>&#8250;</NextArrow>, 
     
   };
   
@@ -116,8 +118,8 @@ const Box = styled.div`
   background: white;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
   border-radius: 20px;
-  margin-left: 5%;
-  margin-right: 5%;
+  margin-left: 15%;
+  margin-right: 15%;
   margin-bottom: 20px;
 `;
 
@@ -181,7 +183,7 @@ const Name = styled.div`
 
 const FlexContainer = styled.div`
   display: flex;
-  padding: 5px;
+  padding: 15px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -202,7 +204,7 @@ const FlexColumnInside = styled.div`
 
 const FlexItem = styled.div`
   font-size: 20px;
-  color: #1f1f45;
+  padding : 20ox;
 `;
 
 const FlexText = styled.div`
@@ -250,4 +252,24 @@ const FilterBtn = styled.div`
   justify-content: center;
   align-items: center;
   gap: 5px;
+`;
+
+const PrevArrow = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  z-index: 999;
+  cursor: pointer;
+  font-size: 24px;
+`;
+
+const NextArrow = styled.div`
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  z-index: 999;
+  cursor: pointer;
+  font-size: 24px;
 `;
