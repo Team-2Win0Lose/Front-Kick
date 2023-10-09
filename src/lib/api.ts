@@ -1,6 +1,5 @@
 import { AxiosError } from 'axios';
 import client from './client';
-import { AccompanyPost } from './interface';
 import { getCookie } from '@/util/cookieFn';
 const token = getCookie('token');
 

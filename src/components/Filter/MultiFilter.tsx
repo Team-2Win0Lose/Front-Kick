@@ -84,7 +84,6 @@ const MultiFilter = (props: Props) => {
   useEffect(() => {
     getCardListData();
   }, []);
-  console.log(cardList);
 
   const makeQueryString = () => {
     const queryString = clickedCheckList

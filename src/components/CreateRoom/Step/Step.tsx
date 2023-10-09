@@ -19,7 +19,6 @@ const headers = {
   'Content-Type': 'application/json;charset=utf-8',
 };
 type Props = {};
-import { AccommandPost, AccompanyPost } from '@/lib/interface';
 import { removeAll } from '@/feature/SelectedItemsSlice';
 import { removeSummary } from '@/feature/SummarySlice';
 const StepHeader = () => {
@@ -34,6 +33,27 @@ const StepHeader = () => {
     '상세 내용',
     '내 동행 일정',
   ];
+  // const host = useSelector((state: RootState) => state.auth.name);
+  // const {
+  //   img,
+  //   title,
+  //   date,
+  //   stadium,
+  //   homename,
+  //   awayname,
+  //   meetingPlace,
+  //   meetingPlaceAddress,
+  //   detailMeetingPlace,
+  //   term,
+  //   tag,
+  //   minNum,
+  //   maxNum,
+  //   content,
+  // } = useSelector((state: RootState) => state.summary);
+  // const { house, food, attraction } = useSelector(
+  //   (state: RootState) => state.selecteditem,
+  // );
+
   const [titleIndex, setTitleIndex] = useState(0);
   const id = useSelector((state: RootState) => state.auth.id);
 
@@ -42,10 +62,24 @@ const StepHeader = () => {
       setTitleIndex((prevIndex) => prevIndex - 1);
     }
   };
-
+  const requestBody = {
+    host_id: useSelector((state: RootState) => state.auth.id),
+    meeting_place: useSelector(
+      (state: RootState) => state.summary.meetingPlace,
+    ),
+    meeting_place_address: useSelector(
+      (state: RootState) => state.summary.meetingPlaceAddress,
+    ),
+    detail_meeting_place: useSelector(
+      (state: RootState) => state.summary.detailMeetingPlace,
+    ),
+    term: useSelector((state: RootState) => state.summary.term),
+    min_num: useSelector((state: RootState) => state.summary.minNum),
+    max_num: useSelector((state: RootState) => state.summary.maxNum),
+    now_status: 1,
+    now_head_count: 3,
+  };
   const postAccompany = useCallback(async () => {
-    console.log(requestBody);
-
     try {
       const res = await fetch(
         `https://kick-back.azurewebsites.net/api/recruitments/?id=${id}`,
@@ -61,66 +95,19 @@ const StepHeader = () => {
       console.error(Error);
     }
   }, []);
-  const host = useSelector((state: RootState) => state.auth.name);
-  const {
-    img,
-    title,
-    date,
-    stadium,
-    homename,
-    awayname,
-    meetingPlace,
-    meetingPlaceAddress,
-    detailMeetingPlace,
-    term,
-    tag,
-    minNum,
-    maxNum,
-    content,
-  } = useSelector((state: RootState) => state.summary);
-  const { house, food, attraction } = useSelector(
-    (state: RootState) => state.selecteditem,
-  );
-  const [accompanyPost, setaccompanyPost] = useState<AccommandPost>();
-  const data = {
-    host,
-    img,
-    title,
-    date,
-    stadium,
-    homename,
-    awayname,
-    meetingPlace,
-    meetingPlaceAddress,
-    detailMeetingPlace,
-    term,
-    tag,
-    minNum,
-    maxNum,
-    content,
-    house,
-    food,
-    attraction,
-  };
-  const requestBody = {
-    host_id: id,
-    meeting_place: meetingPlace,
-    meeting_place_address: meetingPlaceAddress,
-    detail_meeting_place: detailMeetingPlace,
-    term: term,
-    min_num: minNum,
-    max_num: maxNum,
-    now_status: 1,
-    now_head_count: 3,
-  };
-  const handleNextClick = () => {
+  useEffect(() => {
+    postAccompany();
+  }, [check, postAccompany]);
+  const handleNextClick = async () => {
     if (titleIndex < titles.length - 1) {
       setTitleIndex((prevIndex) => prevIndex + 1);
     } else if (titleIndex === titles.length - 1) {
       setcheck(true);
-      postAccompany();
-      // dispatch(removeAll());
-      // dispatch(removeSummary());
+      // if (res !== undefined) {
+      //   dispatch(removeAll());
+      //   dispatch(removeSummary());
+      // }
+
       // navigate('/myaccompany');
     }
   };
@@ -157,7 +144,7 @@ const StepHeader = () => {
       <DIV>
         <BackIcon onClick={handleBackClick} />
         <RoomTitle>{titles[titleIndex]}</RoomTitle>
-        <CloseIcon onClick={() => navigate('/home')} />
+        <CloseIcon onClick={() => navigate('/')} />
       </DIV>
       <Form>
         <CurrentStepComponent></CurrentStepComponent>

@@ -4,16 +4,19 @@ import styled from 'styled-components';
 
 const Layout = (props: { children: React.ReactNode }) => {
   return (
-    <>
+    <DIV>
       <Header />
 
-      <Main>{props.children}</Main>
+      <main>{props.children}</main>
 
-      {/* <Footer /> */}
-    </>
+      <Footer />
+    </DIV>
   );
 };
-const Main = styled.main`
-  /* padding: 200px 0; */
+const DIV = styled.div`
+  display: flex;
+  flex-direction: column;
+  position: relative;
 `;
+
 export default Layout;

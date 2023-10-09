@@ -1,25 +1,16 @@
 import styled from 'styled-components';
 
 const Footer = () => {
-    return (
-      <>
-        <footer>
-          <DIV>
+  return <Footers></Footers>;
+};
 
-          </DIV>
-        </footer>
-      </>
-    )
-  }
-  
-  export default Footer
+export default Footer;
 
-  const DIV = styled.div`
-    display:flex;
-    width:100%;
-    height:200px;
-    margin-top:10px;
-    min-height:300px;
-    background-color: #1F1F45;
-
-  `
+const Footers = styled.footer`
+  display: flex;
+  width: 1280px;
+  height: 200px;
+  margin-top: 10px;
+  min-height: 300px;
+  background-color: #1f1f45;
+`;
