@@ -88,7 +88,8 @@ const Wrap = styled.div`
   display: flex;
   justify-content: left;
   align-items: center;
-  padding: 30px 0;
+  padding: 20px;
+  margin-bottom:20px;
 `;
 
 const DIV = styled.div`

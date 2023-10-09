@@ -24,7 +24,7 @@ const CustomIcon = styled(GiHamburgerMenu)`
   color: black;
   width: 40px;
   height: 40px;
-  margin-right: 20px;
+  margin-right: 40px;
   ${customMedia.lessThan('mobile')`
     width: 30px;
 		height: 30px;

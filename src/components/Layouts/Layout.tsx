@@ -9,11 +9,17 @@ const Layout = (props: { children: React.ReactNode }) => {
 
       <Main>{props.children}</Main>
 
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 };
+
+
 const Main = styled.main`
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 50px;
   /* padding: 200px 0; */
 `;
+
 export default Layout;

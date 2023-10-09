@@ -336,7 +336,8 @@ const useOutsideClick = (
 };
 const Wrapper = styled.div`
   width: 100%;
-  margin-top: 5%;
+  margin-top: 30px;
+  margin-bottom: 30px;
   display: flex;
   flex-direction: column;
   align-items: center;

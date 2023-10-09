@@ -2,13 +2,13 @@ import styled from 'styled-components';
 
 const Footer = () => {
     return (
-      <>
+  
         <footer>
           <DIV>
 
           </DIV>
         </footer>
-      </>
+
     )
   }
   
@@ -16,9 +16,9 @@ const Footer = () => {
 
   const DIV = styled.div`
     display:flex;
-    width:100%;
-    height:200px;
-    margin-top:10px;
+    width:2000px;
+    height:500px;
+    margin-top:10%;
     min-height:300px;
     background-color: #1F1F45;
 

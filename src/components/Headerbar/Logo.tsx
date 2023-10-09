@@ -28,5 +28,5 @@ const IMG = styled.img`
 const Button = styled.button`
   background: transparent;
   border: none; 
-  padding: 20px;
+  padding: 25px;
 `;
