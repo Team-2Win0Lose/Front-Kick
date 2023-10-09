@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteAction } from '../../feature/TeamSlice';
 import { useEffect } from 'react';
-import { AiFillSetting }  from 'react-icons/ai'
+import { HiPlusCircle } from 'react-icons/hi';
 
 type Props = {};
 
@@ -11,14 +11,11 @@ const ScheduledAccompany = (props: Props) => {
   const navigate = useNavigate();
 
   return (
-      <Form>
-    
-      </Form>
-   
+    <Form>
+      <HiPlusCircle size='60' onClick={() => {}} />
+    </Form>
   );
 };
-
-
 
 const Form = styled.div`
   display: flex;
@@ -31,7 +28,5 @@ const Form = styled.div`
   background: #ffffff;
   border-radius: 15px;
 `;
-
-
 
 export default ScheduledAccompany;

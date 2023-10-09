@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/app/store';
@@ -23,15 +23,6 @@ function Summary({}: Props) {
     tag,
   } = useSelector((state: RootState) => state.summary);
   const cardInfo = useSelector((state: RootState) => state.selecteditem);
-
-  const sliderSettings = {
-    dots: false, // 페이지 인디케이터 표시 안 함
-    arrows: true, // 이전/다음 화살표 표시
-    infinite: true, // 무한 스크롤 활성화
-    speed: 500, // 슬라이드 전환 속도 (밀리초)
-    slidesToShow: 1, // 한 번에 표시될 슬라이드 수
-    slidesToScroll: 1, // 한 번에 스크롤될 슬라이드 수
-  };
 
   return (
     <Form>
@@ -59,8 +50,7 @@ function Summary({}: Props) {
             <FlexContainerRight>
               <Text>
                 {' '}
-                {homename && awayname ? homename + ' vs ' + awayname : ''}
-                {' '}
+                {homename && awayname ? homename + ' vs ' + awayname : ''}{' '}
               </Text>
             </FlexContainerRight>
           </FlexContainer>
@@ -68,9 +58,9 @@ function Summary({}: Props) {
       </Box>
       {/* 동행 정보 */}
       <Box>
-      <TitleText>🔥 동행 정보</TitleText>
-      <JoinInfo>
-        {minNum && maxNum && meetingPlace && detailMeetingPlace && term ?       
+        <TitleText>🔥 동행 정보</TitleText>
+        <JoinInfo>
+          {minNum && maxNum && meetingPlace && detailMeetingPlace && term ? (
             <FlexContainer>
               <FlexContainerLeft>
                 <FlexText>
@@ -89,19 +79,20 @@ function Summary({}: Props) {
                 <Text> 동행 기간 {term} </Text>
               </FlexContainerRight>
             </FlexContainer>
-          : <></>}
-       </JoinInfo>
-       </Box>
-
+          ) : (
+            <></>
+          )}
+        </JoinInfo>
+      </Box>
 
       {/* 태그 정보 */}
       <Box>
         <TitleText>🔥 태그 정보</TitleText>
-        <TagInfo>   
-            {tag.map((tagItem, index) => (
-              <TagWrapper key={index}>{tagItem.origName}</TagWrapper>
-            ))}
-          </TagInfo>
+        <TagInfo>
+          {tag.map((tagItem, index) => (
+            <TagWrapper key={index}>{tagItem.origName}</TagWrapper>
+          ))}
+        </TagInfo>
       </Box>
       {/* 카드 정보 */}
       <Box>

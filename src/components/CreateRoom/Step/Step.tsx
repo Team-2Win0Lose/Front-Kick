@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
@@ -12,7 +12,13 @@ import Summary from './Summary/Summary';
 import SelectCard from './SelectCard/SelectCard';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@/app/store';
-import { Accomand_Post } from '@/lib/api';
+import { getCookie } from '@/util/cookieFn';
+const token = getCookie('token');
+const headers = {
+  Authorization: `Bearer ${token}`,
+  'Content-Type': 'application/json;charset=utf-8',
+};
+type Props = {};
 import { AccommandPost, AccompanyPost } from '@/lib/interface';
 import { removeAll } from '@/feature/SelectedItemsSlice';
 import { removeSummary } from '@/feature/SummarySlice';
@@ -29,23 +35,32 @@ const StepHeader = () => {
     '내 동행 일정',
   ];
   const [titleIndex, setTitleIndex] = useState(0);
+  const id = useSelector((state: RootState) => state.auth.id);
 
   const handleBackClick = () => {
     if (titleIndex > 0) {
       setTitleIndex((prevIndex) => prevIndex - 1);
     }
   };
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const response = await Accomand_Post(data);
-        setaccompanyPost(response);
-      } catch (error) {
-        console.error('Error:', error);
-      }
+
+  const postAccompany = useCallback(async () => {
+    console.log(requestBody);
+
+    try {
+      const res = await fetch(
+        `https://kick-back.azurewebsites.net/api/recruitments/?id=${id}`,
+        {
+          method: 'post',
+          headers: headers,
+          body: JSON.stringify(requestBody),
+        },
+      );
+      const data = await res.json();
+      console.log(data);
+    } catch (Error) {
+      console.error(Error);
     }
-    fetchData();
-  }, [check]);
+  }, []);
   const host = useSelector((state: RootState) => state.auth.name);
   const {
     img,
@@ -87,14 +102,26 @@ const StepHeader = () => {
     food,
     attraction,
   };
+  const requestBody = {
+    host_id: id,
+    meeting_place: meetingPlace,
+    meeting_place_address: meetingPlaceAddress,
+    detail_meeting_place: detailMeetingPlace,
+    term: term,
+    min_num: minNum,
+    max_num: maxNum,
+    now_status: 1,
+    now_head_count: 3,
+  };
   const handleNextClick = () => {
     if (titleIndex < titles.length - 1) {
       setTitleIndex((prevIndex) => prevIndex + 1);
     } else if (titleIndex === titles.length - 1) {
       setcheck(true);
-      dispatch(removeAll());
-      dispatch(removeSummary());
-      navigate('/myaccompany');
+      postAccompany();
+      // dispatch(removeAll());
+      // dispatch(removeSummary());
+      // navigate('/myaccompany');
     }
   };
 

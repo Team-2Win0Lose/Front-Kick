@@ -7,20 +7,20 @@ import { useNavigate } from 'react-router-dom';
 type Props = {};
 
 const ApplyForMe = (props: Props) => {
-  const navigate = useNavigate();
-  const [accompanyList, setaccompanyList] = useState<AccompanyMadeByMeList>();
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const response = await getMyAccompany2(123);
-        setaccompanyList(response);
-      } catch (error) {
-        console.error('Error:', error);
-      }
-    }
-    fetchData();
-  }, []);
-  console.log(accompanyList);
+  // const navigate = useNavigate();
+  // const [accompanyList, setaccompanyList] = useState<AccompanyMadeByMeList>();
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     try {
+  //       const response = await getMyAccompany2(123);
+  //       setaccompanyList(response);
+  //     } catch (error) {
+  //       console.error('Error:', error);
+  //     }
+  //   }
+  //   fetchData();
+  // }, []);
+  // console.log(accompanyList);
 
   return (
     <Wrap>

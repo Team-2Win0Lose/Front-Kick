@@ -150,10 +150,14 @@ export const getTeamDetail = async () => {
     }
   }
 };
-export const getAllAccompany = async () => {
+export const getAllAccompany = async (id: string) => {
   try {
-    const res = await client(`/api/recruitments/list`, {
+    const res = await client(`/api/recruitments/`, {
       method: 'get',
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      params: { id },
     });
     return res;
   } catch (error) {
@@ -169,7 +173,6 @@ export const getMyAccompany = async (userId: number) => {
     const res = await client(`/api/myaccompany/${userId}`, {
       method: 'get',
     });
-    return res;
   } catch (error) {
     if (error instanceof AxiosError) {
       return {
@@ -183,7 +186,6 @@ export const getMyAccompany2 = async (userId: number) => {
     const res = await client(`/api/myaccompanyapply/${userId}`, {
       method: 'get',
     });
-    return res;
   } catch (error) {
     if (error instanceof AxiosError) {
       return {
@@ -198,62 +200,6 @@ export const getAccompanyDetail = async (postId: string) => {
       method: 'get',
     });
     return res;
-  } catch (error) {
-    if (error instanceof AxiosError) {
-      return {
-        data: error?.response?.data,
-      };
-    }
-  }
-};
-
-//동행만들기 정보
-export const Accomand_Post = async (data: AccompanyPost) => {
-  const {
-    host,
-    img,
-    title,
-    date,
-    stadium,
-    homename,
-    awayname,
-    meetingPlace,
-    meetingPlaceAddress,
-    detailMeetingPlace,
-    term,
-    tag,
-    minNum,
-    maxNum,
-    content,
-    house,
-    food,
-    attraction,
-  } = data;
-  try {
-    const res = await client('/api/recruitments/details', {
-      method: 'post',
-      data: {
-        host,
-        img,
-        title,
-        date,
-        stadium,
-        homename,
-        awayname,
-        meetingPlace,
-        meetingPlaceAddress,
-        detailMeetingPlace,
-        term,
-        tag,
-        minNum,
-        maxNum,
-        content,
-        house,
-        food,
-        attraction,
-      },
-    });
-    return { data: res.data };
   } catch (error) {
     if (error instanceof AxiosError) {
       return {

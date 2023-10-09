@@ -9,7 +9,7 @@ const Layout = (props: { children: React.ReactNode }) => {
 
       <Main>{props.children}</Main>
 
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

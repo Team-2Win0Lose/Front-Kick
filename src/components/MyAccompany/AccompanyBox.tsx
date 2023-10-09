@@ -5,24 +5,37 @@ import { BsPeopleFill } from 'react-icons/bs';
 import { sliceTitle, sliceDate } from '@/util/sliceTitle';
 
 type Props = {
-  boxdata: AccompanyPost;
+  boxdata: {
+    detailMeetingPlace: string;
+    homeTeamId: number;
+    hostId: string;
+    maxNum: number;
+    meetingPlace: string;
+    meetingPlaceAddress: string;
+    minNum: number;
+    nowHeadCount: number;
+    nowStatus: number;
+    scheduleId: number;
+    term: string;
+  };
 };
 
 const AccompanyBox = (props: Props) => {
   const navigate = useNavigate();
   return (
-    <Box onClick={() => navigate(`/findaccompany/detail/${props.boxdata.id}`)}>
+    <Box>
+      {/* <Box onClick={() => navigate(`/findaccompany/detail/${props.boxdata.id}`)}> */}
       <Header>
         <Host>
           <HostImg src='' alt='' />
         </Host>
         <div>
-          <Title>{sliceTitle(props.boxdata.title)}</Title>
-          <Tags>
+          {/* <Title>{sliceTitle(props.boxdata.title)}</Title> */}
+          {/* <Tags>
             {props?.boxdata.tag.map((item) => (
               <Tag key={item.idx}>{item.origName}</Tag>
             ))}
-          </Tags>
+          </Tags> */}
         </div>
       </Header>
       <Body>
@@ -61,7 +74,7 @@ const AccompanyBox = (props: Props) => {
 
         <Accompany>
           <AccompanyInfo>
-            <AccompanyData>{sliceDate(props.boxdata.date)}</AccompanyData>
+            <AccompanyData>{sliceDate(props.boxdata.term)}</AccompanyData>
           </AccompanyInfo>
           <Accompany>
             <AccompanyInfo>
