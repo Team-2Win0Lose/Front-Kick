@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import styled from "styled-components";
 import {FaSearch} from 'react-icons/Fa';
-import MapContainer from "../MeetingPlace/MapContainer";
+import SearchMapContainer from "./SearchMapContainer";
 
 const SearchBar = () => {
 
@@ -62,7 +62,7 @@ const SearchBar = () => {
                 </SearchForm>
               </CourseAddBtn>
               {/* 제출한 검색어 넘기기 */}
-              {/* <MapContainer searchKeyword={Keyword} /> */}
+              <SearchMapContainer searchKeyword={Keyword} />
             </LandingPageInner>
           </LandingPage>
         </BoxContainer>
@@ -96,7 +96,7 @@ const BoxContainer = styled.div`
 `;
 
 const CourseAddBtn = styled.div`
-  width: 326px;
+  width: 100%;
   height: 50px;
   font-size: 1rem;
   font-weight: 400;
@@ -157,7 +157,7 @@ const FormLabel = styled.label`
 `;
 
 const FormInput = styled.input`
-  width:300px;
+  width:1000px;
   height:100%;
 `;
 

@@ -13,6 +13,7 @@ interface TeamDateCalendarProps {
     home_team_name: string;
     away_team_name: string;
     stadium: string;
+    opponent_team_logo_img_url : string;
   }[];
 }
 
@@ -29,14 +30,14 @@ const TeamDateCalendar: React.FC<TeamDateCalendarProps> = ({
   // console.log(filteredEvents);
 
   const renderEventContent = (eventInfo: EventContentArg) => {
-    const { home_team_name, away_team_name } = eventInfo.event.extendedProps;
+    const { home_team_name, opponent_team_logo_img_url } = eventInfo.event.extendedProps;
 
     return (
       <EventContainer>
         {/* <EventTitle>{home_team_name}</EventTitle> */}
         {home_team_name && (
           <EventImage
-            src={teamnameConvertImg(home_team_name)}
+            src={`https://kickstorage.blob.core.windows.net${opponent_team_logo_img_url}`}
             alt={home_team_name}
           />
         )}

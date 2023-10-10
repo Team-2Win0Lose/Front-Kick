@@ -75,17 +75,12 @@ const PlaceInfoCarousel = (props: Props) => {
   };
 
   return (
-    <div className='carousel'>
+    <DIV className='carousel'>
       {items.map((item, index) => (
         <Box key={index}>
           <FlexContainer>
             <InfoContainer>
-              <IMG src={item.IMG} alt={item.name} />
-              <FlexContainerRight>
-                <Name>{item.name}</Name>
-                {/* <Loc>{item.loc}</Loc>     */}
-              </FlexContainerRight>
-              <CheckboxContainer>
+            <CheckboxContainer>
                 <Checkbox
                   type='checkbox'
                   onChange={() => {
@@ -93,6 +88,11 @@ const PlaceInfoCarousel = (props: Props) => {
                   }}
                 />
               </CheckboxContainer>
+              <IMG src={item.IMG} alt={item.name} />
+              <FlexContainerRight>
+                <Name>{item.name}</Name>
+                {/* <Loc>{item.loc}</Loc>     */}
+              </FlexContainerRight>
             </InfoContainer>
           </FlexContainer>
         </Box>
@@ -107,11 +107,20 @@ const PlaceInfoCarousel = (props: Props) => {
           선택 완료
         </RegisterBtn>
       </NextButtonContainer>
-    </div>
+    </DIV>
   );
 };
 
 export default PlaceInfoCarousel;
+
+const DIV = styled.div`
+  display:flex;
+  height:100%;
+  width:150%;
+  padding:20px;
+  flex-direction:column;
+
+`
 
 const Box = styled.div`
   position: relative;
@@ -164,7 +173,8 @@ const CheckboxContainer = styled.div`
   margin-left: 10px;
 `;
 
-const Checkbox = styled.input``;
+const Checkbox = styled.input`
+`;
 
 const RegisterBtn = styled.div`
   width: 160px;
