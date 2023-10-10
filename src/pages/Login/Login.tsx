@@ -11,7 +11,7 @@ const Login = (props: Props) => {
       <LoginHeader />
       <LoginTitle>함께 가는 축구 여행, 킥킥</LoginTitle>
       <LoginBox>
-        <KakaoForm />
+        {/* <KakaoForm /> */}
         <EmailLoginBox
           onClick={() => {
             navigate('/emaillogin');
@@ -40,8 +40,8 @@ const LoginWrap = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  gap: 10px;
-  padding: 20px 0;
+  gap: 20px;
+  padding: 60px 0;
 `;
 const LoginTitle = styled.h1`
   font-size: 32px;
@@ -69,6 +69,7 @@ const LoginBox = styled.div`
 `;
 const TextBox = styled.div`
   width: 360px;
+  padding: 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;

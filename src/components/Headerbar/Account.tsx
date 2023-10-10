@@ -40,6 +40,7 @@ const P = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-right: 30px;
   font-size: 20px;
 `;
 
