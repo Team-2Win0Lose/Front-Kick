@@ -79,6 +79,7 @@ const TeamCardCarousel = () => {
     <DIV className='carousel'>
       <CustomSlider {...settings}>
         {sortedItems?.map((item, index) => (
+          index !== 12 && (
           <Box key={index} backgroundColor={item.team_color_sub} >
             <TitleBox backgroundColor={item.team_color_main} >
               <Rate>{index + 1}</Rate>
@@ -108,6 +109,7 @@ const TeamCardCarousel = () => {
               </FlexContainerRight>
             </FlexContainer>
           </Box>
+          )
         ))}
       </CustomSlider>
     </DIV>

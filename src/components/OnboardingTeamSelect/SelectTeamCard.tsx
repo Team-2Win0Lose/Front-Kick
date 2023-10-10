@@ -19,7 +19,9 @@ const SelectTeamCard = (props: SelectTeamCardProps) => {
       <BodyContainer teamcolor={props?.team_color_sub}>
         <BodyHead teamcolor={props?.team_color_main}></BodyHead>
         <HeadLogo>
+          <Circle>
           <IMG src={teamnameConvertImg(props?.logo_img_url)} />
+          </Circle>
         </HeadLogo>
         <BodyBody>
           <TeamName>{props?.team_name}</TeamName>
@@ -78,6 +80,21 @@ const BodyHead = styled.div<{ teamcolor: string }>`
   border-radius: 12px 12px 0 0;
 `;
 
+const Circle = styled.div`
+  width: 150px;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 30%; 
+  left: 50%; 
+  background-color: #FFFFFF;
+  border-radius:50%;
+  transform: translate(-50%, -50%);
+  
+`
+
 const HeadLogo = styled.div`
   z-index: 3;
   display: flex;
@@ -94,8 +111,8 @@ const HeadLogo = styled.div`
 `;
 
 const IMG = styled.img`
-  width: 180px;
-  height: 180px;
+  width: 120px;
+  height: 120px;
   object-fit: contain;
 `;
 
@@ -115,7 +132,7 @@ const BodyBody = styled.div`
   gap: 9px;
 `;
 const TeamName = styled.div`
-  font-size: 30px;
+  font-size: 25px;
   font-weight: bold;
   font-weight: medium;
   color: #ffffff;
