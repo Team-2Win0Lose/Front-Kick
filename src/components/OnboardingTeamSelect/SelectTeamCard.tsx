@@ -2,7 +2,6 @@ import { teamnameConvertImg } from '@/util/teamnameConvertImg';
 import { useState } from 'react';
 import styled from 'styled-components';
 
-
 type SelectTeamCardProps = {
   original_team_name: string;
   follower: number;
@@ -15,12 +14,10 @@ type SelectTeamCardProps = {
 };
 
 const SelectTeamCard = (props: SelectTeamCardProps) => {
-
   return (
     <Wrap>
       <BodyContainer teamcolor={props?.team_color_sub}>
-        <BodyHead teamcolor={props?.team_color_main}>
-        </BodyHead>
+        <BodyHead teamcolor={props?.team_color_main}></BodyHead>
         <HeadLogo>
           <IMG src={teamnameConvertImg(props?.logo_img_url)} />
         </HeadLogo>
@@ -57,11 +54,11 @@ const Wrap = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color:#FFFFFF;
+  background-color: #ffffff;
 `;
 const BodyContainer = styled.div<{ teamcolor: string }>`
-  margin-top:20px;
-  margin-bottom:20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
   position: relative;
   display: flex;
   justify-content: center;
@@ -94,14 +91,12 @@ const HeadLogo = styled.div`
   height: 180px;
   border: none;
   border-radius: 90px;
-
 `;
 
 const IMG = styled.img`
   width: 180px;
   height: 180px;
   object-fit: contain;
-  
 `;
 
 const BodyBody = styled.div`
@@ -123,7 +118,7 @@ const TeamName = styled.div`
   font-size: 30px;
   font-weight: bold;
   font-weight: medium;
-  color: #FFFFFF;
+  color: #ffffff;
   margin-bottom: 20px;
 `;
 const TeamInfo = styled.div`
@@ -131,7 +126,7 @@ const TeamInfo = styled.div`
   justify-content: center;
   align-items: center;
   gap: 12px;
-  color: #FFFFFF;
+  color: #ffffff;
 `;
 const Dot = styled.div`
   width: 4px;
@@ -146,7 +141,7 @@ const TeamCount = styled.div`
   justify-content: center;
   align-items: center;
   gap: 5px;
-  color: #FFFFFF;
+  color: #ffffff;
 `;
 const Follower = styled.div`
   display: flex;
@@ -154,7 +149,7 @@ const Follower = styled.div`
   justify-content: center;
   align-items: center;
   gap: 5px;
-  color: #FFFFFF;
+  color: #ffffff;
 `;
 const EndTeamCount = styled.div`
   display: flex;
@@ -162,15 +157,15 @@ const EndTeamCount = styled.div`
   justify-content: center;
   align-items: center;
   gap: 5px;
-  color: #FFFFFF;
+  color: #ffffff;
 `;
 const Number = styled.p`
   font-size: 15px;
   font-weight: bolder;
-  color: #FFFFFF;
+  color: #ffffff;
 `;
 const About = styled.p`
   font-size: 10px;
   font-weight: bolder;
-  color: #FFFFFF;
+  color: #ffffff;
 `;

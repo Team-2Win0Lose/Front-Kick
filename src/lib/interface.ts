@@ -83,9 +83,20 @@ export interface AccommandPost {
 }
 
 export interface Profile {
-  name: string;
-  email: string;
-  nickname: string;
-  profileImg: string;
-  cheering_team_id: number;
+  profile: {
+    name: string;
+    email: string;
+    nickname: string;
+    profileImg: string;
+    cheering_team_id: number;
+  };
+  cheering_team: {
+    follower: number;
+    logo_img_url: string;
+    original_team_name: string;
+    recruit_end: number;
+    recruit_ing: number;
+    team_color_main: string;
+    team_color_sub: string;
+  };
 }

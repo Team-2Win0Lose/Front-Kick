@@ -21,7 +21,7 @@ const StepHeader = () => {
   const [check, setcheck] = useState(false);
   const navigate = useNavigate();
   const dispatch: AppDispatch = useDispatch();
-  // const { post, loading } = useSelector((state: RootState) => state.accompany);
+  const { post, loading } = useSelector((state: RootState) => state.accompany);
   const titles = [
     '경기 일정 선택',
     '모임장소',
@@ -76,22 +76,22 @@ const StepHeader = () => {
     now_status: 1,
     now_head_count: 3,
   };
-  const postThisAccompany = () => {
+  if (check) {
     useEffect(() => {
       dispatch(postAccompany(requestBody));
-      dispatch(removeAll());
-      dispatch(removeSummary());
-    }, []);
-  };
+    }, [dispatch]);
+  }
 
   const handleNextClick = async () => {
     if (titleIndex < titles.length - 1) {
       setTitleIndex((prevIndex) => prevIndex + 1);
     } else if (titleIndex === titles.length - 1) {
       setcheck(true);
-      postThisAccompany;
-      // console.log(post, loading);
-
+      console.log(post, loading);
+      // if (loading === 'succeeded' && post) {
+      //   dispatch(removeAll());
+      //   dispatch(removeSummary());
+      // }
       navigate('/');
     }
   };
