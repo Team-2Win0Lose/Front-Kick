@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 
-
 type SelectTeamCardProps = {
   teamName: string | null;
   teamcolor: string;
@@ -13,12 +12,10 @@ type SelectTeamCardProps = {
 };
 
 const SelectTeamCard = (props: SelectTeamCardProps) => {
-
   return (
     <Wrap>
       <BodyContainer>
-        <BodyHead teamcolor={props.teamcolor}>
-        </BodyHead>
+        <BodyHead teamcolor={props.teamcolor}></BodyHead>
         <HeadLogo>
           <IMG src={props.logo} />
         </HeadLogo>
@@ -55,11 +52,11 @@ const Wrap = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color:#FFFFFF;
+  background-color: #ffffff;
 `;
 const BodyContainer = styled.div`
-  margin-top:20px;
-  margin-bottom:20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
   position: relative;
   display: flex;
   justify-content: center;
@@ -92,14 +89,12 @@ const HeadLogo = styled.div`
   height: 180px;
   border: none;
   border-radius: 90px;
-
 `;
 
 const IMG = styled.img`
   width: 180px;
   height: 180px;
   object-fit: contain;
-  
 `;
 
 const BodyBody = styled.div`

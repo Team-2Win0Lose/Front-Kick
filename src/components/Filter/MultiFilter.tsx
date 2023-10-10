@@ -15,7 +15,7 @@ const headers = {
 type Props = {};
 
 const MultiFilter = (props: Props) => {
-  const id = `id=${useSelector((state: RootState) => state.auth.id)}`;
+  const { id, isAuthenticated } = useSelector((state: RootState) => state.auth);
 
   const [dateRange, setDateRange] = useState([null, null]);
   const [startDate, endDate] = dateRange;
@@ -58,26 +58,29 @@ const MultiFilter = (props: Props) => {
   };
   useOutsideClick(filterDom, () => setIsContentsShowed(false));
   const getCardListData = useCallback(async () => {
-    if (clickedCheckList.length === 0) {
-      const res = await fetch(
-        `https://kick-back.azurewebsites.net/api/recruitments/?${id}`,
-        {
-          method: 'GET',
-          headers: headers,
-        },
-      );
-      const data = await res.json();
-      setCardList(data);
+    if (isAuthenticated) {
+      if (clickedCheckList.length === 0) {
+        const res = await fetch(
+          `https://kick-back.azurewebsites.net/api/recruitments/?id=${id}`,
+          {
+            method: 'GET',
+            headers: headers,
+          },
+        );
+        const data = await res.json();
+        setCardList(data);
+      } else {
+        const res = await fetch(
+          `https://kick-back.azurewebsites.net/api/recruitments/?id=${id}${search}`,
+          {
+            method: 'GET',
+            headers: headers,
+          },
+        );
+        const data = await res.json();
+        setCardList(data);
+      }
     } else {
-      const res = await fetch(
-        `https://kick-back.azurewebsites.net/api/recruitments/?${id}${search}`,
-        {
-          method: 'GET',
-          headers: headers,
-        },
-      );
-      const data = await res.json();
-      setCardList(data);
     }
   }, []);
 

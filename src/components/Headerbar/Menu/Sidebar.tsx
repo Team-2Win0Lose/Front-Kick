@@ -1,19 +1,16 @@
-import React, { useRef, useEffect, useState, SetStateAction } from 'react';
+import { useRef, useEffect, useState, useCallback } from 'react';
 import { AiOutlineClose } from 'react-icons/ai';
 import styled from 'styled-components';
-import RegisterTeam from '../../RegisterTeam/RegisterTeam';
 import MyInfoBox from '../../MyInfo/MyInfoBox';
 import ScheduledAccompany from '../../ScheduledAccompany/ScheduledAccompany';
 import { useDispatch, useSelector } from 'react-redux';
 import { autoCheck, logOutAction } from '@/feature/authSlice';
 import axios from 'axios';
 import { RootState } from '@/app/store';
-import { profile } from '@/lib/api';
-import { Profile } from '@/lib/interface';
 import { BASE_URL } from '@/config';
 function Sidebar({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: any }) {
   const outside = useRef<any>();
-  const [profileData, setprofileData] = useState<Profile>();
+  const [profileData, setprofileData] = useState() as any;
   const isLogin = useSelector((state: autoCheck) => state.auth.isAuthenticated);
   const { token, id } = useSelector((state: RootState) => state.auth);
   const dispatch = useDispatch();
@@ -23,25 +20,19 @@ function Sidebar({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: any }) {
       document.removeEventListener('mousedown', handlerOutsie);
     };
   });
+  const getUserProfile = useCallback(async () => {
+    const res = await fetch(`${BASE_URL}/api/user/profile/?id=${id}`, {
+      method: 'get',
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const data = await res.json();
+    setprofileData(data);
+  }, []);
   useEffect(() => {
-    async function fetchData() {
-      try {
-        const res = await fetch(`${BASE_URL}/api/user/profile/?id=${id}`, {
-          method: 'get',
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        const data = await res.json();
-        setprofileData(data);
-      } catch (error) {
-        console.error('Error', error);
-      }
-    }
-    fetchData();
-  }, [id]);
-  // console.log(profileData);
-
+    getUserProfile();
+  }, [getUserProfile]);
   const handlerOutsie = (e: any) => {
     if (!outside.current.contains(e.target)) {
       toggleSide();
@@ -87,16 +78,23 @@ function Sidebar({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: any }) {
           <DIV>
             <Menu>내 정보</Menu>
             <MyInfoBox
-              profileImg={profileData?.profileImg}
-              name={profileData?.name}
-              nickname={profileData?.nickname}
-              email={profileData?.email}
+              profileImg={profileData?.profile?.profileImg}
+              name={profileData?.profile?.name}
+              nickname={profileData?.profile?.nickname}
+              email={profileData?.profile?.email}
             />
           </DIV>
-          <DIV>
-            <Menu>나의 응원팀</Menu>
-            <ScheduledAccompany></ScheduledAccompany>
-          </DIV>
+          <Menu>나의 응원팀</Menu>
+          {/* <ScheduledAccompany
+            team_id={profileData?.profile?.cheering_team_id}
+            follower={profileData?.cheering_team?.follower}
+            logo_img_url={profileData?.cheering_team?.logo_img_url}
+            original_team_name={profileData?.cheering_team?.original_team_name}
+            recruit_end={profileData?.cheering_team?.recruit_end}
+            recruit_ing={profileData?.cheering_team?.recruit_ing}
+            team_color_main={profileData?.cheering_team?.team_color_main}
+            team_color_sub={profileData?.cheering_team?.team_color_sub}
+          /> */}
           <Logout>
             <LogoutBtn
               onClick={() => {

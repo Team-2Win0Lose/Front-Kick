@@ -10,7 +10,6 @@ import { Provider } from 'react-redux';
 import { store } from './app/store';
 import { ThemeProvider } from 'styled-components';
 import GlobalModal from './components/Modal/GlobalModal';
-import initMockAPI from './mocks';
 import PacmanLoader from 'react-spinners/PacmanLoader';
 import styled from 'styled-components';
 import axios from 'axios';
@@ -23,9 +22,6 @@ const Loaders = styled.div`
   align-items: center;
   height: 100vh;
 `;
-if (process.env.NODE_ENV === 'development') {
-  initMockAPI();
-}
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <Provider store={store}>
