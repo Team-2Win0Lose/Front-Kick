@@ -317,7 +317,7 @@ const MapContainer_ = styled.div`
 
 const MapDiv = styled.div`
   width: 700px;
-  height: 700px;
+  height: 600px;
   background-color: #e0e0e0;
   border-radius: 10px 0 0 10px;
   margin-bottom: 20px;
@@ -329,7 +329,7 @@ const MapDiv = styled.div`
 
 const SearchResult = styled.div`
   width: 60%;
-  height: 700px;
+  height: 600px;
   display: flex;
   flex-direction: column;
   background-color: rgb(248,248,248);
@@ -342,7 +342,7 @@ const SearchResult = styled.div`
 
 const ResultText = styled.p`
   font-size: 1px;
-  padding: 20px;
+  padding: 10px;
   font-weight: bold;
 `;
 
