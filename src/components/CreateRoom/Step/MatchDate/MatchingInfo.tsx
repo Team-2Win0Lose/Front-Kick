@@ -12,6 +12,8 @@ export interface MatchingInfoProps {
 }
 
 export interface itemsProps {
+  home_team_id: number;
+  game_schedule_id: string;
   home_team_name: string;
   away_team_name: string;
   date: Date;
@@ -22,20 +24,27 @@ const MatchingInfo = (props: MatchingInfoProps) => {
   const [boxColor, setBoxColor] = useState('#eeeeee');
   const dispatch = useDispatch();
   const handleSelectClick = (item: {
-    home_team_name: string;
-    away_team_name: string;
-    date: Date;
-    stadium: string;
+    extendedProps: {
+      game_schedule_id: string;
+      home_team_id: number;
+      home_team_name: string;
+      away_team_name: string;
+      stadium: string;
+    };
+    start: Date;
   }) => {
     setBoxColor('#efd44c');
     dispatch(
       setMatch({
-        homename: props.event.extendedProps.home_team_name,
-        awayname: props.event.extendedProps.away_team_name,
-        date: props.event.start.toLocaleString('ko-KR'),
-        stadium: props.event.extendedProps.stadium,
+        game_schedule_id: item.extendedProps.game_schedule_id,
+        homename: item.extendedProps.home_team_name,
+        awayname: item.extendedProps.away_team_name,
+        home_team_id: item.extendedProps.home_team_id,
+        date: item.start.toLocaleString('ko-KR'),
+        stadium: item.extendedProps.stadium,
       }),
     );
+    // console.log(item.start.toLocaleString('ko-KR'));
   };
   // console.log(props.event.extendedProps);
 
