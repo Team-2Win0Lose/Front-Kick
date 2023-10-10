@@ -9,7 +9,7 @@ import { customMedia } from '@/util/GlobalStyle';
 import { teamnameConvertImg } from '@/util/teamnameConvertImg';
 const TeamCardCarousel = () => {
   // const [teamList, setteamList] = useState<GetTeamList>();
-  const dispatch = useDispatch();
+  const dispatch = useDispatch();  
 
   const [rating, setrating] = useState<
     {
@@ -18,6 +18,9 @@ const TeamCardCarousel = () => {
       follower: number;
       recruit_ing: number;
       logo_img_url: string;
+      team_color_main: string;
+      team_color_sub: string;
+
     }[]
   >([]);
   const ratingList = useCallback(async () => {
@@ -76,8 +79,8 @@ const TeamCardCarousel = () => {
     <DIV className='carousel'>
       <CustomSlider {...settings}>
         {sortedItems?.map((item, index) => (
-          <Box key={index}>
-            <TitleBox>
+          <Box key={index} backgroundColor={item.team_color_main} >
+            <TitleBox backgroundColor={item.team_color_sub} >
               <Rate>{index + 1}</Rate>
             </TitleBox>
             <FlexContainer>
@@ -128,14 +131,18 @@ const CustomSlider = styled(Slider)`
   }
 `;
 
-const Box = styled.div`
+interface BoxProps {
+  backgroundColor?: string;
+}
+
+const Box = styled.div<BoxProps>`
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 150px;
   height: 343px;
-  background: #eeeeee;
+  background-color: ${(props) => props.backgroundColor || '#FFFFFF'};
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
   border-radius: 20px;
   margin-left: 5%;
@@ -143,14 +150,14 @@ const Box = styled.div`
   margin-bottom: 20px;
 `;
 
-const TitleBox = styled.div`
+const TitleBox = styled.div<BoxProps>`
   display: flex;
   top: 0;
   left: 0;
   flex-direction: column;
   padding: 5px;
   height: 120px;
-  background: #1f1f45; /* 원하는 배경색으로 변경하세요 */
+  background: ${(props) => props.backgroundColor || '#FFFFFF'};
   border-radius: 20px 20px 0 0;
   width: 100%;
 `;
@@ -193,7 +200,7 @@ const Name = styled.div`
   align-items: center;
   font-size: 25px;
   padding: 5px;
-  color: black;
+  color: white;
   ${customMedia.lessThan('mobile')`
 		font-size: 20px;
 	`}
@@ -222,7 +229,7 @@ const FlexColumnInside = styled.div`
 
 const FlexItem = styled.div`
   font-size: 20px;
-  color: #1f1f45;
+  color: white;
 `;
 
 const FlexText = styled.div`
@@ -235,6 +242,7 @@ const FlexText = styled.div`
 
 const Font = styled.div`
   font-size: 20px;
+  color: white;
   ${customMedia.lessThan('mobile')`
 		font-size: 10px;
 	`}
