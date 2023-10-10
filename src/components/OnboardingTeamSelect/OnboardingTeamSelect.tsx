@@ -82,6 +82,7 @@ const OnboardingTeamSelect = () => {
     <CarouselContainer>
       <CustomSlider {...settings}>
         {sortedItems.map((item, index) => (
+          index !== 12 && (
           <div key={index}>
             <BoxWrapper key={index}>
               <Box onClick={() => handleBoxClick(item.original_team_name)}>
@@ -94,6 +95,7 @@ const OnboardingTeamSelect = () => {
               <Name>{item.team_name}</Name>
             </NameWrapper>
           </div>
+          )
         ))}
       </CustomSlider>
       {selectedTeam && (
@@ -146,6 +148,7 @@ interface BoxProps {
   backgroundColor?: string;
 }
 
+
 const Box = styled.div<BoxProps>`
   position: relative;
   display: flex;
@@ -157,6 +160,20 @@ const Box = styled.div<BoxProps>`
   margin-top: 10%;
   overflow: hidden;
 `;
+
+const DIV = styled.div`
+  width: 150px;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%; 
+  left: 50%; 
+  background-color: #FFFFFF;
+  border-radius:50%;
+  transform: translate(-50%, -50%);
+`
 
 const IMG = styled.img`
   width: 70px;
