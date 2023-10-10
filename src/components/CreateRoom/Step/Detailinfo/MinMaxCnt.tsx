@@ -9,15 +9,15 @@ type Props = {};
 const MinMaxCnt = (props: Props) => {
   const dispatch = useDispatch();
   const { term,minNum,maxNum } = useSelector((state: RootState) => state.summary);
-  const [minValue, setMinValue] = useState<number | null>(null);
-  const [maxValue, setMaxValue] = useState<number | null>(null);
+  const [minValue, setMinValue] = useState<number | undefined>();
+  const [maxValue, setMaxValue] = useState<number | undefined>();
   return (
     <BoxContainer>
       <SettingTxt>최소</SettingTxt>
       <StyledInput>
         <input
           type="number"
-          value={minValue === null ? '' : minValue.toString()}
+          value={minValue || minNum}
           onChange={(e) => {
             setMinValue(Number(e.target.value) || minNum)
             dispatch(setDetail1({
@@ -36,7 +36,7 @@ const MinMaxCnt = (props: Props) => {
       <StyledInput>
         <input
           type="number"
-          value={maxValue === null ? '' : maxValue.toString()}
+          value={maxValue || maxNum}
           onChange={(e) => {
             setMaxValue(Number(e.target.value) || maxNum)
             dispatch(setDetail1({

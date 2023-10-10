@@ -176,6 +176,7 @@ const EventContainer = styled.div`
   display: flex;
   width: 100%;
   height: 100%;
+  margin-bottom: -30%;
   color: black;
 `;
 
