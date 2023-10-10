@@ -10,7 +10,7 @@ import axios from 'axios';
 import { RootState } from '@/app/store';
 import { profile } from '@/lib/api';
 import { Profile } from '@/lib/interface';
-
+import { BASE_URL } from '@/config';
 function Sidebar({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: any }) {
   const outside = useRef<any>();
   const [profileData, setprofileData] = useState<Profile>();
@@ -26,8 +26,14 @@ function Sidebar({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: any }) {
   useEffect(() => {
     async function fetchData() {
       try {
-        const res = await profile(id);
-        setprofileData(res as SetStateAction<Profile | undefined>);
+        const res = await fetch(`${BASE_URL}/api/user/profile/?id=${id}`, {
+          method: 'get',
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        const data = await res.json();
+        setprofileData(data);
       } catch (error) {
         console.error('Error', error);
       }

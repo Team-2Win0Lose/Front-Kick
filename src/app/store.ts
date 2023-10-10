@@ -9,6 +9,7 @@ import termReducer from '../feature/TermSlice';
 import authReducer from '../feature/authSlice';
 import teamfilterReducer from '../feature/teamFilterSlice';
 import selecteditemReducer from '../feature/SelectedItemsSlice';
+import accompanyReducer from '@/feature/fetchSlice';
 import {
   persistStore,
   persistReducer,
@@ -25,7 +26,16 @@ import SummaryReducer from '@/feature/SummarySlice';
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['team', 'modal', 'term', 'auth', 'teamfilter', 'selecteditem','summary'],
+  whitelist: [
+    'team',
+    'modal',
+    'term',
+    'auth',
+    'teamfilter',
+    'selecteditem',
+    'summary',
+    'accompany',
+  ],
 };
 
 const rootReducer = combineReducers({
@@ -36,6 +46,7 @@ const rootReducer = combineReducers({
   teamfilter: teamfilterReducer,
   selecteditem: selecteditemReducer,
   summary: SummaryReducer,
+  accompany: accompanyReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
