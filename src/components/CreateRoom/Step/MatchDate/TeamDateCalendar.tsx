@@ -29,7 +29,7 @@ const TeamDateCalendar: React.FC<TeamDateCalendarProps> = ({
   // console.log(filteredEvents);
 
   const renderEventContent = (eventInfo: EventContentArg) => {
-    const { home_team_name } = eventInfo.event.extendedProps;
+    const { home_team_name, away_team_name } = eventInfo.event.extendedProps;
 
     return (
       <EventContainer>
