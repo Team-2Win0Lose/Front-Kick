@@ -7,3 +7,5 @@ export const Kakao_REDIRECT_URL = 'http://localhost:5173/auth/kakao/callback';
 
 export const SERPAPI_KEY =
   '230bfc8d93b1400778f5f64ed746ec657a935cd99358db14a68b8e8f19aca2a8';
+
+export const BASE_URL = 'https://kick-back.azurewebsites.net';

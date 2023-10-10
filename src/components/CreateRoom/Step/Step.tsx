@@ -11,20 +11,17 @@ import Detailinfo_2 from './Detailinfo/Detailinfo_2';
 import Summary from './Summary/Summary';
 import SelectCard from './SelectCard/SelectCard';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '@/app/store';
-import { getCookie } from '@/util/cookieFn';
-const token = getCookie('token');
-const headers = {
-  Authorization: `Bearer ${token}`,
-  'Content-Type': 'application/json;charset=utf-8',
-};
+import { RootState, AppDispatch } from '@/app/store';
+
 type Props = {};
 import { removeAll } from '@/feature/SelectedItemsSlice';
 import { removeSummary } from '@/feature/SummarySlice';
+import { postAccompany } from '@/feature/fetchSlice';
 const StepHeader = () => {
   const [check, setcheck] = useState(false);
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const dispatch: AppDispatch = useDispatch();
+  // const { post, loading } = useSelector((state: RootState) => state.accompany);
   const titles = [
     '경기 일정 선택',
     '모임장소',
@@ -55,7 +52,7 @@ const StepHeader = () => {
   // );
 
   const [titleIndex, setTitleIndex] = useState(0);
-  const id = useSelector((state: RootState) => state.auth.id);
+  // const id = useSelector((state: RootState) => state.auth.id);
 
   const handleBackClick = () => {
     if (titleIndex > 0) {
@@ -79,36 +76,23 @@ const StepHeader = () => {
     now_status: 1,
     now_head_count: 3,
   };
-  const postAccompany = useCallback(async () => {
-    try {
-      const res = await fetch(
-        `https://kick-back.azurewebsites.net/api/recruitments/?id=${id}`,
-        {
-          method: 'post',
-          headers: headers,
-          body: JSON.stringify(requestBody),
-        },
-      );
-      const data = await res.json();
-      console.log(data);
-    } catch (Error) {
-      console.error(Error);
-    }
-  }, []);
-  useEffect(() => {
-    postAccompany();
-  }, [check, postAccompany]);
+  const postThisAccompany = () => {
+    useEffect(() => {
+      dispatch(postAccompany(requestBody));
+      dispatch(removeAll());
+      dispatch(removeSummary());
+    }, []);
+  };
+
   const handleNextClick = async () => {
     if (titleIndex < titles.length - 1) {
       setTitleIndex((prevIndex) => prevIndex + 1);
     } else if (titleIndex === titles.length - 1) {
       setcheck(true);
-      // if (res !== undefined) {
-      //   dispatch(removeAll());
-      //   dispatch(removeSummary());
-      // }
+      postThisAccompany;
+      // console.log(post, loading);
 
-      // navigate('/myaccompany');
+      navigate('/');
     }
   };
 
