@@ -6,9 +6,11 @@ export interface InitialState {
   //제목
   title: string;
   //매치정보(날짜, 경기장, 홈 이름, 어웨이 이름)
+  game_schedule_id: string;
   date: string;
   stadium: string;
   homename: string;
+  home_team_id: number;
   awayname: string;
   //모임정보(장소, 세부장소, 동행기간, 태그, 최소 인원, 최대 인원)
   meetingPlace: string;
@@ -32,8 +34,10 @@ const initialState: InitialState = {
   //제목
   title: '',
   //매치정보(날짜, 경기장, 홈 이름, 어웨이 이름)
+  game_schedule_id: '',
   date: '',
   stadium: '',
+  home_team_id: 0,
   homename: '',
   awayname: '',
   //모임정보(장소, 세부장소, 세부장소 주소, 동행기간, 태그, 최소 인원, 최대 인원)
@@ -53,8 +57,10 @@ const SummarySlice = createSlice({
   initialState,
   reducers: {
     setMatch: (state: InitialState, action) => {
+      state.game_schedule_id = action.payload.game_schedule_id;
       state.date = action.payload.date;
       state.stadium = action.payload.stadium;
+      state.home_team_id = action.payload.home_team_id;
       state.homename = action.payload.homename;
       state.awayname = action.payload.awayname;
     },
@@ -80,9 +86,11 @@ const SummarySlice = createSlice({
       //제목
       state.title = '';
       //매치정보(날짜, 경기장, 홈 이름, 어웨이 이름)
+      state.game_schedule_id = '';
       state.date = '';
       state.stadium = '';
       state.homename = '';
+      state.home_team_id = 0;
       state.awayname = '';
       //모임정보(장소, 세부장소, 세부장소 주소, 동행기간, 태그, 최소 인원, 최대 인원)
       state.meetingPlace = '';

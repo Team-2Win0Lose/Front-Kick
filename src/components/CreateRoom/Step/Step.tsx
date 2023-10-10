@@ -60,27 +60,32 @@ const StepHeader = () => {
     }
   };
   const requestBody = {
-    host_id: useSelector((state: RootState) => state.auth.id),
-    meeting_place: useSelector(
-      (state: RootState) => state.summary.meetingPlace,
+    game_schedule_id: useSelector(
+      (state: RootState) => state.summary.game_schedule_id,
     ),
-    meeting_place_address: useSelector(
+    home_team_name: useSelector((state: RootState) => state.summary.homename),
+    home_team_id: useSelector((state: RootState) => state.summary.home_team_id),
+    thumbnail: useSelector((state: RootState) => state.summary.img),
+    title: useSelector((state: RootState) => state.summary.title),
+    content: useSelector((state: RootState) => state.summary.content),
+    tagList: useSelector((state: RootState) => state.summary.tag),
+    tourCardIdList: [],
+    meetingPlace: useSelector((state: RootState) => state.summary.meetingPlace),
+    meetingPlaceAddress: useSelector(
       (state: RootState) => state.summary.meetingPlaceAddress,
     ),
-    detail_meeting_place: useSelector(
+    detailMeetingPlace: useSelector(
       (state: RootState) => state.summary.detailMeetingPlace,
     ),
-    term: useSelector((state: RootState) => state.summary.term),
-    min_num: useSelector((state: RootState) => state.summary.minNum),
-    max_num: useSelector((state: RootState) => state.summary.maxNum),
-    now_status: 1,
-    now_head_count: 3,
+    term: useSelector((state: RootState) => state.summary.date),
+    minNum: useSelector((state: RootState) => state.summary.minNum),
+    maxNum: useSelector((state: RootState) => state.summary.maxNum),
+    nowStatus: 0,
   };
-  if (check) {
-    useEffect(() => {
-      dispatch(postAccompany(requestBody));
-    }, [dispatch]);
-  }
+
+  useEffect(() => {
+    dispatch(postAccompany(requestBody));
+  }, [check]);
 
   const handleNextClick = async () => {
     if (titleIndex < titles.length - 1) {
@@ -92,7 +97,7 @@ const StepHeader = () => {
       //   dispatch(removeAll());
       //   dispatch(removeSummary());
       // }
-      navigate('/');
+      // navigate('/');
     }
   };
 
