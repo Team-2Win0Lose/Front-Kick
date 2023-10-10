@@ -79,10 +79,10 @@ const UploadBox = styled.div`
   justify-content: center;
   align-items: center;
   border-radius: 10px;
-  border: 1px solid #ccc;
+  /* border: 1px solid #ccc; */
   width: 300px;
-  height: 200px;
-  padding: 10px;
+  height: 300px;
+  padding: 5px;
   font-size: 16px;
   cursor: pointer;
 `;
@@ -102,4 +102,5 @@ const ImagePreview = styled.img`
   max-width: 100%;
   max-height: 100%;
   border-radius: 10px;
+  object-fit: cover;
 `;
