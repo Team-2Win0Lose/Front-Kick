@@ -194,6 +194,6 @@ const RegisterBtn = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: 100px;
   color: #ffffff;
 `;

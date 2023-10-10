@@ -27,7 +27,7 @@ const MatchingInfo = (props: MatchingInfoProps) => {
     date: Date;
     stadium: string;
   }) => {
-    setBoxColor('#FFCD40');
+    setBoxColor('#efd44c');
     dispatch(
       setMatch({
         homename: props.event.extendedProps.home_team_name,
@@ -67,7 +67,7 @@ const MatchingInfo = (props: MatchingInfoProps) => {
         </FlexContainer>
         <FlexContainer>
           <Btn onClick={() => handleSelectClick(props.event)}>선택</Btn>
-          <Btn onClick={props.onClose}>닫기</Btn>
+          {/* <Btn onClick={props.onClose}>닫기</Btn> */}
         </FlexContainer>
       </Box>
     </div>
@@ -105,7 +105,6 @@ const Box = styled.div`
   background: #eeeeee;
   border-radius: 20px;
   margin: 10px auto;
-  padding: 5px;
   ${customMedia.lessThan('mobile')`
 
 	`}

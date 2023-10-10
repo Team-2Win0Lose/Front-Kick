@@ -79,15 +79,17 @@ const TeamCardCarousel = () => {
     <DIV className='carousel'>
       <CustomSlider {...settings}>
         {sortedItems?.map((item, index) => (
-          <Box key={index} backgroundColor={item.team_color_main} >
-            <TitleBox backgroundColor={item.team_color_sub} >
+          <Box key={index} backgroundColor={item.team_color_sub} >
+            <TitleBox backgroundColor={item.team_color_main} >
               <Rate>{index + 1}</Rate>
             </TitleBox>
             <FlexContainer>
-              <IMG
-                src={teamnameConvertImg(item.original_team_name)}
-                alt={item.original_team_name}
-              />
+              <Circle>
+                <IMG
+                  src={teamnameConvertImg(item.original_team_name)}
+                  alt={item.original_team_name}
+                />
+              </Circle>
               <FlexContainerRight>
                 <Name>{item.original_team_name}</Name>
                 <FlexColumnInside>
@@ -181,14 +183,25 @@ const Rate = styled.div`
   }
 `;
 
-const IMG = styled.img`
+const Circle = styled.div`
   width: 150px;
   height: 150px;
-  object-fit: contain;
-  position: absolute; /* 절대 위치 설정 */
-  top: 30%; /* 수직 가운데로 배치 */
-  left: 50%; /* 수평 가운데로 배치 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 30%; 
+  left: 50%; 
+  background-color: #FFFFFF;
+  border-radius:50%;
   transform: translate(-50%, -50%);
+  
+`
+
+const IMG = styled.img`
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
   ${customMedia.lessThan('mobile')`
 		width:100px;
     height:100px;
