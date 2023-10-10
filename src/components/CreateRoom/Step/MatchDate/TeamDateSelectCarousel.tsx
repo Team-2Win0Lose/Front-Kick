@@ -95,7 +95,7 @@ const TeamDateSelectCarousel = () => {
     nextArrow: <NextArrow>&#8250;</NextArrow>, 
   };
   const [matchData, setmatchData] = useState([])
-  const [selectedTeam, setSelectedTeam] = useState<string>();
+  const [selectedTeam, setSelectedTeam] = useState<string>("강원FC");
 
   const handleBoxClick = (teamName: string) => {
     setSelectedTeam(teamName);
@@ -175,6 +175,8 @@ const DIV = styled.div<BoxProps>`
 
 const CarouselContainer = styled.div`
   display: flex;
+  width: 100%;
+  height: 100%;
   flex-direction: column;
 `;
 
@@ -183,7 +185,7 @@ const BoxWrapper = styled.div`
   display:flex;
   flex-direction:column;
   justify-content: center;
-  align-items: center;
+
 `;
 
 const TeamCalendarContainer = styled.div`

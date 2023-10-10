@@ -1,39 +1,41 @@
+import { teamnameConvertImg } from '@/util/teamnameConvertImg';
 import { useState } from 'react';
 import styled from 'styled-components';
 
 type SelectTeamCardProps = {
-  teamName: string | null;
-  teamcolor: string;
-  logo: string;
-  name: string;
-  ing: number;
+  original_team_name: string;
   follower: number;
-  end: number;
+  recruit_ing: number;
+  team_name: string;
+  logo_img_url: string;
+  team_color_main: string;
+  team_color_sub: string;
+  recruit_end: number;
 };
 
 const SelectTeamCard = (props: SelectTeamCardProps) => {
   return (
     <Wrap>
-      <BodyContainer>
-        <BodyHead teamcolor={props.teamcolor}></BodyHead>
+      <BodyContainer teamcolor={props?.team_color_sub}>
+        <BodyHead teamcolor={props?.team_color_main}></BodyHead>
         <HeadLogo>
-          <IMG src={props.logo} />
+          <IMG src={teamnameConvertImg(props?.logo_img_url)} />
         </HeadLogo>
         <BodyBody>
-          <TeamName>{props.name}</TeamName>
+          <TeamName>{props?.team_name}</TeamName>
           <TeamInfo>
             <TeamCount>
-              <Number>{props.ing}</Number>
+              <Number>{props?.recruit_ing}</Number>
               <About>모집 중인 동행 팀</About>
             </TeamCount>
             <Dot></Dot>
             <Follower>
-              <Number>{props.follower}</Number>
+              <Number>{props?.follower}</Number>
               <About>팔로워</About>
             </Follower>
             <Dot></Dot>
             <EndTeamCount>
-              <Number>{props.end}</Number>
+              <Number>{props?.recruit_end}</Number>
               <About>마감된 동행 팀</About>
             </EndTeamCount>
           </TeamInfo>
@@ -54,7 +56,7 @@ const Wrap = styled.div`
   align-items: center;
   background-color: #ffffff;
 `;
-const BodyContainer = styled.div`
+const BodyContainer = styled.div<{ teamcolor: string }>`
   margin-top: 20px;
   margin-bottom: 20px;
   position: relative;
@@ -63,7 +65,7 @@ const BodyContainer = styled.div`
   align-items: center;
   width: 264px;
   height: 360px;
-  background-color: #d9d9d9;
+  background-color: ${(props) => props.teamcolor || '#FFFFFF'};
   border-radius: 12px;
 `;
 const BodyHead = styled.div<{ teamcolor: string }>`
@@ -72,7 +74,7 @@ const BodyHead = styled.div<{ teamcolor: string }>`
   top: 0;
   height: 120px;
   width: 264px;
-  background-color: ${({ teamcolor }) => teamcolor};
+  background-color: ${(props) => props.teamcolor || '#FFFFFF'};
   border-radius: 12px 12px 0 0;
 `;
 
@@ -108,7 +110,7 @@ const BodyBody = styled.div`
   width: 264px;
   height: 240px;
   padding: 0 25px 50px;
-  background-color: #d9d9d9;
+
   border-radius: 12px;
   gap: 9px;
 `;
@@ -116,7 +118,7 @@ const TeamName = styled.div`
   font-size: 30px;
   font-weight: bold;
   font-weight: medium;
-  color: #000000;
+  color: #ffffff;
   margin-bottom: 20px;
 `;
 const TeamInfo = styled.div`
@@ -124,6 +126,7 @@ const TeamInfo = styled.div`
   justify-content: center;
   align-items: center;
   gap: 12px;
+  color: #ffffff;
 `;
 const Dot = styled.div`
   width: 4px;
@@ -138,6 +141,7 @@ const TeamCount = styled.div`
   justify-content: center;
   align-items: center;
   gap: 5px;
+  color: #ffffff;
 `;
 const Follower = styled.div`
   display: flex;
@@ -145,6 +149,7 @@ const Follower = styled.div`
   justify-content: center;
   align-items: center;
   gap: 5px;
+  color: #ffffff;
 `;
 const EndTeamCount = styled.div`
   display: flex;
@@ -152,12 +157,15 @@ const EndTeamCount = styled.div`
   justify-content: center;
   align-items: center;
   gap: 5px;
+  color: #ffffff;
 `;
 const Number = styled.p`
   font-size: 15px;
   font-weight: bolder;
+  color: #ffffff;
 `;
 const About = styled.p`
   font-size: 10px;
   font-weight: bolder;
+  color: #ffffff;
 `;

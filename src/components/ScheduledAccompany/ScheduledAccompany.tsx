@@ -20,13 +20,14 @@ const ScheduledAccompany = (props: Props) => {
   if (props.team_id !== 0) {
     return (
       <SelectTeamCard
-        teamName={props?.original_team_name}
-        teamcolor={props.team_color_main}
-        logo={props.logo_img_url}
-        name={props.original_team_name}
-        ing={props.recruit_ing}
+        team_name={props?.original_team_name}
+        team_color_main={props.team_color_main}
+        team_color_sub={props.team_color_sub}
+        logo_img_url={props.logo_img_url}
+        original_team_name={props.original_team_name}
+        recruit_ing={props.recruit_ing}
         follower={props.follower}
-        end={props.recruit_end}
+        recruit_end={props.recruit_end}
       />
     );
   } else {
