@@ -259,20 +259,16 @@ const MultiFilter = (props: Props) => {
         })}
       </FilterList>
       <ListContainer>
-        {clickedCheckList?.length !== 0 ? (
-          cardList?.map((post: AccompanyPostReal, idx) => (
-            <div
-              key={idx}
-              onClick={() =>
-                navigate(`/findaccompany/detail/${post.recruitmentBoardId}`)
-              }
-            >
-              <AccompanyBox post={post} />
-            </div>
-          ))
-        ) : (
-          <AccompanyList />
-        )}
+        {cardList?.map((post: AccompanyPostReal, idx) => (
+          <div
+            key={idx}
+            onClick={() =>
+              navigate(`/findaccompany/detail/${post.recruitmentBoardId}`)
+            }
+          >
+            <AccompanyBox post={post} />
+          </div>
+        ))}
       </ListContainer>
     </Wrapper>
   );
