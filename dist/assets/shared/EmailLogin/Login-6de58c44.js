@@ -1,4 +1,4 @@
-import{s as t,a as e}from"../../vendor-5d52e3a8.js";const r=s=>e(n,{children:e(i,{children:e(o,{src:"public/assets/totalLogo.png",alt:"logo"})})}),n=t.div`
+import{s as e,a as t}from"../../vendor-e594e6cf.js";const c=s=>t(n,{children:t(i,{children:t(o,{src:"dist/assets/totalLogo.png",alt:"logo"})})}),n=e.div`
   margin-top: 50px;
   width: 175px;
   height: 160px;
@@ -7,10 +7,10 @@ import{s as t,a as e}from"../../vendor-5d52e3a8.js";const r=s=>e(n,{children:e(i
   align-items: center;
   justify-content: center;
   gap: 15px;
-`,i=t.div`
+`,i=e.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 15px;
-`,o=t.img``;export{r as L};
+`,o=e.img``;export{c as L};
