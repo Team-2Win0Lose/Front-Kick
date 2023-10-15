@@ -1,4 +1,4 @@
-import{s as a,a as t,M as h,e as d,j as c}from"./vendor-34c37101.js";import{R as o,B as p}from"./AddCourse-4171088a.js";const v=r=>t(y,{children:o.map((e,i)=>t(p,{img:e.img,name:e.name,type:e.type,review:e.review},i))}),y=a.div`
+import{s as a,a as t,M as h,e as d,j as c}from"./vendor-e66f6ed6.js";import{R as o,B as p}from"./AddCourse-834582de.js";const v=r=>t(y,{children:o.map((e,i)=>t(p,{img:e.img,name:e.name,type:e.type,review:e.review},i))}),y=a.div`
   padding: 10px 0;
   width: 90%;
   display: grid;

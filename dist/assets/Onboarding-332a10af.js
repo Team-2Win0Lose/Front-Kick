@@ -1,4 +1,4 @@
-import{M as c,j as e,a as n,s as o}from"./vendor-34c37101.js";import{O as d}from"./shared/ModifyPersonalData/Onboarding-1283d6e5.js";import"./react-slick-2febd1cd.js";/* empty css                       */import"./common-e20ce833.js";const v=()=>{const i=c(),t=()=>{i("/")};return e("div",{children:[e(s,{children:[n(r,{children:"환영해요!"}),n(r,{children:"응원하는 K리그 팀이 있나요?"})]}),n(a,{children:n(l,{children:n(d,{})})}),e(p,{children:[n(u,{onClick:t,children:"선택하기"}),n(x,{onClick:t,children:"건너뛰기"})]})]})},a=o.div`
+import{M as c,j as e,a as n,s as o}from"./vendor-e66f6ed6.js";import{O as d}from"./shared/ModifyPersonalData/Onboarding-842904ad.js";import"./react-slick-eec3553a.js";/* empty css                       */import"./common-ddc03157.js";const v=()=>{const i=c(),t=()=>{i("/")};return e("div",{children:[e(s,{children:[n(r,{children:"환영해요!"}),n(r,{children:"응원하는 K리그 팀이 있나요?"})]}),n(a,{children:n(l,{children:n(d,{})})}),e(p,{children:[n(u,{onClick:t,children:"선택하기"}),n(x,{onClick:t,children:"건너뛰기"})]})]})},a=o.div`
   height: 100%;
   overflow-x: hidden;
 `,l=o.div`
