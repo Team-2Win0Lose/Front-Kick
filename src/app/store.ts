@@ -4,7 +4,12 @@ import {
   getDefaultMiddleware,
 } from '@reduxjs/toolkit';
 import teamReducer from '../feature/TeamSlice';
-
+import modalReducer from '../feature/ModalSlice';
+import termReducer from '../feature/TermSlice';
+import authReducer from '../feature/authSlice';
+import teamfilterReducer from '../feature/teamFilterSlice';
+import selecteditemReducer from '../feature/SelectedItemsSlice';
+import accompanyReducer from '@/feature/fetchSlice';
 import {
   persistStore,
   persistReducer,
@@ -15,16 +20,33 @@ import {
   REGISTER,
   PURGE,
 } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
+import storage from 'redux-persist/lib/storage/session';
+import SummaryReducer from '@/feature/SummarySlice';
 
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['team'],
+  whitelist: [
+    'team',
+    'modal',
+    'term',
+    'auth',
+    'teamfilter',
+    'selecteditem',
+    'summary',
+    'accompany',
+  ],
 };
 
 const rootReducer = combineReducers({
   team: teamReducer,
+  modal: modalReducer,
+  term: termReducer,
+  auth: authReducer,
+  teamfilter: teamfilterReducer,
+  selecteditem: selecteditemReducer,
+  summary: SummaryReducer,
+  accompany: accompanyReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

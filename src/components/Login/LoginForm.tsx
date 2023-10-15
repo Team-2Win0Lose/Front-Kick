@@ -1,7 +1,11 @@
-import React, { useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useForm, SubmitErrorHandler, SubmitHandler } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import { login } from '@/lib/api';
+import { setCookie } from '@/util/cookieFn';
+import { useDispatch, useSelector } from 'react-redux';
+import { autoCheck, setUser } from '@/feature/authSlice';
 
 interface FormValue {
   email: string;
@@ -9,6 +13,14 @@ interface FormValue {
 }
 
 const LoginForm = (props: any) => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const isLogin = useSelector((state: autoCheck) => state.auth.isAuthenticated);
+  useEffect(() => {
+    if (isLogin) {
+      navigate('/');
+    }
+  }, [isLogin]);
   const {
     register,
     handleSubmit,
@@ -19,15 +31,37 @@ const LoginForm = (props: any) => {
     reValidateMode: 'onChange',
   });
 
-  const onSubmit: SubmitHandler<FormValue> = (data) => {
-    console.log(data);
-  };
-  const onError: SubmitErrorHandler<FormValue> = (error) => {
-    console.log(error);
+  const onSubmit: SubmitHandler<FormValue> = async (data) => {
+    try {
+      const { email, password } = data;
+      const res = await login(email, password);
+      if (res !== undefined) {
+        if ('user' in res) {
+          dispatch(
+            setUser({
+              id: res.user.id,
+              email: res?.user?.email,
+              name: res?.user?.name,
+              token: res?.token?.access,
+              isAuthenticated: true,
+            }),
+          );
+          if (res.token.access) {
+            setCookie('token', `${res.token.access}`, {
+              path: '/',
+            });
+          }
+        }
+      } else {
+        console.log('res is undefined');
+      }
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
-    <Form onSubmit={handleSubmit(onSubmit, onError)}>
+    <Form onSubmit={handleSubmit(onSubmit)}>
       <DivForm>
         <Input
           id='email'
@@ -42,7 +76,7 @@ const LoginForm = (props: any) => {
             },
           })}
         />
-        {errors.email && <small role='alert'>{errors.email.message}</small>}
+        {errors.email && <Small role='alert'>{errors.email.message}</Small>}
         <Input
           id='password'
           type='password'
@@ -63,13 +97,13 @@ const LoginForm = (props: any) => {
           })}
         />
         {errors.password && (
-          <small role='alert'>{errors.password.message}</small>
+          <Small role='alert'>{errors.password.message}</Small>
         )}
-        <SignUp>
-          <Find to='/signup'>회원가입</Find>
-          <Find to='/find/id'>아이디 찾기</Find>
+        <TextBox>
+          <Find to='/find/id'>이메일 찾기</Find>
           <Find to='/find/password'>비밀번호 찾기</Find>
-        </SignUp>
+          <Signup to='/signup'>회원가입</Signup>
+        </TextBox>
         <Button type='submit'>로그인</Button>
       </DivForm>
     </Form>
@@ -100,8 +134,8 @@ const Input = styled.input`
   border-radius: 12px;
   padding: 18px 16px;
 `;
-const SignUp = styled.div`
-  width: 339px;
+const TextBox = styled.div`
+  width: 330px;
   justify-content: space-between;
   padding: 0;
   display: flex;
@@ -109,6 +143,12 @@ const SignUp = styled.div`
 `;
 const Find = styled(Link)`
   font-weight: 400;
+  font-size: 14px;
+  text-decoration: none;
+  color: black;
+`;
+const Signup = styled(Link)`
+  font-weight: bold;
   font-size: 14px;
   text-decoration: none;
   color: black;
@@ -122,5 +162,8 @@ const Button = styled.button`
   color: #fff;
   font-weight: 600;
   font-size: 18px;
+`;
+const Small = styled.small`
+  color: red;
 `;
 export default LoginForm;

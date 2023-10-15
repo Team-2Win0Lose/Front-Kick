@@ -4,27 +4,24 @@ import { useSelector, useDispatch } from 'react-redux';
 import { deleteAction } from '../../feature/TeamSlice';
 import { useEffect } from 'react';
 
-type Props = {};
+type Props = {
+  cheering_team_id?: number;
+};
 
 const RegisterTeam = (props: Props) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const states = useSelector((state: any) => {
-    return state.team;
-  });
 
-  return states.teamName === '' ? (
-    <Wrap>
-      <Form>
-        <Comment>아직 선택한 구단 카드가 없어요</Comment>
-        <RegistBtn onClick={() => navigate('/selectteam')}>
-          구단 카드 등록하기
-        </RegistBtn>
-      </Form>
-    </Wrap>
+  return props.cheering_team_id ? (
+    <Form>
+      <Comment>아직 선택한 구단 카드가 없어요</Comment>
+      <RegistBtn onClick={() => navigate('/selectteam')}>
+        함께 응원할 구단 정하기
+      </RegistBtn>
+    </Form>
   ) : (
     <TeamWrap>
-      <TeamForm>
+      {/* <TeamForm>
         <TeamContainer1>
           <TeamImg>
             <Img src={states.teamImg} />
@@ -68,37 +65,32 @@ const RegisterTeam = (props: Props) => {
             <Blue>달려갈 준비가 끝난 동행 팀</Blue>
             <Black>수원삼성보다 4팀이나 적어요</Black>
             <FindBtn>
-              <BtnText onClick={() => navigate('/matchmaking')}>동행찾기</BtnText>
+              <BtnText onClick={() => navigate('/matchmaking')}>
+                동행찾기
+              </BtnText>
             </FindBtn>
           </Find>
         </TeamContainer2>
-      </TeamForm>
+      </TeamForm> */}
     </TeamWrap>
   );
 };
-const Wrap = styled.div`
-  background-color: #1f1f45;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-`;
+
+//구단 미등록 폼
 const Form = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 3px;
-  width: 333px;
-  height: 246px;
+  width: 300px;
+  height: 150px;
   background: #ffffff;
-  border: 0.522796px solid #5956ff;
-  box-shadow: 0px 2.09119px 2.09119px rgba(0, 0, 0, 0.25);
-  border-radius: 15.6839px;
+  border-radius: 15px;
 `;
 const Comment = styled.p`
   font-weight: 500;
-  font-size: 18px;
+  font-size: 14px;
   text-align: center;
   color: #868686;
 `;

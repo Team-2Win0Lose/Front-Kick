@@ -6,14 +6,13 @@ import {
   IoIosArrowDroprightCircle,
 } from 'react-icons/io';
 type Props = {
-  handleTab: (state: number) => void;
+  settab: (value: number) => void;
 };
-
 const TeamSlide = (props: Props) => {
   const settings = {
     dots: false,
-    autoplay: true,
-    infinite: true,
+    autoplay: false,
+    infinite: false,
     speed: 100,
     slidesToShow: 4,
     slidesToScroll: 1,
@@ -25,7 +24,7 @@ const TeamSlide = (props: Props) => {
   return (
     <TeamSlider {...settings}>
       {dummyTeams.map((team, index) => (
-        <TEAMS key={index} onClick={() => props.handleTab(index + 1)}>
+        <TEAMS key={index} onClick={() => props.settab(index + 1)}>
           <TeamLogo>
             <TeamIMG src={team.teamImg} />
           </TeamLogo>
@@ -41,16 +40,6 @@ const TeamSlider = styled(Slider)`
   width: 85%;
   display: flex;
   gap: 11px;
-  .slick-prev::before,
-  .slick-next::before {
-    opacity: 0;
-    display: none;
-  }
-  .slick-slide div {
-    //슬라이더  컨텐츠
-
-    cursor: pointer;
-  }
 `;
 const TEAMS = styled.div`
   display: flex;
