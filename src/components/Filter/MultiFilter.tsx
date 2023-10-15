@@ -59,22 +59,18 @@ const MultiFilter = (props: Props) => {
   };
   useOutsideClick(filterDom, () => setIsContentsShowed(false));
   const getCardListData = useCallback(async () => {
-    if (isAuthenticated) {
-      if (clickedCheckList.length === 0) {
-        const res = await fetch(`${BASE_URL}/api/recruitments-list/`, {
-          method: 'GET',
-          headers: headers,
-        });
-        const data = await res.json();
-        setCardList(data);
-      } else {
-        const res = await fetch(`${BASE_URL}/api/recruitments-list/${search}`, {
-          method: 'GET',
-          headers: headers,
-        });
-        const data = await res.json();
-        setCardList(data);
-      }
+    if (clickedCheckList.length === 0) {
+      const res = await fetch(`${BASE_URL}/api/recruitments-list/`, {
+        method: 'GET',
+      });
+      const data = await res.json();
+      setCardList(data);
+    } else {
+      const res = await fetch(`${BASE_URL}/api/recruitments-list/${search}`, {
+        method: 'GET',
+      });
+      const data = await res.json();
+      setCardList(data);
     }
   }, [search]);
 
