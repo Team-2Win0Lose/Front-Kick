@@ -12,6 +12,7 @@ import { ko } from 'date-fns/esm/locale'; //한국어 설정
 import { AiFillCalendar } from 'react-icons/ai';
 import AccompanyList from '../FindAccompany/AccompanyList';
 import { splitDays } from '@/util/calculateDday';
+import { log } from 'console';
 const token = getCookie('token');
 const headers = {
   Authorization: `Bearer ${token}`,
@@ -117,7 +118,9 @@ const MultiFilter = (props: Props) => {
         return '&' + item;
       })
       .join('');
-    navigate(`?${queryString}`);
+    // navigate(`?${queryString}`);
+    console.log(queryString);
+    
   };
   const dateString = (start: Date, end: Date) => {};
   return (
