@@ -3,70 +3,22 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { getAccompanyDetail } from '@/lib/api';
-interface CardInfoType {
-  house: string[];
-  food: string[];
-  attraction: string[];
-}
-interface AccompanyDetail {
-  data: any;
-  //대표 이미지
-  img: string;
-  //제목
-  title: string;
-  //매치정보(날짜, 경기장, 홈 이름, 어웨이 이름)
-  date: string;
-  stadium: string;
-  homename: string;
-  awayname: string;
-  //모임정보(장소, 세부장소, 동행기간, 태그, 최소 인원, 최대 인원)
-  meetingPlace: string;
-  detailMeetingPlace: string;
-  term: string;
-  tag: string[];
-  minNum: number;
-  maxNum: number;
-  //내용
-  content: string;
-  cardInfo: CardInfoType;
-}
-interface test {
-  data: AccompanyDetail;
-}
+import { AccompanyPostReal } from '@/lib/interface';
 
 const FindAccompanyDetail = () => {
   const { postId } = useParams() as { postId: string };
 
-  const [accompany, setaccompany] = useState<test>();
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const thisAccompany = await getAccompanyDetail(postId);
-        setaccompany(thisAccompany);
-      } catch (Error) {
-        console.error('Error : ', Error);
-      }
-    }
-    fetchData();
-  }, [postId]);
-  if (accompany === undefined) {
-    return <div>Loading...</div>;
-  }
-
   return (
     <Form>
-      {/* 이미지 박스 */}
-      <ImgBox>
+      {/* <ImgBox>
         <IMG
           src={accompany.data.data.img}
           alt='선택한 배경 사진이 없습니다.(No Image)'
         />
       </ImgBox>
 
-      {/* 제목 */}
       <Title>{accompany.data.data.title}</Title>
 
-      {/* 매치 정보 */}
       <Box>
         <TitleText>🔥 매치 정보</TitleText>
         <MatchInfo>
@@ -88,7 +40,6 @@ const FindAccompanyDetail = () => {
           </FlexContainer>
         </MatchInfo>
       </Box>
-      {/* 동행 정보 */}
       <Box>
         <TitleText>🔥 동행 정보</TitleText>
         <JoinInfo>
@@ -114,8 +65,7 @@ const FindAccompanyDetail = () => {
         </JoinInfo>
       </Box>
 
-      {/* 태그 정보 */}
-      <Box>
+\      <Box>
         <TitleText>🔥 태그 정보</TitleText>
         <TagInfo>
           {accompany.data.data.tag.map((tagItem: any, index: number) => (
@@ -123,7 +73,6 @@ const FindAccompanyDetail = () => {
           ))}
         </TagInfo>
       </Box>
-      {/* 카드 정보 */}
       <Box>
         <TitleText>🔥 카드 정보</TitleText>
         <CardInfo>
@@ -154,8 +103,7 @@ const FindAccompanyDetail = () => {
           </ScrollContainer>
         </CardInfo>
       </Box>
-      {/* 내용 */}
-      <Content>{accompany.data.data.content}</Content>
+      <Content>{accompany.data.data.content}</Content> */}
     </Form>
   );
 };

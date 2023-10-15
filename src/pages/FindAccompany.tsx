@@ -1,14 +1,13 @@
 import styled from 'styled-components';
-import AccompanyList from '../components/FindAccompany/AccompanyList';
-import AccompanyHeader from '../components/FindAccompany/AccompanyHeader';
+
+import MultiFilter from '@/components/Filter/MultiFilter';
 
 type props = {};
 
 const FindAccompany = (props: props) => {
   return (
     <Form>
-      <AccompanyHeader />
-      <AccompanyList />
+      <MultiFilter />
     </Form>
   );
 };

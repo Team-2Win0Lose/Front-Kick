@@ -4,5 +4,15 @@ export const sliceTitle = (title: string) => {
   return returnTitle;
 };
 export const sliceDate = (date: string) => {
-  return date.split('~')[0];
+  return date.split('오')[0];
+};
+
+export const replaceNowStatus = (nowstatus: number) => {
+  if (nowstatus === 0) {
+    return '모집중';
+  } else if (nowstatus === 1) {
+    return '모집완료';
+  } else {
+    return '모집종료';
+  }
 };
