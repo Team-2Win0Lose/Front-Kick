@@ -63,13 +63,16 @@ const AccompanyBox = (props: Props) => {
       {/* <Box onClick={() => navigate(`/findaccompany/detail/${props.boxdata.id}`)}> */}
       <Header>
         <Host>
-          <HostImg src={teamidConvertImg(props.post.TeamId)} alt='' />
+          <HostImg
+            src={teamidConvertImg(props.post.TeamId)}
+            alt={props.post.title}
+          />
         </Host>
         <div>
           <Title>{sliceTitle(props.post.title)}</Title>
           <Tags>
-            {convertStringToArray(props.post.tagList).map((item) => (
-              <Tag>#{item}</Tag>
+            {convertStringToArray(props.post.tagList).map((item, idx) => (
+              <Tag key={idx}>#{item}</Tag>
             ))}
           </Tags>
         </div>

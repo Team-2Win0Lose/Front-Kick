@@ -1,13 +1,11 @@
 import { RefObject, useCallback, useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
-import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { getCookie } from '@/util/cookieFn';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/app/store';
 import { BASE_URL } from '@/config';
-import { AiFillCalendar } from 'react-icons/ai';
 import { AccompanyPostReal } from '@/lib/interface';
 import AccompanyBox from '../MyAccompany/AccompanyBox';
 const token = getCookie('token');
@@ -261,12 +259,12 @@ const MultiFilter = (props: Props) => {
       <ListContainer>
         {cardList?.map((post: AccompanyPostReal, idx) => (
           <div
-            key={idx}
+            key={post.recruitmentBoardId}
             onClick={() =>
-              navigate(`/findaccompany/detail/${post.post.recruitmentBoardId}`)
+              navigate(`/findaccompany/detail/${post.recruitmentBoardId}`)
             }
           >
-            <AccompanyBox post={post.post} />
+            <AccompanyBox post={post} />
           </div>
         ))}
       </ListContainer>
