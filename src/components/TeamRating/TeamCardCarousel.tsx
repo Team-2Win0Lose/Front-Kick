@@ -196,7 +196,15 @@ const Circle = styled.div`
   left: 50%; 
   background-color: #FFFFFF;
   border-radius:50%;
+  ${customMedia.lessThan('tablet')`
+		width: 90px;
+    height: 90px;
+	`}
   transform: translate(-50%, -50%);
+   ${customMedia.lessThan('mobile')`
+		width: 50px;
+    height: 50px;
+	`}
   
 `
 
@@ -204,9 +212,13 @@ const IMG = styled.img`
   width: 120px;
   height: 120px;
   object-fit: contain;
+  ${customMedia.lessThan('tablet')`
+		width: 80px;
+    height: 80px;
+	`}
   ${customMedia.lessThan('mobile')`
-		width:100px;
-    height:100px;
+		width:50px;
+    height:50px;
 	`}
 `;
 
@@ -240,11 +252,17 @@ const FlexColumnInside = styled.div`
   display: flex;
   flex-direction: column;
   padding: 20px 0;
+   ${customMedia.lessThan('mobile')`
+		padding: 0px;
+	`}
 `;
 
 const FlexItem = styled.div`
   font-size: 20px;
   color: white;
+   ${customMedia.lessThan('mobile')`
+		font-size: 10px;
+	`}
 `;
 
 const FlexText = styled.div`
@@ -253,6 +271,12 @@ const FlexText = styled.div`
   padding: 5px;
   align-items: center;
   justify-content: space-between;
+    ${customMedia.lessThan('tablet')`
+		width: 100%;
+	`}
+  ${customMedia.lessThan('mobile')`
+		width: 80%;
+	`}
 `;
 
 const Font = styled.div`
