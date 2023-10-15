@@ -1,4 +1,4 @@
-import{s as a,a as t,M as h,d as p,j as c}from"./vendor-35a6e146.js";import{R as o,B as d}from"./AddCourse-cfeb8d46.js";const v=r=>t(y,{children:o.map((e,i)=>t(d,{img:e.img,name:e.name,type:e.type,review:e.review},i))}),y=a.div`
+import{s as a,a as t,f as h,e as d,j as c}from"./vendor-5d52e3a8.js";import{R as o,B as p}from"./AddCourse-638bc847.js";const v=r=>t(y,{children:o.map((e,i)=>t(p,{img:e.img,name:e.name,type:e.type,review:e.review},i))}),y=a.div`
   padding: 10px 0;
   width: 90%;
   display: grid;
@@ -7,7 +7,7 @@ import{s as a,a as t,M as h,d as p,j as c}from"./vendor-35a6e146.js";import{R as
   margin: 0 auto;
 
   grid-template-columns: repeat(2, 150px);
-`,f=r=>t(w,{children:o.map((e,i)=>t(d,{img:e.img,name:e.name,type:e.type,review:e.review},i))}),w=a.div`
+`,f=r=>t(w,{children:o.map((e,i)=>t(p,{img:e.img,name:e.name,type:e.type,review:e.review},i))}),w=a.div`
   padding: 10px 0;
   width: 90%;
   display: grid;
@@ -16,7 +16,7 @@ import{s as a,a as t,M as h,d as p,j as c}from"./vendor-35a6e146.js";import{R as
   margin: 0 auto;
 
   grid-template-columns: repeat(2, 150px);
-`,C=r=>t(b,{children:o.map((e,i)=>t(d,{img:e.img,name:e.name,type:e.type,review:e.review},i))}),b=a.div`
+`,C=r=>t(b,{children:o.map((e,i)=>t(p,{img:e.img,name:e.name,type:e.type,review:e.review},i))}),b=a.div`
   padding: 10px 0;
   width: 90%;
   display: grid;
@@ -25,7 +25,7 @@ import{s as a,a as t,M as h,d as p,j as c}from"./vendor-35a6e146.js";import{R as
   margin: 0 auto;
 
   grid-template-columns: repeat(2, 150px);
-`,s=[{index:0,name:"🍽️ 맛집",content:t(v,{})},{index:1,name:"🏝️ 관광지",content:t(f,{})},{index:2,name:"🛏️ 숙소",content:t(C,{})}],j=r=>{const e=h(),[i,l]=p.useState(0),[m,x]=p.useState(0),g=n=>{l(n)},u=n=>{x(n)};return c("div",{children:[c(k,{children:[t(T,{onClick:()=>e("/createroom"),children:"코스 추가하기"}),t(B,{children:s.map(n=>t(R,{active:m===n.index,onClick:()=>(g(n.index),u(n.index)),children:n.name},n.index))})]}),t("div",{children:s[i].content})]})},k=a.div`
+`,s=[{index:0,name:"🍽️ 맛집",content:t(v,{})},{index:1,name:"🏝️ 관광지",content:t(f,{})},{index:2,name:"🛏️ 숙소",content:t(C,{})}],j=r=>{const e=h(),[i,l]=d.useState(0),[m,x]=d.useState(0),g=n=>{l(n)},u=n=>{x(n)};return c("div",{children:[c(k,{children:[t(T,{onClick:()=>e("/createroom"),children:"코스 추가하기"}),t(B,{children:s.map(n=>t(R,{active:m===n.index,onClick:()=>(g(n.index),u(n.index)),children:n.name},n.index))})]}),t("div",{children:s[i].content})]})},k=a.div`
   width: 100%;
   margin-top: 20px;
   padding: 10px;

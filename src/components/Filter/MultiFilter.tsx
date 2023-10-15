@@ -8,10 +8,9 @@ import { useSelector } from 'react-redux';
 import { RootState } from '@/app/store';
 import AccompanyBox from '../MyAccompany/AccompanyBox';
 import { BASE_URL } from '@/config';
-import { ko } from 'date-fns/esm/locale'; //한국어 설정
 import { AiFillCalendar } from 'react-icons/ai';
 import AccompanyList from '../FindAccompany/AccompanyList';
-import { splitDays } from '@/util/calculateDday';
+import { AccompanyPostReal } from '@/lib/interface';
 const token = getCookie('token');
 const headers = {
   Authorization: `Bearer ${token}`,
@@ -21,9 +20,6 @@ type Props = {};
 const MultiFilter = (props: Props) => {
   const { id, isAuthenticated } = useSelector((state: RootState) => state.auth);
 
-  const [dateRange, setDateRange] = useState([null, null]);
-  const [startDate, setStartDate] = useState<Date>();
-  const [endDate, setEndDate] = useState<Date>();
   const [cardList, setCardList] = useState<[]>();
   const navigate = useNavigate();
   const { search } = useLocation();
@@ -85,13 +81,7 @@ const MultiFilter = (props: Props) => {
   useEffect(() => {
     getCardListData();
   }, [getCardListData]);
-  const handleApplyFilter = () => {
-    if (startDate !== null && endDate !== null) {
-      makeQueryString();
-    } else {
-      // Handle invalid date selection or no date selection
-    }
-  };
+
   const makeQueryString = () => {
     const queryString = clickedCheckList
       .map(({ id, sort_type }) => {
@@ -101,25 +91,18 @@ const MultiFilter = (props: Props) => {
         if (sort_type === 'recruit') {
           return `now_status=${nowRecruitState}`;
         }
-        if (sort_type === 'date') {
-          if (splitDays(startDate) === splitDays(endDate)) {
-            return `term=${splitDays(startDate)}`;
-          } else {
-            return `term=${splitDays(startDate)}~${splitDays(endDate)}`;
-          }
-        }
       })
-      .filter((item) => item !== undefined) // 필터링하여 undefined를 제거
+      .filter((item) => item !== undefined)
       .map((item, index) => {
         if (index === 0) {
-          return item; // 첫 번째 아이템에는 '&'를 추가하지 않음
+          return item;
         }
         return '&' + item;
       })
       .join('');
+
     navigate(`?${queryString}`);
   };
-  const dateString = (start: Date, end: Date) => {};
   return (
     <Wrapper>
       <FilterList ref={filterDom}>
@@ -195,12 +178,12 @@ const MultiFilter = (props: Props) => {
                     <Content
                       key={idx}
                       onClick={() => {
-                        setnowRecruitState(parseInt(content[1])),
-                          handleCheckList(idx, content[1], sort_type);
+                        setnowRecruitState(parseInt(content[1]));
+                        handleCheckList(idx, content[1], sort_type);
                       }}
                     >
                       <Label>
-                        <input type='radio' name='recruit' />
+                        <input type='radio' name='recruits' />
                         {content[0]}
                       </Label>
                     </Content>
@@ -208,7 +191,8 @@ const MultiFilter = (props: Props) => {
                   <Btns>
                     <Button
                       onClick={() => {
-                        makeQueryString(), setIsContentsShowed(false);
+                        makeQueryString();
+                        setIsContentsShowed(false);
                       }}
                     >
                       필터 적용
@@ -217,73 +201,75 @@ const MultiFilter = (props: Props) => {
                 </Contents>
               </Filter>
             );
-          } else if (sort_type === 'date') {
-            return (
-              <Filter key={idx}>
-                <Title
-                  className={clickedCategory === idx ? 'show' : 'hide'}
-                  onClick={() => {
-                    setClickedCategory(idx);
-                    setIsContentsShowed(true);
-                  }}
-                >
-                  {title}
-                </Title>
-                <DateContents
-                  className={
-                    clickedCategory === idx && isContentsShowed
-                      ? 'show'
-                      : 'hide'
-                  }
-                  onClick={() => {
-                    handleCheckList(idx, '', sort_type);
-                  }}
-                >
-                  <DatePick>
-                    <DateBox1>
-                      <Calendar />
-                      <CustomDatePicker
-                        locale={ko} //한글
-                        dateFormat='yyyy.MM.dd'
-                        selected={startDate}
-                        closeOnScroll={true}
-                        onChange={(date: Date) => setStartDate(date)}
-                      />
-                    </DateBox1>
-                    <DateBox2>
-                      <Calendar />
+            // } else if (sort_type === 'date') {
+            //   return (
+            //     <Filter key={idx}>
+            //       <Title
+            //         className={clickedCategory === idx ? 'show' : 'hide'}
+            //         onClick={() => {
+            //           setClickedCategory(idx);
+            //           setIsContentsShowed(true);
+            //         }}
+            //       >
+            //         {title}
+            //       </Title>
+            //       <DateContents
+            //         className={
+            //           clickedCategory === idx && isContentsShowed
+            //             ? 'show'
+            //             : 'hide'
+            //         }
+            //         onClick={() => {
+            //           handleCheckList(idx, '', sort_type);
+            //         }}
+            //       >
+            //         <DatePick>
+            //           <DateBox1>
+            //             <Calendar />
+            //             <CustomDatePicker
+            //               locale={ko} //한글
+            //               dateFormat='yyyy.MM.dd'
+            //               selected={startDate}
+            //               closeOnScroll={true}
+            //               onChange={(date: Date) => setStartDate(date)}
+            //             />
+            //           </DateBox1>
+            //           <DateBox2>
+            //             <Calendar />
 
-                      <CustomDatePicker
-                        locale={ko} //한글
-                        dateFormat='yyyy.MM.dd'
-                        selected={endDate}
-                        closeOnScroll={true}
-                        onChange={(date: Date) => setEndDate(date)}
-                      />
-                    </DateBox2>
-                  </DatePick>
+            //             <CustomDatePicker
+            //               locale={ko} //한글
+            //               dateFormat='yyyy.MM.dd'
+            //               selected={endDate}
+            //               closeOnScroll={true}
+            //               onChange={(date: Date) => setEndDate(date)}
+            //             />
+            //           </DateBox2>
+            //         </DatePick>
 
-                  <Btns>
-                    <Button
-                      onClick={() => {
-                        handleApplyFilter(), setIsContentsShowed(false);
-                      }}
-                    >
-                      필터 적용
-                    </Button>
-                  </Btns>
-                </DateContents>
-              </Filter>
-            );
+            //         <Btns>
+            //           <Button
+            //             onClick={() => {
+            //               setIsContentsShowed(false);
+            //             }}
+            //           >
+            //             필터 적용
+            //           </Button>
+            //         </Btns>
+            //       </DateContents>
+            // </Filter>
+            // );
           }
         })}
       </FilterList>
       <ListContainer>
         {clickedCheckList?.length !== 0 ? (
-          cardList?.map((post, idx) => (
+          cardList?.map((post: AccompanyPostReal, idx) => (
             <div
               key={idx}
-              // onClick={() => navigate(`/findaccompany/detail/${post.id}`)}
+              onClick={() =>
+                navigate(`/findaccompany/detail/${post.recruitmentBoardId}`)
+              }
             >
               <AccompanyBox post={post} />
             </div>
@@ -419,25 +405,7 @@ const Contents = styled.div`
     display: block;
   }
 `;
-const DateContents = styled.div`
-  position: absolute;
-  display: none;
-  padding: 20px;
-  top: 45px;
-  left: 5px;
-  width: 400px;
-  border: 1px solid #dbdbdb;
-  border-radius: 3px;
-  background-color: white;
-  z-index: 200;
 
-  &.show {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-`;
 const TeamContents = styled.div`
   position: absolute;
   display: none;
@@ -504,33 +472,7 @@ const Button = styled.button`
   color: #fff;
   cursor: pointer;
 `;
-const DatePick = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 30px;
-`;
-const CustomDatePicker = styled(DatePicker)`
-  width: 150px;
-  height: 48px;
-  /* border: none; */
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 100%;
-  padding: 20px;
-  background-color: transparent;
-  color: #707070;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid gray;
-  border-radius: 4px;
-  padding: 10px 30px;
-  /* width: 250px;
-  height: 46px; */
-  text-align: center;
-`;
 const ListContainer = styled.div`
   margin: 0 auto;
   display: grid;
@@ -539,21 +481,5 @@ const ListContainer = styled.div`
   align-content: center;
   gap: 30px;
 `;
-const DateBox1 = styled.div`
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-content: center;
-`;
-const DateBox2 = styled.div`
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-content: center;
-`;
-const Calendar = styled(AiFillCalendar)`
-  position: absolute;
-  left: 5px;
-  top: 15px;
-`;
+
 export default MultiFilter;
