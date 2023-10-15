@@ -59,16 +59,20 @@ const StepHeader = () => {
       setTitleIndex((prevIndex) => prevIndex - 1);
     }
   };
+  const tags = useSelector((state: RootState) => state.summary.tag);
+  const tagString = tags.map((tag) => tag.name).join(',');
   const requestBody = {
+    token: useSelector((state: RootState) => state.auth.token),
     game_schedule_id: useSelector(
       (state: RootState) => state.summary.game_schedule_id,
     ),
     home_team_name: useSelector((state: RootState) => state.summary.homename),
     home_team_id: useSelector((state: RootState) => state.summary.home_team_id),
-    thumbnail: useSelector((state: RootState) => state.summary.img),
+    thumbnail:
+      /*useSelector((state: RootState) => state.summary.img)*/ 'imgDummy',
     title: useSelector((state: RootState) => state.summary.title),
     content: useSelector((state: RootState) => state.summary.content),
-    tagList: useSelector((state: RootState) => state.summary.tag),
+    tagList: tagString,
     tourCardIdList: [],
     meetingPlace: useSelector((state: RootState) => state.summary.meetingPlace),
     meetingPlaceAddress: useSelector(
@@ -93,11 +97,11 @@ const StepHeader = () => {
     } else if (titleIndex === titles.length - 1) {
       setcheck(true);
       console.log(post, loading);
-      // if (loading === 'succeeded' && post) {
-      //   dispatch(removeAll());
-      //   dispatch(removeSummary());
-      // }
-      // navigate('/');
+      setTimeout(() => {
+        dispatch(removeAll());
+        dispatch(removeSummary());
+        navigate('/');
+      }, 3000);
     }
   };
 

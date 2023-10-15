@@ -4,13 +4,14 @@ import { PinkType } from '@/components/HashTag/FilterBox';
 const token = getCookie('token');
 // 비동기 액션 크리에이터를 생성합니다.
 interface postBody {
+  token: string;
   game_schedule_id: string;
   home_team_name: string;
   home_team_id: number;
   thumbnail: string;
   title: string;
   content: string;
-  tagList: PinkType[];
+  tagList: string;
   tourCardIdList: string[];
   meetingPlace: string;
   meetingPlaceAddress: string;
@@ -31,7 +32,7 @@ export const postAccompany = createAsyncThunk(
         {
           method: 'post',
           headers: {
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${requestBody.token}`,
             'Content-Type': 'application/json;charset=utf-8',
           },
           body: JSON.stringify(requestBody),
@@ -52,13 +53,14 @@ const accompanySlice = createSlice({
 
   initialState: {
     post: {
+      token: '',
       game_schedule_id: '',
       home_team_id: 0,
       home_team_name: '',
       thumbnail: '',
       title: '',
       content: '',
-      tagList: [],
+      tagList: '',
       tourCardIdList: [],
       meetingPlace: '',
       meetingPlaceAddress: '',
