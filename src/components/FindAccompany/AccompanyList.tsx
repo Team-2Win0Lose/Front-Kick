@@ -20,9 +20,8 @@ const AccompanyList = (props: Props) => {
   useEffect(() => {
     async function fetchData() {
       try {
-        const res = await fetch(`${BASE_URL}/api/recruitments-list/?id=${id}`, {
+        const res = await fetch(`${BASE_URL}/api/recruitments-list/`, {
           method: 'get',
-          headers: headers,
         });
         const data = await res.json();
         setaccompanyList(data);
