@@ -1,4 +1,4 @@
-import{s as t,a as e,j as i,u as b,e as d,b as w,N as v}from"./vendor-34c37101.js";import{S as m}from"./react-slick-2febd1cd.js";/* empty css                       */import{c as s,t as y}from"./common-e20ce833.js";import F from"./FindAccompany-0b4b48fe.js";const z=()=>e(j,{className:"carousel",children:i(m,{...{dots:!0,autoplay:!0,Infinite:!0,slidesToshow:1,slidesToscroll:1,swipeToslide:!0,autoplaySpeed:3e3,speed:500},children:[e(p,{children:e(x,{children:e(g,{src:"/assets/banner3.png",alt:"logo"})})}),e(p,{children:e(x,{children:e(g,{src:"/assets/banner2.png",alt:"logo"})})}),e(p,{children:e(x,{children:e(g,{src:"/assets/banner1.png",alt:"logo"})})})]})}),p=t.div`
+import{s as t,a as e,j as i,u as b,e as d,b as w,O as v}from"./vendor-e66f6ed6.js";import{S as m}from"./react-slick-eec3553a.js";/* empty css                       */import{c as s,t as y}from"./common-ddc03157.js";import F from"./FindAccompany-478a00a6.js";const z=()=>e(j,{className:"carousel",children:i(m,{...{dots:!0,autoplay:!0,Infinite:!0,slidesToshow:1,slidesToscroll:1,swipeToslide:!0,autoplaySpeed:3e3,speed:500},children:[e(p,{children:e(x,{children:e(g,{src:"/assets/banner3.png",alt:"logo"})})}),e(p,{children:e(x,{children:e(g,{src:"/assets/banner2.png",alt:"logo"})})}),e(p,{children:e(x,{children:e(g,{src:"/assets/banner1.png",alt:"logo"})})})]})}),p=t.div`
   width: 100%;
   display: flex;
   justify-content: center;
@@ -16,7 +16,7 @@ import{s as t,a as e,j as i,u as b,e as d,b as w,N as v}from"./vendor-34c37101.j
   object-fit: contain;
 `,j=t.div`
     width: 100%;
-`,C=()=>{b();const[o,l]=d.useState([]),a=d.useCallback(async()=>{const r=await(await fetch("https://kick-back.azurewebsites.net/api/team_info/list_detail",{method:"GET"})).json();l(r)},[]);d.useEffect(()=>{a()},[a]);const c=[...o||[]].sort((n,r)=>r.recruit_ing-n.recruit_ing);return e(T,{className:"carousel",children:e(k,{...{dots:!1,autoplay:!0,infinite:!0,slidesToShow:4,slidesToScroll:4,swipeToSlide:!0,autoplaySpeed:3e3,speed:500,prevArrow:e(R,{children:"‹"}),nextArrow:e(D,{children:"›"})},children:c==null?void 0:c.map((n,r)=>r!==12&&i(_,{backgroundColor:n.team_color_sub,children:[e($,{backgroundColor:n.team_color_main,children:e(S,{children:r+1})}),i(G,{children:[e(B,{children:e(I,{src:y(n.original_team_name),alt:n.original_team_name})}),i(M,{children:[e(A,{children:n.original_team_name}),i(N,{children:[i(f,{children:[e(u,{children:"팔로워"}),e(h,{children:n.follower})]}),i(f,{children:[e(u,{children:"현재 동행팀"}),e(h,{children:n.recruit_ing})]})]})]})]})]},r))})})},T=t.div`
+`,C=()=>{b();const[o,l]=d.useState([]),a=d.useCallback(async()=>{const r=await(await fetch("https://kick-back.azurewebsites.net/api/team_info/list_detail",{method:"GET"})).json();l(r)},[]);d.useEffect(()=>{a()},[a]);const c=[...o||[]].sort((n,r)=>r.recruit_ing-n.recruit_ing);return e(T,{className:"carousel",children:e(k,{...{dots:!1,autoplay:!0,infinite:!0,slidesToShow:4,slidesToScroll:4,swipeToSlide:!0,autoplaySpeed:3e3,speed:500,prevArrow:e(N,{children:"‹"}),nextArrow:e(D,{children:"›"})},children:c==null?void 0:c.map((n,r)=>r!==12&&i(_,{backgroundColor:n.team_color_sub,children:[e($,{backgroundColor:n.team_color_main,children:e(S,{children:r+1})}),i(G,{children:[e(B,{children:e(I,{src:y(n.original_team_name),alt:n.original_team_name})}),i(M,{children:[e(A,{children:n.original_team_name}),i(R,{children:[i(f,{children:[e(u,{children:"팔로워"}),e(h,{children:n.follower})]}),i(f,{children:[e(u,{children:"현재 동행팀"}),e(h,{children:n.recruit_ing})]})]})]})]})]},r))})})},T=t.div`
   padding: 0 30px;
 `,k=t(m)`
   .slick-slide {
@@ -110,7 +110,7 @@ import{s as t,a as e,j as i,u as b,e as d,b as w,N as v}from"./vendor-34c37101.j
   flex-direction: column;
   align-items: center;
   margin-top: 70px;
-`,N=t.div`
+`,R=t.div`
   display: flex;
   flex-direction: column;
   padding: 20px 0;
@@ -154,7 +154,7 @@ import{s as t,a as e,j as i,u as b,e as d,b as w,N as v}from"./vendor-34c37101.j
   justify-content: center;
   align-items: center;
   gap: 5px;
-`;const R=t.div`
+`;const N=t.div`
   position: absolute;
   top: 50%;
   left: -20px;
@@ -170,7 +170,7 @@ import{s as t,a as e,j as i,u as b,e as d,b as w,N as v}from"./vendor-34c37101.j
   z-index: 999;
   cursor: pointer;
   font-size: 24px;
-`,ie=o=>{const l=w(a=>a.auth.isAuthenticated);return i("div",{children:[l?i(E,{children:[e(Y,{children:"👋 현재 나의 동행일정 (0)"}),e(H,{children:e(q,{children:"예정 중인 동행이 없어요 🥲"})})]}):e(v,{}),e(P,{children:e(z,{})}),i(L,{children:[e(K,{children:"🏆 구단별 응원순위"}),e(Q,{children:"구단별 모집이 완료된 동행팀 수"}),e(C,{})]}),i(V,{children:[e(J,{children:"🙋‍♂️ 동행 구경하기"}),e(O,{children:"나의 동행을 찾아보세요!"}),e(F,{})]})]})},E=t.div`
+`,ie=o=>{const l=w(a=>a.auth.isAuthenticated);return i("div",{children:[l?i(E,{children:[e(Y,{children:"👋 현재 나의 동행일정 (0)"}),e(q,{children:e(O,{children:"예정 중인 동행이 없어요 🥲"})})]}):e(v,{}),e(P,{children:e(z,{})}),i(L,{children:[e(J,{children:"🏆 구단별 응원순위"}),e(Q,{children:"구단별 모집이 완료된 동행팀 수"}),e(C,{})]}),i(V,{children:[e(H,{children:"🙋‍♂️ 동행 구경하기"}),e(K,{children:"나의 동행을 찾아보세요!"}),e(F,{})]})]})},E=t.div`
   margin-bottom:30px;
 `,L=t.div`
   background-color:#1F1F45;
@@ -189,14 +189,14 @@ import{s as t,a as e,j as i,u as b,e as d,b as w,N as v}from"./vendor-34c37101.j
   align-items: center;
   font-size: 20px;
   font-weight: bold;
-`,q=t.div`
+`,O=t.div`
   justify-content: center;
   align-items: center;
   margin: 10px;
   color:#5c5c5c;
   font-size: 20px;
   font-weight: bold;
-`,H=t.div`
+`,q=t.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -206,7 +206,7 @@ import{s as t,a as e,j as i,u as b,e as d,b as w,N as v}from"./vendor-34c37101.j
   background: #eeeeee;
   /* box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25); */
   border-radius: 20px;
-`,J=t.div`
+`,H=t.div`
   border: 1px;
   font-size: 25px;
   padding: 20px;
@@ -215,7 +215,7 @@ import{s as t,a as e,j as i,u as b,e as d,b as w,N as v}from"./vendor-34c37101.j
     border: 1px;
 	`}
 
-`,K=t.div`
+`,J=t.div`
   border: 1px;
   font-size: 25px;
   padding: 20px;
@@ -225,7 +225,7 @@ import{s as t,a as e,j as i,u as b,e as d,b as w,N as v}from"./vendor-34c37101.j
     border: 1px;
 	`}
 
-`,O=t.div` 
+`,K=t.div` 
   font-size: 15px;
   margin-left: 20px;
 `,Q=t.div` 
