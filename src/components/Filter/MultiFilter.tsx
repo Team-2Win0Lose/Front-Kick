@@ -77,7 +77,7 @@ const MultiFilter = (props: Props) => {
   useEffect(() => {
     getCardListData();
   }, [getCardListData]);
-  console.log(cardList);
+  // console.log(cardList);
 
   const makeQueryString = () => {
     const queryString = clickedCheckList
@@ -264,10 +264,10 @@ const MultiFilter = (props: Props) => {
           <div
             key={idx}
             onClick={() =>
-              navigate(`/findaccompany/detail/${post.recruitmentBoardId}`)
+              navigate(`/findaccompany/detail/${post.post.recruitmentBoardId}`)
             }
           >
-            <AccompanyBox post={post} />
+            <AccompanyBox post={post.post} />
           </div>
         ))}
       </ListContainer>

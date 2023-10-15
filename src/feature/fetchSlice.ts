@@ -23,7 +23,7 @@ export const postAccompany = createAsyncThunk(
   'accompany/post',
   async (requestBody: postBody, thunkAPI) => {
     try {
-      console.log(requestBody);
+      // console.log(requestBody);
 
       const res = await fetch(
         `https://kick-back.azurewebsites.net/api/recruitment/?team_id=${requestBody.team_id}`,

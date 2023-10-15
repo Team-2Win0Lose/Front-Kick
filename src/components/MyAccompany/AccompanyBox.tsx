@@ -10,7 +10,7 @@ type Props = {
   post: {
     recruitmentBoardId: number;
     hostId: string;
-    homeTeamId: number;
+    TeamId: number;
     scheduleId: string;
     tagList: string;
     now_status: number;
@@ -18,6 +18,7 @@ type Props = {
     thumbnail: string;
     title: string;
     content: string;
+    opponentTeamId: number;
     tourCardIdList: {
       attraction: [
         {
@@ -62,7 +63,7 @@ const AccompanyBox = (props: Props) => {
       {/* <Box onClick={() => navigate(`/findaccompany/detail/${props.boxdata.id}`)}> */}
       <Header>
         <Host>
-          <HostImg src='' alt='' />
+          <HostImg src={teamidConvertImg(props.post.TeamId)} alt='' />
         </Host>
         <div>
           <Title>{sliceTitle(props.post.title)}</Title>
@@ -141,12 +142,12 @@ const AccompanyBox = (props: Props) => {
       <Footer>
         <Match>
           <HomeTeam>
-            <TeamLogo src={teamidConvertImg(props.post.homeTeamId)} />
+            <TeamLogo src={teamidConvertImg(props.post.TeamId)} />
             <Versus>Home</Versus>
           </HomeTeam>
           <Versus>VS</Versus>
           <AwayTeam>
-            <TeamLogo src='' />
+            <TeamLogo src={teamidConvertImg(props.post.opponentTeamId)} />
             <Versus>Away</Versus>
           </AwayTeam>
         </Match>

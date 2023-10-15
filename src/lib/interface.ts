@@ -48,51 +48,55 @@ export interface AccompanyMadeByMe {
   accompanyData: accompanyType;
 }
 export interface AccompanyPostReal {
-  recruitmentBoardId: number;
-  hostId: string;
-  homeTeamId: number;
-  scheduleId: string;
-  tagList: string;
-  now_status: number;
-  stars: number;
-  thumbnail: string;
-  title: string;
-  content: string;
-  tourCardIdList: {
-    attraction: [
-      {
-        title: string;
-        content_id: string;
-        firstimage: string;
-      },
-    ];
-    restaurant: [
-      {
-        title: string;
-        content_id: string;
-        firstimage: string;
-      },
-    ];
-    accommodation: [
-      {
-        title: string;
-        content_id: string;
-        firstimage: string;
-      },
-    ];
+  post: {
+    recruitmentBoardId: number;
+    hostId: string;
+    TeamId: number;
+    scheduleId: string;
+    tagList: string;
+    now_status: number;
+    stars: number;
+    thumbnail: string;
+    title: string;
+    content: string;
+    opponentTeamId: number;
+    tourCardIdList: {
+      attraction: [
+        {
+          title: string;
+          content_id: string;
+          firstimage: string;
+        },
+      ];
+      restaurant: [
+        {
+          title: string;
+          content_id: string;
+          firstimage: string;
+        },
+      ];
+      accommodation: [
+        {
+          title: string;
+          content_id: string;
+          firstimage: string;
+        },
+      ];
+    };
+    meetingPlace: string;
+    meetingPlaceAddress: string;
+    detailMeetingPlace: string;
+    term: string;
+    minNum: number;
+    maxNum: number;
+    createdDate: string;
+    publishedDate: string | null;
+    nowHeadCount: number;
+    applingUserIdList: string;
+    appliedUserIdList: string;
   };
-  meetingPlace: string;
-  meetingPlaceAddress: string;
-  detailMeetingPlace: string;
-  term: string;
-  minNum: number;
-  maxNum: number;
-  createdDate: string;
-  publishedDate: string | null;
-  nowHeadCount: number;
-  applingUserIdList: string;
-  appliedUserIdList: string;
 }
+
 export interface AccompanyMadeByMeList {
   data: AccompanyMadeByMe[];
 }
