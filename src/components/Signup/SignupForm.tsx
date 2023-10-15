@@ -168,7 +168,6 @@ const SignupForm = (props: any) => {
               onInput={autoHyphen}
               placeholder='휴대폰 번호를 입력해주세요.'
             />
-            <AuthBtn>인증 요청</AuthBtn>
           </PhoneNumberForm>
           <Warn>{errors?.phone_number?.message}</Warn>
           <GenderWrap

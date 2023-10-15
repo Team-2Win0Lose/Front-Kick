@@ -6,7 +6,7 @@ const LoginHeader = (props: Props) => {
   return (
     <Header>
       <Logos>
-        <IMG src='public/assets/totalLogo.png' alt='logo' />
+        <IMG src='dist/assets/LogoTotal.svg' alt='logo' />
       </Logos>
     </Header>
   );
@@ -28,6 +28,8 @@ const Logos = styled.div`
   align-items: center;
   gap: 15px;
 `;
-const IMG = styled.img``;
+const IMG = styled.img`
+  margin-right: 10px;
+`;
 
 export default LoginHeader;

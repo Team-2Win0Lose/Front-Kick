@@ -2,7 +2,7 @@ import { useState, useCallback } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import MapContainer from './SearchMapContainer';
-import { FaSearch } from 'react-icons/Fa';
+import { FaSearch } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
 import { setPlace } from '@/feature/SummarySlice';
 import { RootState } from '@/app/store';
@@ -241,8 +241,7 @@ const LandingPage = styled.div`
   /* For example: padding, background-color, etc. */
 `;
 
-const LandingPageInner = styled.div`
-`;
+const LandingPageInner = styled.div``;
 
 const SearchFormContainer = styled.div`
   /* Add your styles for the search form container here */
@@ -255,8 +254,8 @@ const SearchForm = styled.form`
 
 const FormLabel = styled.label`
   display: flex;
-  width:100%;
-  height:100%;
+  width: 100%;
+  height: 100%;
   justify-content: center;
   align-items: center;
 `;
@@ -265,10 +264,10 @@ const FormInput = styled.input`
   display: flex;
   width: 100%;
   height: 50px;
-  border-radius: 10px ;
+  border-radius: 10px;
   padding: 5px 10px;
   border: none;
-  font-size:16px;
+  font-size: 16px;
   background-color: rgb(248, 248, 248);
 `;
 
