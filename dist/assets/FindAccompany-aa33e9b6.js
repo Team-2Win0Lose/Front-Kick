@@ -1,4 +1,4 @@
-import{s as n,f as N,b as R,e as r,a as e,Y as M,j as h}from"./vendor-5d52e3a8.js";import{g as z,B as C}from"./common-408be586.js";import{A as D}from"./main-5ee14d30.js";/* empty css                       */const Q=z("token"),U={Authorization:`Bearer ${Q}`},W=d=>{const m=N(),p=R(a=>a.auth.id),[l,w]=r.useState([]);return r.useEffect(()=>{async function a(){try{const k=await(await fetch(`${C}/api/recruitments-list/?id=${p}`,{method:"get",headers:U})).json();w(k)}catch(b){console.error("Error:",b)}}a()},[]),e(H,{children:l.map(a=>e("div",{onClick:()=>m(`/findaccompany/detail/${a.recruitmentBoardId}`),children:e(D,{post:a})},a.recruitmentBoardId))})},H=n.div`
+import{s as n,f as N,b as R,e as r,a as e,Y as M,j as h}from"./vendor-e594e6cf.js";/* empty css                         */import{g as z,B as C}from"./common-1cfa3065.js";import{A as D}from"./main-acd4ddec.js";/* empty css                       */const Q=z("token"),U={Authorization:`Bearer ${Q}`},W=d=>{const m=N(),p=R(a=>a.auth.id),[l,w]=r.useState([]);return r.useEffect(()=>{async function a(){try{const k=await(await fetch(`${C}/api/recruitments-list/?id=${p}`,{method:"get",headers:U})).json();w(k)}catch(b){console.error("Error:",b)}}a()},[]),e(H,{children:l.map(a=>e("div",{onClick:()=>m(`/findaccompany/detail/${a.recruitmentBoardId}`),children:e(D,{post:a})},a.recruitmentBoardId))})},H=n.div`
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* 4열로 배치 */
@@ -108,9 +108,9 @@ import{s as n,f as N,b as R,e as r,a as e,Y as M,j as h}from"./vendor-5d52e3a8.j
   justify-content: center;
   align-content: center;
   gap: 30px;
-`,ge=d=>e(ae,{children:e(K,{})}),ae=n.div`
+`,he=d=>e(ae,{children:e(K,{})}),ae=n.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-content: center;
-`;export{ge as default};
+`;export{he as default};
