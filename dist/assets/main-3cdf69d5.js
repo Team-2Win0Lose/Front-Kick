@@ -1,4 +1,4 @@
-import{s as t,a as e,j as i,u as b,e as d,b as w,Q as v}from"./vendor-e594e6cf.js";import{S as u}from"./react-slick-649c70cb.js";/* empty css                       */import{c as s,a as y}from"./common-1cfa3065.js";import F from"./FindAccompany-b5ae4da5.js";/* empty css                         */import"./main-acd4ddec.js";const z=()=>e(j,{className:"carousel",children:i(u,{...{dots:!0,autoplay:!0,Infinite:!0,slidesToshow:1,slidesToscroll:1,swipeToslide:!0,autoplaySpeed:3e3,speed:500},children:[e(p,{children:e(x,{children:e(g,{src:"/assets/banner3.png",alt:"logo"})})}),e(p,{children:e(x,{children:e(g,{src:"/assets/banner2.png",alt:"logo"})})}),e(p,{children:e(x,{children:e(g,{src:"/assets/banner1.png",alt:"logo"})})})]})}),p=t.div`
+import{s as t,a as e,j as i,u as b,e as d,b as w,N as v}from"./vendor-34c37101.js";import{S as m}from"./react-slick-2febd1cd.js";/* empty css                       */import{c as s,t as y}from"./common-e20ce833.js";import F from"./FindAccompany-0b4b48fe.js";const z=()=>e(j,{className:"carousel",children:i(m,{...{dots:!0,autoplay:!0,Infinite:!0,slidesToshow:1,slidesToscroll:1,swipeToslide:!0,autoplaySpeed:3e3,speed:500},children:[e(p,{children:e(x,{children:e(g,{src:"/assets/banner3.png",alt:"logo"})})}),e(p,{children:e(x,{children:e(g,{src:"/assets/banner2.png",alt:"logo"})})}),e(p,{children:e(x,{children:e(g,{src:"/assets/banner1.png",alt:"logo"})})})]})}),p=t.div`
   width: 100%;
   display: flex;
   justify-content: center;
@@ -16,9 +16,9 @@ import{s as t,a as e,j as i,u as b,e as d,b as w,Q as v}from"./vendor-e594e6cf.j
   object-fit: contain;
 `,j=t.div`
     width: 100%;
-`,C=()=>{b();const[o,l]=d.useState([]),a=d.useCallback(async()=>{const r=await(await fetch("https://kick-back.azurewebsites.net/api/team_info/list_detail",{method:"GET"})).json();l(r)},[]);d.useEffect(()=>{a()},[a]);const c=[...o||[]].sort((n,r)=>r.recruit_ing-n.recruit_ing);return e(T,{className:"carousel",children:e(k,{...{dots:!1,autoplay:!0,infinite:!0,slidesToShow:4,slidesToScroll:4,swipeToSlide:!0,autoplaySpeed:3e3,speed:500,prevArrow:e(N,{children:"‹"}),nextArrow:e(D,{children:"›"})},children:c==null?void 0:c.map((n,r)=>r!==12&&i(_,{backgroundColor:n.team_color_sub,children:[e($,{backgroundColor:n.team_color_main,children:e(S,{children:r+1})}),i(G,{children:[e(B,{children:e(I,{src:y(n.original_team_name),alt:n.original_team_name})}),i(M,{children:[e(A,{children:n.original_team_name}),i(R,{children:[i(f,{children:[e(m,{children:"팔로워"}),e(h,{children:n.follower})]}),i(f,{children:[e(m,{children:"현재 동행팀"}),e(h,{children:n.recruit_ing})]})]})]})]})]},r))})})},T=t.div`
+`,C=()=>{b();const[o,l]=d.useState([]),a=d.useCallback(async()=>{const r=await(await fetch("https://kick-back.azurewebsites.net/api/team_info/list_detail",{method:"GET"})).json();l(r)},[]);d.useEffect(()=>{a()},[a]);const c=[...o||[]].sort((n,r)=>r.recruit_ing-n.recruit_ing);return e(T,{className:"carousel",children:e(k,{...{dots:!1,autoplay:!0,infinite:!0,slidesToShow:4,slidesToScroll:4,swipeToSlide:!0,autoplaySpeed:3e3,speed:500,prevArrow:e(R,{children:"‹"}),nextArrow:e(D,{children:"›"})},children:c==null?void 0:c.map((n,r)=>r!==12&&i(_,{backgroundColor:n.team_color_sub,children:[e($,{backgroundColor:n.team_color_main,children:e(S,{children:r+1})}),i(G,{children:[e(B,{children:e(I,{src:y(n.original_team_name),alt:n.original_team_name})}),i(M,{children:[e(A,{children:n.original_team_name}),i(N,{children:[i(f,{children:[e(u,{children:"팔로워"}),e(h,{children:n.follower})]}),i(f,{children:[e(u,{children:"현재 동행팀"}),e(h,{children:n.recruit_ing})]})]})]})]})]},r))})})},T=t.div`
   padding: 0 30px;
-`,k=t(u)`
+`,k=t(m)`
   .slick-slide {
   }
 
@@ -110,7 +110,7 @@ import{s as t,a as e,j as i,u as b,e as d,b as w,Q as v}from"./vendor-e594e6cf.j
   flex-direction: column;
   align-items: center;
   margin-top: 70px;
-`,R=t.div`
+`,N=t.div`
   display: flex;
   flex-direction: column;
   padding: 20px 0;
@@ -123,7 +123,7 @@ import{s as t,a as e,j as i,u as b,e as d,b as w,Q as v}from"./vendor-e594e6cf.j
   padding: 5px;
   align-items: center;
   justify-content: space-between;
-`,m=t.div`
+`,u=t.div`
   font-size: 20px;
   color: white;
   ${s.lessThan("mobile")`
@@ -154,7 +154,7 @@ import{s as t,a as e,j as i,u as b,e as d,b as w,Q as v}from"./vendor-e594e6cf.j
   justify-content: center;
   align-items: center;
   gap: 5px;
-`;const N=t.div`
+`;const R=t.div`
   position: absolute;
   top: 50%;
   left: -20px;
@@ -170,7 +170,7 @@ import{s as t,a as e,j as i,u as b,e as d,b as w,Q as v}from"./vendor-e594e6cf.j
   z-index: 999;
   cursor: pointer;
   font-size: 24px;
-`,oe=o=>{const l=w(a=>a.auth.isAuthenticated);return i("div",{children:[l?i(E,{children:[e(Y,{children:"👋 현재 나의 동행일정 (0)"}),e(q,{children:e(Q,{children:"예정 중인 동행이 없어요 🥲"})})]}):e(v,{}),e(P,{children:e(z,{})}),i(L,{children:[e(J,{children:"🏆 구단별 응원순위"}),e(O,{children:"구단별 모집이 완료된 동행팀 수"}),e(C,{})]}),i(V,{children:[e(H,{children:"🙋‍♂️ 동행 구경하기"}),e(K,{children:"나의 동행을 찾아보세요!"}),e(F,{})]})]})},E=t.div`
+`,ie=o=>{const l=w(a=>a.auth.isAuthenticated);return i("div",{children:[l?i(E,{children:[e(Y,{children:"👋 현재 나의 동행일정 (0)"}),e(H,{children:e(q,{children:"예정 중인 동행이 없어요 🥲"})})]}):e(v,{}),e(P,{children:e(z,{})}),i(L,{children:[e(K,{children:"🏆 구단별 응원순위"}),e(Q,{children:"구단별 모집이 완료된 동행팀 수"}),e(C,{})]}),i(V,{children:[e(J,{children:"🙋‍♂️ 동행 구경하기"}),e(O,{children:"나의 동행을 찾아보세요!"}),e(F,{})]})]})},E=t.div`
   margin-bottom:30px;
 `,L=t.div`
   background-color:#1F1F45;
@@ -189,14 +189,14 @@ import{s as t,a as e,j as i,u as b,e as d,b as w,Q as v}from"./vendor-e594e6cf.j
   align-items: center;
   font-size: 20px;
   font-weight: bold;
-`,Q=t.div`
+`,q=t.div`
   justify-content: center;
   align-items: center;
   margin: 10px;
   color:#5c5c5c;
   font-size: 20px;
   font-weight: bold;
-`,q=t.div`
+`,H=t.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -206,31 +206,31 @@ import{s as t,a as e,j as i,u as b,e as d,b as w,Q as v}from"./vendor-e594e6cf.j
   background: #eeeeee;
   /* box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25); */
   border-radius: 20px;
-`,H=t.div`
-  border: 1px;
-  font-size: 25px;
-  padding: 20px;
-  ${s.lessThan("mobile")`
-		font-size: 20px;
-    border: 1px;
-	`}
-
 `,J=t.div`
   border: 1px;
   font-size: 25px;
   padding: 20px;
+  ${s.lessThan("mobile")`
+		font-size: 20px;
+    border: 1px;
+	`}
+
+`,K=t.div`
+  border: 1px;
+  font-size: 25px;
+  padding: 20px;
   color: white;
   ${s.lessThan("mobile")`
 		font-size: 20px;
     border: 1px;
 	`}
 
-`,K=t.div` 
+`,O=t.div` 
   font-size: 15px;
   margin-left: 20px;
-`,O=t.div` 
+`,Q=t.div` 
   font-size: 15px;
   margin-left: 20px;
   margin-bottom: 30px;
   color: white;
-`;export{oe as default};
+`;export{ie as default};

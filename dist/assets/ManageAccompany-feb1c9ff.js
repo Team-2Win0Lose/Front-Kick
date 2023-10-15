@@ -1,4 +1,4 @@
-import{s as e,j as n,a as t,e as a,a1 as j,a2 as z,f as k}from"./vendor-e594e6cf.js";import{I as T}from"./react-icons-02ef0919.js";const C=i=>n(q,{children:[t(A,{children:"동행 정보"}),n(I,{children:[n(R,{children:[n(M,{children:[t(h,{children:"장소"}),t(g,{children:"서울역 광장"})]}),n(N,{children:[t(h,{children:"날짜"}),t(g,{children:"23.09.13 13:00"})]}),n(S,{children:[t(h,{children:"인원"}),t(g,{children:"3/4"})]})]}),t(B,{children:n($,{children:[t(f,{children:"#절대강자"}),t(f,{children:"#축구지존"}),t(f,{children:"#제주도"}),t(f,{children:"#맛집탐방"})]})})]})]}),q=e.div`
+import{s as e,j as n,a as t,e as a,Y as j,Z as z,M as k}from"./vendor-34c37101.js";import{I as T}from"./react-icons-2d76b7e0.js";const C=i=>n(q,{children:[t(A,{children:"동행 정보"}),n(I,{children:[n(M,{children:[n(R,{children:[t(h,{children:"장소"}),t(g,{children:"서울역 광장"})]}),n(N,{children:[t(h,{children:"날짜"}),t(g,{children:"23.09.13 13:00"})]}),n(S,{children:[t(h,{children:"인원"}),t(g,{children:"3/4"})]})]}),t(B,{children:n($,{children:[t(f,{children:"#절대강자"}),t(f,{children:"#축구지존"}),t(f,{children:"#제주도"}),t(f,{children:"#맛집탐방"})]})})]})]}),q=e.div`
   width: 100%;
   padding: 15px 20px;
   border: 1px solid black;
@@ -15,7 +15,7 @@ import{s as e,j as n,a as t,e as a,a1 as j,a2 as z,f as k}from"./vendor-e594e6cf
   justify-content: center;
   align-items: center;
   gap: 4rem;
-`,R=e.div`
+`,M=e.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -27,7 +27,7 @@ import{s as e,j as n,a as t,e as a,a1 as j,a2 as z,f as k}from"./vendor-e594e6cf
 `,g=e.p`
   font-size: 10px;
   font-weight: 400;
-`,M=e.div`
+`,R=e.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -70,7 +70,7 @@ import{s as e,j as n,a as t,e as a,a1 as j,a2 as z,f as k}from"./vendor-e594e6cf
   font-size: 12px;
   font-weight: 500;
   line-height: 150%;
-`,F=i=>n(E,{children:[t(V,{children:"매치 정보"}),n(Z,{children:[n(K,{children:[t(W,{children:"23.07.13"}),t(G,{children:"목요일 오후 2시"}),t(J,{children:"제주 월드컵경기장"})]}),n(O,{children:[n(Q,{children:[t(m,{children:"구단로고"}),n(y,{children:[t(v,{children:"Home"}),t(b,{children:"제주"})]})]}),t(U,{children:"VS"}),n(X,{children:[t(m,{children:"구단로고"}),n(y,{children:[t(v,{children:"Away"}),t(b,{children:"서울"})]})]})]})]})]}),E=e.div`
+`,F=i=>n(Z,{children:[t(E,{children:"매치 정보"}),n(V,{children:[n(K,{children:[t(W,{children:"23.07.13"}),t(Y,{children:"목요일 오후 2시"}),t(G,{children:"제주 월드컵경기장"})]}),n(O,{children:[n(J,{children:[t(m,{children:"구단로고"}),n(y,{children:[t(v,{children:"Home"}),t(b,{children:"제주"})]})]}),t(Q,{children:"VS"}),n(U,{children:[t(m,{children:"구단로고"}),n(y,{children:[t(v,{children:"Away"}),t(b,{children:"서울"})]})]})]})]})]}),Z=e.div`
   width: 100%;
   padding: 15px 20px;
   border: 1px solid black;
@@ -80,9 +80,9 @@ import{s as e,j as n,a as t,e as a,a1 as j,a2 as z,f as k}from"./vendor-e594e6cf
   align-items: flex-start;
   flex-direction: column;
   gap: 15px;
-`,V=e.div`
+`,E=e.div`
   font-size: 14px;
-`,Z=e.div`
+`,V=e.div`
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -100,19 +100,19 @@ import{s as e,j as n,a as t,e as a,a1 as j,a2 as z,f as k}from"./vendor-e594e6cf
   gap: 10px;
 `,W=e.div`
   font-size: 10px;
+`,Y=e.div`
+  font-size: 10px;
 `,G=e.div`
   font-size: 10px;
 `,J=e.div`
-  font-size: 10px;
-`,Q=e.div`
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 5px;
-`,U=e.div`
+`,Q=e.div`
   font-size: 8px;
   color: #6d6d6d;
-`,X=e.div`
+`,U=e.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -132,7 +132,7 @@ import{s as e,j as n,a as t,e as a,a1 as j,a2 as z,f as k}from"./vendor-e594e6cf
 `,b=e.p`
   font-size: 10px;
   color: #6d6d6d;
-`,Y=({request:i,onAccept:c,onReject:r})=>{const[s,l]=a.useState(!1),[p,d]=a.useState(!1),o=()=>{l(!0),c(i.id)},x=()=>{d(!0),r(i.id)};return n(_,{children:[n(ee,{children:[t(te,{children:t(j,{size:"29"})}),t(ne,{children:i.requesterName})]}),!s&&!p&&n(u,{children:[t(ie,{onClick:o,children:"수락"}),t(ce,{onClick:x,children:"거절"})]}),s&&t(u,{children:t("p",{children:"참여 완료"})}),p&&t(u,{children:t("p",{children:"참여 거절"})})]})},_=e.div`
+`,X=({request:i,onAccept:c,onReject:r})=>{const[s,l]=a.useState(!1),[p,d]=a.useState(!1),o=()=>{l(!0),c(i.id)},x=()=>{d(!0),r(i.id)};return n(_,{children:[n(ee,{children:[t(te,{children:t(j,{size:"29"})}),t(ne,{children:i.requesterName})]}),!s&&!p&&n(u,{children:[t(ie,{onClick:o,children:"수락"}),t(ce,{onClick:x,children:"거절"})]}),s&&t(u,{children:t("p",{children:"참여 완료"})}),p&&t(u,{children:t("p",{children:"참여 거절"})})]})},_=e.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -181,7 +181,7 @@ import{s as e,j as n,a as t,e as a,a1 as j,a2 as z,f as k}from"./vendor-e594e6cf
   justify-content: center;
   align-items: center;
   gap: 8px;
-`,se=({requests:i,onAccept:c,onReject:r})=>t(oe,{className:"meeting-requests-list",children:i.map(s=>t(Y,{request:s,onAccept:c,onReject:r},s.id))}),oe=e.div`
+`,se=({requests:i,onAccept:c,onReject:r})=>t(oe,{className:"meeting-requests-list",children:i.map(s=>t(X,{request:s,onAccept:c,onReject:r},s.id))}),oe=e.div`
   display: flex;
   justify-content: center;
   align-items: center;
