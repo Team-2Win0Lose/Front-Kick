@@ -8,6 +8,7 @@ import { autoCheck, logOutAction } from '@/feature/authSlice';
 import axios from 'axios';
 import { RootState } from '@/app/store';
 import { BASE_URL } from '@/config';
+import CheeringTeam from './CheeringTeam';
 function Sidebar({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: any }) {
   const outside = useRef<any>();
   const [profileData, setprofileData] = useState() as any;
@@ -60,6 +61,7 @@ function Sidebar({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: any }) {
   const toggleSide = () => {
     setIsOpen(false);
   };
+  console.log(profileData);
 
   return isLogin ? (
     <>
@@ -85,16 +87,21 @@ function Sidebar({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: any }) {
             />
           </DIV>
           <Menu>나의 응원팀</Menu>
-          {/* <ScheduledAccompany
-            team_id={profileData?.profile?.cheering_team_id}
-            follower={profileData?.cheering_team?.follower}
-            logo_img_url={profileData?.cheering_team?.logo_img_url}
-            original_team_name={profileData?.cheering_team?.original_team_name}
-            recruit_end={profileData?.cheering_team?.recruit_end}
-            recruit_ing={profileData?.cheering_team?.recruit_ing}
-            team_color_main={profileData?.cheering_team?.team_color_main}
-            team_color_sub={profileData?.cheering_team?.team_color_sub}
-          /> */}
+          <DIV>
+            <CheeringTeam
+              team_id={profileData?.profile?.cheering_team_id}
+              follower={profileData?.cheering_team?.follower}
+              logo_img_url={profileData?.cheering_team?.logo_img_url}
+              original_team_name={
+                profileData?.cheering_team?.original_team_name
+              }
+              recruit_end={profileData?.cheering_team?.recruit_end}
+              recruit_ing={profileData?.cheering_team?.recruit_ing}
+              team_color_main={profileData?.cheering_team?.team_color_main}
+              team_color_sub={profileData?.cheering_team?.team_color_sub}
+            />
+          </DIV>
+
           <Logout>
             <LogoutBtn
               onClick={() => {

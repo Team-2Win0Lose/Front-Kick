@@ -61,7 +61,7 @@ const MultiFilter = (props: Props) => {
     if (isAuthenticated) {
       if (clickedCheckList.length === 0) {
         const res = await fetch(
-          `https://kick-back.azurewebsites.net/api/recruitments/?id=${id}`,
+          `https://kick-back.azurewebsites.net/api/recruitments_list/?id=${id}`,
           {
             method: 'GET',
             headers: headers,
@@ -71,7 +71,7 @@ const MultiFilter = (props: Props) => {
         setCardList(data);
       } else {
         const res = await fetch(
-          `https://kick-back.azurewebsites.net/api/recruitments/?id=${id}${search}`,
+          `https://kick-back.azurewebsites.net/api/recruitments_list/?id=${id}${search}`,
           {
             method: 'GET',
             headers: headers,

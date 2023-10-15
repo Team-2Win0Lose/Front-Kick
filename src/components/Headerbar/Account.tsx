@@ -12,10 +12,7 @@ const Account = () => {
     <div>
       {' '}
       {isLogin ? (
-        <>
-          {' '}
-          {/* <CustomIcon1 /> */}
-        </>
+        <></>
       ) : (
         <P
           onClick={() => {
@@ -36,6 +33,7 @@ const CustomIcon1 = styled(VscAccount)`
   margin-right: 10px;
 `;
 const P = styled.div`
+  cursor: pointer;
   //color: white;
   display: flex;
   justify-content: center;
