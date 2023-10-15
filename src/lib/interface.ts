@@ -52,7 +52,7 @@ export interface AccompanyPostReal {
   hostId: string;
   homeTeamId: number;
   scheduleId: string;
-  tagList: string[];
+  tagList: string;
   now_status: number;
   stars: number;
   thumbnail: string;
@@ -145,4 +145,41 @@ export interface Profile {
     team_color_main: string;
     team_color_sub: string;
   };
+}
+export interface cardData {
+  addr1: string;
+  addr2: string;
+  areacode: string;
+  booktour: string;
+  cat1: string;
+  cat2: string;
+  cat3: string;
+  contentid: string;
+  contenttypeid: string;
+  createdtime: string;
+  dist: string;
+  firstimage: string;
+  firstimage2: string;
+  cpyrhtDivCd: string;
+  mapx: string;
+  mapy: string;
+  mlevel: string;
+  modifiedtime: string;
+  sigungucode: string;
+  tel: string;
+  title: string;
+}
+export interface cardList {
+  item: cardData[];
+}
+export interface tourCardList {
+  attraction: Interface[];
+  restaurant: Interface[];
+  accommodation: Interface[];
+}
+
+interface Interface {
+  title: string;
+  contentid: string;
+  firstimage: string;
 }

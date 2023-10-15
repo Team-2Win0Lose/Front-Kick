@@ -1,7 +1,10 @@
 export const sliceTitle = (title: string) => {
-  const nowtitle = title.slice(0, 20);
-  const returnTitle = nowtitle + '...';
-  return returnTitle;
+  if (title.length > 20) {
+    const nowtitle = title.slice(0, 20);
+    const returnTitle = nowtitle + '...';
+    return returnTitle;
+  }
+  return title;
 };
 export const sliceDate = (date: string) => {
   return date.split('오')[0];

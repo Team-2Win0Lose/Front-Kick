@@ -17,8 +17,9 @@ const PlaceRecommandInfo = (props: Props) => {
 export default PlaceRecommandInfo;
 
 const DIV = styled.div`
+  margin: 0 auto;
   display: flex;
-  flex-direction:column;
+  flex-direction: column;
 `;
 
 const Title = styled.div`

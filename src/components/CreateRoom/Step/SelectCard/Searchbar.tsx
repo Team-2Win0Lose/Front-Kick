@@ -50,7 +50,6 @@ const SearchBar = () => {
                       name='place'
                       onChange={keywordChange}
                       placeholder='가고싶은 장소를 검색해보세요!'
-                      required
                     />
                     <BtnBox>
                       <CustomIcon
@@ -63,8 +62,6 @@ const SearchBar = () => {
                   </FormLabel>
                 </SearchForm>
               </CourseAddBtn>
-              {/* 제출한 검색어 넘기기 */}
-              <SearchMapContainer searchKeyword={Keyword} />
             </LandingPageInner>
           </LandingPage>
         </BoxContainer>
@@ -114,7 +111,7 @@ const CourseAddBtn = styled.div`
   input {
     border-radius: 10px;
     border: 1px solid #ccc;
-    width: 260px;
+    width: 320px;
     padding: 10px;
     /* border: none; 
     outline: none;  */

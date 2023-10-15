@@ -17,6 +17,7 @@ type Props = {};
 import { removeAll } from '@/feature/SelectedItemsSlice';
 import { removeSummary } from '@/feature/SummarySlice';
 import { postAccompany } from '@/feature/fetchSlice';
+import { tourCardList } from '@/lib/interface';
 const StepHeader = () => {
   const [check, setcheck] = useState(false);
   const navigate = useNavigate();
@@ -50,6 +51,31 @@ const StepHeader = () => {
   // const { house, food, attraction } = useSelector(
   //   (state: RootState) => state.selecteditem,
   // );
+  const attraction = useSelector(
+    (state: RootState) => state.selecteditem.attraction,
+  );
+  const restaurant = useSelector((state: RootState) => state.selecteditem.food);
+  const accommodation = useSelector(
+    (state: RootState) => state.selecteditem.house,
+  );
+
+  const tourCardIdList: tourCardList = {
+    accommodation: accommodation.map((item) => ({
+      contentid: item.contentid,
+      title: item.title,
+      firstimage: item.firstimage,
+    })),
+    restaurant: restaurant.map((item) => ({
+      contentid: item.contentid,
+      title: item.title,
+      firstimage: item.firstimage,
+    })),
+    attraction: attraction.map((item) => ({
+      contentid: item.contentid,
+      title: item.title,
+      firstimage: item.firstimage,
+    })),
+  };
 
   const [titleIndex, setTitleIndex] = useState(0);
   // const id = useSelector((state: RootState) => state.auth.id);
@@ -63,28 +89,30 @@ const StepHeader = () => {
   const tagString = tags.map((tag) => tag.name).join(',');
   const requestBody = {
     token: useSelector((state: RootState) => state.auth.token),
-    game_schedule_id: useSelector(
+    schedule_id: useSelector(
       (state: RootState) => state.summary.game_schedule_id,
     ),
     home_team_name: useSelector((state: RootState) => state.summary.homename),
-    home_team_id: useSelector((state: RootState) => state.summary.home_team_id),
+    team_id: useSelector((state: RootState) => state.summary.team_id),
     thumbnail:
       /*useSelector((state: RootState) => state.summary.img)*/ 'imgDummy',
     title: useSelector((state: RootState) => state.summary.title),
     content: useSelector((state: RootState) => state.summary.content),
-    tagList: tagString,
-    tourCardIdList: [],
-    meetingPlace: useSelector((state: RootState) => state.summary.meetingPlace),
-    meetingPlaceAddress: useSelector(
+    tag_list: tagString,
+    tour_card_id_list: tourCardIdList,
+    meeting_place: useSelector(
+      (state: RootState) => state.summary.meetingPlace,
+    ),
+    meeting_place_address: useSelector(
       (state: RootState) => state.summary.meetingPlaceAddress,
     ),
-    detailMeetingPlace: useSelector(
+    detail_meeting_place: useSelector(
       (state: RootState) => state.summary.detailMeetingPlace,
     ),
     term: useSelector((state: RootState) => state.summary.date),
-    minNum: useSelector((state: RootState) => state.summary.minNum),
-    maxNum: useSelector((state: RootState) => state.summary.maxNum),
-    nowStatus: 0,
+    min_num: useSelector((state: RootState) => state.summary.minNum),
+    max_num: useSelector((state: RootState) => state.summary.maxNum),
+    now_status: 0,
   };
 
   useEffect(() => {

@@ -71,3 +71,42 @@ export const teamidConvertImg = (teamId: number) => {
       return 'https://kickstorage.blob.core.windows.net/logo/jeonbuk_hyundai_motors.svg';
   }
 };
+export const teamnameConvertteamId = (teamname: string) => {
+  switch (teamname) {
+    case '강원':
+      return 1;
+
+    case '광주':
+      return 2;
+
+    case '대구':
+      return 3;
+
+    case '대전':
+      return 4;
+
+    case '수원':
+      return 5;
+
+    case '수원FC':
+      return 11;
+
+    case '울산':
+      return 10;
+
+    case '인천':
+      return 9;
+
+    case '전북':
+      return 12;
+
+    case '제주':
+      return 8;
+
+    case '포항':
+      return 7;
+
+    case '서울':
+      return 6;
+  }
+};
