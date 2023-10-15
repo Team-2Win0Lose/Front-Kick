@@ -3,7 +3,7 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import TeamDateCalendar from './TeamDateCalendar';
-import { useState,useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { customMedia } from '@/util/GlobalStyle';
 
 interface itemsProps {
@@ -12,71 +12,66 @@ interface itemsProps {
   name: string;
 }
 
-
 const items: itemsProps[] = [
   {
-    item: 'https://kickstorage.blob.core.windows.net/logo/gangwon_fc.png',
+    item: 'https://kickstorage.blob.core.windows.net/logo/gangwon_fc.svg',
     home_team_name: '강원',
-    name: '강원FC'
+    name: '강원FC',
   },
   {
-    item: 'https://kickstorage.blob.core.windows.net/logo/gwangju_fc.png',
+    item: 'https://kickstorage.blob.core.windows.net/logo/gwangju_fc.svg',
     home_team_name: '광주',
-    name: '광주FC'
+    name: '광주FC',
   },
   {
-    item: 'https://kickstorage.blob.core.windows.net/logo/daegu_fc.png',
+    item: 'https://kickstorage.blob.core.windows.net/logo/daegu_fc.svg',
     home_team_name: '대구',
-    name: '대구FC'
+    name: '대구FC',
   },
   {
-    item: 'https://kickstorage.blob.core.windows.net/logo/daejun_hana_citizen.png',
+    item: 'https://kickstorage.blob.core.windows.net/logo/daejun_hana_citizen.svg',
     home_team_name: '대전',
-    name: '대전하나시티즌'
+    name: '대전하나시티즌',
   },
   {
-    item: 'https://kickstorage.blob.core.windows.net/logo/suwon_samsung_bluewings.png',
+    item: 'https://kickstorage.blob.core.windows.net/logo/suwon_samsung_bluewings.svg',
     home_team_name: '수원',
-    name: '수원삼성블루윙즈'
+    name: '수원삼성블루윙즈',
   },
   {
-    item: 'https://kickstorage.blob.core.windows.net/logo/suwon_fc.png',
+    item: 'https://kickstorage.blob.core.windows.net/logo/suwon_fc.svg',
     home_team_name: '수원FC',
-    name: '수원FC'
+    name: '수원FC',
   },
   {
-    item: 'https://kickstorage.blob.core.windows.net/logo/ulsan_hyundai.png',
+    item: 'https://kickstorage.blob.core.windows.net/logo/ulsan_hyundai.svg',
     home_team_name: '울산',
-    name: '울산현대'
+    name: '울산현대',
   },
   {
-    item: 'https://kickstorage.blob.core.windows.net/logo/incheon_united.png',
+    item: 'https://kickstorage.blob.core.windows.net/logo/incheon_united.svg',
     home_team_name: '인천',
-    name: '인천유나이티드'
-
+    name: '인천유나이티드',
   },
   {
-    item: 'https://kickstorage.blob.core.windows.net/logo/jeonbuk_hyundai_motors.png',
+    item: 'https://kickstorage.blob.core.windows.net/logo/jeonbuk_hyundai_motors.svg',
     home_team_name: '전북',
-    name: '전북현대모터스'
-
+    name: '전북현대모터스',
   },
   {
-    item: 'https://kickstorage.blob.core.windows.net/logo/jeju_united.png',
+    item: 'https://kickstorage.blob.core.windows.net/logo/jeju_united.svg',
     home_team_name: '제주',
-    name: '제주유나이티드'
+    name: '제주유나이티드',
   },
   {
-    item: 'https://kickstorage.blob.core.windows.net/logo/pohang_stealus.png',
+    item: 'https://kickstorage.blob.core.windows.net/logo/pohang_stealus.svg',
     home_team_name: '포항',
-    name: '포항스틸러스'
-
+    name: '포항스틸러스',
   },
   {
-    item: 'https://kickstorage.blob.core.windows.net/logo/fc_seoul.png',
+    item: 'https://kickstorage.blob.core.windows.net/logo/fc_seoul.svg',
     home_team_name: '서울',
-    name: 'FC서울'
-
+    name: 'FC서울',
   },
 ];
 
@@ -88,20 +83,20 @@ const TeamDateSelectCarousel = () => {
     slidesToShow: 7,
     slidesToScroll: 2,
     swipeToSlide: true,
-    accessibility: true, 
+    accessibility: true,
     autoplaySpeed: 3000,
     speed: 500,
     prevArrow: <PrevArrow>&#8249;</PrevArrow>,
-    nextArrow: <NextArrow>&#8250;</NextArrow>, 
+    nextArrow: <NextArrow>&#8250;</NextArrow>,
   };
-  const [matchData, setmatchData] = useState([])
-  const [selectedTeam, setSelectedTeam] = useState<string>("강원FC");
+  const [matchData, setmatchData] = useState([]);
+  const [selectedTeam, setSelectedTeam] = useState<string>('강원FC');
 
   const handleBoxClick = (teamName: string) => {
     setSelectedTeam(teamName);
   };
 
-  const getMatchData = useCallback(async (home_team_name:string) => {
+  const getMatchData = useCallback(async (home_team_name: string) => {
     const res = await fetch(
       `https://kick-back.azurewebsites.net/api/game_schedule/?home_team_name=${home_team_name}`,
       {
@@ -110,7 +105,7 @@ const TeamDateSelectCarousel = () => {
     );
 
     const data = await res.json();
-      
+
     setmatchData(data);
   }, []);
 
@@ -118,27 +113,30 @@ const TeamDateSelectCarousel = () => {
     <CarouselContainer>
       <CustomSlider {...settings}>
         {items.map((item, index) => (
-          <DIV key={index} onClick={() => {handleBoxClick(item.home_team_name), getMatchData(item.home_team_name)}}
-          isSelected={selectedTeam === item.home_team_name}>
+          <DIV
+            key={index}
+            onClick={() => {
+              handleBoxClick(item.home_team_name),
+                getMatchData(item.home_team_name);
+            }}
+            isSelected={selectedTeam === item.home_team_name}
+          >
             <BoxWrapper key={index}>
               <Box>
                 <FlexContainer>
-                  <IMG src={item.item} alt="정보가 없습니다." />
+                  <IMG src={item.item} alt='정보가 없습니다.' />
                 </FlexContainer>
               </Box>
               <NameWrapper>
                 <Name>{item.name}</Name>
-               </NameWrapper>
-            </BoxWrapper>  
+              </NameWrapper>
+            </BoxWrapper>
           </DIV>
         ))}
       </CustomSlider>
       {selectedTeam && (
         <TeamCalendarContainer>
-          <TeamDateCalendar
-            teamName={selectedTeam}
-            teamEvents={matchData}
-          />
+          <TeamDateCalendar teamName={selectedTeam} teamEvents={matchData} />
         </TeamCalendarContainer>
       )}
     </CarouselContainer>
@@ -158,7 +156,6 @@ const CustomSlider = styled(Slider)`
   .slick-slide > div {
     margin-right: 20%;
   }
-
 `;
 
 interface BoxProps {
@@ -166,11 +163,11 @@ interface BoxProps {
 }
 
 const DIV = styled.div<BoxProps>`
-  display:flex;
-  width:100%;
-  height:100%;
-  background-color: ${(props) => (props.isSelected ? '#49496d' : 'transparent')};
-
+  display: flex;
+  width: 100%;
+  height: 100%;
+  background-color: ${(props) =>
+    props.isSelected ? '#49496d' : 'transparent'};
 `;
 
 const CarouselContainer = styled.div`
@@ -180,12 +177,10 @@ const CarouselContainer = styled.div`
   flex-direction: column;
 `;
 
-
 const BoxWrapper = styled.div`
-  display:flex;
-  flex-direction:column;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-
 `;
 
 const TeamCalendarContainer = styled.div`

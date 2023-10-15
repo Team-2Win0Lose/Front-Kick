@@ -1,13 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import Accompany from './Accompany';
 import AccompanyBox from '../MyAccompany/AccompanyBox';
-import { AccompanyMadeByMe, AccompanyMadeByMeList } from '@/lib/interface';
-import { getAllAccompany, getMyAccompany2 } from '@/lib/api';
+import { AccompanyPostReal } from '@/lib/interface';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/app/store';
 import { getCookie } from '@/util/cookieFn';
+import { BASE_URL } from '@/config';
 const token = getCookie('token');
 const headers = {
   Authorization: `Bearer ${token}`,
@@ -21,7 +20,7 @@ const AccompanyList = (props: Props) => {
   useEffect(() => {
     async function fetchData() {
       try {
-        const res = await fetch(`/api/recruitments/?id=${id}`, {
+        const res = await fetch(`${BASE_URL}/api/recruitments-list/?id=${id}`, {
           method: 'get',
           headers: headers,
         });
@@ -33,18 +32,19 @@ const AccompanyList = (props: Props) => {
     }
     fetchData();
   }, []);
-  console.log(accompanyList);
 
   return (
     <ListContainer>
-      {/* {accompanyList?.data.map((post: AccompanyMadeByMe) => (
+      {accompanyList.map((post: AccompanyPostReal) => (
         <div
-          key={post.id}
-          onClick={() => navigate(`/findaccompany/detail/${post.id}`)}
+          key={post.recruitmentBoardId}
+          onClick={() =>
+            navigate(`/findaccompany/detail/${post.recruitmentBoardId}`)
+          }
         >
-          <AccompanyBox boxdata={post} />
+          <AccompanyBox post={post} />
         </div>
-      ))} */}
+      ))}
     </ListContainer>
   );
 };

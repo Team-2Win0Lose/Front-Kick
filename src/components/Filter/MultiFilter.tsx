@@ -7,7 +7,11 @@ import { getCookie } from '@/util/cookieFn';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/app/store';
 import AccompanyBox from '../MyAccompany/AccompanyBox';
-import { AccompanyPost } from '@/lib/interface';
+import { BASE_URL } from '@/config';
+import { ko } from 'date-fns/esm/locale'; //한국어 설정
+import { AiFillCalendar } from 'react-icons/ai';
+import AccompanyList from '../FindAccompany/AccompanyList';
+import { splitDays } from '@/util/calculateDday';
 const token = getCookie('token');
 const headers = {
   Authorization: `Bearer ${token}`,
@@ -18,13 +22,14 @@ const MultiFilter = (props: Props) => {
   const { id, isAuthenticated } = useSelector((state: RootState) => state.auth);
 
   const [dateRange, setDateRange] = useState([null, null]);
-  const [startDate, endDate] = dateRange;
+  const [startDate, setStartDate] = useState<Date>();
+  const [endDate, setEndDate] = useState<Date>();
   const [cardList, setCardList] = useState<[]>();
   const navigate = useNavigate();
   const { search } = useLocation();
 
   const filterDom = useRef<HTMLUListElement | null>(null);
-  const [nowRecruitState, setnowRecruitState] = useState<boolean>();
+  const [nowRecruitState, setnowRecruitState] = useState<number>();
   const [isContentsShowed, setIsContentsShowed] = useState(false);
   const [clickedCategory, setClickedCategory] = useState(Number);
   const [isSelectedTeam, setisSelectedTeam] = useState<string[]>([]);
@@ -60,51 +65,61 @@ const MultiFilter = (props: Props) => {
   const getCardListData = useCallback(async () => {
     if (isAuthenticated) {
       if (clickedCheckList.length === 0) {
-        const res = await fetch(
-          `https://kick-back.azurewebsites.net/api/recruitments_list/?id=${id}`,
-          {
-            method: 'GET',
-            headers: headers,
-          },
-        );
+        const res = await fetch(`${BASE_URL}/api/recruitments-list/`, {
+          method: 'GET',
+          headers: headers,
+        });
         const data = await res.json();
         setCardList(data);
       } else {
-        const res = await fetch(
-          `https://kick-back.azurewebsites.net/api/recruitments_list/?id=${id}${search}`,
-          {
-            method: 'GET',
-            headers: headers,
-          },
-        );
+        const res = await fetch(`${BASE_URL}/api/recruitments-list/${search}`, {
+          method: 'GET',
+          headers: headers,
+        });
         const data = await res.json();
         setCardList(data);
       }
-    } else {
     }
-  }, []);
+  }, [search]);
 
   useEffect(() => {
     getCardListData();
-  }, []);
-
+  }, [getCardListData]);
+  const handleApplyFilter = () => {
+    if (startDate !== null && endDate !== null) {
+      makeQueryString();
+    } else {
+      // Handle invalid date selection or no date selection
+    }
+  };
   const makeQueryString = () => {
     const queryString = clickedCheckList
       .map(({ id, sort_type }) => {
         if (sort_type === 'home_team') {
           return `${sort_type}_id=${id + 1}`;
-        } else if (sort_type === 'recruit') {
+        }
+        if (sort_type === 'recruit') {
           return `now_status=${nowRecruitState}`;
         }
+        if (sort_type === 'date') {
+          if (splitDays(startDate) === splitDays(endDate)) {
+            return `term=${splitDays(startDate)}`;
+          } else {
+            return `term=${splitDays(startDate)}~${splitDays(endDate)}`;
+          }
+        }
       })
-      .map((item) => {
+      .filter((item) => item !== undefined) // 필터링하여 undefined를 제거
+      .map((item, index) => {
+        if (index === 0) {
+          return item; // 첫 번째 아이템에는 '&'를 추가하지 않음
+        }
         return '&' + item;
       })
       .join('');
-
     navigate(`?${queryString}`);
   };
-
+  const dateString = (start: Date, end: Date) => {};
   return (
     <Wrapper>
       <FilterList ref={filterDom}>
@@ -179,13 +194,14 @@ const MultiFilter = (props: Props) => {
                   {contents.map((content, idx) => (
                     <Content
                       key={idx}
-                      onClick={() =>
-                        setnowRecruitState(content[1] === '모집중')
-                      }
+                      onClick={() => {
+                        setnowRecruitState(parseInt(content[1])),
+                          handleCheckList(idx, content[1], sort_type);
+                      }}
                     >
                       <Label>
-                        <input type='checkbox' />
-                        {content}
+                        <input type='radio' name='recruit' />
+                        {content[0]}
                       </Label>
                     </Content>
                   ))}
@@ -219,24 +235,42 @@ const MultiFilter = (props: Props) => {
                       ? 'show'
                       : 'hide'
                   }
+                  onClick={() => {
+                    handleCheckList(idx, '', sort_type);
+                  }}
                 >
-                  {/* <CustomDatePicker
-                    selectsRange={true}
-                    startDate={startDate}
-                    endDate={endDate}
-                    onChange={(update) => {
-                      if (Array.isArray(update)) {
-                        // update가 배열인 경우 startDate와 endDate로 분리하여 전달
-                        setDateRange(update);
-                      } else {
-                        // update가 Date 또는 null인 경우 [update, null] 형식으로 변환하여 전달
-                        setDateRange([update, null]);
-                      }
-                    }}
-                    isClearable={true}
-                  /> */}
+                  <DatePick>
+                    <DateBox1>
+                      <Calendar />
+                      <CustomDatePicker
+                        locale={ko} //한글
+                        dateFormat='yyyy.MM.dd'
+                        selected={startDate}
+                        closeOnScroll={true}
+                        onChange={(date: Date) => setStartDate(date)}
+                      />
+                    </DateBox1>
+                    <DateBox2>
+                      <Calendar />
+
+                      <CustomDatePicker
+                        locale={ko} //한글
+                        dateFormat='yyyy.MM.dd'
+                        selected={endDate}
+                        closeOnScroll={true}
+                        onChange={(date: Date) => setEndDate(date)}
+                      />
+                    </DateBox2>
+                  </DatePick>
+
                   <Btns>
-                    <Button>필터 적용</Button>
+                    <Button
+                      onClick={() => {
+                        handleApplyFilter(), setIsContentsShowed(false);
+                      }}
+                    >
+                      필터 적용
+                    </Button>
                   </Btns>
                 </DateContents>
               </Filter>
@@ -245,17 +279,17 @@ const MultiFilter = (props: Props) => {
         })}
       </FilterList>
       <ListContainer>
-        {cardList?.length !== 0 && cardList !== undefined ? (
+        {clickedCheckList?.length !== 0 ? (
           cardList?.map((post, idx) => (
             <div
               key={idx}
               // onClick={() => navigate(`/findaccompany/detail/${post.id}`)}
             >
-              <AccompanyBox boxdata={post} />
+              <AccompanyBox post={post} />
             </div>
           ))
         ) : (
-          <div></div>
+          <AccompanyList />
         )}
       </ListContainer>
     </Wrapper>
@@ -267,56 +301,61 @@ const FILTER_CATEGORYS = [
     title: '구단별',
     contents: [
       [
-        'https://kickstorage.blob.core.windows.net/logo/gangwon_fc.png',
+        'https://kickstorage.blob.core.windows.net/logo/gangwon_fc.svg',
         '강원FC',
       ],
       [
-        'https://kickstorage.blob.core.windows.net/logo/gwangju_fc.png',
+        'https://kickstorage.blob.core.windows.net/logo/gwangju_fc.svg',
         '광주FC',
       ],
-      ['https://kickstorage.blob.core.windows.net/logo/daegu_fc.png', '대구FC'],
+      ['https://kickstorage.blob.core.windows.net/logo/daegu_fc.svg', '대구FC'],
       [
-        'https://kickstorage.blob.core.windows.net/logo/daejun_hana_citizen.png',
+        'https://kickstorage.blob.core.windows.net/logo/daejun_hana_citizen.svg',
         '대전하나시티즌',
       ],
       [
-        'https://kickstorage.blob.core.windows.net/logo/suwon_samsung_bluewings.png',
+        'https://kickstorage.blob.core.windows.net/logo/suwon_samsung_bluewings.svg',
         '수원삼성블루윙즈',
       ],
-      ['https://kickstorage.blob.core.windows.net/logo/suwon_fc.png', '수원FC'],
+      ['https://kickstorage.blob.core.windows.net/logo/fc_seoul.svg', 'FC서울'],
       [
-        'https://kickstorage.blob.core.windows.net/logo/ulsan_hyundai.png',
-        '울산현대',
+        'https://kickstorage.blob.core.windows.net/logo/pohang_stealus.svg',
+        '포항스틸러스',
       ],
       [
-        'https://kickstorage.blob.core.windows.net/logo/incheon_united.png',
-        '인천유나이티드',
-      ],
-      [
-        'https://kickstorage.blob.core.windows.net/logo/jeonbuk_hyundai_motors.png',
-        '전북현대모터스',
-      ],
-      [
-        'https://kickstorage.blob.core.windows.net/logo/jeju_united.png',
+        'https://kickstorage.blob.core.windows.net/logo/jeju_united.svg',
         '제주유나이티드',
       ],
       [
-        'https://kickstorage.blob.core.windows.net/logo/pohang_stealus.png',
-        '포항스틸러스',
+        'https://kickstorage.blob.core.windows.net/logo/incheon_united.svg',
+        '인천유나이티드',
       ],
-      ['https://kickstorage.blob.core.windows.net/logo/fc_seoul.png', 'FC서울'],
+      [
+        'https://kickstorage.blob.core.windows.net/logo/ulsan_hyundai.svg',
+        '울산현대',
+      ],
+      ['https://kickstorage.blob.core.windows.net/logo/suwon_fc.svg', '수원FC'],
+
+      [
+        'https://kickstorage.blob.core.windows.net/logo/jeonbuk_hyundai_motors.svg',
+        '전북현대모터스',
+      ],
     ],
   },
   {
     sort_type: 'recruit',
     title: '모집 여부',
-    contents: [['모집중'], ['모집마감']],
+    contents: [
+      ['모집중', '0'],
+      ['모집종료', '1'],
+      ['모집완료', '2'],
+    ],
   },
-  {
-    sort_type: 'date',
-    title: '날짜 선택',
-    contents: [],
-  },
+  // {
+  //   sort_type: 'date',
+  //   title: '날짜 선택',
+  //   contents: [],
+  // },
 ];
 const useOutsideClick = (
   ref: RefObject<HTMLElement>,
@@ -386,7 +425,7 @@ const DateContents = styled.div`
   padding: 20px;
   top: 45px;
   left: 5px;
-  width: 340px;
+  width: 400px;
   border: 1px solid #dbdbdb;
   border-radius: 3px;
   background-color: white;
@@ -465,15 +504,31 @@ const Button = styled.button`
   color: #fff;
   cursor: pointer;
 `;
+const DatePick = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+`;
 const CustomDatePicker = styled(DatePicker)`
+  width: 150px;
+  height: 48px;
+  /* border: none; */
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 100%;
+  padding: 20px;
+  background-color: transparent;
+  color: #707070;
+
   display: flex;
   justify-content: center;
   align-items: center;
   border: 1px solid gray;
   border-radius: 4px;
   padding: 10px 30px;
-  width: 250px;
-  /* height: 46px; */
+  /* width: 250px;
+  height: 46px; */
   text-align: center;
 `;
 const ListContainer = styled.div`
@@ -483,5 +538,22 @@ const ListContainer = styled.div`
   justify-content: center;
   align-content: center;
   gap: 30px;
+`;
+const DateBox1 = styled.div`
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+`;
+const DateBox2 = styled.div`
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+`;
+const Calendar = styled(AiFillCalendar)`
+  position: absolute;
+  left: 5px;
+  top: 15px;
 `;
 export default MultiFilter;

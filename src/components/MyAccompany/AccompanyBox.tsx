@@ -2,21 +2,55 @@ import styled from 'styled-components';
 import { AccompanyPost } from '@/lib/interface';
 import { useNavigate } from 'react-router-dom';
 import { BsPeopleFill } from 'react-icons/bs';
-import { sliceTitle, sliceDate } from '@/util/sliceTitle';
+import { sliceTitle, sliceDate, replaceNowStatus } from '@/util/sliceTitle';
+import { teamidConvertImg } from '@/util/teamnameConvertImg';
 
 type Props = {
-  boxdata: {
-    detailMeetingPlace: string;
-    homeTeamId: number;
+  post: {
+    recruitmentBoardId: number;
     hostId: string;
-    maxNum: number;
+    homeTeamId: number;
+    scheduleId: string;
+    tagList: string[];
+    now_status: number;
+    stars: number;
+    thumbnail: string;
+    title: string;
+    content: string;
+    tourCardIdList: {
+      attraction: [
+        {
+          title: string;
+          content_id: string;
+          firstimage: string;
+        },
+      ];
+      restaurant: [
+        {
+          title: string;
+          content_id: string;
+          firstimage: string;
+        },
+      ];
+      accommodation: [
+        {
+          title: string;
+          content_id: string;
+          firstimage: string;
+        },
+      ];
+    };
     meetingPlace: string;
     meetingPlaceAddress: string;
-    minNum: number;
-    nowHeadCount: number;
-    nowStatus: number;
-    scheduleId: number;
+    detailMeetingPlace: string;
     term: string;
+    minNum: number;
+    maxNum: number;
+    createdDate: string;
+    publishedDate: string | null;
+    nowHeadCount: number;
+    applingUserIdList: string;
+    appliedUserIdList: string;
   };
 };
 
@@ -30,38 +64,85 @@ const AccompanyBox = (props: Props) => {
           <HostImg src='' alt='' />
         </Host>
         <div>
-          {/* <Title>{sliceTitle(props.boxdata.title)}</Title> */}
-          {/* <Tags>
-            {props?.boxdata.tag.map((item) => (
-              <Tag key={item.idx}>{item.origName}</Tag>
-            ))}
-          </Tags> */}
+          <Title>{sliceTitle(props.post.title)}</Title>
+          {/* {props.post.tagList.length !== 0 && (
+            <Tags>
+              {props.post.tagList.map((item, idx) => (
+                <Tag key={idx}>{item}</Tag>
+              ))}
+            </Tags>
+          )} */}
         </div>
       </Header>
       <Body>
-        <Cards>
-          <Card>
-            <CardImg>카드 사진</CardImg>
-            <CardName>카드 이름</CardName>
-          </Card>
-        </Cards>
-        <Cards>
-          <Card>
-            <CardImg>카드 사진</CardImg>
-            <CardName>카드 이름</CardName>
-          </Card>
-        </Cards>
-        <Cards>
-          <Card>
-            <CardImg>카드 사진</CardImg>
-            <CardName>카드 이름</CardName>
-          </Card>
-        </Cards>
+        {props.post.tourCardIdList.attraction ? (
+          <Cards>
+            <Card>
+              <CardImg>
+                <Img
+                  src={props.post.tourCardIdList?.attraction[0]?.firstimage}
+                />
+              </CardImg>
+              <CardName>
+                {props.post.tourCardIdList?.attraction[0]?.title}
+              </CardName>
+            </Card>
+          </Cards>
+        ) : (
+          <Cards>
+            <Card>
+              <CardImg>카드 사진</CardImg>
+              <CardName>카드 이름</CardName>
+            </Card>
+          </Cards>
+        )}
+        {props.post.tourCardIdList.restaurant ? (
+          <Cards>
+            <Card>
+              <CardImg>
+                <Img
+                  src={props.post.tourCardIdList?.restaurant[0]?.firstimage}
+                />
+              </CardImg>
+              <CardName>
+                {props.post.tourCardIdList?.restaurant[0]?.title}
+              </CardName>
+            </Card>
+          </Cards>
+        ) : (
+          <Cards>
+            <Card>
+              <CardImg>카드 사진</CardImg>
+              <CardName>카드 이름</CardName>
+            </Card>
+          </Cards>
+        )}
+        {props.post.tourCardIdList.accommodation ? (
+          <Cards>
+            <Card>
+              <CardImg>
+                <Img
+                  src={props.post.tourCardIdList?.accommodation[0]?.firstimage}
+                />
+              </CardImg>
+              <CardName>
+                {props.post.tourCardIdList?.accommodation[0]?.title}
+              </CardName>
+            </Card>
+          </Cards>
+        ) : (
+          <Cards>
+            <Card>
+              <CardImg>카드 사진</CardImg>
+              <CardName>카드 이름</CardName>
+            </Card>
+          </Cards>
+        )}
       </Body>
       <Footer>
         <Match>
           <HomeTeam>
-            <TeamLogo src='' />
+            <TeamLogo src={teamidConvertImg(props.post.homeTeamId)} />
             <Versus>Home</Versus>
           </HomeTeam>
           <Versus>VS</Versus>
@@ -74,11 +155,11 @@ const AccompanyBox = (props: Props) => {
 
         <Accompany>
           <AccompanyInfo>
-            <AccompanyData>{sliceDate(props.boxdata.term)}</AccompanyData>
+            <AccompanyData>{sliceDate(props.post.term)}</AccompanyData>
           </AccompanyInfo>
           <Accompany>
             <AccompanyInfo>
-              <AccompanyData>{props.boxdata.meetingPlace}</AccompanyData>
+              <AccompanyData>{props.post.meetingPlace}</AccompanyData>
             </AccompanyInfo>
           </Accompany>
         </Accompany>
@@ -89,12 +170,14 @@ const AccompanyBox = (props: Props) => {
               <BsPeopleFill />
             </PeopleImg>
             <PeopleCount>
-              {props.boxdata.minNum}/{props.boxdata.maxNum}
+              {props.post.minNum}/{props.post.maxNum}
             </PeopleCount>
           </People>
 
           <Status>
-            <CurrentStatus>{props.boxdata.nowStatus}</CurrentStatus>
+            <CurrentStatus>
+              {replaceNowStatus(props.post.now_status)}
+            </CurrentStatus>
           </Status>
         </Personnel>
       </Footer>
@@ -199,7 +282,8 @@ const CurrentStatus = styled.div`
 // 카드 바디 부분
 const Body = styled.div`
   display: flex;
-  width: 100%;
+  width: 340px;
+  height: 138px;
   /* flex-direction: column; */
   justify-content: center;
   align-items: flex-start;
@@ -240,6 +324,12 @@ const CardImg = styled.div`
   border-radius: 100%;
   font-size: 6px;
   background-color: #9b9b9b;
+`;
+const Img = styled.img`
+  width: 50px;
+  height: 50px;
+  border: none;
+  border-radius: 100%;
 `;
 const CardName = styled.p`
   font-size: 10px;
