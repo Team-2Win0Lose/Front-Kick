@@ -19,12 +19,25 @@ const CheeringTeam = (props: Props) => {
         <ColorContainer1 teamcolor={props.team_color_main}>
           <Img src={props.logo_img_url} alt={props.original_team_name} />
         </ColorContainer1>
-        <ColorContainer2 teamcolor={props.team_color_sub}></ColorContainer2>
-        <VerticalContainer></VerticalContainer>
+        <ColorContainer2 teamcolor={props.team_color_sub}>
+          <Title>{props.original_team_name}</Title>
+          <div>{props.follower}</div>
+          <div>{props.recruit_ing}</div>
+          
+        </ColorContainer2>
+        <VerticalContainer>
+        {props.recruit_ing}
+        </VerticalContainer>
       </FlexContainer>
     </Form>
   );
 };
+
+const Title = styled.div`
+  font-size: 20px;
+  flex-direction:column;
+`;
+
 const Form = styled.div`
   position: relative;
 
@@ -72,10 +85,12 @@ const ColorContainer1 = styled.div<{ teamcolor: string }>`
 `;
 const ColorContainer2 = styled.div<{ teamcolor: string }>`
   position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   top: 0;
   width: 60%;
   height: 100%;
-
   left: 40%;
   background-color: ${(props) => props.teamcolor || '#FFFFFF'};
 `;

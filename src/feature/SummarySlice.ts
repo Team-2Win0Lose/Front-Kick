@@ -10,7 +10,7 @@ export interface InitialState {
   date: string;
   stadium: string;
   homename: string;
-  home_team_id: number;
+  team_id: number;
   awayname: string;
   //모임정보(장소, 세부장소, 동행기간, 태그, 최소 인원, 최대 인원)
   meetingPlace: string;
@@ -22,6 +22,9 @@ export interface InitialState {
   maxNum: number;
   //내용
   content: string;
+  team_logo_img_url: string;
+  opponent_team_id: number;
+  opponent_team_logo_img_url: string;
 }
 interface tagType {
   idx: number;
@@ -37,7 +40,7 @@ const initialState: InitialState = {
   game_schedule_id: '',
   date: '',
   stadium: '',
-  home_team_id: 0,
+  team_id: 13,
   homename: '',
   awayname: '',
   //모임정보(장소, 세부장소, 세부장소 주소, 동행기간, 태그, 최소 인원, 최대 인원)
@@ -50,6 +53,9 @@ const initialState: InitialState = {
   maxNum: 0,
   //내용
   content: '',
+  team_logo_img_url: '',
+  opponent_team_id: 13,
+  opponent_team_logo_img_url: '',
 };
 
 const SummarySlice = createSlice({
@@ -60,9 +66,13 @@ const SummarySlice = createSlice({
       state.game_schedule_id = action.payload.game_schedule_id;
       state.date = action.payload.date;
       state.stadium = action.payload.stadium;
-      state.home_team_id = action.payload.home_team_id;
+      state.team_id = action.payload.team_id;
       state.homename = action.payload.homename;
       state.awayname = action.payload.awayname;
+      state.team_logo_img_url = action.payload.team_logo_img_url;
+      state.opponent_team_id = action.payload.opponent_team_id;
+      state.opponent_team_logo_img_url =
+        action.payload.opponent_team_logo_img_url;
     },
     setPlace: (state: InitialState, action) => {
       state.meetingPlace = action.payload.meetingPlace;
@@ -90,7 +100,7 @@ const SummarySlice = createSlice({
       state.date = '';
       state.stadium = '';
       state.homename = '';
-      state.home_team_id = 0;
+      state.team_id = 0;
       state.awayname = '';
       //모임정보(장소, 세부장소, 세부장소 주소, 동행기간, 태그, 최소 인원, 최대 인원)
       state.meetingPlace = '';
@@ -102,6 +112,9 @@ const SummarySlice = createSlice({
       state.maxNum = 0;
       //내용
       state.content = '';
+      state.team_logo_img_url = '';
+      state.opponent_team_id = 13;
+      state.opponent_team_logo_img_url = '';
     },
   },
 });

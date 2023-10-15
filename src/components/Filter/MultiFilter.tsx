@@ -1,16 +1,13 @@
 import { RefObject, useCallback, useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
-import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { getCookie } from '@/util/cookieFn';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/app/store';
-import AccompanyBox from '../MyAccompany/AccompanyBox';
 import { BASE_URL } from '@/config';
-import { AiFillCalendar } from 'react-icons/ai';
-import AccompanyList from '../FindAccompany/AccompanyList';
 import { AccompanyPostReal } from '@/lib/interface';
+import AccompanyBox from '../MyAccompany/AccompanyBox';
 const token = getCookie('token');
 const headers = {
   Authorization: `Bearer ${token}`,
@@ -77,6 +74,7 @@ const MultiFilter = (props: Props) => {
   useEffect(() => {
     getCardListData();
   }, [getCardListData]);
+  // console.log(cardList);
 
   const makeQueryString = () => {
     const queryString = clickedCheckList
@@ -261,7 +259,7 @@ const MultiFilter = (props: Props) => {
       <ListContainer>
         {cardList?.map((post: AccompanyPostReal, idx) => (
           <div
-            key={idx}
+            key={post.recruitmentBoardId}
             onClick={() =>
               navigate(`/findaccompany/detail/${post.recruitmentBoardId}`)
             }

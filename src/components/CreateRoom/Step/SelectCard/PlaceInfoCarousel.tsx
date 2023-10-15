@@ -15,6 +15,12 @@ export interface itemsProps {
   IMG: string;
   name: string;
 }
+export interface cardItem {
+  firstimage: string;
+  title: string;
+  addr1: string;
+  contentid: string;
+}
 type Props = {
   index: number;
 };
@@ -80,7 +86,7 @@ const PlaceInfoCarousel = (props: Props) => {
         <Box key={index}>
           <FlexContainer>
             <InfoContainer>
-            <CheckboxContainer>
+              <CheckboxContainer>
                 <Checkbox
                   type='checkbox'
                   onChange={() => {
@@ -114,13 +120,14 @@ const PlaceInfoCarousel = (props: Props) => {
 export default PlaceInfoCarousel;
 
 const DIV = styled.div`
-  display:flex;
-  height:100%;
-  width:150%;
-  padding:20px;
-  flex-direction:column;
-
-`
+  display: flex;
+  height: 100%;
+  width: 360px;
+  padding: 20px 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
 
 const Box = styled.div`
   position: relative;
@@ -173,8 +180,7 @@ const CheckboxContainer = styled.div`
   margin-left: 10px;
 `;
 
-const Checkbox = styled.input`
-`;
+const Checkbox = styled.input``;
 
 const RegisterBtn = styled.div`
   width: 160px;

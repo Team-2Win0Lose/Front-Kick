@@ -1,38 +1,36 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { getCookie } from '@/util/cookieFn';
-import { PinkType } from '@/components/HashTag/FilterBox';
+import { tourCardList } from '@/lib/interface';
 const token = getCookie('token');
 // 비동기 액션 크리에이터를 생성합니다.
 interface postBody {
-  token: string;
-  game_schedule_id: string;
-  home_team_name: string;
-  home_team_id: number;
+  schedule_id: string;
+  team_id: number;
   thumbnail: string;
   title: string;
   content: string;
-  tagList: string;
-  tourCardIdList: string[];
-  meetingPlace: string;
-  meetingPlaceAddress: string;
-  detailMeetingPlace: string;
+  tag_list: string;
+  tour_card_id_list: tourCardList;
+  meeting_place: string;
+  meeting_place_address: string;
+  detail_meeting_place: string;
   term: string;
-  minNum: number;
-  maxNum: number;
-  nowStatus: number;
+  min_num: number;
+  max_num: number;
+  now_status: number;
 }
 export const postAccompany = createAsyncThunk(
   'accompany/post',
   async (requestBody: postBody, thunkAPI) => {
     try {
-      console.log(requestBody);
+      // console.log(requestBody);
 
       const res = await fetch(
-        `https://kick-back.azurewebsites.net/api/recruitment/?home_team_id=${requestBody.home_team_id}`,
+        `https://kick-back.azurewebsites.net/api/recruitment/?team_id=${requestBody.team_id}`,
         {
           method: 'post',
           headers: {
-            Authorization: `Bearer ${requestBody.token}`,
+            Authorization: `Bearer ${token}`,
             'Content-Type': 'application/json;charset=utf-8',
           },
           body: JSON.stringify(requestBody),
@@ -61,7 +59,7 @@ const accompanySlice = createSlice({
       title: '',
       content: '',
       tagList: '',
-      tourCardIdList: [],
+      tourCardIdList: {},
       meetingPlace: '',
       meetingPlaceAddress: '',
       detailMeetingPlace: '',

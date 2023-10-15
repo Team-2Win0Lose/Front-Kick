@@ -3,17 +3,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@/app/store';
 import { TiDeleteOutline } from 'react-icons/ti';
 import { removeSelectedItem } from '@/feature/SelectedItemsSlice';
+import { cardItem } from './PlaceInfoCarousel';
+import { cardData } from '@/lib/interface';
 type ContainerProps = {
   index: number;
-};
-type listType = {
-  name: string;
-  IMG: string;
 };
 type Props = {
   index: number;
   ischk: boolean;
-  list?: listType[];
+  list?: cardData[];
 };
 
 const PlaceCard = (props: Props) => {
@@ -41,28 +39,28 @@ const PlaceCard = (props: Props) => {
     // 전달받은 아이템이 null인 경우, 처리할 내용
     return <div>카드가 선택되지 않았습니다.</div>;
   }
-  const handleDeleteItem = (itemName: string) => {
-    if (props.index === 0) {
-      dispatch(
-        removeSelectedItem({
-          category: 'house',
-          itemToRemove: { IMG: '', name: itemName },
-        }),
-      );
-    }
-    if (props.index === 1) {
-      dispatch(
-        removeSelectedItem({
-          category: 'food',
-          itemToRemove: { IMG: '', name: itemName },
-        }),
-      );
-    }
-    if (props.index === 2) {
+  const handleDeleteItem = (item: cardData) => {
+    if (item.contenttypeid === '12') {
       dispatch(
         removeSelectedItem({
           category: 'attraction',
-          itemToRemove: { IMG: '', name: itemName },
+          itemToRemove: item,
+        }),
+      );
+    }
+    if (item.contenttypeid === '39') {
+      dispatch(
+        removeSelectedItem({
+          category: 'food',
+          itemToRemove: item,
+        }),
+      );
+    }
+    if (item.contenttypeid === '32') {
+      dispatch(
+        removeSelectedItem({
+          category: 'house',
+          itemToRemove: item,
         }),
       );
     }
@@ -70,17 +68,20 @@ const PlaceCard = (props: Props) => {
   return props.list !== undefined ? (
     <Wrap>
       {props.list.map((item, idx) =>
-        item.name === '' ? (
+        item.title === '' ? (
           <div key={idx}></div>
         ) : (
           <Container index={props.index} key={idx}>
-            <CardIMG src={item.IMG} />
-            <CardName>{item.name}</CardName>
-            {props.ischk && (
-              <DeleteBtn onClick={() => handleDeleteItem(item.name)}>
-                <TiDeleteOutline size='30' />
-              </DeleteBtn>
-            )}
+            <CardIMG src={item.firstimage} />
+            <CardName>{item.title}</CardName>
+
+            <DeleteBtn
+              onClick={() => {
+                handleDeleteItem(item);
+              }}
+            >
+              <TiDeleteOutline size='30' />
+            </DeleteBtn>
           </Container>
         ),
       )}
@@ -88,17 +89,20 @@ const PlaceCard = (props: Props) => {
   ) : (
     <Wrap>
       {List.map((item, idx) =>
-        item.name === '' ? (
+        item.title === '' ? (
           <div key={idx}></div>
         ) : (
           <Container index={props.index} key={idx}>
-            <CardIMG src={item.IMG} />
-            <CardName>{item.name}</CardName>
-            {props.ischk && (
-              <DeleteBtn onClick={() => handleDeleteItem(item.name)}>
-                <TiDeleteOutline size='30' />
-              </DeleteBtn>
-            )}
+            <CardIMG src={item.firstimage} />
+            <CardName>{item.title}</CardName>
+
+            <DeleteBtn
+              onClick={() => {
+                handleDeleteItem(item);
+              }}
+            >
+              <TiDeleteOutline size='30' />
+            </DeleteBtn>
           </Container>
         ),
       )}

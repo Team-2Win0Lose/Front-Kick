@@ -5,15 +5,18 @@ import { EventContentArg } from '@fullcalendar/core/index.js';
 import styled from 'styled-components';
 import MatchingInfo from './MatchingInfo';
 import { customMedia } from '@/util/GlobalStyle';
-import { teamnameConvertImg } from '@/util/teamnameConvertImg';
 interface TeamDateCalendarProps {
   teamName: string;
   teamEvents: {
+    game_schedule_id: string;
     date: Date;
     home_team_name: string;
     away_team_name: string;
     stadium: string;
-    opponent_team_logo_img_url : string;
+    opponent_team_logo_img_url: string;
+    team_id: number;
+    team_logo_img_url: string;
+    opponent_team_id: number;
   }[];
 }
 
@@ -30,7 +33,8 @@ const TeamDateCalendar: React.FC<TeamDateCalendarProps> = ({
   // console.log(filteredEvents);
 
   const renderEventContent = (eventInfo: EventContentArg) => {
-    const { home_team_name, opponent_team_logo_img_url } = eventInfo.event.extendedProps;
+    const { home_team_name, opponent_team_logo_img_url } =
+      eventInfo.event.extendedProps;
 
     return (
       <EventContainer>

@@ -4,19 +4,21 @@ import { useNavigate } from 'react-router-dom';
 import { BsPeopleFill } from 'react-icons/bs';
 import { sliceTitle, sliceDate, replaceNowStatus } from '@/util/sliceTitle';
 import { teamidConvertImg } from '@/util/teamnameConvertImg';
+import { convertStringToArray } from '@/util/compareDate';
 
 type Props = {
   post: {
     recruitmentBoardId: number;
     hostId: string;
-    homeTeamId: number;
+    TeamId: number;
     scheduleId: string;
-    tagList: string[];
+    tagList: string;
     now_status: number;
     stars: number;
     thumbnail: string;
     title: string;
     content: string;
+    opponentTeamId: number;
     tourCardIdList: {
       attraction: [
         {
@@ -61,17 +63,18 @@ const AccompanyBox = (props: Props) => {
       {/* <Box onClick={() => navigate(`/findaccompany/detail/${props.boxdata.id}`)}> */}
       <Header>
         <Host>
-          <HostImg src='' alt='' />
+          <HostImg
+            src={teamidConvertImg(props.post.TeamId)}
+            alt={props.post.title}
+          />
         </Host>
         <div>
           <Title>{sliceTitle(props.post.title)}</Title>
-          {/* {props.post.tagList.length !== 0 && (
-            <Tags>
-              {props.post.tagList.map((item, idx) => (
-                <Tag key={idx}>{item}</Tag>
-              ))}
-            </Tags>
-          )} */}
+          <Tags>
+            {convertStringToArray(props.post.tagList).map((item, idx) => (
+              <Tag key={idx}>#{item}</Tag>
+            ))}
+          </Tags>
         </div>
       </Header>
       <Body>
@@ -142,12 +145,12 @@ const AccompanyBox = (props: Props) => {
       <Footer>
         <Match>
           <HomeTeam>
-            <TeamLogo src={teamidConvertImg(props.post.homeTeamId)} />
+            <TeamLogo src={teamidConvertImg(props.post.TeamId)} />
             <Versus>Home</Versus>
           </HomeTeam>
           <Versus>VS</Versus>
           <AwayTeam>
-            <TeamLogo src='' />
+            <TeamLogo src={teamidConvertImg(props.post.opponentTeamId)} />
             <Versus>Away</Versus>
           </AwayTeam>
         </Match>
@@ -170,7 +173,7 @@ const AccompanyBox = (props: Props) => {
               <BsPeopleFill />
             </PeopleImg>
             <PeopleCount>
-              {props.post.minNum}/{props.post.maxNum}
+              {props.post.nowHeadCount}/{props.post.maxNum}
             </PeopleCount>
           </People>
 
@@ -208,8 +211,9 @@ const Partition = styled.div`
 `;
 // 카드 헤더 부분
 const Header = styled.div`
+  width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   gap: 20px;
   padding: 4px;
@@ -221,9 +225,9 @@ const Host = styled.div`
   gap: 5px;
 `;
 const HostImg = styled.img`
-  width: 40px;
-  height: 40px;
-  background-color: #9b9b9b;
+  width: 50px;
+  height: 50px;
+  object-fit: fill;
   border: none;
   border-radius: 100%;
 `;
@@ -258,7 +262,7 @@ const TeamLogo = styled.img`
 
   border: none;
   border-radius: 100%;
-  background-color: #9b9b9b;
+  /* background-color: #9b9b9b; */
 `;
 const Versus = styled.p`
   font-size: 8px;
@@ -335,14 +339,14 @@ const CardName = styled.p`
   font-size: 10px;
   color: black;
 `;
-const Tags = styled.div`
+const Tags = styled.ul`
   margin-top: 7px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   gap: 15px;
 `;
-const Tag = styled.p`
+const Tag = styled.li`
   font-size: 11px;
   font-weight: 350;
   color: #d8d7d7;
