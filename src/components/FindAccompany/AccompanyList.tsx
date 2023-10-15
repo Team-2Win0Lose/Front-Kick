@@ -36,12 +36,12 @@ const AccompanyList = (props: Props) => {
     <ListContainer>
       {accompanyList.map((post: AccompanyPostReal) => (
         <div
-          key={post.recruitmentBoardId}
+          key={post.post.recruitmentBoardId}
           onClick={() =>
-            navigate(`/findaccompany/detail/${post.recruitmentBoardId}`)
+            navigate(`/findaccompany/detail/${post.post.recruitmentBoardId}`)
           }
         >
-          <AccompanyBox post={post} />
+          <AccompanyBox post={post.post} />
         </div>
       ))}
     </ListContainer>

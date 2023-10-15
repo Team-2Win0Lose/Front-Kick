@@ -6,7 +6,7 @@ const LoginHeader = (props: Props) => {
   return (
     <Header>
       <Logos>
-        <IMG src='dist/assets/LogoTotal.svg' alt='logo' />
+        <IMG src='/assets/LogoTotal.svg' alt='logo' />
       </Logos>
     </Header>
   );

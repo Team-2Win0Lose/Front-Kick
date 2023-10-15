@@ -10,3 +10,9 @@ export const compareDate = (date1: string, date2: string): boolean => {
     return false;
   }
 };
+
+export const convertStringToArray = (tag: string) => {
+  const parts = tag.split(',');
+
+  return parts;
+};

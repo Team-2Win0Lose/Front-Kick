@@ -1,11 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { itemsProps } from '@/components/CreateRoom/Step/SelectCard/PlaceInfoCarousel';
 import produce from 'immer'; // immer 라이브러리 import
+import { cardData } from '@/lib/interface';
 
 export interface SelectedItemsState {
-  house: itemsProps[];
-  food: itemsProps[];
-  attraction: itemsProps[];
+  house: cardData[];
+  food: cardData[];
+  attraction: cardData[];
 }
 export interface SelectedItemCheck {
   itemList: SelectedItemsState;
@@ -23,7 +23,9 @@ const SelectedItemsSlice = createSlice({
   reducers: {
     SelectedHouseItem: (state, action) => {
       const place = action.payload;
-      const hasDuplicate = state.house.some((item) => item.name === place.name);
+      const hasDuplicate = state.house.some(
+        (item) => item.title === place.name,
+      );
 
       if (!hasDuplicate) {
         return produce(state, (draft) => {
@@ -34,7 +36,9 @@ const SelectedItemsSlice = createSlice({
     },
     SelectedFoodItem: (state, action) => {
       const place = action.payload;
-      const hasDuplicate = state.food.some((item) => item.name === place.name);
+      const hasDuplicate = state.food.some(
+        (item) => item.title === place.title,
+      );
 
       if (!hasDuplicate) {
         return produce(state, (draft) => {
@@ -45,7 +49,7 @@ const SelectedItemsSlice = createSlice({
     SelectedAttractionItem: (state, action) => {
       const place = action.payload;
       const hasDuplicate = state.attraction.some(
-        (item) => item.name === place.name,
+        (item) => item.title === place.title,
       );
 
       if (!hasDuplicate) {
@@ -60,15 +64,15 @@ const SelectedItemsSlice = createSlice({
       return produce(state, (draft) => {
         if (category === 'house') {
           draft.house = draft.house.filter(
-            (item) => item.name !== itemToRemove.name,
+            (item) => item.contentid !== itemToRemove.contentid,
           );
         } else if (category === 'food') {
           draft.food = draft.food.filter(
-            (item) => item.name !== itemToRemove.name,
+            (item) => item.contentid !== itemToRemove.contentid,
           );
         } else if (category === 'attraction') {
           draft.attraction = draft.attraction.filter(
-            (item) => item.name !== itemToRemove.name,
+            (item) => item.contentid !== itemToRemove.contentid,
           );
         }
       });

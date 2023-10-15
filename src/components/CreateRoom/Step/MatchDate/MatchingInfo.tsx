@@ -12,12 +12,15 @@ export interface MatchingInfoProps {
 }
 
 export interface itemsProps {
-  home_team_id: number;
   game_schedule_id: string;
+  date: Date;
   home_team_name: string;
   away_team_name: string;
-  date: Date;
   stadium: string;
+  team_id: number;
+  team_logo_img_url: string;
+  opponent_team_id: number;
+  opponent_team_logo_img_url: string;
 }
 
 const MatchingInfo = (props: MatchingInfoProps) => {
@@ -26,10 +29,13 @@ const MatchingInfo = (props: MatchingInfoProps) => {
   const handleSelectClick = (item: {
     extendedProps: {
       game_schedule_id: string;
-      home_team_id: number;
       home_team_name: string;
       away_team_name: string;
       stadium: string;
+      team_id: number;
+      team_logo_img_url: string;
+      opponent_team_id: number;
+      opponent_team_logo_img_url: string;
     };
     start: Date;
   }) => {
@@ -39,14 +45,18 @@ const MatchingInfo = (props: MatchingInfoProps) => {
         game_schedule_id: item.extendedProps.game_schedule_id,
         homename: item.extendedProps.home_team_name,
         awayname: item.extendedProps.away_team_name,
-        home_team_id: item.extendedProps.home_team_id,
+        team_id: item.extendedProps.team_id,
         date: item.start.toLocaleString('ko-KR'),
         stadium: item.extendedProps.stadium,
+        team_logo_img_url: item.extendedProps.team_logo_img_url,
+        opponent_team_id: item.extendedProps.opponent_team_id,
+        opponent_team_logo_img_url:
+          item.extendedProps.opponent_team_logo_img_url,
       }),
     );
     // console.log(item.start.toLocaleString('ko-KR'));
   };
-  // console.log(props.event.extendedProps);
+  console.log(props.event.extendedProps);
 
   return (
     <div>

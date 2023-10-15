@@ -98,7 +98,7 @@ const TeamDateSelectCarousel = () => {
 
   const getMatchData = useCallback(async (home_team_name: string) => {
     const res = await fetch(
-      `https://kick-back.azurewebsites.net/api/game_schedule/?home_team_name=${home_team_name}`,
+      `https://kick-back.azurewebsites.net/api/game_schedule/?team_name=${home_team_name}`,
       {
         method: 'GET',
       },
