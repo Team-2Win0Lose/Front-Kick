@@ -6,11 +6,10 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { getCookie } from '@/util/cookieFn';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/app/store';
-import AccompanyBox from '../MyAccompany/AccompanyBox';
 import { BASE_URL } from '@/config';
 import { AiFillCalendar } from 'react-icons/ai';
-import AccompanyList from '../FindAccompany/AccompanyList';
 import { AccompanyPostReal } from '@/lib/interface';
+import AccompanyBox from '../MyAccompany/AccompanyBox';
 const token = getCookie('token');
 const headers = {
   Authorization: `Bearer ${token}`,

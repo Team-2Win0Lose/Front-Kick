@@ -13,7 +13,7 @@ type Props = {};
 const Main = (props: Props) => {
 
   const isLogin = useSelector((state: autoCheck) => state.auth.isAuthenticated);
-
+  
   return (
     <div>
       {
@@ -24,7 +24,7 @@ const Main = (props: Props) => {
             </P>
             <Mypage>
               <Font>
-              예정 중인 동행이 없어요 🥲
+                예정 중인 동행이 없어요 🥲
               </Font>
             </Mypage>
           </DIV>
