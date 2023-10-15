@@ -14,3 +14,14 @@ export const calculateDday = (target: string) => {
 
   return dDay;
 };
+
+export const splitDays = (day: Date | undefined) => {
+  if (day !== undefined) {
+    const str = day.toLocaleString();
+    const parts = str.split(' ');
+    parts.pop();
+    parts.pop();
+
+    return parts.join('');
+  }
+};
