@@ -1,4 +1,4 @@
-import{s as e,e as r,f as h,b as g,j as i,a as t,a4 as l,a5 as p,Q as a}from"./vendor-e594e6cf.js";import{O as u}from"./shared/ModifyPersonalData/Onboarding-820448e9.js";import"./react-slick-649c70cb.js";/* empty css                       */import"./common-1cfa3065.js";const m=n=>{const[o,s]=r.useState(!1),d=()=>{s(!o)},f=h(),c=g(x=>x.auth.isAuthenticated);return r.useEffect(()=>{c||f("/")},[c]),i(y,{children:[i(b,{children:[t(w,{children:"계정 설정"}),t(v,{onClick:d,children:o?t(l,{size:"30"}):t(p,{size:"30"})})]}),o?i(j,{children:[i(z,{children:[t(B,{src:"",alt:"사용자 프로필 이미지"}),t($,{children:"프로필 이미지 변경"})]}),i(k,{children:[t(O,{children:"닉네임"}),t(C,{placeholder:"닉네임"})]}),t(A,{children:"저장하기"})]}):t(a,{})]})},y=e.div`
+import{s as e,e as r,M as h,b as g,j as i,a as t,a1 as l,a2 as p,N as a}from"./vendor-34c37101.js";import{O as u}from"./shared/ModifyPersonalData/Onboarding-1283d6e5.js";import"./react-slick-2febd1cd.js";/* empty css                       */import"./common-e20ce833.js";const m=n=>{const[o,s]=r.useState(!1),d=()=>{s(!o)},f=h(),c=g(x=>x.auth.isAuthenticated);return r.useEffect(()=>{c||f("/")},[c]),i(y,{children:[i(b,{children:[t(w,{children:"계정 설정"}),t(v,{onClick:d,children:o?t(l,{size:"30"}):t(p,{size:"30"})})]}),o?i(j,{children:[i(z,{children:[t(B,{src:"",alt:"사용자 프로필 이미지"}),t($,{children:"프로필 이미지 변경"})]}),i(k,{children:[t(O,{children:"닉네임"}),t(C,{placeholder:"닉네임"})]}),t(A,{children:"저장하기"})]}):t(a,{})]})},y=e.div`
   width: 100%;
   border-top: 1px solid black;
   display: flex;
@@ -98,7 +98,7 @@ import{s as e,e as r,f as h,b as g,j as i,a as t,a4 as l,a5 as p,Q as a}from"./v
   font-size: 24px;
   color: #fff;
   font-weight: bold;
-`,S=n=>{const[o,s]=r.useState(!1);return i(T,{children:[i(D,{children:[t(F,{children:"나의 응원팀 설정"}),t(H,{onClick:()=>{s(!o)},children:o?t(l,{size:"30"}):t(p,{size:"30"})})]}),o?i(I,{children:[t(E,{children:t(P,{children:t(u,{})})}),t(M,{children:"저장하기"})]}):t(a,{})]})},T=e.div`
+`,S=n=>{const[o,s]=r.useState(!1);return i(T,{children:[i(M,{children:[t(D,{children:"나의 응원팀 설정"}),t(F,{onClick:()=>{s(!o)},children:o?t(l,{size:"30"}):t(p,{size:"30"})})]}),o?i(H,{children:[t(E,{children:t(N,{children:t(u,{})})}),t(I,{children:"저장하기"})]}):t(a,{})]})},T=e.div`
   width: 100%;
   border-top: 1px solid black;
   display: flex;
@@ -106,27 +106,27 @@ import{s as e,e as r,f as h,b as g,j as i,a as t,a4 as l,a5 as p,Q as a}from"./v
   justify-content: center;
   align-items: center;
   gap: 35px;
-`,D=e.div`
+`,M=e.div`
   width: 100%;
   padding: 10px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-`,F=e.h1`
+`,D=e.h1`
   font-size: 32px;
   font-weight: bold;
-`,H=e.div`
+`,F=e.div`
   width: 65px;
   height: 65px;
   display: flex;
   justify-content: center;
   align-items: center;
-`,I=e.div`
+`,H=e.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-`,M=e.div`
+`,I=e.div`
   width: 560px;
   height: 64px;
   background-color: #418dff;
@@ -140,24 +140,24 @@ import{s as e,e as r,f as h,b as g,j as i,a as t,a4 as l,a5 as p,Q as a}from"./v
 `,E=e.div`
   height: 100%;
   overflow-x: hidden;
-`,P=e.div`
+`,N=e.div`
   height: 100%;
   background-color: #1f1f45;
   overflow-x: hidden;
-`,K=n=>t(W,{children:i(L,{children:[t(N,{children:"개인정보변경"}),t(m,{}),t(S,{})]})}),W=e.div`
+`,Q=n=>t(P,{children:i(W,{children:[t(L,{children:"개인정보변경"}),t(m,{}),t(S,{})]})}),P=e.div`
   margin-top: 50px;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-`,L=e.div`
+`,W=e.div`
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: flex-start;
   flex-direction: column;
   gap: 50px;
-`,N=e.div`
+`,L=e.div`
   font-size: 40px;
   font-weight: bold;
-`;export{K as default};
+`;export{Q as default};
