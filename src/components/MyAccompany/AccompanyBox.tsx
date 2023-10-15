@@ -222,9 +222,9 @@ const Host = styled.div`
   gap: 5px;
 `;
 const HostImg = styled.img`
-  width: 40px;
-  height: 40px;
-  background-color: #9b9b9b;
+  width: 50px;
+  height: 50px;
+  object-fit: fill;
   border: none;
   border-radius: 100%;
 `;
