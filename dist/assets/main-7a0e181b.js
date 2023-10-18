@@ -1,4 +1,4 @@
-import{s as t,a as e,j as o,u as y,e as c,k as v,m as T,Q as F}from"./vendor-032019a3.js";import{S as b}from"./react-slick-6744f890.js";/* empty css                       */import{c as i,t as k,g as z,B as j}from"./common-77df1045.js";import C from"./FindAccompany-8dbaca8d.js";import{A as $}from"./shared/MyAccompany/main-d941e367.js";const _=()=>e(S,{className:"carousel",children:o(b,{...{dots:!0,autoplay:!0,Infinite:!0,slidesToshow:1,slidesToscroll:1,swipeToslide:!0,autoplaySpeed:3e3,speed:500},children:[e(p,{children:e(h,{children:e(x,{src:"/assets/banner4.png",alt:"logo"})})}),e(p,{children:e(h,{children:e(x,{src:"/assets/banner3.png",alt:"logo"})})}),e(p,{children:e(h,{children:e(x,{src:"/assets/banner2.png",alt:"logo"})})}),e(p,{children:e(h,{children:e(x,{src:"/assets/banner1.png",alt:"logo"})})})]})}),p=t.div`
+import{s as t,a as e,j as o,u as y,e as c,k as v,m as T,Q as F}from"./vendor-3ed0bc3f.js";import{S as b}from"./react-slick-aefab5e6.js";/* empty css                       */import{c as i,t as k,g as z,B as j}from"./common-4ca9fc82.js";import C from"./FindAccompany-98a3e02d.js";import{A as $}from"./shared/MyAccompany/main-66421448.js";/* empty css                         */const _=()=>e(S,{className:"carousel",children:o(b,{...{dots:!0,autoplay:!0,Infinite:!0,slidesToshow:1,slidesToscroll:1,swipeToslide:!0,autoplaySpeed:3e3,speed:500},children:[e(p,{children:e(h,{children:e(x,{src:"/assets/banner4.png",alt:"logo"})})}),e(p,{children:e(h,{children:e(x,{src:"/assets/banner3.png",alt:"logo"})})}),e(p,{children:e(h,{children:e(x,{src:"/assets/banner2.png",alt:"logo"})})}),e(p,{children:e(h,{children:e(x,{src:"/assets/banner1.png",alt:"logo"})})})]})}),p=t.div`
   width: 100%;
   display: flex;
   justify-content: center;
@@ -197,7 +197,7 @@ import{s as t,a as e,j as o,u as y,e as c,k as v,m as T,Q as F}from"./vendor-032
   z-index: 999;
   cursor: pointer;
   font-size: 24px;
-`,U=z("token"),q={Authorization:`Bearer ${U}`},pe=s=>{const[a,d]=c.useState([]),l=v(n=>n.auth.isAuthenticated);c.useEffect(()=>{async function n(){try{const w=await(await fetch(`${j}/api/my-recruitment`,{method:"get",headers:q})).json();d(w)}catch(r){console.error("Error:",r)}}n()},[]);const g=T();return o("div",{children:[l?o(H,{children:[o(X,{children:["👋 현재 나의 동행일정 (",a.length,")"]}),a.length===0?e(ee,{children:e(Z,{children:"예정 중인 동행이 없어요 🥲"})}):e(J,{children:a==null?void 0:a.map((n,r)=>e("div",{onClick:()=>g(`/findaccompany/detail/${n.recruitmentBoardId}`),children:e($,{post:n})},n.recruitmentBoardId))})]}):e(F,{}),e(O,{children:e(_,{})}),o(K,{children:[e(ne,{children:"🏆 구단별 응원순위"}),e(oe,{children:"구단별 모집이 완료된 동행팀 수"}),e(B,{})]}),o(W,{children:[e(te,{children:"🙋‍♂️ 동행 구경하기"}),e(ie,{children:"나의 동행을 찾아보세요!"}),e(C,{})]})]})},H=t.div`
+`,U=z("token"),q={Authorization:`Bearer ${U}`},he=s=>{const[a,d]=c.useState([]),l=v(n=>n.auth.isAuthenticated);c.useEffect(()=>{async function n(){try{const w=await(await fetch(`${j}/api/my-recruitment`,{method:"get",headers:q})).json();d(w)}catch(r){console.error("Error:",r)}}n()},[]);const g=T();return o("div",{children:[l?o(H,{children:[o(X,{children:["👋 현재 나의 동행일정 (",a.length,")"]}),a.length===0?e(ee,{children:e(Z,{children:"예정 중인 동행이 없어요 🥲"})}):e(J,{children:a==null?void 0:a.map((n,r)=>e("div",{onClick:()=>g(`/findaccompany/detail/${n.recruitmentBoardId}`),children:e($,{post:n})},n.recruitmentBoardId))})]}):e(F,{}),e(O,{children:e(_,{})}),o(K,{children:[e(ne,{children:"🏆 구단별 응원순위"}),e(oe,{children:"구단별 모집이 완료된 동행팀 수"}),e(B,{})]}),o(W,{children:[e(te,{children:"🙋‍♂️ 동행 구경하기"}),e(ie,{children:"나의 동행을 찾아보세요!"}),e(C,{})]})]})},H=t.div`
   width: 100%;
   margin-bottom: 30px;
   display: flex;
@@ -276,4 +276,4 @@ import{s as t,a as e,j as o,u as y,e as c,k as v,m as T,Q as F}from"./vendor-032
   margin-left: 20px;
   margin-bottom: 30px;
   color: white;
-`;export{pe as default};
+`;export{he as default};

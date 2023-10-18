@@ -1,4 +1,4 @@
-import{m as o,j as t,a as i,s as n}from"./vendor-032019a3.js";import{L as s}from"./shared/EmailLogin/Login-c395424e.js";const m=g=>{const e=o();return t(r,{children:[i(s,{}),i(a,{children:"함께 가는 축구 여행, 킥킥"}),i(l,{children:i(c,{onClick:()=>{e("/emaillogin")},children:"이메일 로그인"})}),t(d,{children:[i("div",{children:"아직 계정이 없으신가요?"}),i(p,{onClick:()=>{e("/signup")},children:"회원가입"})]})]})},r=n.div`
+import{m as o,j as t,a as i,s as n}from"./vendor-3ed0bc3f.js";import{L as s}from"./shared/EmailLogin/Login-42934734.js";const m=g=>{const e=o();return t(r,{children:[i(s,{}),i(a,{children:"함께 가는 축구 여행, 킥킥"}),i(l,{children:i(c,{onClick:()=>{e("/emaillogin")},children:"이메일 로그인"})}),t(d,{children:[i("div",{children:"아직 계정이 없으신가요?"}),i(p,{onClick:()=>{e("/signup")},children:"회원가입"})]})]})},r=n.div`
   width: 100%;
   margin: 0 auto;
   display: flex;

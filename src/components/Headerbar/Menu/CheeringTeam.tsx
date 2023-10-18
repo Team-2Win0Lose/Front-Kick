@@ -21,11 +21,19 @@ const CheeringTeam = (props: Props) => {
           <Img src={props.logo_img_url} alt={props.original_team_name} />
         </ColorContainer1>
         <ColorContainer2 teamcolor={props.team_color_sub}>
-          <Title>{teamnametoFullname(props.original_team_name)}</Title>
+          <Title teamcolor={props.team_color_main}>
+            {teamnametoFullname(props.original_team_name)}
+          </Title>
           <VerticalContainer>
-            <Team>{props.follower} 팔로워</Team>
-            <Team>{props.recruit_end} 마감된 동행팀</Team>
-            <Team>현재 {props.recruit_ing}팀 동행중</Team>
+            <Team teamcolor={props.team_color_main}>
+              {props.follower} 팔로워
+            </Team>
+            <Team teamcolor={props.team_color_main}>
+              {props.recruit_ing} 팀 동행중
+            </Team>
+            <Team teamcolor={props.team_color_main}>
+              {props.recruit_end} 팀 마감
+            </Team>
           </VerticalContainer>
         </ColorContainer2>
       </FlexContainer>
@@ -33,12 +41,17 @@ const CheeringTeam = (props: Props) => {
   );
 };
 
-const Title = styled.div`
-  font-size: 20px;
+const Title = styled.div<{ teamcolor: string }>`
+  font-size: 24px;
+  font-weight: 700;
   flex-direction: column;
+  color: ${(props) => props.teamcolor || '#FFFFFF'};
 `;
-const Team = styled.p`
-  font-size: 12px;
+const Team = styled.p<{ teamcolor: string }>`
+  font-size: 14px;
+  font-weight: 500;
+
+  color: ${(props) => props.teamcolor || '#FFFFFF'};
 `;
 const Form = styled.div`
   position: relative;
@@ -53,8 +66,8 @@ const Form = styled.div`
   border-radius: 15px;
 `;
 const Img = styled.img`
-  width: 50px;
-  height: 50px;
+  width: 70px;
+  height: 70px;
 `;
 const FlexContainer = styled.div`
   height: 100%;
@@ -68,7 +81,8 @@ const FlexContainer = styled.div`
 const VerticalContainer = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  justify-content: center;
+  align-items: center;
   gap: 3px;
 `;
 const ColorContainer1 = styled.div<{ teamcolor: string }>`
@@ -89,7 +103,7 @@ const ColorContainer2 = styled.div<{ teamcolor: string }>`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   gap: 5px;
   padding: 20px;
   top: 0;

@@ -11,7 +11,7 @@ const Detailinfo_2 = (props: Props) => {
   return (
     <Form>
       <SettingBox>
-        <Thumbnail></Thumbnail>
+        {/* <Thumbnail></Thumbnail> */}
         <TitleName></TitleName>
         <ContentInput></ContentInput>
         <FilterBox></FilterBox>
