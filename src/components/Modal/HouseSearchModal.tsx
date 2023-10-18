@@ -12,6 +12,7 @@ import {
   SelectedHouseItem,
 } from '@/feature/SelectedItemsSlice';
 import { teamnameConvertteamId } from '@/util/teamnameConvertImg';
+import { customMedia } from '@/util/GlobalStyle';
 
 type Props = {};
 
@@ -177,6 +178,10 @@ const Box = styled.div`
   overflow-x: auto;
   overflow-y: auto;
   z-index: 100;
+  ${customMedia.lessThan('mobile')`
+    width:100%;
+    height:500%;
+	`}
 `;
 
 const FlexContainer1 = styled.div`

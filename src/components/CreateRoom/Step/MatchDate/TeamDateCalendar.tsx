@@ -144,6 +144,14 @@ const CalendarContainer = styled.div`
 
   // 날짜별 그리드
   .fc .fc-daygrid-day-frame {
+    ${customMedia.lessThan('mobile')`
+      display:flex;
+      flex-direction: column;
+      width: 100%;
+      height: 100%;
+      padding: 5px;
+      margin-bottom: 5px;
+	`}
   }
 
   // 날짜  ex) 2일
@@ -151,7 +159,7 @@ const CalendarContainer = styled.div`
     flex-direction: row;
     padding: 10px 0 0 10px;
     ${customMedia.lessThan('mobile')`
-      padding: 5px 0 0 5px;
+      padding: 3px 0 0 3px;
 	`}
     
   }
@@ -159,7 +167,7 @@ const CalendarContainer = styled.div`
   // 각 이벤트 요소
   .fc-event {
     cursor: pointer;
-    margin-bottom: 5px;
+    padding: 5px;
     border-radius: 4px;
     font-weight: 500;
     font-size: 14px;
@@ -206,7 +214,8 @@ const EventImage = styled.img`
   justify-content: center;
   align-items: center;
   ${customMedia.lessThan('mobile')`
-    width: 50px;
-    height: 50px;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 	`}
 `;

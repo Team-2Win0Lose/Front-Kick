@@ -147,6 +147,9 @@ const BoxContainer = styled.div`
   justify-content: center;
   align-items: center;
   margin-bottom: 20px;
+  ${customMedia.lessThan('mobile')`
+     margin-bottom: 10px;
+	`}
 `;
 
 const CourseAddBtn = styled.div`
@@ -170,6 +173,7 @@ const CourseAddBtn = styled.div`
     padding: 10px;
     width: 100%;
     min-height: 50px;
+
   }
   .detail {
     border-radius: 12px;
@@ -218,11 +222,9 @@ const Detailinput = styled.div`
     .detail {
       border-radius: 12px;
       border: 1px solid #ccc;
-      width: 100%;
       padding: 10px;
       /* border: none; 
       outline: none;  */
-      font-size: 16px;
     }
      
 	`}
@@ -234,6 +236,10 @@ const CustomIcon = styled(FaSearch)`
   height: 30px;
   margin-left: 5px;
   margin-right: 5px;
+  ${customMedia.lessThan('mobile')`
+     width:20px;
+     height:20px;
+	`}
 `;
 
 const LandingPage = styled.div`
@@ -263,16 +269,22 @@ const FormLabel = styled.label`
 const FormInput = styled.input`
   display: flex;
   width: 100%;
-  height: 50px;
+  height: 100%;
   border-radius: 10px;
   padding: 5px 10px;
   border: none;
   font-size: 16px;
   background-color: rgb(248, 248, 248);
+  ${customMedia.lessThan('mobile')`
+     font-size:12px;
+	`}
 `;
 
 const BtnBox = styled.div`
   padding: 10px;
+  ${customMedia.lessThan('mobile')`
+     padding: 3px;
+	`}
 `;
 
 const FormSubmitButton = styled.input`
@@ -282,8 +294,14 @@ const FormSubmitButton = styled.input`
 const LocationName = styled.p`
   font-size: 18px;
   font-weight: 500;
+  ${customMedia.lessThan('mobile')`
+     font-size:10px;
+	`}
 `;
 const LocationAddress = styled.p`
   font-size: 14px;
   font-weight: 400;
+  ${customMedia.lessThan('mobile')`
+     font-size:10px;
+	`}
 `;
