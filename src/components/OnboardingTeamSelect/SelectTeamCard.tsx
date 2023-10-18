@@ -75,7 +75,7 @@ const BodyHead = styled.div<{ teamcolor: string }>`
   position: absolute;
   top: 0;
   height: 120px;
-  width: 264px;
+  width: 100%;
   background-color: ${(props) => props.teamcolor || '#FFFFFF'};
   border-radius: 12px 12px 0 0;
 `;

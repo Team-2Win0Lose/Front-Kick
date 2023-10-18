@@ -127,10 +127,16 @@ const CustomSlider = styled(Slider)`
 
   .slick-list {
     margin-right: -20%;
+    ${customMedia.lessThan('mobile')`
+      margin-right: -30%;
+	`}
   }
 
   .slick-slide > div {
     margin-right: 20%;
+    ${customMedia.lessThan('mobile')`
+      margin-right: -30%;
+	`}
   }
 
   .slick-prev{
@@ -149,8 +155,8 @@ const DIV2 = styled.div<BoxProps>`
   display: flex;
   width: 100%;
   height: 100%;
-  background-color: ${(props) =>
-    props.isSelected ? '#49496d' : 'transparent'};
+  /* background-color: ${(props) =>
+    props.isSelected ? '#49496d' : 'transparent'}; */
 `;
 
 const CarouselContainer = styled.div`
@@ -179,6 +185,9 @@ const Box = styled.div<BoxProps>`
   border-radius: 50%;
   margin-top: 10%;
   overflow: hidden;
+  ${customMedia.lessThan('mobile')`
+      margin-top: 5%;
+	`}
 `;
 
 const DIV = styled.div`
@@ -193,6 +202,7 @@ const DIV = styled.div`
   background-color: #FFFFFF;
   border-radius:50%;
   transform: translate(-50%, -50%);
+  
 `
 
 const IMG = styled.img`
@@ -201,6 +211,10 @@ const IMG = styled.img`
   object-fit: contain;
   justify-content: center;
   align-items: center;
+  ${customMedia.lessThan('mobile')`
+		width:50px;
+    height:50px;
+	`}
 `;
 
 const Name = styled.div`
@@ -210,6 +224,8 @@ const Name = styled.div`
   margin-bottom: 10%;
   ${customMedia.lessThan('tablet')`
 		font-size: 10px;
+    margin-top:1%;
+    margin-bottom:5%;
 	`}
 `;
 

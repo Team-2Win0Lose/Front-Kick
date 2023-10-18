@@ -44,8 +44,7 @@ const MinMaxCnt = (props: Props) => {
               minNum: minValue || minNum,
               maxNum: Number(e.target.value) || maxNum
             }
-            ))
-          
+            )) 
           }}
         />
       </StyledInput>

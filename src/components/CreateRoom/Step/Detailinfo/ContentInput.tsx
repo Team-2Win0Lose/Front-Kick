@@ -38,7 +38,7 @@ export default ContentInput
 
 const StyledTextarea = styled.textarea`
   flex-shrink: 0;
-  width: 300px;
+  width: 100%;
   height: 300px;
   padding: 10px;
   border-radius: 10px;
@@ -57,6 +57,7 @@ const StyledInput = styled.div`
   justify-content: center;
   align-items: center;
   margin-bottom: 20px;
+  width:100%;
 `;
 
 
