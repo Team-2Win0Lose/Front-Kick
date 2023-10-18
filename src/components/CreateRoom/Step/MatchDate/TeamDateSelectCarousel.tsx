@@ -128,7 +128,7 @@ const TeamDateSelectCarousel = () => {
                 </FlexContainer>
               </Box>
               <NameWrapper>
-                <Name>{item.name}</Name>
+                <Name>{item.home_team_name}</Name>
               </NameWrapper>
             </BoxWrapper>
           </DIV>
@@ -228,7 +228,7 @@ const Name = styled.div`
   margin-top: 10%;
   margin-bottom: 10%;
   ${customMedia.lessThan('mobile')`
-      font-size: 5px;
+      font-size: 1px;
 	`}
 `;
 

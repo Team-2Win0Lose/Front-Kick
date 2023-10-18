@@ -102,6 +102,10 @@ const Text = styled.div`
   justify-content: center;
   align-items: center;
   color: black;
+  ${customMedia.lessThan('mobile')`
+     padding: 5px;
+     font-size: 15px;
+	`}
 `;
 
 const Btn = styled.div`
@@ -113,6 +117,10 @@ const Btn = styled.div`
   color: black;
   /* background-color: white;
   border-radius: 15px; */
+  ${customMedia.lessThan('mobile')`
+     padding: 5px;
+     font-size: 15px;
+	`}
 `;
 
 const Box = styled.div`
@@ -133,8 +141,8 @@ const IMG = styled.img`
   height: 100px;
   object-fit: contain;
   ${customMedia.lessThan('mobile')`
-    height: 50px;
-    width: 50px;
+    height: 40px;
+    width: 40px;
 	`}
 `;
 
@@ -144,14 +152,20 @@ const FlexContainer = styled.div`
   align-items: center;
   padding: 10px;
   gap: 10%;
+  ${customMedia.lessThan('mobile')`
+     padding: 3px;
+     gap: 3%;
+	`}
 `;
 
 const FlexContainerLeft = styled.div`
   display: flex;
   padding: 10px;
-  margin-right: 10%;
   align-items: center;
   justify-content: center;
+  ${customMedia.lessThan('mobile')`
+     padding: 3px;
+	`}
 `;
 
 const FlexContainerRight = styled.div`
@@ -161,6 +175,10 @@ const FlexContainerRight = styled.div`
   justify-content: center;
   align-items: left;
   gap: 15px;
+  ${customMedia.lessThan('mobile')`
+     padding: 3px;
+     gap: 3px;
+	`}
 `;
 
 const FlexItem = styled.div`
@@ -178,9 +196,15 @@ const FlexText = styled.div`
   padding: 10px;
   gap: 20px;
   color: black;
+  ${customMedia.lessThan('mobile')`
+     padding: 5px;
+	`}
 `;
 
 const DIV = styled.div`
   align-items: center;
   font-size: 20px;
+  ${customMedia.lessThan('mobile')`
+     font-size: 10px;
+	`}
 `;
