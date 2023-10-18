@@ -300,6 +300,7 @@ const Body = styled.div`
   padding: 8px 0;
   gap: 8px;
   /* background-color: #ffffff; */
+  
 `;
 const Title = styled.p`
   font-size: 16px;

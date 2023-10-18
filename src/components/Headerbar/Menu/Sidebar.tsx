@@ -157,8 +157,8 @@ const SideBarWrap = styled.div`
     transition: 0.5s ease;
   }
   ${customMedia.lessThan('mobile')`
-    width:55%;
-    right:-55%;
+    width:85%;
+    right:-85%;
 	`}
 `;
 

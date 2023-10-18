@@ -117,7 +117,7 @@ const LoginForm = (props: any) => {
 };
 
 const Form = styled.form`
-  margin-top: 75px;
+  margin-top: 100px;
   width: 340px;
   display: flex;
   flex-direction: column;
@@ -168,6 +168,7 @@ const Button = styled.button`
   color: #fff;
   font-weight: 600;
   font-size: 18px;
+  margin: 40px 0;
 `;
 const Small = styled.small`
   color: red;
