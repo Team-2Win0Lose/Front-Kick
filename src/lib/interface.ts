@@ -91,7 +91,7 @@ export interface AccompanyPostReal {
   createdDate: string;
   publishedDate: string | null;
   nowHeadCount: number;
-  applingUserIdList: string;
+  applyingUserIdList: string;
   appliedUserIdList: string;
 }
 

@@ -306,7 +306,6 @@ const MapContainer_ = styled.div`
   display: flex;
   align-items: flex-start;
   /* background-color: #e6e3e3; */
-  padding: 20px;
   height: 100%;
   border-radius: 8px;
   /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
@@ -321,9 +320,13 @@ const MapDiv = styled.div`
   background-color: #e0e0e0;
   border-radius: 10px 0 0 10px;
   margin-bottom: 20px;
+  font-size:12px;
   ${customMedia.lessThan('mobile')`
     width: 100%;
     height: 300px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
 	`}
 `;
 
@@ -337,18 +340,27 @@ const SearchResult = styled.div`
   align-items: center;
   ${customMedia.lessThan('mobile')`
       padding: 0px;
+      border-radius: 10px;
+      width:100%;
 	`}
 `;
 
 const ResultText = styled.p`
   font-size: 1px;
-  padding: 10px;
+  margin:20px 0;
+  padding: 20px;
   font-weight: bold;
+  ${customMedia.lessThan('mobile')`
+    padding: 5px;
+	`}
 `;
 
 const ResultKeyword = styled.span`
   color: black;
   font-size: 20px;
+  ${customMedia.lessThan('mobile')`
+     font-size: 20px;
+	`}
 `;
 
 const ScrollWrapper = styled.div`
@@ -357,7 +369,6 @@ const ScrollWrapper = styled.div`
   padding: 10px;
   overflow-y: auto;
   ${customMedia.lessThan('mobile')`
-      max-height: 200px;
 	`}
 `;
 

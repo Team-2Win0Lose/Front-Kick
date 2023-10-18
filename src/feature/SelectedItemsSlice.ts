@@ -64,15 +64,15 @@ const SelectedItemsSlice = createSlice({
       return produce(state, (draft) => {
         if (category === 'house') {
           draft.house = draft.house.filter(
-            (item) => item.content_id !== itemToRemove.contentid,
+            (item) => item.title !== itemToRemove.title,
           );
         } else if (category === 'food') {
           draft.food = draft.food.filter(
-            (item) => item.content_id !== itemToRemove.contentid,
+            (item) => item.title !== itemToRemove.title,
           );
         } else if (category === 'attraction') {
           draft.attraction = draft.attraction.filter(
-            (item) => item.content_id !== itemToRemove.contentid,
+            (item) => item.title !== itemToRemove.title,
           );
         }
       });

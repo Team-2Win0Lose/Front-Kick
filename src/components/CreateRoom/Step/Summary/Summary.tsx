@@ -23,13 +23,19 @@ function Summary({}: Props) {
     tag,
   } = useSelector((state: RootState) => state.summary);
   const cardInfo = useSelector((state: RootState) => state.selecteditem);
-
+  const accomodation = useSelector(
+    (state: RootState) => state.selecteditem.house,
+  );
+  const restaurant = useSelector((state: RootState) => state.selecteditem.food);
+  const attraction = useSelector(
+    (state: RootState) => state.selecteditem.attraction,
+  );
   return (
     <Form>
       {/* 이미지 박스 */}
-      <ImgBox>
+      {/* <ImgBox>
         <IMG src={img} alt='선택한 배경 사진이 없습니다.(No Image)' />
-      </ImgBox>
+      </ImgBox> */}
 
       {/* 제목 */}
       <Title>{title}</Title>
@@ -101,13 +107,13 @@ function Summary({}: Props) {
           <ScrollContainer>
             <CardContainer>
               {cardInfo.house.length > 0 && (
-                <PlaceCard index={0} ischk={false} />
+                <PlaceCard index={0} ischk={false} list={accomodation} />
               )}
               {cardInfo.food.length > 0 && (
-                <PlaceCard index={1} ischk={false} />
+                <PlaceCard index={1} ischk={false} list={restaurant} />
               )}
               {cardInfo.attraction.length > 0 && (
-                <PlaceCard index={2} ischk={false} />
+                <PlaceCard index={2} ischk={false} list={attraction} />
               )}
             </CardContainer>
           </ScrollContainer>
