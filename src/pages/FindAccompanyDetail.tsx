@@ -13,8 +13,10 @@ import { useSelector } from 'react-redux';
 import { RootState } from '@/app/store';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { BsFillPersonFill } from 'react-icons/bs';
 
 import { getCookie } from '@/util/cookieFn';
+import MeetingRequestsList from '@/components/ManageAccompany/MeetingRequestsList';
 const token = getCookie('token');
 const headers = {
   Authorization: `Bearer ${token}`,
@@ -61,12 +63,67 @@ const FindAccompanyDetail = () => {
           toast.success('🤝 동행 신청 완료!');
           navigate('/');
         }
+      } else {
+        toast.warning('본인의 동행에는 신청할 수 없습니다.');
       }
     } catch (Error) {
       toast.error('동행 신청 실패!');
     }
   };
-  return (
+  interface MeetingRequest {
+    id: number;
+    requesterName: string;
+  }
+  const meetingList = [
+    { id: 1, requesterName: 'Alice' },
+    { id: 2, requesterName: 'Bob' },
+    { id: 3, requesterName: 'Kim' },
+    { id: 4, requesterName: 'Son' },
+    // ... add more requests
+  ];
+  const [meetingRequests, setMeetingRequests] =
+    useState<MeetingRequest[]>(meetingList);
+  const [acceptedRequests, setacceptedRequests] = useState<MeetingRequest[]>(
+    [],
+  );
+  const handleAccept = (id: number) => {
+    const requestToAccept = meetingRequests.find(
+      (request) => request.id === id,
+    );
+
+    if (requestToAccept) {
+      // Remove the accepted request from meetingRequests
+      // const updatedMeetingRequests = meetingRequests.filter(
+      //   (request) => request.id !== id,
+      // );
+      // setMeetingRequests(updatedMeetingRequests);
+
+      // Add the accepted request to acceptedRequests
+      setacceptedRequests((prevAcceptedRequests) => [
+        ...prevAcceptedRequests,
+        requestToAccept,
+      ]);
+    }
+  };
+
+  const handleReject = (id: number) => {
+    // Handle reject logic here
+  };
+
+  const [accepted, setAccepted] = useState(false);
+  const [rejected, setRejected] = useState(false);
+
+  const handleBtnAccept = (id: number) => {
+    setAccepted(true);
+    handleAccept(id);
+  };
+
+  const handleBtnReject = (id: number) => {
+    setRejected(true);
+    handleReject(id);
+  };
+
+  return id !== recruitDetailData?.hostId ? (
     <Form>
       {/* <ImgBox>
         <IMG
@@ -108,7 +165,8 @@ const FindAccompanyDetail = () => {
                 <Text>희망 인원 </Text>
                 <Text>
                   {' '}
-                  {recruitDetailData?.minNum} ~ {recruitDetailData?.maxNum} 명
+                  {recruitDetailData?.minNum} 명 ~ {recruitDetailData?.maxNum}{' '}
+                  명
                 </Text>
               </FlexText>
             </FlexContainerLeft>
@@ -156,8 +214,8 @@ const FindAccompanyDetail = () => {
             </CardContainer>
           </ScrollContainer>
         </CardInfo>
+        <Content>{recruitDetailData?.content}</Content>
       </Box>
-      <Content>{recruitDetailData?.content}</Content>
       {id ? (
         <ApplyBtn onClick={() => applyBtnClick()}>신청</ApplyBtn>
       ) : (
@@ -167,6 +225,132 @@ const FindAccompanyDetail = () => {
           </ApplyBtn>
         </div>
       )}
+    </Form>
+  ) : (
+    <Form>
+      <Title>{recruitDetailData?.title}</Title>
+      <AcceptContainer>
+        <h1>
+          동행 신청 인원 {acceptedRequests.length}/4 예약 인원{' '}
+          {meetingRequests.length}
+        </h1>
+        <List className='meeting-requests-list'>
+          {meetingRequests.map((request) => (
+            <RequestCard>
+              <Profile>
+                <ProfileImg>
+                  <BsFillPersonFill size='29' />
+                </ProfileImg>
+                <Name>{request.requesterName}</Name>
+              </Profile>
+              {!accepted && !rejected && (
+                <Btn>
+                  <Agree onClick={() => handleBtnAccept(request.id)}>
+                    수락
+                  </Agree>
+                  <Disagree onClick={() => handleBtnReject(request.id)}>
+                    거절
+                  </Disagree>
+                </Btn>
+              )}
+              {accepted && (
+                <Btn>
+                  <p>참여 완료</p>
+                </Btn>
+              )}
+              {rejected && (
+                <Btn>
+                  <p>참여 거절</p>
+                </Btn>
+              )}
+            </RequestCard>
+          ))}
+        </List>
+      </AcceptContainer>
+      <Box>
+        <TitleText>🔥 매치 정보</TitleText>
+        <MatchInfo>
+          <FlexContainer>
+            <FlexContainerLeft>
+              <FlexText>
+                <FlexItem>{cutData(recruitDetailData?.createdDate)}</FlexItem>
+              </FlexText>
+              <FlexText>
+                <FlexItem>
+                  {teamidConvertStadium(recruitDetailData?.TeamId)}
+                </FlexItem>
+              </FlexText>
+            </FlexContainerLeft>
+            <FlexContainerRight>
+              <Text>
+                {' '}
+                {teamidConverttoTeamName(recruitDetailData?.TeamId)} vs{' '}
+                {teamidConverttoTeamName(recruitDetailData?.opponentTeamId)}{' '}
+              </Text>
+            </FlexContainerRight>
+          </FlexContainer>
+        </MatchInfo>
+      </Box>
+      <Box>
+        <TitleText>🔥 동행 정보</TitleText>
+        <JoinInfo>
+          <FlexContainer>
+            <FlexContainerLeft>
+              <FlexText>
+                <Text>희망 인원 </Text>
+                <Text>
+                  {' '}
+                  {recruitDetailData?.minNum} 명 ~ {recruitDetailData?.maxNum}{' '}
+                  명
+                </Text>
+              </FlexText>
+            </FlexContainerLeft>
+            <FlexContainerRight>
+              <Text>
+                {' '}
+                동행 장소 {recruitDetailData?.meetingPlace}{' '}
+                {recruitDetailData?.detailMeetingPlace}
+              </Text>
+              <Text> 동행 기간 {recruitDetailData?.term} </Text>
+            </FlexContainerRight>
+          </FlexContainer>
+        </JoinInfo>
+      </Box>
+      <Box>
+        <TitleText>🔥 태그 정보</TitleText>
+        <TagInfo>
+          {convertStringToArray(tagList)?.map((tagItem: any, index: number) => (
+            <TagWrapper key={index}>{tagItem}</TagWrapper>
+          ))}
+        </TagInfo>
+      </Box>
+      <Box>
+        <TitleText>🔥 카드 정보</TitleText>
+        <CardInfo>
+          <ScrollContainer>
+            <CardContainer>
+              <PlaceCard
+                index={0}
+                ischk={false}
+                list={recruitDetailData?.tourCardIdList.accommodation}
+              />
+
+              <PlaceCard
+                index={1}
+                ischk={false}
+                list={recruitDetailData?.tourCardIdList.restaurant}
+              />
+
+              <PlaceCard
+                index={2}
+                ischk={false}
+                list={recruitDetailData?.tourCardIdList.attraction}
+              />
+            </CardContainer>
+          </ScrollContainer>
+        </CardInfo>
+        <Content>{recruitDetailData?.content}</Content>
+      </Box>
     </Form>
   );
 };
@@ -183,7 +367,7 @@ const ApplyBtn = styled.div`
 
 const Form = styled.div`
   margin: 0 auto;
-  width: 80%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -194,6 +378,7 @@ const Form = styled.div`
 const Box = styled.div`
   justify-content: left;
   align-items: left;
+  width: 50%;
 `;
 const ImgBox = styled.div`
   display: flex;
@@ -210,7 +395,7 @@ const ImgBox = styled.div`
 `;
 
 const IMG = styled.img`
-  max-width: 100%;
+  max-width: 50%;
   max-height: 100%;
   object-fit: contain;
 `;
@@ -221,7 +406,7 @@ const Title = styled.div`
   align-items: center;
   margin-bottom: 40px;
   word-break: break-all;
-  width: 300px;
+  width: 50%;
   height: auto;
   font-size: 24px;
 `;
@@ -234,7 +419,7 @@ const MatchInfo = styled.div`
   margin-bottom: 20px;
   border-radius: 10px;
   border: 1px solid #ccc;
-  width: 300px;
+  width: 100%;
   padding: 20px;
 `;
 
@@ -286,7 +471,7 @@ const JoinInfo = styled.div`
   margin-bottom: 20px;
   border-radius: 10px;
   border: 1px solid #ccc;
-  width: 300px;
+  width: 100%;
   padding: 20px;
 `;
 
@@ -294,7 +479,7 @@ const TagInfo = styled.div`
   align-items: center;
   margin-bottom: 20px;
   border-radius: 10px;
-  width: 300px;
+  width: 100%;
 `;
 
 const TagWrapper = styled.div`
@@ -307,8 +492,9 @@ const TagWrapper = styled.div`
 `;
 
 const Content = styled.div`
-  width: 300px;
+  width: 100%;
   height: 200px;
+  box-sizing: border-box;
   border-radius: 10px;
   border: 1px solid #ccc;
   font-size: 16px;
@@ -327,7 +513,7 @@ const CardInfo = styled.div`
   margin-bottom: 20px;
   border-radius: 10px;
   border: 1px solid #ccc;
-  width: 300px;
+  width: 100%;
   height: 200px;
 `;
 
@@ -350,4 +536,79 @@ const ScrollContainer = styled.div`
     background-color: #f5f5f5;
     border-radius: 2px;
   }
+`;
+const AcceptContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  border: 1px solid black;
+  padding: 10px 10px;
+  border-radius: 12px;
+  width: 50%;
+`;
+const List = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 5px;
+  padding: 5px 10px;
+  width: 100%;
+`;
+const RequestCard = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+`;
+const Profile = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+`;
+const ProfileImg = styled.div`
+  width: 25px;
+  height: 25px;
+  border-radius: 100%;
+  background-color: #898989;
+`;
+const Name = styled.div`
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  width: 120px;
+  max-height: 34px;
+  padding: 8px 15px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  border: 1px solid black;
+  border-radius: 12px;
+  font-size: 14px;
+`;
+const Agree = styled.div`
+  padding: 8px 20px;
+  font-size: 12px;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  background-color: #5297ff;
+`;
+const Disagree = styled.div`
+  padding: 8px 20px;
+  font-size: 12px;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  background-color: #f25a5a;
+`;
+const Btn = styled.div`
+  width: 130px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
 `;

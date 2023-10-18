@@ -10,7 +10,8 @@ import { cardItem } from '../CreateRoom/Step/SelectCard/PlaceInfoCarousel';
 import { SelectedFoodItem } from '@/feature/SelectedItemsSlice';
 import { teamnameConvertteamId } from '@/util/teamnameConvertImg';
 import { customMedia } from '@/util/GlobalStyle';
-
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 type Props = {};
 
 const FoodSearchModal = (props: Props) => {
@@ -28,8 +29,25 @@ const FoodSearchModal = (props: Props) => {
   };
 
   // 제출한 검색어 관리
-  const [Keyword, setKeyword] = useState('');
-
+  const [Keyword, setKeyword] = useState<string | null>(null);
+  const [searchData, setsearchData] = useState<cardList>();
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const res = await fetch(
+          `${BASE_URL}/api/tour_api/keyword/?keyword=${Keyword}&content_type_id=39`,
+          {
+            method: 'get',
+          },
+        );
+        const data = await res.json();
+        setsearchData(data);
+      } catch (error) {
+        toast.error('에러 발생');
+      }
+    }
+    fetchData();
+  }, [Keyword]);
   // 제출한 검색어 state에 담아주는 함수
   const submitKeyword = (e: { preventDefault: () => void }) => {
     e.preventDefault();
@@ -146,6 +164,32 @@ const FoodSearchModal = (props: Props) => {
           ))}
         </DIV>
       </FlexContainer1>
+      <FlexContainer1>
+        <DIV>
+          {searchData?.item &&
+            searchData?.item.map((item: cardData, index) => (
+              <Box2 key={index}>
+                <FlexContainer2>
+                  <InfoContainer>
+                    <CheckboxContainer>
+                      <Checkbox
+                        type='checkbox'
+                        onChange={() => {
+                          handleCheckboxChange(item);
+                        }}
+                      />
+                    </CheckboxContainer>
+                    <IMG src={item.firstimage} alt={item.title} />
+                    <FlexContainerRight>
+                      <Name>{item.title}</Name>
+                      <Loc>{item.addr1}</Loc>
+                    </FlexContainerRight>
+                  </InfoContainer>
+                </FlexContainer2>
+              </Box2>
+            ))}
+        </DIV>
+      </FlexContainer1>
       <NextButtonContainer>
         <RegisterBtn
           onClick={() => {
@@ -164,16 +208,15 @@ export default FoodSearchModal;
 const Box = styled.div`
   display: flex;
   flex-direction: column;
-
   justify-content: center;
   align-items: center;
   margin: 10px auto;
   background-color: #fff;
   border-radius: 10px;
-  width: 40%;
-  height: 100%;
-  overflow-x: auto;
-  overflow-y: auto;
+  width: 50%;
+  height: 80%;
+  overflow-x: hidden;
+  overflow-y: scroll;
   z-index: 100;
   ${customMedia.lessThan('mobile')`
     width: 100%;
@@ -184,26 +227,28 @@ const Box = styled.div`
 const FlexContainer1 = styled.div`
   padding: 10px 0;
   display: flex;
+  gap: 5px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  overflow-y: scroll;
 `;
 
 const Title = styled.h2`
   font-size: 25px;
   font-weight: bold;
   text-align: center;
-  margin-top: 20px;
+  margin-top: 550px;
   margin-bottom: 10px;
 `;
 const Form = styled.div`
-  margin: 0 auto;
+  margin: 10px auto;
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  overflow-y: scroll;
+  /* gap: 30px; */
 `;
 const SettingBox = styled.div`
   width: 100%;
@@ -211,12 +256,14 @@ const SettingBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 `;
 
 const BoxContainer = styled.div`
+  display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
 `;
 
 const CourseAddBtn = styled.div`
@@ -252,6 +299,7 @@ const CustomIcon = styled(FaSearch)`
 `;
 
 const LandingPage = styled.div`
+  width: 100%;
   /* Add your styles for the landing page container here */
   /* For example: padding, background-color, etc. */
 `;
@@ -291,9 +339,10 @@ const FormSubmitButton = styled.input`
   /* For example: background-color, color, padding, etc. */
 `;
 const DIV = styled.div`
-  height: 400px;
+  height: auto;
   margin: 0 auto;
   display: flex;
+  gap: 10px;
   flex-direction: column;
 `;
 const SubTitle = styled.div`
@@ -312,7 +361,7 @@ const Box2 = styled.div`
   background: #eeeeee;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
-  margin-bottom: 10px;
+  /* margin-bottom: 10px; */
 `;
 
 const IMG = styled.img`
