@@ -4,14 +4,14 @@ import { RootState } from '@/app/store';
 import { TiDeleteOutline } from 'react-icons/ti';
 import { removeSelectedItem } from '@/feature/SelectedItemsSlice';
 import { cardItem } from './PlaceInfoCarousel';
-import { cardData } from '@/lib/interface';
+import { cardData, Interface } from '@/lib/interface';
 type ContainerProps = {
   index: number;
 };
 type Props = {
   index: number;
   ischk: boolean;
-  list?: cardData[];
+  list?: Interface[] | cardData[];
 };
 
 const PlaceCard = (props: Props) => {
@@ -74,14 +74,6 @@ const PlaceCard = (props: Props) => {
           <Container index={props.index} key={idx}>
             <CardIMG src={item.firstimage} />
             <CardName>{item.title}</CardName>
-
-            <DeleteBtn
-              onClick={() => {
-                handleDeleteItem(item);
-              }}
-            >
-              <TiDeleteOutline size='30' />
-            </DeleteBtn>
           </Container>
         ),
       )}

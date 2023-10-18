@@ -8,9 +8,16 @@ import {
   teamidConvertStadium,
   teamidConverttoTeamName,
 } from '@/util/teamnameConvertImg';
-import { convertStringToArray } from '@/util/compareDate';
-
+import { convertStringToArray, cutData } from '@/util/compareDate';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/app/store';
+import { getCookie } from '@/util/cookieFn';
+const token = getCookie('token');
+const headers = {
+  Authorization: `Bearer ${token}`,
+};
 const FindAccompanyDetail = () => {
+  const id = useSelector((state: RootState) => state.auth.id);
   const [recruitDetailData, setrecruitDetailData] =
     useState<AccompanyPostReal>();
   const { recruitment_board_id } = useParams() as {
@@ -34,8 +41,20 @@ const FindAccompanyDetail = () => {
     fetchData();
   }, []);
   const tagList = recruitDetailData?.tagList as string;
-  console.log(tagList);
 
+  const applyBtnClick = async () => {
+    if (recruitDetailData?.hostId !== id) {
+      const res = await fetch(
+        `${BASE_URL}/api/recruitment/?recruitment_board_id=${recruitment_board_id}`,
+        {
+          method: 'PATCH',
+          headers: headers,
+        },
+      );
+      const data = await res.json();
+      alert(data.message);
+    }
+  };
   return (
     <Form>
       <ImgBox>
@@ -51,7 +70,7 @@ const FindAccompanyDetail = () => {
           <FlexContainer>
             <FlexContainerLeft>
               <FlexText>
-                <FlexItem>{recruitDetailData?.createdDate}</FlexItem>
+                <FlexItem>{cutData(recruitDetailData?.createdDate)}</FlexItem>
               </FlexText>
               <FlexText>
                 <FlexItem>
@@ -63,7 +82,7 @@ const FindAccompanyDetail = () => {
               <Text>
                 {' '}
                 {teamidConverttoTeamName(recruitDetailData?.TeamId)} vs{' '}
-                {recruitDetailData?.opponentTeamId}{' '}
+                {teamidConverttoTeamName(recruitDetailData?.opponentTeamId)}{' '}
               </Text>
             </FlexContainerRight>
           </FlexContainer>
@@ -93,7 +112,6 @@ const FindAccompanyDetail = () => {
           </FlexContainer>
         </JoinInfo>
       </Box>
-      \{' '}
       <Box>
         <TitleText>🔥 태그 정보</TitleText>
         <TagInfo>
@@ -106,38 +124,43 @@ const FindAccompanyDetail = () => {
         <TitleText>🔥 카드 정보</TitleText>
         <CardInfo>
           <ScrollContainer>
-            {/* <CardContainer>
-              {recruitDetailData?.tourCardIdList.accommodation.map((item) => (
-                <PlaceCard
+            <CardContainer>
+              <PlaceCard
                 index={0}
                 ischk={false}
-                list={accompany.data.data.cardInfo.house}
+                list={recruitDetailData?.tourCardIdList.accommodation}
               />
-              ))}
-              {accompany.data.data.cardInfo.food.length > 0 && (
-                <PlaceCard
-                  index={1}
-                  ischk={false}
-                  list={accompany.data.data.cardInfo.food}
-                />
-              )}
-              {accompany.data.data.cardInfo.attraction.length > 0 && (
-                <PlaceCard
-                  index={2}
-                  ischk={false}
-                  list={accompany.data.data.cardInfo.attraction}
-                />
-              )}
-            </CardContainer> */}
+
+              <PlaceCard
+                index={1}
+                ischk={false}
+                list={recruitDetailData?.tourCardIdList.restaurant}
+              />
+
+              <PlaceCard
+                index={2}
+                ischk={false}
+                list={recruitDetailData?.tourCardIdList.attraction}
+              />
+            </CardContainer>
           </ScrollContainer>
         </CardInfo>
       </Box>
       <Content>{recruitDetailData?.content}</Content>
+      <ApplyBtn onClick={() => applyBtnClick()}>신청</ApplyBtn>
     </Form>
   );
 };
 
 export default FindAccompanyDetail;
+
+const ApplyBtn = styled.div`
+  background-color: #1f1f45;
+  padding: 10px 20px;
+  border-radius: 12px;
+  color: white;
+  cursor: pointer;
+`;
 
 const Form = styled.div`
   margin: 0 auto;
@@ -146,6 +169,7 @@ const Form = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 10px;
 `;
 
 const Box = styled.div`
@@ -173,16 +197,14 @@ const IMG = styled.img`
 `;
 
 const Title = styled.div`
-  justify-content: left;
+  display: flex;
+  justify-content: flex-start;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
+  word-break: break-all;
   width: 300px;
-  padding: 10px;
-  font-size: 25px;
-  /* border: none;
-  outline: none;
-  border-radius: 10px;
-  border: 1px solid #ccc; */
+  height: auto;
+  font-size: 24px;
 `;
 
 const MatchInfo = styled.div`

@@ -74,7 +74,7 @@ const AccompanyBox = (props: Props) => {
         <div>
           <Title>{sliceTitle(props.post.title)}</Title>
           <Tags>
-            {convertStringToArray(props.post.tagList).map((item, idx) => (
+            {convertStringToArray(props.post.tagList)?.map((item, idx) => (
               <Tag key={idx}>#{item}</Tag>
             ))}
           </Tags>
@@ -312,8 +312,8 @@ const Card = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 10px;
   align-items: center;
+  gap: 10px;
   background-color: #fff;
   border: none;
   border-radius: 25px;
@@ -338,9 +338,12 @@ const Img = styled.img`
   border: none;
   border-radius: 100%;
 `;
-const CardName = styled.p`
+const CardName = styled.div`
+  width: 80%;
   font-size: 10px;
   color: black;
+  word-break: break-all;
+  text-align: center;
 `;
 const Tags = styled.ul`
   margin-top: 7px;
