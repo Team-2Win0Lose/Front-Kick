@@ -156,6 +156,10 @@ const CustomSlider = styled(Slider)`
   .slick-slide > div {
     margin-right: 20%;
   }
+
+  ${customMedia.lessThan('mobile')`
+    font-size: 12px;
+	`}
 `;
 
 interface BoxProps {
