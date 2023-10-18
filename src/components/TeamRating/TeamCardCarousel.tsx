@@ -52,6 +52,7 @@ const TeamCardCarousel = () => {
     prevArrow: <PrevArrow>&#8249;</PrevArrow>,
     nextArrow: <NextArrow>&#8250;</NextArrow>, 
   };
+  
 
   // // api에서 team 목록 불러오기
   // useEffect(() => {
@@ -119,7 +120,7 @@ const TeamCardCarousel = () => {
 export default TeamCardCarousel;
 
 const DIV = styled.div`
-  padding: 0 30px;
+  padding: 0 50px;
 `
 
 const CustomSlider = styled(Slider)`
@@ -132,6 +133,9 @@ const CustomSlider = styled(Slider)`
 
   .slick-slide > div {
     margin-right: 40px;
+  }
+
+  .slick-prev{
   }
 `;
 
@@ -174,7 +178,7 @@ const Rate = styled.div`
   padding: 3px;
   color: white;
   ${customMedia.lessThan('mobile')`
-		font-size: 30px;
+		font-size: 20px;
 	`}
   @font-face {
     font-family: 'Giants-Bold';

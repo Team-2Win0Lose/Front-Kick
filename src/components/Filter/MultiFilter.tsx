@@ -8,6 +8,7 @@ import { RootState } from '@/app/store';
 import { BASE_URL } from '@/config';
 import { AccompanyPostReal } from '@/lib/interface';
 import AccompanyBox from '../MyAccompany/AccompanyBox';
+import { customMedia } from '@/util/GlobalStyle';
 const token = getCookie('token');
 const headers = {
   Authorization: `Bearer ${token}`,
@@ -415,6 +416,7 @@ const TeamContents = styled.div`
     justify-content: flex-start;
     align-items: center;
   }
+
 `;
 const Content = styled.div`
   margin: 10px 0;
@@ -464,12 +466,16 @@ const Button = styled.button`
 `;
 
 const ListContainer = styled.div`
-  margin: 0 auto;
+  margin: 20px auto 0;
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* 4열로 배치 */
   justify-content: center;
   align-content: center;
   gap: 30px;
+  ${customMedia.lessThan('mobile')`
+      /* 모바일 스타일 설정 */
+      grid-template-columns: repeat(1, 1fr);
+    `}
 `;
 
 export default MultiFilter;

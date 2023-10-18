@@ -170,6 +170,7 @@ const DIV = styled.div`
   margin-left: 10px;
   margin-top: 30px;
   margin-bottom: 30px;
+  border-radius: 12px;
 `;
 const Logout = styled.div`
   width: 85%;
