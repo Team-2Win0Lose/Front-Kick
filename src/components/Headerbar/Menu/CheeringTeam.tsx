@@ -63,6 +63,7 @@ const FlexContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 12px;
 `;
 const VerticalContainer = styled.div`
   display: flex;
@@ -81,6 +82,7 @@ const ColorContainer1 = styled.div<{ teamcolor: string }>`
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 12px 0 0 12px;
 `;
 const ColorContainer2 = styled.div<{ teamcolor: string }>`
   position: absolute;
@@ -95,6 +97,7 @@ const ColorContainer2 = styled.div<{ teamcolor: string }>`
   height: 100%;
   left: 40%;
   background-color: ${(props) => props.teamcolor || '#FFFFFF'};
+  border-radius: 0 12px 12px 0;
 `;
 const Current = styled.div`
   display: flex;

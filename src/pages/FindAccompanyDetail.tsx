@@ -11,6 +11,9 @@ import {
 import { convertStringToArray, cutData } from '@/util/compareDate';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/app/store';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import { getCookie } from '@/util/cookieFn';
 const token = getCookie('token');
 const headers = {
@@ -44,17 +47,23 @@ const FindAccompanyDetail = () => {
   const tagList = recruitDetailData?.tagList as string;
 
   const applyBtnClick = async () => {
-    if (recruitDetailData?.hostId !== id) {
-      const res = await fetch(
-        `${BASE_URL}/api/recruitment/?recruitment_board_id=${recruitment_board_id}`,
-        {
-          method: 'PATCH',
-          headers: headers,
-        },
-      );
-      const data = await res.json();
-      alert(data.message);
-      navigate('/');
+    try {
+      if (recruitDetailData?.hostId !== id) {
+        const res = await fetch(
+          `${BASE_URL}/api/recruitment/?recruitment_board_id=${recruitment_board_id}`,
+          {
+            method: 'PATCH',
+            headers: headers,
+          },
+        );
+        const data = await res.json();
+        if (data) {
+          toast.success('🤝 동행 신청 완료!');
+          navigate('/');
+        }
+      }
+    } catch (Error) {
+      toast.error('동행 신청 실패!');
     }
   };
   return (
@@ -149,7 +158,15 @@ const FindAccompanyDetail = () => {
         </CardInfo>
       </Box>
       <Content>{recruitDetailData?.content}</Content>
-      <ApplyBtn onClick={() => applyBtnClick()}>신청</ApplyBtn>
+      {id ? (
+        <ApplyBtn onClick={() => applyBtnClick()}>신청</ApplyBtn>
+      ) : (
+        <div>
+          <ApplyBtn onClick={() => toast.warning('로그인을 해주세요!')}>
+            신청
+          </ApplyBtn>
+        </div>
+      )}
     </Form>
   );
 };

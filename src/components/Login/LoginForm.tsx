@@ -1,11 +1,12 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { useForm, SubmitErrorHandler, SubmitHandler } from 'react-hook-form';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useForm, SubmitHandler } from 'react-hook-form';
+import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { login } from '@/lib/api';
 import { setCookie } from '@/util/cookieFn';
 import { useDispatch, useSelector } from 'react-redux';
 import { autoCheck, setUser } from '@/feature/authSlice';
+import { toast } from 'react-toastify';
 
 interface FormValue {
   email: string;
@@ -18,6 +19,7 @@ const LoginForm = (props: any) => {
   const isLogin = useSelector((state: autoCheck) => state.auth.isAuthenticated);
   useEffect(() => {
     if (isLogin) {
+      toast.info('이미 로그인 된 상태입니다.');
       navigate('/');
     }
   }, [isLogin]);
@@ -47,7 +49,11 @@ const LoginForm = (props: any) => {
             }),
           );
           if (res.token.access) {
+            toast.success('로그인 성공!');
             setCookie('token', `${res.token.access}`, {
+              path: '/',
+            });
+            setCookie('refresh', `${res.token.refresh}`, {
               path: '/',
             });
           }
@@ -56,7 +62,7 @@ const LoginForm = (props: any) => {
         console.log('res is undefined');
       }
     } catch (error) {
-      console.error(error);
+      toast.error('로그인 실패!');
     }
   };
 
