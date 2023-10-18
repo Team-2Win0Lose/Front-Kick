@@ -18,3 +18,11 @@ export const convertStringToArray = (tag: string) => {
     return parts;
   }
 };
+
+export const cutData = (date: string | undefined) => {
+  if (date !== undefined) {
+    const yyyymmdd = date.slice(0, 10);
+    const time = date.slice(11, 16);
+    return `${yyyymmdd} ${time}`;
+  }
+};

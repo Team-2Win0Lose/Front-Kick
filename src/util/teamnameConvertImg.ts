@@ -37,6 +37,45 @@ export const teamnameConvertImg = (teamname: string) => {
       return 'https://kickstorage.blob.core.windows.net/logo/fc_seoul.svg';
   }
 };
+export const teamnametoFullname = (teamname: string) => {
+  switch (teamname) {
+    case '강원':
+      return '강원FC';
+
+    case '광주':
+      return '광주FC';
+
+    case '대구':
+      return '대구FC';
+
+    case '대전':
+      return '대전하나시티즌';
+
+    case '수원':
+      return '수원삼성블루윙즈';
+
+    case '수원FC':
+      return '수원FC';
+
+    case '울산':
+      return '울산현대';
+
+    case '인천':
+      return '인천유나이티드';
+
+    case '전북':
+      return '전북현대모터스';
+
+    case '제주':
+      return '제주유나이티드';
+
+    case '포항':
+      return '포항스틸러스';
+
+    case '서울':
+      return 'FC서울';
+  }
+};
 export const teamidConvertImg = (teamId: number) => {
   switch (teamId) {
     case 1:

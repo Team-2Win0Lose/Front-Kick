@@ -149,26 +149,26 @@ export interface Profile {
   };
 }
 export interface cardData {
-  addr1: string;
-  addr2: string;
-  areacode: string;
-  booktour: string;
-  cat1: string;
-  cat2: string;
-  cat3: string;
-  contentid: string;
-  contenttypeid: string;
-  createdtime: string;
-  dist: string;
+  addr1?: string;
+  addr2?: string;
+  areacode?: string;
+  booktour?: string;
+  cat1?: string;
+  cat2?: string;
+  cat3?: string;
+  content_id: string;
+  contenttypeid?: string;
+  createdtime?: string;
+  dist?: string;
   firstimage: string;
-  firstimage2: string;
-  cpyrhtDivCd: string;
-  mapx: string;
-  mapy: string;
-  mlevel: string;
-  modifiedtime: string;
-  sigungucode: string;
-  tel: string;
+  firstimage2?: string;
+  cpyrhtDivCd?: string;
+  mapx?: string;
+  mapy?: string;
+  mlevel?: string;
+  modifiedtime?: string;
+  sigungucode?: string;
+  tel?: string;
   title: string;
 }
 export interface cardList {
@@ -180,8 +180,8 @@ export interface tourCardList {
   accommodation: Interface[];
 }
 
-interface Interface {
+export interface Interface {
   title: string;
-  contentid: string;
+  content_id: string;
   firstimage: string;
 }
