@@ -62,7 +62,7 @@ const RequestCard = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 20px;
+  gap: 10px;
 `;
 const Profile = styled.div`
   display: flex;
@@ -71,8 +71,8 @@ const Profile = styled.div`
   gap: 5px;
 `;
 const ProfileImg = styled.div`
-  width: 29px;
-  height: 29px;
+  width: 25px;
+  height: 25px;
   border-radius: 100%;
   background-color: #898989;
 `;
@@ -80,9 +80,9 @@ const Name = styled.div`
   display: flex;
   justify-content: center;
   align-content: center;
-  width: 100px;
+  width: 80px;
   max-height: 34px;
-  padding: 8px 20px;
+  padding: 8px 15px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -92,7 +92,7 @@ const Name = styled.div`
 `;
 const Agree = styled.div`
   padding: 8px 20px;
-  font-size: 12px;
+  font-size: 9px;
   color: white;
   border: none;
   border-radius: 12px;
@@ -107,7 +107,7 @@ const Disagree = styled.div`
   background-color: #f25a5a;
 `;
 const Btn = styled.div`
-  width: 130px;
+  width: 100px;
   display: flex;
   justify-content: center;
   align-items: center;

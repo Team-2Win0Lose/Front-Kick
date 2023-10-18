@@ -21,7 +21,7 @@ const headers = {
 type Props = {};
 
 const Main = (props: Props) => {
-  const [accompanyList, setaccompanyList] = useState([]);
+  const [accompanyList, setaccompanyList] = useState<AccompanyPostReal[]>([]);
 
   const isLogin = useSelector((state: autoCheck) => state.auth.isAuthenticated);
   useEffect(() => {

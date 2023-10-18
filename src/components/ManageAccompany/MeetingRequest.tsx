@@ -42,7 +42,7 @@ const MeetingRequest: React.FC = () => {
     // Handle reject logic here
   };
   return (
-    <Container>
+    <AcceptContainer>
       <h1>
         동행 신청 인원 {acceptedRequests.length}/4 예약 인원{' '}
         {meetingRequests.length}
@@ -52,16 +52,16 @@ const MeetingRequest: React.FC = () => {
         onAccept={handleAccept}
         onReject={handleReject}
       />
-    </Container>
+    </AcceptContainer>
   );
 };
-const Container = styled.div`
+const AcceptContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
   border: 1px solid black;
-  padding: 15px 15px;
+  padding: 10px 10px;
   border-radius: 12px;
   width: 100%;
 `;
