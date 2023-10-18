@@ -256,4 +256,8 @@ const RegisterBtn = styled.div`
   margin-top: 50px;
   margin-bottom: 100px;
   color: #ffffff;
+  ${customMedia.lessThan('mobile')`
+    margin-top: 20px;
+    margin-bottom: 50px;
+	`}
 `;
