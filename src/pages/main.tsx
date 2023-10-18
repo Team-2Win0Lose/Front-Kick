@@ -123,6 +123,9 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   padding: 10px 0;
+  ${customMedia.lessThan('mobile')`
+
+	`}
 `;
 
 const P = styled.div`
@@ -159,7 +162,6 @@ const Title = styled.div`
   padding: 20px;
   ${customMedia.lessThan('mobile')`
 		font-size: 20px;
-    border: 1px;
 	`}
 `;
 
@@ -170,7 +172,6 @@ const RatingTitle = styled.div`
   color: white;
   ${customMedia.lessThan('mobile')`
 		font-size: 20px;
-    border: 1px;
 	`}
 `;
 

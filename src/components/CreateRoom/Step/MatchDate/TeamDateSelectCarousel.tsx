@@ -157,6 +157,13 @@ const CustomSlider = styled(Slider)`
     margin-right: 20%;
   }
 
+  .slick-prev{
+    left: 12px;
+  }
+  .slick-next{
+    right: 12px;
+  }
+
   ${customMedia.lessThan('mobile')`
     font-size: 12px;
 	`}
