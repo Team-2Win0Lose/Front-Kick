@@ -25,13 +25,12 @@ const GlobalStyle = createGlobalStyle`
     }
   }
   
-
   body{
     margin:0;
     padding:0;
   }
 
-  @media only screen and (min-width: 768px) {
+  /* @media only screen and (min-width: 768px) {
   body {
     font-family: "Line", sans-serif;
 
@@ -41,7 +40,7 @@ const GlobalStyle = createGlobalStyle`
       margin: 0 auto;
       padding: 0 10px;;
     }
-}
+} */
 `;
 
 export default GlobalStyle;

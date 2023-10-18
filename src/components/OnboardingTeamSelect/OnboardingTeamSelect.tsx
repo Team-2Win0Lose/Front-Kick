@@ -83,7 +83,7 @@ const OnboardingTeamSelect = () => {
       <CustomSlider {...settings}>
         {sortedItems.map((item, index) => (
           index !== 12 && (
-          <div key={index}>
+          <DIV2 key={index} isSelected={selectedTeam === item.original_team_name}>
             <BoxWrapper key={index}>
               <Box onClick={() => handleBoxClick(item.original_team_name)}>
                 <FlexContainer>
@@ -94,7 +94,7 @@ const OnboardingTeamSelect = () => {
             <NameWrapper>
               <Name>{item.team_name}</Name>
             </NameWrapper>
-          </div>
+          </DIV2>
           )
         ))}
       </CustomSlider>
@@ -132,7 +132,27 @@ const CustomSlider = styled(Slider)`
   .slick-slide > div {
     margin-right: 20%;
   }
+
+  .slick-prev{
+    left: 12px;
+  }
+  .slick-next{
+    right: 12px;
+  }
 `;
+
+interface BoxProps {
+  isSelected?: boolean;
+}
+
+const DIV2 = styled.div<BoxProps>`
+  display: flex;
+  width: 100%;
+  height: 100%;
+  background-color: ${(props) =>
+    props.isSelected ? '#49496d' : 'transparent'};
+`;
+
 const CarouselContainer = styled.div`
   display: flex;
   flex-direction: column;
