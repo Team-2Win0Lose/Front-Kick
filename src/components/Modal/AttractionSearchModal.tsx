@@ -62,9 +62,9 @@ const AttractionSearchModal = (props: Props) => {
     getRecommendList();
   }, [getRecommendList]);
   const dispatch = useDispatch();
-  const [selectedItems, setSelectedItems] = useState<cardItem[]>([]);
+  const [selectedItems, setSelectedItems] = useState<cardData[]>([]);
 
-  const handleCheckboxChange = (item: cardItem) => {
+  const handleCheckboxChange = (item: cardData) => {
     // 이미 선택된 아이템인지 확인 후 추가하거나 제거
     if (
       selectedItems.some((selectedItem) => selectedItem.title === item.title)

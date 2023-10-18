@@ -62,17 +62,17 @@ const StepHeader = () => {
 
   const tourCardIdList: tourCardList = {
     accommodation: accommodation.map((item) => ({
-      contentid: item.contentid,
+      content_id: item.content_id,
       title: item.title,
       firstimage: item.firstimage,
     })),
     restaurant: restaurant.map((item) => ({
-      contentid: item.contentid,
+      content_id: item.content_id,
       title: item.title,
       firstimage: item.firstimage,
     })),
     attraction: attraction.map((item) => ({
-      contentid: item.contentid,
+      content_id: item.content_id,
       title: item.title,
       firstimage: item.firstimage,
     })),
