@@ -12,7 +12,9 @@ export const compareDate = (date1: string, date2: string): boolean => {
 };
 
 export const convertStringToArray = (tag: string) => {
-  const parts = tag.split(',');
+  if (tag !== undefined) {
+    const parts = tag.split(',');
 
-  return parts;
+    return parts;
+  }
 };

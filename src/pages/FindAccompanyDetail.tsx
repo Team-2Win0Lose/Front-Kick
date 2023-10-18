@@ -34,7 +34,7 @@ const FindAccompanyDetail = () => {
     fetchData();
   }, []);
   const tagList = recruitDetailData?.tagList as string;
-  // console.log(tagList);
+  console.log(tagList);
 
   return (
     <Form>
@@ -97,7 +97,7 @@ const FindAccompanyDetail = () => {
       <Box>
         <TitleText>🔥 태그 정보</TitleText>
         <TagInfo>
-          {convertStringToArray(tagList).map((tagItem: any, index: number) => (
+          {convertStringToArray(tagList)?.map((tagItem: any, index: number) => (
             <TagWrapper key={index}>{tagItem}</TagWrapper>
           ))}
         </TagInfo>
