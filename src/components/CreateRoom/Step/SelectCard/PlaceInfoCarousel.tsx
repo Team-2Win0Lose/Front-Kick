@@ -19,7 +19,7 @@ export interface cardItem {
   firstimage: string;
   title: string;
   addr1: string;
-  contentid: string;
+  content_id: string;
 }
 type Props = {
   index: number;
