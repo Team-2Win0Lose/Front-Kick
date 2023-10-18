@@ -1,4 +1,4 @@
-import{s as t,a as e}from"../../vendor-032019a3.js";const a=s=>e(i,{children:e(n,{children:e(o,{src:"/assets/LogoTotal.svg",alt:"logo"})})}),i=t.div`
+import{s as t,a as e}from"../../vendor-3ed0bc3f.js";const a=s=>e(i,{children:e(n,{children:e(o,{src:"/assets/LogoTotal.svg",alt:"logo"})})}),i=t.div`
   margin-top: 50px;
   width: 175px;
   height: 160px;

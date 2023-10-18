@@ -1,4 +1,4 @@
-import{m as o,j as t,a as n,s as e}from"./vendor-032019a3.js";const g=f=>{const i=o();return t(r,{children:[n(s,{children:n(c,{children:"이메일 확인"})}),t(l,{children:[n(d,{children:"footballjoa123@naver.com"}),t(a,{children:[n(p,{onClick:()=>{i(-1)},children:"뒤로가기"}),n(x,{onClick:()=>{i("/find/password")},children:"비밀번호 변경"})]})]})]})},r=e.form`
+import{m as o,j as t,a as n,s as e}from"./vendor-3ed0bc3f.js";const g=f=>{const i=o();return t(r,{children:[n(s,{children:n(c,{children:"이메일 확인"})}),t(l,{children:[n(d,{children:"footballjoa123@naver.com"}),t(a,{children:[n(p,{onClick:()=>{i(-1)},children:"뒤로가기"}),n(x,{onClick:()=>{i("/find/password")},children:"비밀번호 변경"})]})]})]})},r=e.form`
   margin-top: 140px;
   display: flex;
   flex-direction: column;

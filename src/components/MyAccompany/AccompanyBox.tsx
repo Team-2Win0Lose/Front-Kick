@@ -51,7 +51,7 @@ type Props = {
     createdDate: string;
     publishedDate: string | null;
     nowHeadCount: number;
-    applingUserIdList: string;
+    applyingUserIdList: string;
     appliedUserIdList: string;
   };
 };
