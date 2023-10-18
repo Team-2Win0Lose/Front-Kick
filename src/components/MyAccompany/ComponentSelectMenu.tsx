@@ -17,7 +17,7 @@ const ComponentSelectMenu = (props: Props) => {
           setcomponentPage(1), props.handleAccompanyComponent(1);
         }}
       >
-        <Text>내가 모집한 동행</Text>
+        <Text1 page={componentPage}>내가 모집한 동행</Text1>
       </Box1>
       <Box2
         page={componentPage}
@@ -25,7 +25,7 @@ const ComponentSelectMenu = (props: Props) => {
           setcomponentPage(2), props.handleAccompanyComponent(2);
         }}
       >
-        <Text>내가 신청한 동행</Text>
+        <Text2 page={componentPage}>내가 신청한 동행</Text2>
       </Box2>
     </Container>
   );
@@ -34,7 +34,7 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #d9d9d9;
+  background-color: #1f1f45;
   padding: 2px 3px;
 `;
 const Box1 = styled.div<PageProps>`
@@ -44,7 +44,7 @@ const Box1 = styled.div<PageProps>`
   width: 105px;
   height: 25px;
   padding: 2px 5px;
-  background-color: ${(props) => (props.page === 1 ? '#fff' : '#d9d9d9')};
+  background-color: ${(props) => (props.page === 1 ? '#1f1f45' : 'white')};
 `;
 const Box2 = styled.div<PageProps>`
   display: flex;
@@ -53,10 +53,15 @@ const Box2 = styled.div<PageProps>`
   width: 105px;
   height: 25px;
   padding: 2px 5px;
-  background-color: ${(props) => (props.page === 1 ? '#d9d9d9' : '#fff')};
+  background-color: ${(props) => (props.page === 1 ? 'white' : '#1f1f45')};
 `;
-const Text = styled.p`
-  color: black;
+const Text1 = styled.p<PageProps>`
+  color: ${(props) => (props.page === 1 ? 'white' : 'black')};
+  font-weight: bold;
+  font-size: 14px;
+`;
+const Text2 = styled.p<PageProps>`
+  color: ${(props) => (props.page === 1 ? 'black' : 'white')};
   font-weight: bold;
   font-size: 14px;
 `;

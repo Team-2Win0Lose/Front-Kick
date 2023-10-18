@@ -464,7 +464,7 @@ const Button = styled.button`
 `;
 
 const ListContainer = styled.div`
-  margin: 0 auto;
+  margin: 20px auto 0;
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* 4열로 배치 */
   justify-content: center;
