@@ -1,6 +1,6 @@
 import PlaceCard from '@/components/CreateRoom/Step/SelectCard/PlaceCard';
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { AccompanyPostReal } from '@/lib/interface';
 import { BASE_URL } from '@/config';
@@ -17,6 +17,7 @@ const headers = {
   Authorization: `Bearer ${token}`,
 };
 const FindAccompanyDetail = () => {
+  const navigate = useNavigate();
   const id = useSelector((state: RootState) => state.auth.id);
   const [recruitDetailData, setrecruitDetailData] =
     useState<AccompanyPostReal>();
@@ -53,6 +54,7 @@ const FindAccompanyDetail = () => {
       );
       const data = await res.json();
       alert(data.message);
+      navigate('/');
     }
   };
   return (
