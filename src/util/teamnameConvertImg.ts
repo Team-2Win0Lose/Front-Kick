@@ -110,3 +110,72 @@ export const teamnameConvertteamId = (teamname: string) => {
       return 6;
   }
 };
+
+export const teamidConvertStadium = (teamId: number | undefined) => {
+  switch (teamId) {
+    case 1:
+      return '강릉종합경기장';
+
+    case 2:
+      return '광주축구전용구장';
+
+    case 3:
+      return 'DGB대구은행파크';
+
+    case 4:
+      return '대전월드컵경기장';
+
+    case 5:
+      return '수원월드컵경기장';
+    case 6:
+      return '서울월드컵경기장';
+    case 7:
+      return '포항스틸야드';
+
+    case 8:
+      return '제주월드컵경기장';
+    case 9:
+      return '인천축구전용경기장';
+    case 10:
+      return '울산문수축구경기장';
+    case 11:
+      return '수원종합운동장';
+
+    case 12:
+      return '전주월드컵경기장';
+  }
+};
+export const teamidConverttoTeamName = (teamId: number | undefined) => {
+  switch (teamId) {
+    case 1:
+      return '강원FC';
+
+    case 2:
+      return '광주FC';
+
+    case 3:
+      return '대구FC';
+
+    case 4:
+      return '대전하나시티즌';
+
+    case 5:
+      return '수원월삼성블루윙즈';
+    case 6:
+      return 'FC서울';
+    case 7:
+      return '포항스틸러스';
+
+    case 8:
+      return '제주유나이티드';
+    case 9:
+      return '인천유나이티드';
+    case 10:
+      return '울산현대';
+    case 11:
+      return '수원FC';
+
+    case 12:
+      return '전북현대모터스';
+  }
+};

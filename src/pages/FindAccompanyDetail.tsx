@@ -2,39 +2,68 @@ import PlaceCard from '@/components/CreateRoom/Step/SelectCard/PlaceCard';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
-import { getAccompanyDetail } from '@/lib/api';
 import { AccompanyPostReal } from '@/lib/interface';
+import { BASE_URL } from '@/config';
+import {
+  teamidConvertStadium,
+  teamidConverttoTeamName,
+} from '@/util/teamnameConvertImg';
+import { convertStringToArray } from '@/util/compareDate';
 
 const FindAccompanyDetail = () => {
-  const { postId } = useParams() as { postId: string };
+  const [recruitDetailData, setrecruitDetailData] =
+    useState<AccompanyPostReal>();
+  const { recruitment_board_id } = useParams() as {
+    recruitment_board_id: string;
+  };
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const res = await fetch(
+          `${BASE_URL}/api/recruitment/?recruitment_board_id=${recruitment_board_id}`,
+          {
+            method: 'get',
+          },
+        );
+        const data = await res.json();
+        setrecruitDetailData(data);
+      } catch (Error) {
+        console.error('Error:', Error);
+      }
+    }
+    fetchData();
+  }, []);
+  const tagList = recruitDetailData?.tagList as string;
+  // console.log(tagList);
 
   return (
     <Form>
-      {/* <ImgBox>
+      <ImgBox>
         <IMG
-          src={accompany.data.data.img}
+          src={recruitDetailData?.thumbnail}
           alt='선택한 배경 사진이 없습니다.(No Image)'
         />
       </ImgBox>
-
-      <Title>{accompany.data.data.title}</Title>
-
+      <Title>{recruitDetailData?.title}</Title>
       <Box>
         <TitleText>🔥 매치 정보</TitleText>
         <MatchInfo>
           <FlexContainer>
             <FlexContainerLeft>
               <FlexText>
-                <FlexItem>{accompany.data.data.date}</FlexItem>
+                <FlexItem>{recruitDetailData?.createdDate}</FlexItem>
               </FlexText>
               <FlexText>
-                <FlexItem>{accompany.data.data.stadium}</FlexItem>
+                <FlexItem>
+                  {teamidConvertStadium(recruitDetailData?.TeamId)}
+                </FlexItem>
               </FlexText>
             </FlexContainerLeft>
             <FlexContainerRight>
               <Text>
                 {' '}
-                {accompany.data.data.homename} vs {accompany.data.data.awayname}{' '}
+                {teamidConverttoTeamName(recruitDetailData?.TeamId)} vs{' '}
+                {recruitDetailData?.opponentTeamId}{' '}
               </Text>
             </FlexContainerRight>
           </FlexContainer>
@@ -49,26 +78,26 @@ const FindAccompanyDetail = () => {
                 <Text>희망 인원 </Text>
                 <Text>
                   {' '}
-                  {accompany.data.data.minNum} ~ {accompany.data.data.maxNum} 명
+                  {recruitDetailData?.minNum} ~ {recruitDetailData?.maxNum} 명
                 </Text>
               </FlexText>
             </FlexContainerLeft>
             <FlexContainerRight>
               <Text>
                 {' '}
-                동행 장소 {accompany.data.data.meetingPlace}{' '}
-                {accompany.data.detailMeetingPlace}
+                동행 장소 {recruitDetailData?.meetingPlace}{' '}
+                {recruitDetailData?.detailMeetingPlace}
               </Text>
-              <Text> 동행 기간 {accompany.data.data.term} </Text>
+              <Text> 동행 기간 {recruitDetailData?.term} </Text>
             </FlexContainerRight>
           </FlexContainer>
         </JoinInfo>
       </Box>
-
-\      <Box>
+      \{' '}
+      <Box>
         <TitleText>🔥 태그 정보</TitleText>
         <TagInfo>
-          {accompany.data.data.tag.map((tagItem: any, index: number) => (
+          {convertStringToArray(tagList).map((tagItem: any, index: number) => (
             <TagWrapper key={index}>{tagItem}</TagWrapper>
           ))}
         </TagInfo>
@@ -77,14 +106,14 @@ const FindAccompanyDetail = () => {
         <TitleText>🔥 카드 정보</TitleText>
         <CardInfo>
           <ScrollContainer>
-            <CardContainer>
-              {accompany.data.data.cardInfo.house.length > 0 && (
+            {/* <CardContainer>
+              {recruitDetailData?.tourCardIdList.accommodation.map((item) => (
                 <PlaceCard
-                  index={0}
-                  ischk={false}
-                  list={accompany.data.data.cardInfo.house}
-                />
-              )}
+                index={0}
+                ischk={false}
+                list={accompany.data.data.cardInfo.house}
+              />
+              ))}
               {accompany.data.data.cardInfo.food.length > 0 && (
                 <PlaceCard
                   index={1}
@@ -99,11 +128,11 @@ const FindAccompanyDetail = () => {
                   list={accompany.data.data.cardInfo.attraction}
                 />
               )}
-            </CardContainer>
+            </CardContainer> */}
           </ScrollContainer>
         </CardInfo>
       </Box>
-      <Content>{accompany.data.data.content}</Content> */}
+      <Content>{recruitDetailData?.content}</Content>
     </Form>
   );
 };

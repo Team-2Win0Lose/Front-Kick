@@ -80,7 +80,7 @@ const MultiFilter = (props: Props) => {
     const queryString = clickedCheckList
       .map(({ id, sort_type }) => {
         if (sort_type === 'home_team') {
-          return `${sort_type}_id=${id + 1}`;
+          return `team_id=${id + 1}`;
         }
         if (sort_type === 'recruit') {
           return `now_status=${nowRecruitState}`;

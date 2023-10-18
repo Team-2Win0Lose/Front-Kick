@@ -1,4 +1,4 @@
-import{s as t,a as e,j as n,u as b,f as c,b as w,O as v}from"./vendor-6e44eb02.js";import{S as u}from"./react-slick-bbe54c8b.js";/* empty css                       */import{c as i,t as y}from"./common-feb29b35.js";import F from"./FindAccompany-0ddc816f.js";const T=()=>e(z,{className:"carousel",children:n(u,{...{dots:!0,autoplay:!0,Infinite:!0,slidesToshow:1,slidesToscroll:1,swipeToslide:!0,autoplaySpeed:3e3,speed:500},children:[e(p,{children:e(x,{children:e(h,{src:"/assets/banner3.png",alt:"logo"})})}),e(p,{children:e(x,{children:e(h,{src:"/assets/banner2.png",alt:"logo"})})}),e(p,{children:e(x,{children:e(h,{src:"/assets/banner1.png",alt:"logo"})})})]})}),p=t.div`
+import{s as t,a as e,j as n,u as b,f as c,b as w,O as v}from"./vendor-6e44eb02.js";import{S as u}from"./react-slick-bbe54c8b.js";/* empty css                       */import{c as i,t as y}from"./common-96e4c6f2.js";import F from"./FindAccompany-4f198899.js";import"./shared/FindAccompanyDetail/main-7b65b9c7.js";const T=()=>e(z,{className:"carousel",children:n(u,{...{dots:!0,autoplay:!0,Infinite:!0,slidesToshow:1,slidesToscroll:1,swipeToslide:!0,autoplaySpeed:3e3,speed:500},children:[e(p,{children:e(x,{children:e(h,{src:"/assets/banner3.png",alt:"logo"})})}),e(p,{children:e(x,{children:e(h,{src:"/assets/banner2.png",alt:"logo"})})}),e(p,{children:e(x,{children:e(h,{src:"/assets/banner1.png",alt:"logo"})})})]})}),p=t.div`
   width: 100%;
   display: flex;
   justify-content: center;
@@ -194,7 +194,7 @@ import{s as t,a as e,j as n,u as b,f as c,b as w,O as v}from"./vendor-6e44eb02.j
   z-index: 999;
   cursor: pointer;
   font-size: 24px;
-`,ie=r=>{const a=w(l=>l.auth.isAuthenticated);return n("div",{children:[a?n(E,{children:[e(Y,{children:"👋 현재 나의 동행일정 (0)"}),e(q,{children:e(O,{children:"예정 중인 동행이 없어요 🥲"})})]}):e(v,{}),e(P,{children:e(T,{})}),n(L,{children:[e(J,{children:"🏆 구단별 응원순위"}),e(Q,{children:"구단별 모집이 완료된 동행팀 수"}),e(j,{})]}),n(V,{children:[e(H,{children:"🙋‍♂️ 동행 구경하기"}),e(K,{children:"나의 동행을 찾아보세요!"}),e(F,{})]})]})},E=t.div`
+`,ne=r=>{const a=w(l=>l.auth.isAuthenticated);return n("div",{children:[a?n(E,{children:[e(Y,{children:"👋 현재 나의 동행일정 (0)"}),e(q,{children:e(O,{children:"예정 중인 동행이 없어요 🥲"})})]}):e(v,{}),e(P,{children:e(T,{})}),n(L,{children:[e(J,{children:"🏆 구단별 응원순위"}),e(Q,{children:"구단별 모집이 완료된 동행팀 수"}),e(j,{})]}),n(V,{children:[e(H,{children:"🙋‍♂️ 동행 구경하기"}),e(K,{children:"나의 동행을 찾아보세요!"}),e(F,{})]})]})},E=t.div`
   margin-bottom:30px;
 `,L=t.div`
   background-color:#1F1F45;
@@ -257,4 +257,4 @@ import{s as t,a as e,j as n,u as b,f as c,b as w,O as v}from"./vendor-6e44eb02.j
   margin-left: 20px;
   margin-bottom: 30px;
   color: white;
-`;export{ie as default};
+`;export{ne as default};
