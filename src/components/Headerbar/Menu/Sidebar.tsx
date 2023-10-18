@@ -9,6 +9,7 @@ import axios from 'axios';
 import { RootState } from '@/app/store';
 import { BASE_URL } from '@/config';
 import CheeringTeam from './CheeringTeam';
+import { customMedia } from '@/util/GlobalStyle';
 function Sidebar({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: any }) {
   const outside = useRef<any>();
   const [profileData, setprofileData] = useState() as any;
@@ -150,12 +151,19 @@ const SideBarWrap = styled.div`
     right: 0;
     transition: 0.5s ease;
   }
+  ${customMedia.lessThan('mobile')`
+    width:55%;
+    right:-55%;
+	`}
 `;
 
 const Menu = styled.li`
   margin: 15px 0px;
   font-size: 1rem;
   color: #ffffff;
+  ${customMedia.lessThan('mobile')`
+    margin: 10px 0px;
+	`}
 `;
 
 const DIV = styled.div`

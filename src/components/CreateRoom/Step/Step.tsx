@@ -18,6 +18,7 @@ import { removeAll } from '@/feature/SelectedItemsSlice';
 import { removeSummary } from '@/feature/SummarySlice';
 import { postAccompany } from '@/feature/fetchSlice';
 import { tourCardList } from '@/lib/interface';
+import { customMedia } from '@/util/GlobalStyle';
 const StepHeader = () => {
   const [check, setcheck] = useState(false);
   const navigate = useNavigate();
@@ -184,6 +185,9 @@ const RoomTitle = styled.h1`
   color: #000;
   font-size: 30px;
   font-weight: bold;
+  ${customMedia.lessThan('mobile')`
+		font-size: 20px;
+	`}
 `;
 
 const DIV = styled.div`
@@ -202,6 +206,10 @@ const BackIcon = styled(IoIosArrowBack)`
   width: 30px;
   height: 30px;
   color: #000000;
+  ${customMedia.lessThan('mobile')`
+		width:25px;
+    height:25px;
+	`}
 `;
 
 const CloseIcon = styled(AiOutlineClose)`
@@ -210,6 +218,10 @@ const CloseIcon = styled(AiOutlineClose)`
   color: #000000;
   justify-content: right;
   align-items: right;
+  ${customMedia.lessThan('mobile')`
+		width:25px;
+    height:25px;
+	`}
 `;
 
 const Form = styled.div`

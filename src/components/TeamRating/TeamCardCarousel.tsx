@@ -271,7 +271,7 @@ const FlexText = styled.div`
   padding: 5px;
   align-items: center;
   justify-content: space-between;
-    ${customMedia.lessThan('tablet')`
+  ${customMedia.lessThan('tablet')`
 		width: 100%;
 	`}
   ${customMedia.lessThan('mobile')`
