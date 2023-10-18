@@ -93,7 +93,7 @@ export const RouterInfo = [
         label: 'FindAccompany',
       },
       {
-        path: '/findaccompany/detail/:postId',
+        path: '/findaccompany/detail/:recruitment_board_id',
         element: <AccompanyDetail />,
         label: 'FindAccompanyDetail',
       },

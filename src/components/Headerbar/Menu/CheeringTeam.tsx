@@ -1,3 +1,4 @@
+import { teamnametoFullname } from '@/util/teamnameConvertImg';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -20,14 +21,13 @@ const CheeringTeam = (props: Props) => {
           <Img src={props.logo_img_url} alt={props.original_team_name} />
         </ColorContainer1>
         <ColorContainer2 teamcolor={props.team_color_sub}>
-          <Title>{props.original_team_name}</Title>
-          <div>{props.follower}</div>
-          <div>{props.recruit_ing}</div>
-          
+          <Title>{teamnametoFullname(props.original_team_name)}</Title>
+          <VerticalContainer>
+            <Team>{props.follower} 팔로워</Team>
+            <Team>{props.recruit_end} 마감된 동행팀</Team>
+            <Team>현재 {props.recruit_ing}팀 동행중</Team>
+          </VerticalContainer>
         </ColorContainer2>
-        <VerticalContainer>
-        {props.recruit_ing}
-        </VerticalContainer>
       </FlexContainer>
     </Form>
   );
@@ -35,12 +35,13 @@ const CheeringTeam = (props: Props) => {
 
 const Title = styled.div`
   font-size: 20px;
-  flex-direction:column;
+  flex-direction: column;
 `;
-
+const Team = styled.p`
+  font-size: 12px;
+`;
 const Form = styled.div`
   position: relative;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -62,14 +63,12 @@ const FlexContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  /* margin-top: 10px; */
 `;
 const VerticalContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-left: 10px;
-  margin-right: 10px;
+  gap: 3px;
 `;
 const ColorContainer1 = styled.div<{ teamcolor: string }>`
   position: absolute;
@@ -86,12 +85,21 @@ const ColorContainer1 = styled.div<{ teamcolor: string }>`
 const ColorContainer2 = styled.div<{ teamcolor: string }>`
   position: absolute;
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
+  gap: 5px;
+  padding: 20px;
   top: 0;
   width: 60%;
   height: 100%;
   left: 40%;
   background-color: ${(props) => props.teamcolor || '#FFFFFF'};
+`;
+const Current = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 `;
 export default CheeringTeam;

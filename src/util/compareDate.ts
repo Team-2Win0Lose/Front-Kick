@@ -12,7 +12,17 @@ export const compareDate = (date1: string, date2: string): boolean => {
 };
 
 export const convertStringToArray = (tag: string) => {
-  const parts = tag.split(',');
+  if (tag !== undefined) {
+    const parts = tag.split(',');
 
-  return parts;
+    return parts;
+  }
+};
+
+export const cutData = (date: string | undefined) => {
+  if (date !== undefined) {
+    const yyyymmdd = date.slice(0, 10);
+    const time = date.slice(11, 16);
+    return `${yyyymmdd} ${time}`;
+  }
 };

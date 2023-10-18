@@ -9,6 +9,7 @@ import axios from 'axios';
 import { RootState } from '@/app/store';
 import { BASE_URL } from '@/config';
 import CheeringTeam from './CheeringTeam';
+import { customMedia } from '@/util/GlobalStyle';
 function Sidebar({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: any }) {
   const outside = useRef<any>();
   const [profileData, setprofileData] = useState() as any;
@@ -39,29 +40,29 @@ function Sidebar({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: any }) {
       toggleSide();
     }
   };
-  const KakaoLogout = () => {
-    axios
-      .post(
-        `https://kapi.kakao.com/v1/user/logout`,
-        {},
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            'Content-type': 'application/x-www-form-urlencoded',
-          },
-        },
-      )
-      .then((res: any) => {
-        console.log(res);
-      })
-      .catch((Error: any) => {
-        console.error(Error);
-      });
-  };
+  // const KakaoLogout = () => {
+  //   axios
+  //     .post(
+  //       `https://kapi.kakao.com/v1/user/logout`,
+  //       {},
+  //       {
+  //         headers: {
+  //           Authorization: `Bearer ${token}`,
+  //           'Content-type': 'application/x-www-form-urlencoded',
+  //         },
+  //       },
+  //     )
+  //     .then((res: any) => {
+  //       console.log(res);
+  //     })
+  //     .catch((Error: any) => {
+  //       console.error(Error);
+  //     });
+  // };
   const toggleSide = () => {
     setIsOpen(false);
   };
-  console.log(profileData);
+  // console.log(profileData);
 
   return isLogin ? (
     <>
@@ -91,7 +92,7 @@ function Sidebar({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: any }) {
             <CheeringTeam
               team_id={profileData?.profile?.cheering_team_id}
               follower={profileData?.cheering_team?.follower}
-              logo_img_url={profileData?.cheering_team?.logo_img_url}
+              logo_img_url={`https://kickstorage.blob.core.windows.net${profileData?.cheering_team?.logo_img_url}`}
               original_team_name={
                 profileData?.cheering_team?.original_team_name
               }
@@ -105,7 +106,7 @@ function Sidebar({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: any }) {
           <Logout>
             <LogoutBtn
               onClick={() => {
-                dispatch(logOutAction()), toggleSide(), KakaoLogout();
+                dispatch(logOutAction()), toggleSide();
               }}
             >
               로그아웃
@@ -137,7 +138,7 @@ function Sidebar({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: any }) {
 export default Sidebar;
 
 const SideBarWrap = styled.div`
-  z-index: 5;
+  z-index: 5000;
   padding: 10px;
   background-color: #1f1f45;
   height: 100%;
@@ -150,12 +151,19 @@ const SideBarWrap = styled.div`
     right: 0;
     transition: 0.5s ease;
   }
+  ${customMedia.lessThan('mobile')`
+    width:55%;
+    right:-55%;
+	`}
 `;
 
 const Menu = styled.li`
   margin: 15px 0px;
   font-size: 1rem;
   color: #ffffff;
+  ${customMedia.lessThan('mobile')`
+    margin: 10px 0px;
+	`}
 `;
 
 const DIV = styled.div`

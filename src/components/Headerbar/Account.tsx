@@ -3,6 +3,7 @@ import { VscAccount } from 'react-icons/vsc';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { autoCheck } from '@/feature/authSlice';
+import { customMedia } from '@/util/GlobalStyle';
 const Account = () => {
   const isLogin = useSelector((state: autoCheck) => state.auth.isAuthenticated);
 
@@ -40,6 +41,9 @@ const P = styled.div`
   align-items: center;
   margin-right: 30px;
   font-size: 20px;
+  ${customMedia.lessThan('mobile')`
+		font-size: 15px;
+	`}
 `;
 
 export default Account;

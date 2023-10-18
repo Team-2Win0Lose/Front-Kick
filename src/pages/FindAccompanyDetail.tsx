@@ -1,40 +1,90 @@
 import PlaceCard from '@/components/CreateRoom/Step/SelectCard/PlaceCard';
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
-import { getAccompanyDetail } from '@/lib/api';
 import { AccompanyPostReal } from '@/lib/interface';
-
+import { BASE_URL } from '@/config';
+import {
+  teamidConvertStadium,
+  teamidConverttoTeamName,
+} from '@/util/teamnameConvertImg';
+import { convertStringToArray, cutData } from '@/util/compareDate';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/app/store';
+import { getCookie } from '@/util/cookieFn';
+const token = getCookie('token');
+const headers = {
+  Authorization: `Bearer ${token}`,
+};
 const FindAccompanyDetail = () => {
-  const { postId } = useParams() as { postId: string };
+  const navigate = useNavigate();
+  const id = useSelector((state: RootState) => state.auth.id);
+  const [recruitDetailData, setrecruitDetailData] =
+    useState<AccompanyPostReal>();
+  const { recruitment_board_id } = useParams() as {
+    recruitment_board_id: string;
+  };
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const res = await fetch(
+          `${BASE_URL}/api/recruitment/?recruitment_board_id=${recruitment_board_id}`,
+          {
+            method: 'get',
+          },
+        );
+        const data = await res.json();
+        setrecruitDetailData(data);
+      } catch (Error) {
+        console.error('Error:', Error);
+      }
+    }
+    fetchData();
+  }, []);
+  const tagList = recruitDetailData?.tagList as string;
 
+  const applyBtnClick = async () => {
+    if (recruitDetailData?.hostId !== id) {
+      const res = await fetch(
+        `${BASE_URL}/api/recruitment/?recruitment_board_id=${recruitment_board_id}`,
+        {
+          method: 'PATCH',
+          headers: headers,
+        },
+      );
+      const data = await res.json();
+      alert(data.message);
+      navigate('/');
+    }
+  };
   return (
     <Form>
-      {/* <ImgBox>
+      <ImgBox>
         <IMG
-          src={accompany.data.data.img}
+          src={recruitDetailData?.thumbnail}
           alt='선택한 배경 사진이 없습니다.(No Image)'
         />
       </ImgBox>
-
-      <Title>{accompany.data.data.title}</Title>
-
+      <Title>{recruitDetailData?.title}</Title>
       <Box>
         <TitleText>🔥 매치 정보</TitleText>
         <MatchInfo>
           <FlexContainer>
             <FlexContainerLeft>
               <FlexText>
-                <FlexItem>{accompany.data.data.date}</FlexItem>
+                <FlexItem>{cutData(recruitDetailData?.createdDate)}</FlexItem>
               </FlexText>
               <FlexText>
-                <FlexItem>{accompany.data.data.stadium}</FlexItem>
+                <FlexItem>
+                  {teamidConvertStadium(recruitDetailData?.TeamId)}
+                </FlexItem>
               </FlexText>
             </FlexContainerLeft>
             <FlexContainerRight>
               <Text>
                 {' '}
-                {accompany.data.data.homename} vs {accompany.data.data.awayname}{' '}
+                {teamidConverttoTeamName(recruitDetailData?.TeamId)} vs{' '}
+                {teamidConverttoTeamName(recruitDetailData?.opponentTeamId)}{' '}
               </Text>
             </FlexContainerRight>
           </FlexContainer>
@@ -49,26 +99,25 @@ const FindAccompanyDetail = () => {
                 <Text>희망 인원 </Text>
                 <Text>
                   {' '}
-                  {accompany.data.data.minNum} ~ {accompany.data.data.maxNum} 명
+                  {recruitDetailData?.minNum} ~ {recruitDetailData?.maxNum} 명
                 </Text>
               </FlexText>
             </FlexContainerLeft>
             <FlexContainerRight>
               <Text>
                 {' '}
-                동행 장소 {accompany.data.data.meetingPlace}{' '}
-                {accompany.data.detailMeetingPlace}
+                동행 장소 {recruitDetailData?.meetingPlace}{' '}
+                {recruitDetailData?.detailMeetingPlace}
               </Text>
-              <Text> 동행 기간 {accompany.data.data.term} </Text>
+              <Text> 동행 기간 {recruitDetailData?.term} </Text>
             </FlexContainerRight>
           </FlexContainer>
         </JoinInfo>
       </Box>
-
-\      <Box>
+      <Box>
         <TitleText>🔥 태그 정보</TitleText>
         <TagInfo>
-          {accompany.data.data.tag.map((tagItem: any, index: number) => (
+          {convertStringToArray(tagList)?.map((tagItem: any, index: number) => (
             <TagWrapper key={index}>{tagItem}</TagWrapper>
           ))}
         </TagInfo>
@@ -78,37 +127,42 @@ const FindAccompanyDetail = () => {
         <CardInfo>
           <ScrollContainer>
             <CardContainer>
-              {accompany.data.data.cardInfo.house.length > 0 && (
-                <PlaceCard
-                  index={0}
-                  ischk={false}
-                  list={accompany.data.data.cardInfo.house}
-                />
-              )}
-              {accompany.data.data.cardInfo.food.length > 0 && (
-                <PlaceCard
-                  index={1}
-                  ischk={false}
-                  list={accompany.data.data.cardInfo.food}
-                />
-              )}
-              {accompany.data.data.cardInfo.attraction.length > 0 && (
-                <PlaceCard
-                  index={2}
-                  ischk={false}
-                  list={accompany.data.data.cardInfo.attraction}
-                />
-              )}
+              <PlaceCard
+                index={0}
+                ischk={false}
+                list={recruitDetailData?.tourCardIdList.accommodation}
+              />
+
+              <PlaceCard
+                index={1}
+                ischk={false}
+                list={recruitDetailData?.tourCardIdList.restaurant}
+              />
+
+              <PlaceCard
+                index={2}
+                ischk={false}
+                list={recruitDetailData?.tourCardIdList.attraction}
+              />
             </CardContainer>
           </ScrollContainer>
         </CardInfo>
       </Box>
-      <Content>{accompany.data.data.content}</Content> */}
+      <Content>{recruitDetailData?.content}</Content>
+      <ApplyBtn onClick={() => applyBtnClick()}>신청</ApplyBtn>
     </Form>
   );
 };
 
 export default FindAccompanyDetail;
+
+const ApplyBtn = styled.div`
+  background-color: #1f1f45;
+  padding: 10px 20px;
+  border-radius: 12px;
+  color: white;
+  cursor: pointer;
+`;
 
 const Form = styled.div`
   margin: 0 auto;
@@ -117,6 +171,7 @@ const Form = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 10px;
 `;
 
 const Box = styled.div`
@@ -144,16 +199,14 @@ const IMG = styled.img`
 `;
 
 const Title = styled.div`
-  justify-content: left;
+  display: flex;
+  justify-content: flex-start;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
+  word-break: break-all;
   width: 300px;
-  padding: 10px;
-  font-size: 25px;
-  /* border: none;
-  outline: none;
-  border-radius: 10px;
-  border: 1px solid #ccc; */
+  height: auto;
+  font-size: 24px;
 `;
 
 const MatchInfo = styled.div`
