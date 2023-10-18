@@ -10,6 +10,9 @@ import { RootState } from '@/app/store';
 import { BASE_URL } from '@/config';
 import CheeringTeam from './CheeringTeam';
 import { customMedia } from '@/util/GlobalStyle';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 function Sidebar({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: any }) {
   const outside = useRef<any>();
   const [profileData, setprofileData] = useState() as any;
@@ -106,7 +109,9 @@ function Sidebar({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: any }) {
           <Logout>
             <LogoutBtn
               onClick={() => {
-                dispatch(logOutAction()), toggleSide();
+                dispatch(logOutAction());
+                toggleSide();
+                toast.info('로그아웃되었습니다.');
               }}
             >
               로그아웃
@@ -152,8 +157,8 @@ const SideBarWrap = styled.div`
     transition: 0.5s ease;
   }
   ${customMedia.lessThan('mobile')`
-    width:55%;
-    right:-55%;
+    width:85%;
+    right:-85%;
 	`}
 `;
 

@@ -1,3 +1,4 @@
+import { customMedia } from '@/util/GlobalStyle';
 import styled from 'styled-components';
 
 type Props = {};
@@ -20,6 +21,7 @@ const Header = styled.div`
   align-items: center;
   justify-content: center;
   gap: 15px;
+  
 `;
 const Logos = styled.div`
   display: flex;
@@ -30,6 +32,10 @@ const Logos = styled.div`
 `;
 const IMG = styled.img`
   margin-right: 10px;
+  ${customMedia.lessThan('mobile')`
+		width:300px;
+    height:300px;
+	`}
 `;
 
 export default LoginHeader;

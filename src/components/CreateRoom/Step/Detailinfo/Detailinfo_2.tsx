@@ -4,6 +4,7 @@ import Thumbnail from './Thumbnail';
 import TitleName from './TitleName';
 import ContentInput from './ContentInput';
 import FilterBox from '@/components/HashTag/FilterBox';
+import { customMedia } from '@/util/GlobalStyle';
 
 type Props = {};
 
@@ -23,8 +24,7 @@ const Detailinfo_2 = (props: Props) => {
 export default Detailinfo_2;
 
 const Form = styled.div`
-  margin: 0 auto;
-  width: 80%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -37,5 +37,8 @@ const SettingBox = styled.div`
   justify-content: center;
   align-items: center;
   margin-top: 10px;
-  width: 100%;
+  width: 30%;
+  ${customMedia.lessThan('mobile')`
+		width:100%;
+	`}
 `;

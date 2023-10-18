@@ -11,6 +11,7 @@ const TeamCardCarousel = () => {
   // const [teamList, setteamList] = useState<GetTeamList>();
   const dispatch = useDispatch();  
 
+
   const [rating, setrating] = useState<
     {
       football_team_id: number;
@@ -40,6 +41,7 @@ const TeamCardCarousel = () => {
   const sortedItems = [...(rating || [])].sort(
     (a, b) => b.recruit_ing - a.recruit_ing,
   );
+  
   const settings = {
     dots: false,
     autoplay: true,
@@ -50,8 +52,29 @@ const TeamCardCarousel = () => {
     autoplaySpeed: 3000,
     speed: 500,
     prevArrow: <PrevArrow>&#8249;</PrevArrow>,
-    nextArrow: <NextArrow>&#8250;</NextArrow>, 
+    nextArrow: <NextArrow>&#8250;</NextArrow>,
+    responsive: [ // 반응형 웹 구현 옵션
+    {  
+      breakpoint: 960, //화면 사이즈 960px
+      settings: {
+        //위에 옵션이 디폴트 , 여기에 추가하면 그걸로 변경
+        slidesToShow:2,
+        slidesToScroll: 2,
+        autoplay: false
+      } 
+    },
+    { 
+      breakpoint: 768, //화면 사이즈 768px
+      settings: {	
+        //위에 옵션이 디폴트 , 여기에 추가하면 그걸로 변경
+        slidesToShow:1,
+        slidesToScroll: 1,
+        autoplay: false
+      } 
+    }
+  ]
   };
+  
   
 
   // // api에서 team 목록 불러오기
@@ -127,6 +150,7 @@ const CustomSlider = styled(Slider)`
   .slick-slide {
   }
 
+
   .slick-list {
     margin-right: -15px;
   }
@@ -156,6 +180,12 @@ const Box = styled.div<BoxProps>`
   margin-left: 5%;
   margin-right: 5%;
   margin-bottom: 20px;
+  ${customMedia.lessThan('mobile')`
+		height: 200px;
+    margin-left:2%;
+    margin-right:2%;
+    margin-bottom: 10px;
+	`}
 `;
 
 const TitleBox = styled.div<BoxProps>`
@@ -168,6 +198,10 @@ const TitleBox = styled.div<BoxProps>`
   background: ${(props) => props.backgroundColor || '#FFFFFF'};
   border-radius: 20px 20px 0 0;
   width: 100%;
+  ${customMedia.lessThan('mobile')`
+		height:60px;
+    padding: 5px;
+	`}
 `;
 
 const Rate = styled.div`
@@ -178,7 +212,8 @@ const Rate = styled.div`
   padding: 3px;
   color: white;
   ${customMedia.lessThan('mobile')`
-		font-size: 20px;
+		font-size: 30px;
+    padding: 2px;
 	`}
   @font-face {
     font-family: 'Giants-Bold';
@@ -206,8 +241,9 @@ const Circle = styled.div`
 	`}
   transform: translate(-50%, -50%);
    ${customMedia.lessThan('mobile')`
-		width: 50px;
-    height: 50px;
+		width: 70px;
+    height: 70px;
+    top: 30%;
 	`}
   
 `
@@ -221,8 +257,8 @@ const IMG = styled.img`
     height: 80px;
 	`}
   ${customMedia.lessThan('mobile')`
-		width:50px;
-    height:50px;
+		width:60px;
+    height:60px;
 	`}
 `;
 
@@ -234,6 +270,7 @@ const Name = styled.div`
   color: white;
   ${customMedia.lessThan('mobile')`
 		font-size: 20px;
+    padding:1px;
 	`}
 `;
 
@@ -243,6 +280,9 @@ const FlexContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  ${customMedia.lessThan('mobile')`
+		padding: 0px;
+	`}
 `;
 
 const FlexContainerRight = styled.div`
@@ -250,6 +290,9 @@ const FlexContainerRight = styled.div`
   flex-direction: column;
   align-items: center;
   margin-top: 70px;
+  ${customMedia.lessThan('mobile')`
+		margin-top: 50px;
+	`}
 `;
 
 const FlexColumnInside = styled.div`
@@ -257,7 +300,6 @@ const FlexColumnInside = styled.div`
   flex-direction: column;
   padding: 20px 0;
    ${customMedia.lessThan('mobile')`
-		padding: 0px;
 	`}
 `;
 
@@ -265,22 +307,18 @@ const FlexItem = styled.div`
   font-size: 20px;
   color: white;
    ${customMedia.lessThan('mobile')`
-		font-size: 10px;
+		font-size: 15px;
 	`}
 `;
 
 const FlexText = styled.div`
   display: flex;
-  width: 230px;
+  width: 100%;
   padding: 5px;
+  gap:40px;
+  font-size:10px;
   align-items: center;
   justify-content: space-between;
-  ${customMedia.lessThan('tablet')`
-		width: 100%;
-	`}
-  ${customMedia.lessThan('mobile')`
-		width: 80%;
-	`}
 `;
 
 const Font = styled.div`

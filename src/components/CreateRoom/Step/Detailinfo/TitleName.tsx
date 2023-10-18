@@ -40,12 +40,13 @@ const StyledInput = styled.div`
   justify-content: center;
   align-items: center;
   margin-bottom: 20px;
+  width:100%;
   
 
   input {
     border-radius: 10px;
     border: 1px solid #ccc;
-    width: 300px; 
+    width: 100%;
     padding: 10px; 
     /* border: none; 
     outline: none;  */

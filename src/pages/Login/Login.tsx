@@ -2,6 +2,7 @@ import LoginHeader from '../../components/Login/LoginHeader';
 import styled from 'styled-components';
 import KakaoForm from '../../components/Login/KakaoForm';
 import { useNavigate } from 'react-router-dom';
+import { customMedia } from '@/util/GlobalStyle';
 type Props = {};
 
 const Login = (props: Props) => {
@@ -48,6 +49,9 @@ const LoginTitle = styled.h1`
   font-weight: 700;
   font-family: 'Noto Sans KR', sans-serif;
   margin-top: 5rem;
+   ${customMedia.lessThan('mobile')`
+		font-size: 20px;
+	`}
 `;
 const EmailLoginBox = styled.div`
   display: flex;
@@ -58,6 +62,9 @@ const EmailLoginBox = styled.div`
   border-radius: 5px;
   background-color: #898989;
   cursor: pointer;
+   ${customMedia.lessThan('mobile')`
+		width: 250px;
+	`}
 `;
 const LoginBox = styled.div`
   margin-top: 20px;

@@ -7,6 +7,7 @@ import { setCookie } from '@/util/cookieFn';
 import { useDispatch, useSelector } from 'react-redux';
 import { autoCheck, setUser } from '@/feature/authSlice';
 import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 interface FormValue {
   email: string;
@@ -19,7 +20,6 @@ const LoginForm = (props: any) => {
   const isLogin = useSelector((state: autoCheck) => state.auth.isAuthenticated);
   useEffect(() => {
     if (isLogin) {
-      toast.info('이미 로그인 된 상태입니다.');
       navigate('/');
     }
   }, [isLogin]);
@@ -117,7 +117,7 @@ const LoginForm = (props: any) => {
 };
 
 const Form = styled.form`
-  margin-top: 75px;
+  margin-top: 100px;
   width: 340px;
   display: flex;
   flex-direction: column;
@@ -168,6 +168,7 @@ const Button = styled.button`
   color: #fff;
   font-weight: 600;
   font-size: 18px;
+  margin: 40px 0;
 `;
 const Small = styled.small`
   color: red;

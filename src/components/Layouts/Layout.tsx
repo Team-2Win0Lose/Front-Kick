@@ -1,6 +1,7 @@
 import Header from './Header';
 import Footer from './Footer';
 import styled from 'styled-components';
+import { customMedia } from '@/util/GlobalStyle';
 
 const Layout = (props: { children: React.ReactNode }) => {
   return (
@@ -19,6 +20,9 @@ const Main = styled.main`
   margin: 0 auto;
   padding: 0 50px;
   /* padding: 200px 0; */
+  ${customMedia.lessThan('mobile')`
+      max-width: 1500px;
+	`}
 `;
 
 export default Layout;

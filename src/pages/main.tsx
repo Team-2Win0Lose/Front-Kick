@@ -21,7 +21,7 @@ const headers = {
 type Props = {};
 
 const Main = (props: Props) => {
-  const [accompanyList, setaccompanyList] = useState([]);
+  const [accompanyList, setaccompanyList] = useState<AccompanyPostReal[]>([]);
 
   const isLogin = useSelector((state: autoCheck) => state.auth.isAuthenticated);
   useEffect(() => {
@@ -111,6 +111,9 @@ const RatingContainer = styled.div`
   background-color: #1f1f45;
   border-radius: 15px;
   padding: 10px 0;
+   ${customMedia.lessThan('mobile')`
+		padding: 5px 0;
+	`}
 `;
 
 const BannerCarouselContainer = styled.div`
@@ -122,6 +125,7 @@ const BannerCarouselContainer = styled.div`
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+  width:100%;
   padding: 10px 0;
   ${customMedia.lessThan('mobile')`
 
@@ -159,9 +163,11 @@ const Mypage = styled.div`
 const Title = styled.div`
   border: 1px;
   font-size: 25px;
+  font-weight: bold;
   padding: 20px;
   ${customMedia.lessThan('mobile')`
 		font-size: 20px;
+    padding: 10px 0;
 	`}
 `;
 
@@ -169,6 +175,7 @@ const RatingTitle = styled.div`
   border: 1px;
   font-size: 25px;
   padding: 20px;
+  font-weight: bold;
   color: white;
   ${customMedia.lessThan('mobile')`
 		font-size: 20px;
@@ -178,11 +185,17 @@ const RatingTitle = styled.div`
 const SubTitle = styled.div`
   font-size: 15px;
   margin-left: 20px;
+  font-weight: bold;
+  ${customMedia.lessThan('mobile')`
+		margin-left: 0px;
+	`}
 `;
 
 const RatingSubTitle = styled.div`
   font-size: 15px;
+  font-weight: bold;
   margin-left: 20px;
   margin-bottom: 30px;
   color: white;
+  
 `;
