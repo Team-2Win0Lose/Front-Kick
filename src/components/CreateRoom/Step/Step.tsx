@@ -12,7 +12,8 @@ import Summary from './Summary/Summary';
 import SelectCard from './SelectCard/SelectCard';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState, AppDispatch } from '@/app/store';
-
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 type Props = {};
 import { removeAll } from '@/feature/SelectedItemsSlice';
 import { removeSummary } from '@/feature/SummarySlice';
@@ -52,6 +53,9 @@ const StepHeader = () => {
   // const { house, food, attraction } = useSelector(
   //   (state: RootState) => state.selecteditem,
   // );
+  const schedule = useSelector(
+    (state: RootState) => state.summary.game_schedule_id,
+  );
   const attraction = useSelector(
     (state: RootState) => state.selecteditem.attraction,
   );
@@ -95,8 +99,7 @@ const StepHeader = () => {
     ),
     home_team_name: useSelector((state: RootState) => state.summary.homename),
     team_id: useSelector((state: RootState) => state.summary.team_id),
-    thumbnail:
-      /*useSelector((state: RootState) => state.summary.img)*/ 'imgDummy',
+    thumbnail: /*useSelector((state: RootState) => state.summary.img)*/ '',
     title: useSelector((state: RootState) => state.summary.title),
     content: useSelector((state: RootState) => state.summary.content),
     tag_list: tagString,
@@ -122,6 +125,13 @@ const StepHeader = () => {
 
   const handleNextClick = async () => {
     if (titleIndex < titles.length - 1) {
+      if (titleIndex === 0) {
+        if (schedule === '') {
+          toast.error('일정을 선택해주세요');
+        } else {
+          setTitleIndex((prevIndex) => prevIndex + 1);
+        }
+      }
       setTitleIndex((prevIndex) => prevIndex + 1);
     } else if (titleIndex === titles.length - 1) {
       setcheck(true);

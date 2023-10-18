@@ -55,7 +55,10 @@ type Props = {
     appliedUserIdList: string;
   };
 };
-
+const compareLength = (length: number) => {
+  if (length > 0) return true;
+  else return false;
+};
 const AccompanyBox = (props: Props) => {
   const navigate = useNavigate();
   return (
@@ -81,7 +84,7 @@ const AccompanyBox = (props: Props) => {
         </div>
       </Header>
       <Body>
-        {props.post.tourCardIdList.attraction ? (
+        {compareLength(props.post.tourCardIdList.attraction.length) ? (
           <Cards>
             <Card>
               <CardImg>
@@ -97,12 +100,12 @@ const AccompanyBox = (props: Props) => {
         ) : (
           <Cards>
             <Card>
-              <CardImg>카드 사진</CardImg>
-              <CardName>카드 이름</CardName>
+              <CardImg>No Image</CardImg>
+              <CardName>관광지 선택안함</CardName>
             </Card>
           </Cards>
         )}
-        {props.post.tourCardIdList.restaurant ? (
+        {compareLength(props.post.tourCardIdList.restaurant.length) ? (
           <Cards>
             <Card>
               <CardImg>
@@ -118,12 +121,12 @@ const AccompanyBox = (props: Props) => {
         ) : (
           <Cards>
             <Card>
-              <CardImg>카드 사진</CardImg>
-              <CardName>카드 이름</CardName>
+              <CardImg>No Image</CardImg>
+              <CardName>식당 선택안함</CardName>
             </Card>
           </Cards>
         )}
-        {props.post.tourCardIdList.accommodation ? (
+        {compareLength(props.post.tourCardIdList.accommodation.length) ? (
           <Cards>
             <Card>
               <CardImg>
@@ -139,8 +142,8 @@ const AccompanyBox = (props: Props) => {
         ) : (
           <Cards>
             <Card>
-              <CardImg>카드 사진</CardImg>
-              <CardName>카드 이름</CardName>
+              <CardImg>No Image</CardImg>
+              <CardName>숙박 선택안함</CardName>
             </Card>
           </Cards>
         )}

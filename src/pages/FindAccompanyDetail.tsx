@@ -68,12 +68,12 @@ const FindAccompanyDetail = () => {
   };
   return (
     <Form>
-      <ImgBox>
+      {/* <ImgBox>
         <IMG
           src={recruitDetailData?.thumbnail}
           alt='선택한 배경 사진이 없습니다.(No Image)'
         />
-      </ImgBox>
+      </ImgBox> */}
       <Title>{recruitDetailData?.title}</Title>
       <Box>
         <TitleText>🔥 매치 정보</TitleText>
