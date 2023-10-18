@@ -59,8 +59,11 @@ type Props = {
 const AccompanyBox = (props: Props) => {
   const navigate = useNavigate();
   return (
-    <Box>
-      {/* <Box onClick={() => navigate(`/findaccompany/detail/${props.boxdata.id}`)}> */}
+    <Box
+      onClick={() =>
+        navigate(`/findaccompany/detail/${props.post.recruitmentBoardId}`)
+      }
+    >
       <Header>
         <Host>
           <HostImg
