@@ -143,12 +143,14 @@ const FilterBox = () => {
 
 export default FilterBox;
 
-const NormalBox = styled.div``;
+const NormalBox = styled.div`
+  width:100%;
+`;
 
 const MainBox = styled.div`
   padding: 10px;
   border: 1px solid #ccc;
-  width: 300px;
+  width: 100%;
   border-radius: 10px;
   background-color: #fff;
   display: inline-block;
@@ -158,7 +160,6 @@ const MainBox = styled.div`
 `;
 
 const FilterBar = styled.div`
-  padding: 3px 0;
   cursor: pointer;
 `;
 

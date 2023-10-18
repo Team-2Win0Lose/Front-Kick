@@ -261,6 +261,7 @@ const Content = styled.div`
   font-size: 16px;
   padding: 15px;
   line-height: 1.3;
+  word-break:break-all;
   /* border: none;
   outline: none; */
 `;
