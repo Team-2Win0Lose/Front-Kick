@@ -125,7 +125,6 @@ const Box = styled.div`
   border-radius: 20px;
   margin: 10px auto;
   ${customMedia.lessThan('mobile')`
-
 	`}
 `;
 
@@ -133,6 +132,10 @@ const IMG = styled.img`
   width: 100px;
   height: 100px;
   object-fit: contain;
+  ${customMedia.lessThan('mobile')`
+    height: 50px;
+    width: 50px;
+	`}
 `;
 
 const FlexContainer = styled.div`
@@ -164,6 +167,9 @@ const FlexItem = styled.div`
   font-size: 18px;
   font-weight: bold;
   text-align: center;
+  ${customMedia.lessThan('mobile')`
+    font-size: 12px;
+	`}
 `;
 
 const FlexText = styled.div`

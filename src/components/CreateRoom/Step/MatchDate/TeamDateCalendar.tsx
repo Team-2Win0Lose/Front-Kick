@@ -150,6 +150,10 @@ const CalendarContainer = styled.div`
   .fc .fc-daygrid-day-top {
     flex-direction: row;
     padding: 10px 0 0 10px;
+    ${customMedia.lessThan('mobile')`
+      padding: 5px 0 0 5px;
+	`}
+    
   }
 
   // 각 이벤트 요소
@@ -202,7 +206,7 @@ const EventImage = styled.img`
   justify-content: center;
   align-items: center;
   ${customMedia.lessThan('mobile')`
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
 	`}
 `;

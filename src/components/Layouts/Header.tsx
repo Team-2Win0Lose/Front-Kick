@@ -32,10 +32,8 @@ const Container = styled.div`
 
 const Head = styled.header`
   width: 100%;
-
-  /* height: 100%; */
+  height: 100%;
   justify-content: space-between;
-  margin: 0px;
   display: flex;
   align-items: center;
   background: #ffffff;
@@ -54,6 +52,6 @@ const Separator = styled.div`
   background-color: #ccc;
   margin: 10px 0;
   ${customMedia.lessThan('mobile')`
-		margin: 2px 0;
+		margin: 1px 0;
 	`}
 `;
