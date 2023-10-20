@@ -103,7 +103,7 @@ const HouseSearchModal = (props: Props) => {
 
   return (
     <Box>
-      <Title>음식점 코스 추가</Title>
+      <Title>숙박 코스 추가</Title>
       <Form>
         <SettingBox>
           <BoxContainer>
@@ -136,8 +136,8 @@ const HouseSearchModal = (props: Props) => {
           </BoxContainer>
         </SettingBox>
       </Form>
-      <SubTitle>⚽️ {stadium} 경기장 주변 추천 장소</SubTitle>
       <ResultContainer>
+      <SubTitle>⚽️ {stadium} 경기장 주변 추천 장소</SubTitle>
         <FlexContainer1>
           <DIV>
             {recommendList &&
@@ -164,7 +164,7 @@ const HouseSearchModal = (props: Props) => {
               ))}
           </DIV>
         </FlexContainer1>
-        {searchData?.item && <SearchTitle>검색 결과</SearchTitle>}
+        {searchData?.item && <SearchTitle>⚽️ 검색 결과</SearchTitle>}
 
         <FlexContainer1>
           <DIV>
@@ -218,17 +218,19 @@ const Box = styled.div`
   background-color: #fff;
   border-radius: 10px;
   width: 40%;
-  height: 100%;
+  height: 70%;
+  margin-top: 100px;
   overflow-x: auto;
-  overflow-y: auto;
+  overflow-y: scroll;
   z-index: 100;
   ${customMedia.lessThan('mobile')`
-    width:100%;
-    height:500%;
+    width:80%;
+    height:70%;
 	`}
 `;
 const ResultContainer = styled.div`
   height: 60%;
+  overflow-y: scroll;
   /* display: flex;
   flex-direction: column;
   justify-content: center;
@@ -236,13 +238,14 @@ const ResultContainer = styled.div`
 `;
 const FlexContainer1 = styled.div`
   padding: 10px 0;
+
   display: flex;
   /* gap: 10px; */
   flex-direction: column;
   justify-content: center;
   align-items: center;
   overflow-y: scroll;
-  height: 50%;
+  height: 100%;
 `;
 
 const Title = styled.h2`
@@ -344,7 +347,6 @@ const SearchTitle = styled.div`
   border: 1px;
   font-size: 18px;
   font-weight: bold;
-  text-align: center;
 `;
 
 const Box2 = styled.div`
@@ -416,6 +418,8 @@ const RegisterBtn = styled.div`
   justify-content: center;
   align-items: center;
   color: #ffffff;
+  bottom: 0; /* 화면 아래에 고정 */
+  z-index: 1; 
 `;
 
 const NextButtonContainer = styled.div`
