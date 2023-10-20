@@ -21,7 +21,9 @@ type Props = {};
 const Main = (props: Props) => {
   const [accompanyList, setaccompanyList] = useState<AccompanyPostReal[]>([]);
 
-  const { id, isAuthenticated } = useSelector((state: RootState) => state.auth);
+  const { token, isAuthenticated } = useSelector(
+    (state: RootState) => state.auth,
+  );
   useEffect(() => {
     async function fetchData() {
       try {
@@ -36,7 +38,7 @@ const Main = (props: Props) => {
       }
     }
     fetchData();
-  }, [id]);
+  }, [token]);
   const navigate = useNavigate();
 
   return (
