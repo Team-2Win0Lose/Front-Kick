@@ -1,4 +1,4 @@
-import{s as t,a as e}from"../../vendor-3c23d344.js";import{c as i}from"../../common-6abcfddc.js";const l=r=>e(o,{children:e(s,{children:e(n,{src:"/assets/LogoTotal.svg",alt:"logo"})})}),o=t.div`
+import{s as t,a as e}from"../../vendor-cdd8924f.js";import{c as i}from"../../common-06e38f36.js";const l=r=>e(o,{children:e(s,{children:e(n,{src:"/assets/LogoTotal.svg",alt:"logo"})})}),o=t.div`
   margin-top: 50px;
   width: 175px;
   height: 160px;
