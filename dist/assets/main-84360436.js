@@ -1,24 +1,24 @@
-import{s as t,a as e,j as s,u as y,e as d,k as T,m as k,S as $}from"./vendor-490cfcbe.js";import{S as w}from"./react-slick-bffd3a80.js";/* empty css                       */import{c as i,t as F,g as z,B as j}from"./common-311e16a2.js";import C from"./FindAccompany-5ad44b04.js";import{A as S}from"./shared/MyAccompany/main-08c110ce.js";/* empty css                         */const _=()=>e(B,{className:"carousel",children:s(w,{...{dots:!0,autoplay:!0,Infinite:!0,slidesToshow:1,slidesToscroll:1,swipeToslide:!0,autoplaySpeed:3e3,speed:500},children:[e(p,{children:e(h,{children:e(g,{src:"/assets/banner4.png",alt:"logo"})})}),e(p,{children:e(h,{children:e(g,{src:"/assets/banner3.png",alt:"logo"})})}),e(p,{children:e(h,{children:e(g,{src:"/assets/banner2.png",alt:"logo"})})}),e(p,{children:e(h,{children:e(g,{src:"/assets/banner1.png",alt:"logo"})})})]})}),p=t.div`
+import{s as t,a as e,j as r,u as z,e as d,k as j,m as C,O as S}from"./vendor-a1ee613c.js";import{S as k}from"./react-slick-f55c6e89.js";/* empty css                       */import{c as n,t as _,g as B,B as b}from"./common-fdb541e1.js";import A from"./FindAccompany-80100fa9.js";import{A as I}from"./shared/MyAccompany/main-c46c05ed.js";import"./react-icons-74110d71.js";const E=()=>e(R,{className:"carousel",children:r(k,{...{dots:!0,autoplay:!0,Infinite:!0,slidesToshow:1,slidesToscroll:1,swipeToslide:!0,autoplaySpeed:3e3,speed:500},children:[e(g,{children:e(x,{children:e(f,{src:"/assets/banner4.png",alt:"logo"})})}),e(g,{children:e(x,{children:e(f,{src:"/assets/banner3.png",alt:"logo"})})}),e(g,{children:e(x,{children:e(f,{src:"/assets/banner2.png",alt:"logo"})})}),e(g,{children:e(x,{children:e(f,{src:"/assets/banner1.png",alt:"logo"})})})]})}),g=t.div`
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-`,h=t.div`
+`,x=t.div`
   margin-top: 10px;
   margin-bottom: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
-`,g=t.img`
+`,f=t.img`
   width: 100%;
   height: 100%;
   border-radius: 20px;
   object-fit: contain;
-`,B=t.div`
+`,R=t.div`
     width: 100%;
-`,A=()=>{y();const[a,o]=d.useState([]),c=d.useCallback(async()=>{const n=await(await fetch("https://kick-back.azurewebsites.net/api/team_info/list_detail",{method:"GET"})).json();o(n)},[]);d.useEffect(()=>{c()},[c]);const l=[...a||[]].sort((r,n)=>n.recruit_ing-r.recruit_ing);return e(I,{className:"carousel",children:e(E,{...{dots:!1,autoplay:!0,infinite:!0,slidesToShow:4,slidesToScroll:1,swipeToSlide:!0,autoplaySpeed:3e3,speed:500,prevArrow:e(q,{children:"‹"}),nextArrow:e(H,{children:"›"}),responsive:[{breakpoint:960,settings:{slidesToShow:2,slidesToScroll:2,autoplay:!1}},{breakpoint:768,settings:{slidesToShow:1,slidesToScroll:1,autoplay:!1}}]},children:l==null?void 0:l.map((r,n)=>n!==12&&s(R,{backgroundColor:r.team_color_sub,children:[e(G,{backgroundColor:r.team_color_main,children:e(M,{children:n+1})}),s(V,{children:[e(N,{children:e(D,{src:F(r.original_team_name),alt:r.original_team_name})}),s(Y,{children:[e(P,{children:r.original_team_name}),s(U,{children:[s(u,{children:[e(b,{children:"팔로워"}),e(m,{children:r.follower})]}),s(u,{children:[e(b,{children:"현재 동행팀"}),e(m,{children:r.recruit_ing})]})]})]})]})]},n))})})},I=t.div`
+`,D=()=>{z();const[a,c]=d.useState([]),h=d.useCallback(async()=>{const s=await(await fetch("https://kick-back.azurewebsites.net/api/team_info/list_detail",{method:"GET"})).json();c(s)},[]);d.useEffect(()=>{h()},[h]);const i=[...a||[]].sort((o,s)=>s.recruit_ing-o.recruit_ing);return e(G,{className:"carousel",children:e(M,{...{dots:!1,autoplay:!0,infinite:!0,slidesToShow:4,slidesToScroll:1,swipeToSlide:!0,autoplaySpeed:3e3,speed:500,prevArrow:e(K,{children:"‹"}),nextArrow:e(Q,{children:"›"}),responsive:[{breakpoint:960,settings:{slidesToShow:2,slidesToScroll:2,autoplay:!1}},{breakpoint:768,settings:{slidesToShow:1,slidesToScroll:1,autoplay:!1}}]},children:i==null?void 0:i.map((o,s)=>s!==12&&r(N,{backgroundColor:o.team_color_sub,children:[e(P,{backgroundColor:o.team_color_main,children:e(V,{children:s+1})}),r(q,{children:[e(Y,{children:e(O,{src:_(o.original_team_name),alt:o.original_team_name})}),r(H,{children:[e(U,{children:o.original_team_name}),r(J,{children:[r(y,{children:[e(v,{children:"팔로워"}),e(w,{children:o.follower})]}),r(y,{children:[e(v,{children:"현재 동행팀"}),e(w,{children:o.recruit_ing})]})]})]})]})]},s))})})},G=t.div`
   padding: 0 50px;
-`,E=t(w)`
+`,M=t(k)`
   .slick-slide {
   }
 
@@ -33,7 +33,7 @@ import{s as t,a as e,j as s,u as y,e as d,k as T,m as k,S as $}from"./vendor-490
 
   .slick-prev{
   }
-`,R=t.div`
+`,N=t.div`
   position: relative;
   display: flex;
   justify-content: center;
@@ -46,13 +46,13 @@ import{s as t,a as e,j as s,u as y,e as d,k as T,m as k,S as $}from"./vendor-490
   margin-left: 5%;
   margin-right: 5%;
   margin-bottom: 20px;
-  ${i.lessThan("mobile")`
+  ${n.lessThan("mobile")`
 		height: 200px;
     margin-left:2%;
     margin-right:2%;
     margin-bottom: 10px;
 	`}
-`,G=t.div`
+`,P=t.div`
   display: flex;
   top: 0;
   left: 0;
@@ -62,18 +62,18 @@ import{s as t,a as e,j as s,u as y,e as d,k as T,m as k,S as $}from"./vendor-490
   background: ${a=>a.backgroundColor||"#FFFFFF"};
   border-radius: 20px 20px 0 0;
   width: 100%;
-  ${i.lessThan("mobile")`
+  ${n.lessThan("mobile")`
 		height:60px;
     padding: 5px;
 	`}
-`,M=t.div`
+`,V=t.div`
   justify-content: left;
   align-items: left;
   font-size: 50px;
   font-weight: bold;
   padding: 3px;
   color: white;
-  ${i.lessThan("mobile")`
+  ${n.lessThan("mobile")`
 		font-size: 30px;
     padding: 2px;
 	`}
@@ -84,7 +84,7 @@ import{s as t,a as e,j as s,u as y,e as d,k as T,m as k,S as $}from"./vendor-490
     font-weight: 700;
     font-style: normal;
   }
-`,N=t.div`
+`,Y=t.div`
   width: 150px;
   height: 150px;
   display: flex;
@@ -95,69 +95,69 @@ import{s as t,a as e,j as s,u as y,e as d,k as T,m as k,S as $}from"./vendor-490
   left: 50%; 
   background-color: #FFFFFF;
   border-radius:50%;
-  ${i.lessThan("tablet")`
+  ${n.lessThan("tablet")`
 		width: 90px;
     height: 90px;
 	`}
   transform: translate(-50%, -50%);
-   ${i.lessThan("mobile")`
+   ${n.lessThan("mobile")`
 		width: 70px;
     height: 70px;
     top: 30%;
 	`}
   
-`,D=t.img`
+`,O=t.img`
   width: 120px;
   height: 120px;
   object-fit: contain;
-  ${i.lessThan("tablet")`
+  ${n.lessThan("tablet")`
 		width: 80px;
     height: 80px;
 	`}
-  ${i.lessThan("mobile")`
+  ${n.lessThan("mobile")`
 		width:60px;
     height:60px;
 	`}
-`,P=t.div`
+`,U=t.div`
   justify-content: center;
   align-items: center;
   font-size: 25px;
   padding: 5px;
   color: white;
-  ${i.lessThan("mobile")`
+  ${n.lessThan("mobile")`
 		font-size: 20px;
     padding:1px;
 	`}
-`,V=t.div`
+`,q=t.div`
   display: flex;
   padding: 5px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  ${i.lessThan("mobile")`
+  ${n.lessThan("mobile")`
 		padding: 0px;
 	`}
-`,Y=t.div`
+`,H=t.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 70px;
-  ${i.lessThan("mobile")`
+  ${n.lessThan("mobile")`
 		margin-top: 50px;
 	`}
-`,U=t.div`
+`,J=t.div`
   display: flex;
   flex-direction: column;
   padding: 20px 0;
-   ${i.lessThan("mobile")`
+   ${n.lessThan("mobile")`
 	`}
-`,m=t.div`
+`,w=t.div`
   font-size: 20px;
   color: white;
-   ${i.lessThan("mobile")`
+   ${n.lessThan("mobile")`
 		font-size: 15px;
 	`}
-`,u=t.div`
+`,y=t.div`
   display: flex;
   width: 100%;
   padding: 5px;
@@ -165,10 +165,10 @@ import{s as t,a as e,j as s,u as y,e as d,k as T,m as k,S as $}from"./vendor-490
   font-size:10px;
   align-items: center;
   justify-content: space-between;
-`,b=t.div`
+`,v=t.div`
   font-size: 20px;
   color: white;
-  ${i.lessThan("mobile")`
+  ${n.lessThan("mobile")`
 		font-size: 10px;
 	`}
 `;t.div`
@@ -196,7 +196,7 @@ import{s as t,a as e,j as s,u as y,e as d,k as T,m as k,S as $}from"./vendor-490
   justify-content: center;
   align-items: center;
   gap: 5px;
-`;const q=t.div`
+`;const K=t.div`
   position: absolute;
   top: 50%;
   left: -20px;
@@ -204,7 +204,7 @@ import{s as t,a as e,j as s,u as y,e as d,k as T,m as k,S as $}from"./vendor-490
   z-index: 999;
   cursor: pointer;
   font-size: 24px;
-`,H=t.div`
+`,Q=t.div`
   position: absolute;
   top: 50%;
   right: -20px;
@@ -212,7 +212,7 @@ import{s as t,a as e,j as s,u as y,e as d,k as T,m as k,S as $}from"./vendor-490
   z-index: 999;
   cursor: pointer;
   font-size: 24px;
-`,J=z("token"),K={Authorization:`Bearer ${J}`},ge=a=>{const[o,c]=d.useState([]),{token:l,isAuthenticated:f}=T(n=>n.auth);d.useEffect(()=>{async function n(){try{const v=await(await fetch(`${j}/api/my-recruitment`,{method:"get",headers:K})).json();c(v)}catch(x){console.error("Error:",x)}}n()},[l]);const r=k();return s("div",{children:[f?s(O,{children:[s(L,{children:["👋 현재 나의 동행일정 (",o==null?void 0:o.length,")"]}),(o==null?void 0:o.length)===0?e(te,{children:e(ee,{children:"예정 중인 동행이 없어요 🥲"})}):e(Q,{children:o.length>0&&(o==null?void 0:o.map((n,x)=>e("div",{onClick:()=>r(`/findaccompany/detail/${n.recruitmentBoardId}`),children:e(S,{post:n})},n.recruitmentBoardId)))})]}):e($,{}),e(X,{children:e(_,{})}),s(W,{children:[e(ne,{children:"🏆 구단별 응원순위"}),e(re,{children:"구단별 모집이 완료된 동행팀 수"}),e(A,{})]}),s(Z,{children:[e(ie,{children:"🙋‍♂️ 동행 구경하기"}),e(oe,{children:"나의 동행을 찾아보세요!"}),e(C,{})]})]})},O=t.div`
+`,W=B("token"),T={Authorization:`Bearer ${W}`},me=a=>{const[c,h]=d.useState([]),[i,u]=d.useState([]),{token:o,isAuthenticated:s}=j(l=>l.auth);d.useEffect(()=>{async function l(){try{const m=await(await fetch(`${b}/api/my-recruitment`,{method:"get",headers:T})).json();h(m)}catch(p){console.error("Error:",p)}}async function F(){try{const m=await(await fetch(`${b}/api/my-applied-recruitment`,{method:"get",headers:T})).json();u(m)}catch(p){console.error("Error:",p)}}l(),F()},[o]);const $=C();return r("div",{children:[s?r(X,{children:[r(ne,{children:["👋 현재 나의 동행일정 (",i==null?void 0:i.length,")"]}),(c==null?void 0:c.length)===0&&(i!=null&&i.length)?e(oe,{children:e(ie,{children:"예정 중인 동행이 없어요 🥲"})}):e(Z,{children:i.length>0&&(i==null?void 0:i.map(l=>e("div",{onClick:()=>$(`/findaccompany/detail/${l.recruitmentBoardId}`),children:e(I,{post:l})},l.recruitmentBoardId)))})]}):e(S,{}),e(ee,{children:e(E,{})}),r(L,{children:[e(se,{children:"🏆 구단별 응원순위"}),e(le,{children:"구단별 모집이 완료된 동행팀 수"}),e(D,{})]}),r(te,{children:[e(re,{children:"🙋‍♂️ 동행 구경하기"}),e(ae,{children:"나의 동행을 찾아보세요!"}),e(A,{})]})]})},X=t.div`
   width: 100%;
   margin-bottom: 30px;
   display: flex;
@@ -220,7 +220,7 @@ import{s as t,a as e,j as s,u as y,e as d,k as T,m as k,S as $}from"./vendor-490
   justify-content: center;
   align-items: flex-start;
   gap: 10px;
-`,Q=t.div`
+`,Z=t.div`
   width: 100%;
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* 4열로 배치 */
@@ -231,38 +231,38 @@ import{s as t,a as e,j as s,u as y,e as d,k as T,m as k,S as $}from"./vendor-490
   padding: 10px;
   box-sizing: border-box;
   border-radius: 12px;
-`,W=t.div`
+`,L=t.div`
   background-color: #1f1f45;
   border-radius: 15px;
   padding: 10px 0;
-  ${i.lessThan("mobile")`
+  ${n.lessThan("mobile")`
 		padding: 5px 0;
 	`}
-`,X=t.div`
+`,ee=t.div`
   height: auto;
   overflow: hidden;
   margin-bottom: 20px;
-`,Z=t.div`
+`,te=t.div`
   display: flex;
   flex-direction: column;
   width: 100%;
   padding: 10px 0;
-  ${i.lessThan("mobile")`
+  ${n.lessThan("mobile")`
 
 	`}
-`,L=t.div`
+`,ne=t.div`
   justify-content: center;
   align-items: center;
   font-size: 20px;
   font-weight: bold;
-`,ee=t.div`
+`,ie=t.div`
   justify-content: center;
   align-items: center;
   margin: 10px;
   color: #5c5c5c;
   font-size: 20px;
   font-weight: bold;
-`,te=t.div`
+`,oe=t.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -272,35 +272,35 @@ import{s as t,a as e,j as s,u as y,e as d,k as T,m as k,S as $}from"./vendor-490
   background: #eeeeee;
   /* box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25); */
   border-radius: 20px;
-`,ie=t.div`
+`,re=t.div`
   border: 1px;
   font-size: 25px;
   font-weight: bold;
   padding: 20px;
-  ${i.lessThan("mobile")`
+  ${n.lessThan("mobile")`
 		font-size: 20px;
     padding: 10px 0;
 	`}
-`,ne=t.div`
+`,se=t.div`
   border: 1px;
   font-size: 25px;
   padding: 20px;
   font-weight: bold;
   color: white;
-  ${i.lessThan("mobile")`
+  ${n.lessThan("mobile")`
 		font-size: 20px;
 	`}
-`,oe=t.div`
+`,ae=t.div`
   font-size: 15px;
   margin-left: 20px;
   font-weight: bold;
-  ${i.lessThan("mobile")`
+  ${n.lessThan("mobile")`
 		margin-left: 0px;
 	`}
-`,re=t.div`
+`,le=t.div`
   font-size: 15px;
   font-weight: bold;
   margin-left: 20px;
   margin-bottom: 30px;
   color: white;
-`;export{ge as default};
+`;export{me as default};

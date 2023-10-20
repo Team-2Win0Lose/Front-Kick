@@ -91,20 +91,13 @@ export interface AccompanyPostReal {
   createdDate: string;
   publishedDate: string | null;
   nowHeadCount: number;
-  applyingUserIdList: {
-    item: {
-      user_id: string;
-      user_nickname: string;
-    };
-  };
-  appliedUserIdList: {
-    item: {
-      user_id: string;
-      user_nickname: string;
-    };
-  };
+  appliedUserIdList: Record<string, AppliedUser>;
+  applyingUserIdList: Record<string, AppliedUser>;
 }
-
+export interface AppliedUser {
+  user_id: string;
+  user_nickname: string;
+}
 export interface AccompanyMadeByMeList {
   data: AccompanyMadeByMe[];
 }

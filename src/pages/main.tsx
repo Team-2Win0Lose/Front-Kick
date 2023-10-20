@@ -19,7 +19,8 @@ const headers = {
 type Props = {};
 
 const Main = (props: Props) => {
-  const [accompanyList, setaccompanyList] = useState<AccompanyPostReal[]>([]);
+  const [accompanyList1, setaccompanyList1] = useState<AccompanyPostReal[]>([]);
+  const [accompanyList2, setaccompanyList2] = useState<AccompanyPostReal[]>([]);
   // window.location.reload();
   const { token, isAuthenticated } = useSelector(
     (state: RootState) => state.auth,
@@ -32,12 +33,25 @@ const Main = (props: Props) => {
           headers: headers,
         });
         const data = await response.json();
-        setaccompanyList(data);
+        setaccompanyList1(data);
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    }
+    async function fetchData2() {
+      try {
+        const response = await fetch(`${BASE_URL}/api/my-applied-recruitment`, {
+          method: 'get',
+          headers: headers,
+        });
+        const data = await response.json();
+        setaccompanyList2(data);
       } catch (error) {
         console.error('Error:', error);
       }
     }
     fetchData();
+    fetchData2();
   }, [token]);
   const navigate = useNavigate();
 
@@ -45,15 +59,28 @@ const Main = (props: Props) => {
     <div>
       {isAuthenticated ? (
         <DIV>
-          <P>👋 현재 나의 동행일정 ({accompanyList?.length})</P>
-          {accompanyList?.length === 0 ? (
+          <P>👋 현재 나의 동행일정 ({accompanyList2?.length})</P>
+          {accompanyList1?.length === 0 && accompanyList2?.length ? (
             <Mypage>
               <Font>예정 중인 동행이 없어요 🥲</Font>
             </Mypage>
           ) : (
             <ListContainer>
-              {accompanyList.length > 0 &&
-                accompanyList?.map((post: AccompanyPostReal, idx) => (
+              {/* {accompanyList1.length > 0 &&
+                accompanyList1?.map((post: AccompanyPostReal) => (
+                  <div
+                    key={post.recruitmentBoardId}
+                    onClick={() =>
+                      navigate(
+                        `/findaccompany/detail/${post.recruitmentBoardId}`,
+                      )
+                    }
+                  >
+                    <AccompanyBox post={post} />
+                  </div>
+                ))} */}
+              {accompanyList2.length > 0 &&
+                accompanyList2?.map((post: AccompanyPostReal) => (
                   <div
                     key={post.recruitmentBoardId}
                     onClick={() =>

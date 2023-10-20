@@ -1,9 +1,4 @@
-import { getMyAccompany } from '@/lib/api';
-import {
-  AccompanyMadeByMeList,
-  AccompanyMadeByMe,
-  AccompanyPostReal,
-} from '@/lib/interface';
+import { AccompanyPostReal } from '@/lib/interface';
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import AccompanyBox from './AccompanyBox';
