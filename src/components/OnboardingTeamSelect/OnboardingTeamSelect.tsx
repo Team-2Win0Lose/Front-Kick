@@ -9,7 +9,7 @@ import { teamnameConvertImg } from '@/util/teamnameConvertImg';
 
 
 const OnboardingTeamSelect = () => {
-  const [selectedTeam, setSelectedTeam] = useState<any | null>();
+  const [selectedTeam, setSelectedTeam] = useState<any | null>('강원');
 
   const [rating, setrating] = useState<
     {

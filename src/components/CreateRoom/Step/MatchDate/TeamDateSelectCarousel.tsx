@@ -90,7 +90,7 @@ const TeamDateSelectCarousel = () => {
     nextArrow: <NextArrow>&#8250;</NextArrow>,
   };
   const [matchData, setmatchData] = useState([]);
-  const [selectedTeam, setSelectedTeam] = useState<string>('강원FC');
+  const [selectedTeam, setSelectedTeam] = useState<string>('강원');
 
   const handleBoxClick = (teamName: string) => {
     setSelectedTeam(teamName);

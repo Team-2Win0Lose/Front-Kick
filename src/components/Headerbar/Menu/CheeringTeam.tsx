@@ -42,7 +42,7 @@ const CheeringTeam = (props: Props) => {
 };
 
 const Title = styled.div<{ teamcolor: string }>`
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 700;
   flex-direction: column;
   color: ${(props) => props.teamcolor || '#FFFFFF'};

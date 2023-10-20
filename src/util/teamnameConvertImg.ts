@@ -35,6 +35,9 @@ export const teamnameConvertImg = (teamname: string) => {
 
     case '서울':
       return 'https://kickstorage.blob.core.windows.net/logo/fc_seoul.svg';
+
+    default:
+      return 'https://kickstorage.blob.core.windows.net/logo/gangwon_fc.svg';
   }
 };
 export const teamnametoFullname = (teamname: string) => {
