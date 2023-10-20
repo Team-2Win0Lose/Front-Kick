@@ -1,4 +1,4 @@
-import{s as n,a as t,e as i,j as p,m as l}from"./vendor-a1ee613c.js";import{A as m}from"./shared/MyAccompany/main-68bdbd75.js";import{g,B as h}from"./common-1230f2e9.js";import"./react-icons-74110d71.js";const f=e=>t(x,{children:t(u,{})}),x=n.div`
+import{s as n,a as t,e as i,j as p,m as l}from"./vendor-a1ee613c.js";import{A as m}from"./shared/MyAccompany/main-3992045b.js";import{g,B as h}from"./common-fdb541e1.js";import"./react-icons-74110d71.js";const f=e=>t(x,{children:t(u,{})}),x=n.div`
   width: 100%;
 `,u=n.div`
   margin: 0 auto;

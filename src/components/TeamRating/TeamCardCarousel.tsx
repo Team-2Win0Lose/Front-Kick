@@ -47,7 +47,7 @@ const TeamCardCarousel = () => {
     autoplay: true,
     infinite: true,
     slidesToShow: 4,
-    slidesToScroll: 4,
+    slidesToScroll: 1,
     swipeToSlide: true,
     autoplaySpeed: 3000,
     speed: 500,
@@ -74,7 +74,6 @@ const TeamCardCarousel = () => {
     }
   ]
   };
-  
   
 
   // // api에서 team 목록 불러오기
