@@ -9,8 +9,9 @@ type Props = {};
 const MinMaxCnt = (props: Props) => {
   const dispatch = useDispatch();
   const { term,minNum,maxNum } = useSelector((state: RootState) => state.summary);
-  const [minValue, setMinValue] = useState<number | undefined>();
-  const [maxValue, setMaxValue] = useState<number | undefined>();
+  const [minValue, setMinValue] = useState<number | undefined>(1);
+  const [maxValue, setMaxValue] = useState<number | undefined>(1);
+  
   return (
     <BoxContainer>
       <SettingTxt>최소</SettingTxt>
