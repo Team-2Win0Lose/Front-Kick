@@ -19,6 +19,7 @@ const Main = styled.main`
   max-width: 1300px;
   margin: 0 auto;
   padding: 0 50px;
+  padding-top: 180px;
   /* padding: 200px 0; */
   ${customMedia.lessThan('mobile')`
       max-width: 1500px;
