@@ -72,12 +72,12 @@ const FindAccompanyDetail = () => {
   const [btnclicknumber, setbtnclicknumber] = useState<number>(0);
   const [boardId, setboardId] = useState<number>(0);
   const [userID, setuserID] = useState<string>('');
-  const [isAccept, setisAccept] = useState<number>(0);
+  const [isAccept, setisAccept] = useState<number>();
   const ifBtnClick = (boardId: number, userID: string, isAccept: number) => {
     setboardId(boardId);
     setuserID(userID);
     setisAccept(isAccept);
-    setbtnclicknumber(btnclicknumber + 1);
+    setbtnclicknumber(isAccept);
   };
   useEffect(() => {
     const patchUserApply = async () => {
@@ -95,7 +95,7 @@ const FindAccompanyDetail = () => {
         console.log(error);
       }
     };
-    if (btnclicknumber > 0) {
+    if (btnclicknumber) {
       patchUserApply();
     }
   }, [btnclicknumber]);
@@ -209,12 +209,13 @@ const FindAccompanyDetail = () => {
       <AcceptContainer>
         <h1>
           동행 신청 인원{' '}
-          {Object.values(recruitDetailData?.appliedUserIdList).length}/
-          {recruitDetailData?.maxNum} 예약 인원{' '}
-          {Object.keys(recruitDetailData?.applyingUserIdList)}
+          {recruitDetailData?.applyingUserIdList &&
+            Object.values(recruitDetailData?.applyingUserIdList).length}
+          /{recruitDetailData?.maxNum} 예약 인원{' '}
+          {Object.keys(recruitDetailData?.appliedUserIdList)}
         </h1>
         <List className='meeting-requests-list'>
-          {Object.values(recruitDetailData?.appliedUserIdList).map(
+          {Object.values(recruitDetailData?.applyingUserIdList).map(
             (request, idx) => (
               <RequestCard key={idx}>
                 <Profile>
@@ -236,7 +237,17 @@ const FindAccompanyDetail = () => {
                   >
                     수락
                   </Agree>
-                  <Disagree>거절</Disagree>
+                  <Disagree
+                    onClick={() =>
+                      ifBtnClick(
+                        recruitDetailData?.recruitmentBoardId,
+                        request.user_id,
+                        1,
+                      )
+                    }
+                  >
+                    거절
+                  </Disagree>
                 </Btn>
                 {/* 
                 <Btn>
