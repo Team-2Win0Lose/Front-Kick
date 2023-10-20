@@ -1,4 +1,4 @@
-import{G as _,s as i,m as w,k as h,a as e,j as o,O as Y,e as d,u as q,S as g,T as N,Q as J,U as m,V as X,W as Z,Y as D}from"./vendor-3c23d344.js";import{u as ee,c as a,B as te,v as ne}from"./common-6abcfddc.js";function ie(t){return _({tag:"svg",attr:{viewBox:"0 0 512 512"},child:[{tag:"path",attr:{d:"M32 96v64h448V96H32zm0 128v64h448v-64H32zm0 128v64h448v-64H32z"}}]})(t)}function oe(t){return _({tag:"svg",attr:{viewBox:"0 0 512 512"},child:[{tag:"path",attr:{d:"M256 48C141.31 48 48 141.31 48 256s93.31 208 208 208 208-93.31 208-208S370.69 48 256 48zm2 96a72 72 0 11-72 72 72 72 0 0172-72zm-2 288a175.55 175.55 0 01-129.18-56.6C135.66 329.62 215.06 320 256 320s120.34 9.62 129.18 55.39A175.52 175.52 0 01256 432z"}}]})(t)}const V=t=>{const r=w();return h(n=>n.auth.isAuthenticated)?e(O,{children:o(E,{children:[t.profileImg!==void 0?e(ce,{src:t.profileImg}):e(ae,{children:e(oe,{size:"60"})}),o(H,{children:[t.name!==""&&o(x,{children:[t.name," 님"]}),t.nickname!==""&&o(x,{children:[t.nickname," 님"]}),e(re,{children:t.email})]}),e(Y,{size:"30",onClick:()=>r("/mypage")})]})}):e(O,{children:e(E,{children:e(H,{onClick:()=>{r("/login")},children:e(x,{children:"로그인을 해주세요"})})})})},O=i.div`
+import{G as _,s as i,m as w,k as h,a as e,j as o,N as q,e as d,u as J,O as g,S as N,Q as X,T as m,U as Y,V as Z,W as D}from"./vendor-cdd8924f.js";import{u as ee,c as a,B as te,v as ne}from"./common-06e38f36.js";/* empty css                       */function ie(t){return _({tag:"svg",attr:{viewBox:"0 0 512 512"},child:[{tag:"path",attr:{d:"M32 96v64h448V96H32zm0 128v64h448v-64H32zm0 128v64h448v-64H32z"}}]})(t)}function oe(t){return _({tag:"svg",attr:{viewBox:"0 0 512 512"},child:[{tag:"path",attr:{d:"M256 48C141.31 48 48 141.31 48 256s93.31 208 208 208 208-93.31 208-208S370.69 48 256 48zm2 96a72 72 0 11-72 72 72 72 0 0172-72zm-2 288a175.55 175.55 0 01-129.18-56.6C135.66 329.62 215.06 320 256 320s120.34 9.62 129.18 55.39A175.52 175.52 0 01256 432z"}}]})(t)}const V=t=>{const r=w();return h(n=>n.auth.isAuthenticated)?e(O,{children:o(E,{children:[t.profileImg!==void 0?e(ce,{src:t.profileImg}):e(ae,{children:e(oe,{size:"60"})}),o(H,{children:[t.name!==""&&o(x,{children:[t.name," 님"]}),t.nickname!==""&&o(x,{children:[t.nickname," 님"]}),e(re,{children:t.email})]}),e(q,{size:"30",onClick:()=>r("/mypage")})]})}):e(O,{children:e(E,{children:e(H,{onClick:()=>{r("/login")},children:e(x,{children:"로그인을 해주세요"})})})})},O=i.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -114,7 +114,7 @@ import{G as _,s as i,m as w,k as h,a as e,j as o,O as Y,e as d,u as q,S as g,T a
   justify-content: center;
   align-items: center;
   gap: 10px;
-`;function xe({isOpen:t,setIsOpen:r}){var F,C,z,$,j,S,A,I,L,T,B,M;const c=d.useRef(),[n,P]=d.useState(),R=h(s=>s.auth.isAuthenticated),{token:W,id:U}=h(s=>s.auth),K=q();d.useEffect(()=>(document.addEventListener("mousedown",k),()=>{document.removeEventListener("mousedown",k)}));const y=d.useCallback(async()=>{const Q=await(await fetch(`${te}/api/user/profile/?id=${U}`,{method:"get",headers:{Authorization:`Bearer ${W}`}})).json();P(Q)},[]);d.useEffect(()=>{y()},[y]);const k=s=>{c.current.contains(s.target)||l()},l=()=>{r(!1)};return R?o(g,{children:[t&&e(ve,{onClick:l}),o(G,{id:"sidebar",ref:c,className:t?"open":"",children:[e(N,{size:"30",color:"#ffffff",alt:"close",onClick:l,onKeyDown:l}),o("ul",{children:[o(v,{children:[e(b,{children:"내 정보"}),e(V,{profileImg:(F=n==null?void 0:n.profile)==null?void 0:F.profileImg,name:(C=n==null?void 0:n.profile)==null?void 0:C.name,nickname:(z=n==null?void 0:n.profile)==null?void 0:z.nickname,email:($=n==null?void 0:n.profile)==null?void 0:$.email})]}),e(b,{children:"나의 응원팀"}),e(v,{children:e(le,{team_id:(j=n==null?void 0:n.profile)==null?void 0:j.cheering_team_id,follower:(S=n==null?void 0:n.cheering_team)==null?void 0:S.follower,logo_img_url:`https://kickstorage.blob.core.windows.net${(A=n==null?void 0:n.cheering_team)==null?void 0:A.logo_img_url}`,original_team_name:(I=n==null?void 0:n.cheering_team)==null?void 0:I.original_team_name,recruit_end:(L=n==null?void 0:n.cheering_team)==null?void 0:L.recruit_end,recruit_ing:(T=n==null?void 0:n.cheering_team)==null?void 0:T.recruit_ing,team_color_main:(B=n==null?void 0:n.cheering_team)==null?void 0:B.team_color_main,team_color_sub:(M=n==null?void 0:n.cheering_team)==null?void 0:M.team_color_sub})}),e(pe,{children:e(be,{onClick:()=>{K(ne()),l(),J.info("로그아웃되었습니다.")},children:"로그아웃"})})]})]})]}):o(G,{id:"sidebar",ref:c,className:t?"open":"",children:[e(N,{size:"30",color:"#ffffff",alt:"close",onClick:l,onKeyDown:l}),e("ul",{children:o(v,{onClick:()=>l(),children:[e(b,{children:"내 정보"}),e(V,{})]})})]})}const G=i.div`
+`;function xe({isOpen:t,setIsOpen:r}){var F,C,z,$,j,S,A,I,L,T,B,M;const c=d.useRef(),[n,P]=d.useState(),R=h(s=>s.auth.isAuthenticated),{token:W,id:U}=h(s=>s.auth),K=J();d.useEffect(()=>(document.addEventListener("mousedown",k),()=>{document.removeEventListener("mousedown",k)}));const y=d.useCallback(async()=>{const Q=await(await fetch(`${te}/api/user/profile/?id=${U}`,{method:"get",headers:{Authorization:`Bearer ${W}`}})).json();P(Q)},[]);d.useEffect(()=>{y()},[y]);const k=s=>{c.current.contains(s.target)||l()},l=()=>{r(!1)};return R?o(g,{children:[t&&e(ve,{onClick:l}),o(G,{id:"sidebar",ref:c,className:t?"open":"",children:[e(N,{size:"30",color:"#ffffff",alt:"close",onClick:l,onKeyDown:l}),o("ul",{children:[o(v,{children:[e(b,{children:"내 정보"}),e(V,{profileImg:(F=n==null?void 0:n.profile)==null?void 0:F.profileImg,name:(C=n==null?void 0:n.profile)==null?void 0:C.name,nickname:(z=n==null?void 0:n.profile)==null?void 0:z.nickname,email:($=n==null?void 0:n.profile)==null?void 0:$.email})]}),e(b,{children:"나의 응원팀"}),e(v,{children:e(le,{team_id:(j=n==null?void 0:n.profile)==null?void 0:j.cheering_team_id,follower:(S=n==null?void 0:n.cheering_team)==null?void 0:S.follower,logo_img_url:`https://kickstorage.blob.core.windows.net${(A=n==null?void 0:n.cheering_team)==null?void 0:A.logo_img_url}`,original_team_name:(I=n==null?void 0:n.cheering_team)==null?void 0:I.original_team_name,recruit_end:(L=n==null?void 0:n.cheering_team)==null?void 0:L.recruit_end,recruit_ing:(T=n==null?void 0:n.cheering_team)==null?void 0:T.recruit_ing,team_color_main:(B=n==null?void 0:n.cheering_team)==null?void 0:B.team_color_main,team_color_sub:(M=n==null?void 0:n.cheering_team)==null?void 0:M.team_color_sub})}),e(pe,{children:e(be,{onClick:()=>{K(ne()),l(),X.info("로그아웃되었습니다.")},children:"로그아웃"})})]})]})]}):o(G,{id:"sidebar",ref:c,className:t?"open":"",children:[e(N,{size:"30",color:"#ffffff",alt:"close",onClick:l,onKeyDown:l}),e("ul",{children:o(v,{onClick:()=>l(),children:[e(b,{children:"내 정보"}),e(V,{})]})})]})}const G=i.div`
   z-index: 5000;
   padding: 10px;
   background-color: #1f1f45;
@@ -216,12 +216,16 @@ import{G as _,s as i,m as w,k as h,a as e,j as o,O as Y,e as d,u as q,S as g,T a
   justify-content: left;
   align-items: center;
   padding: 20px;
-  margin-bottom:20px;
 `,f=i.div`
   margin-right: 20px;
 `,Ae=()=>{const t=h(r=>r.auth.isAuthenticated);return o(Ie,{children:[o(Le,{className:t?"":"no-header",children:[e(ye,{}),e(ze,{}),t&&e(_e,{})]}),e(Te,{}),e(je,{})]})},Ie=i.div`
   display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   flex-direction: column;
+  z-index: 999999;
 `,Le=i.header`
   width: 100%;
   height: 100%;
@@ -238,9 +242,9 @@ import{G as _,s as i,m as w,k as h,a as e,j as o,O as Y,e as d,u as q,S as g,T a
 		font-size: 15px;
 	`}
 `,Te=i.div`
+  display: flex;
   height: 1px;
   background-color: #ccc;
-  margin: 10px 0;
   ${a.lessThan("mobile")`
 		margin: 1px 0;
 	`}
@@ -255,8 +259,9 @@ import{G as _,s as i,m as w,k as h,a as e,j as o,O as Y,e as d,u as q,S as g,T a
   max-width: 1300px;
   margin: 0 auto;
   padding: 0 50px;
+  padding-top: 180px;
   /* padding: 200px 0; */
   ${a.lessThan("mobile")`
       max-width: 1500px;
 	`}
-`;function He(){return o(Ne,{children:[e(X,{}),e(Z,{position:"top-center",autoClose:1e3,hideProgressBar:!1,closeOnClick:!0,rtl:!1,pauseOnFocusLoss:!0,draggable:!0,theme:"light",limit:1}),e(D,{})]})}export{He as default};
+`;function Ge(){return o(Ne,{children:[e(Y,{}),e(Z,{position:"top-center",autoClose:1e3,hideProgressBar:!1,closeOnClick:!0,rtl:!1,pauseOnFocusLoss:!0,draggable:!0,theme:"light",limit:1}),e(D,{})]})}export{Ge as default};

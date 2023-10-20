@@ -59,7 +59,8 @@ const LoginForm = (props: any) => {
           }
         }
       } else {
-        console.log('res is undefined');
+        console.error('res is undefined');
+        toast.error('로그인 실패!');
       }
     } catch (error) {
       toast.error('로그인 실패!');

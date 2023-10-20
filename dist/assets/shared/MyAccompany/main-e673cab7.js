@@ -1,4 +1,4 @@
-import{s as n,m as B,j as i,a as e,B as H}from"../../vendor-3c23d344.js";import{a,b as S}from"../../common-6abcfddc.js";const D=t=>t.length>20?t.slice(0,20)+"...":t,F=t=>t.split("오")[0],V=t=>t===0?"모집중":t===1?"모집완료":"모집종료",s=t=>t>0,oe=t=>{var l,f,g,u,m,y,b,w,v,j,I,C,k;const h=B();return i(M,{onClick:()=>h(`/findaccompany/detail/${t.post.recruitmentBoardId}`),children:[i($,{children:[e(q,{children:e(E,{src:a(t.post.TeamId),alt:t.post.title})}),i("div",{children:[e(U,{children:D(t.post.title)}),e(W,{children:(l=S(t.post.tagList))==null?void 0:l.map((N,P)=>i(X,{children:["#",N]},P))})]})]}),i(R,{children:[s(t.post.tourCardIdList.attraction.length)?e(r,{children:i(o,{children:[e(c,{children:e(x,{src:(g=(f=t.post.tourCardIdList)==null?void 0:f.attraction[0])==null?void 0:g.firstimage})}),e(d,{children:(m=(u=t.post.tourCardIdList)==null?void 0:u.attraction[0])==null?void 0:m.title})]})}):e(r,{children:i(o,{children:[e(c,{children:"No Image"}),e(d,{children:"관광지 선택안함"})]})}),s(t.post.tourCardIdList.restaurant.length)?e(r,{children:i(o,{children:[e(c,{children:e(x,{src:(b=(y=t.post.tourCardIdList)==null?void 0:y.restaurant[0])==null?void 0:b.firstimage})}),e(d,{children:(v=(w=t.post.tourCardIdList)==null?void 0:w.restaurant[0])==null?void 0:v.title})]})}):e(r,{children:i(o,{children:[e(c,{children:"No Image"}),e(d,{children:"식당 선택안함"})]})}),s(t.post.tourCardIdList.accommodation.length)?e(r,{children:i(o,{children:[e(c,{children:e(x,{src:(I=(j=t.post.tourCardIdList)==null?void 0:j.accommodation[0])==null?void 0:I.firstimage})}),e(d,{children:(k=(C=t.post.tourCardIdList)==null?void 0:C.accommodation[0])==null?void 0:k.title})]})}):e(r,{children:i(o,{children:[e(c,{children:"No Image"}),e(d,{children:"숙박 선택안함"})]})})]}),i(Y,{children:[i(G,{children:[i(K,{children:[e(T,{src:a(t.post.TeamId)}),e(p,{children:"Home"})]}),e(p,{children:"VS"}),i(O,{children:[e(T,{src:a(t.post.opponentTeamId)}),e(p,{children:"Away"})]})]}),e(_,{}),i(L,{children:[e(z,{children:e(A,{children:F(t.post.term)})}),e(L,{children:e(z,{children:e(A,{children:t.post.meetingPlace})})})]}),i(Z,{children:[i(ne,{children:[e(ee,{children:e(H,{})}),i(te,{children:[t.post.nowHeadCount,"/",t.post.maxNum]})]}),e(J,{children:e(Q,{children:V(t.post.now_status)})})]})]})]})},M=n.div`
+import{s as n,m as B,j as i,a as t}from"../../vendor-cdd8924f.js";import{B as H}from"../../react-icons-ebf3d52b.js";import{a,b as S}from"../../common-06e38f36.js";const D=e=>e.length>20?e.slice(0,20)+"...":e,F=e=>e.split("오")[0],V=e=>e===0?"모집중":e===1?"모집완료":"모집종료",s=e=>e>0,ct=e=>{var l,f,g,u,m,y,b,w,v,j,I,C,k;const h=B();return i(M,{onClick:()=>h(`/findaccompany/detail/${e.post.recruitmentBoardId}`),children:[i($,{children:[t(q,{children:t(E,{src:a(e.post.TeamId),alt:e.post.title})}),i("div",{children:[t(U,{children:D(e.post.title)}),t(W,{children:(l=S(e.post.tagList))==null?void 0:l.map((N,P)=>i(X,{children:["#",N]},P))})]})]}),i(R,{children:[s(e.post.tourCardIdList.attraction.length)?t(r,{children:i(o,{children:[t(c,{children:t(x,{src:(g=(f=e.post.tourCardIdList)==null?void 0:f.attraction[0])==null?void 0:g.firstimage})}),t(d,{children:(m=(u=e.post.tourCardIdList)==null?void 0:u.attraction[0])==null?void 0:m.title})]})}):t(r,{children:i(o,{children:[t(c,{children:"No Image"}),t(d,{children:"관광지 선택안함"})]})}),s(e.post.tourCardIdList.restaurant.length)?t(r,{children:i(o,{children:[t(c,{children:t(x,{src:(b=(y=e.post.tourCardIdList)==null?void 0:y.restaurant[0])==null?void 0:b.firstimage})}),t(d,{children:(v=(w=e.post.tourCardIdList)==null?void 0:w.restaurant[0])==null?void 0:v.title})]})}):t(r,{children:i(o,{children:[t(c,{children:"No Image"}),t(d,{children:"식당 선택안함"})]})}),s(e.post.tourCardIdList.accommodation.length)?t(r,{children:i(o,{children:[t(c,{children:t(x,{src:(I=(j=e.post.tourCardIdList)==null?void 0:j.accommodation[0])==null?void 0:I.firstimage})}),t(d,{children:(k=(C=e.post.tourCardIdList)==null?void 0:C.accommodation[0])==null?void 0:k.title})]})}):t(r,{children:i(o,{children:[t(c,{children:"No Image"}),t(d,{children:"숙박 선택안함"})]})})]}),i(Y,{children:[i(G,{children:[i(K,{children:[t(T,{src:a(e.post.TeamId)}),t(p,{children:"Home"})]}),t(p,{children:"VS"}),i(O,{children:[t(T,{src:a(e.post.opponentTeamId)}),t(p,{children:"Away"})]})]}),t(_,{}),i(L,{children:[t(z,{children:t(A,{children:F(e.post.term)})}),t(L,{children:t(z,{children:t(A,{children:e.post.meetingPlace})})})]}),i(Z,{children:[i(nt,{children:[t(tt,{children:t(H,{})}),i(et,{children:[e.post.nowHeadCount,"/",e.post.maxNum]})]}),t(J,{children:t(Q,{children:V(e.post.now_status)})})]})]})]})},M=n.div`
   width: auto;
   display: flex;
   flex-direction: column;
@@ -157,7 +157,7 @@ import{s as n,m as B,j as i,a as e,B as H}from"../../vendor-3c23d344.js";import{
   justify-content: center;
   align-items: center;
   /* gap: 3px; */
-`,ee=n.div``,te=n.p`
+`,tt=n.div``,et=n.p`
   font-size: 12px;
 `,L=n.div`
   display: flex;
@@ -172,11 +172,11 @@ import{s as n,m as B,j as i,a as e,B as H}from"../../vendor-3c23d344.js";import{
   align-items: center;
   gap: 5px;
   font-size: 14px;
-`,ne=n.div`
+`,nt=n.div`
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 3px;
 `,A=n.p`
   font-size: 12px;
-`;export{oe as A};
+`;export{ct as A};
