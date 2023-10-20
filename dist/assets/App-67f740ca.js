@@ -1,4 +1,4 @@
-import{G as _,s as i,m as w,k as h,a as e,j as o,N as q,e as d,u as J,O as g,S as N,Q as X,T as m,U as Y,V as Z,W as D}from"./vendor-cdd8924f.js";import{u as ee,c as a,B as te,v as ne}from"./common-06e38f36.js";/* empty css                       */function ie(t){return _({tag:"svg",attr:{viewBox:"0 0 512 512"},child:[{tag:"path",attr:{d:"M32 96v64h448V96H32zm0 128v64h448v-64H32zm0 128v64h448v-64H32z"}}]})(t)}function oe(t){return _({tag:"svg",attr:{viewBox:"0 0 512 512"},child:[{tag:"path",attr:{d:"M256 48C141.31 48 48 141.31 48 256s93.31 208 208 208 208-93.31 208-208S370.69 48 256 48zm2 96a72 72 0 11-72 72 72 72 0 0172-72zm-2 288a175.55 175.55 0 01-129.18-56.6C135.66 329.62 215.06 320 256 320s120.34 9.62 129.18 55.39A175.52 175.52 0 01256 432z"}}]})(t)}const V=t=>{const r=w();return h(n=>n.auth.isAuthenticated)?e(O,{children:o(E,{children:[t.profileImg!==void 0?e(ce,{src:t.profileImg}):e(ae,{children:e(oe,{size:"60"})}),o(H,{children:[t.name!==""&&o(x,{children:[t.name," 님"]}),t.nickname!==""&&o(x,{children:[t.nickname," 님"]}),e(re,{children:t.email})]}),e(q,{size:"30",onClick:()=>r("/mypage")})]})}):e(O,{children:e(E,{children:e(H,{onClick:()=>{r("/login")},children:e(x,{children:"로그인을 해주세요"})})})})},O=i.div`
+import{G as _,s as i,m as w,k as h,a as e,j as o,N as q,e as d,u as J,O as g,S as N,Q as X,T as m,U as Y,V as Z,W as D}from"./vendor-a1ee613c.js";import{u as ee,c as a,B as te,v as ne}from"./common-1230f2e9.js";function ie(t){return _({tag:"svg",attr:{viewBox:"0 0 512 512"},child:[{tag:"path",attr:{d:"M32 96v64h448V96H32zm0 128v64h448v-64H32zm0 128v64h448v-64H32z"}}]})(t)}function oe(t){return _({tag:"svg",attr:{viewBox:"0 0 512 512"},child:[{tag:"path",attr:{d:"M256 48C141.31 48 48 141.31 48 256s93.31 208 208 208 208-93.31 208-208S370.69 48 256 48zm2 96a72 72 0 11-72 72 72 72 0 0172-72zm-2 288a175.55 175.55 0 01-129.18-56.6C135.66 329.62 215.06 320 256 320s120.34 9.62 129.18 55.39A175.52 175.52 0 01256 432z"}}]})(t)}const V=t=>{const r=w();return h(n=>n.auth.isAuthenticated)?e(O,{children:o(E,{children:[t.profileImg!==void 0?e(ce,{src:t.profileImg}):e(ae,{children:e(oe,{size:"60"})}),o(H,{children:[t.name!==""&&o(x,{children:[t.name," 님"]}),t.nickname!==""&&o(x,{children:[t.nickname," 님"]}),e(re,{children:t.email})]}),e(q,{size:"30",onClick:()=>r("/mypage")})]})}):e(O,{children:e(E,{children:e(H,{onClick:()=>{r("/login")},children:e(x,{children:"로그인을 해주세요"})})})})},O=i.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -225,7 +225,7 @@ import{G as _,s as i,m as w,k as h,a as e,j as o,N as q,e as d,u as J,O as g,S a
   left: 0;
   right: 0;
   flex-direction: column;
-  z-index: 999999;
+  z-index: 9999;
 `,Le=i.header`
   width: 100%;
   height: 100%;
@@ -264,4 +264,4 @@ import{G as _,s as i,m as w,k as h,a as e,j as o,N as q,e as d,u as J,O as g,S a
   ${a.lessThan("mobile")`
       max-width: 1500px;
 	`}
-`;function Ge(){return o(Ne,{children:[e(Y,{}),e(Z,{position:"top-center",autoClose:1e3,hideProgressBar:!1,closeOnClick:!0,rtl:!1,pauseOnFocusLoss:!0,draggable:!0,theme:"light",limit:1}),e(D,{})]})}export{Ge as default};
+`;function He(){return o(Ne,{children:[e(Y,{}),e(Z,{style:{zIndex:999999999999},position:"top-center",autoClose:1e3,hideProgressBar:!1,closeOnClick:!0,rtl:!1,pauseOnFocusLoss:!0,draggable:!0,theme:"light",limit:1}),e(D,{})]})}export{He as default};

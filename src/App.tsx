@@ -8,6 +8,7 @@ function App() {
     <Layout>
       <ScrollRestoration />
       <ToastContainer
+        style={{ zIndex: 999999999999 }}
         position='top-center' // 알람 위치 지정
         autoClose={1000} // 자동 off 시간
         hideProgressBar={false} // 진행시간바 숨김

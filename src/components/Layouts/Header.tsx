@@ -32,7 +32,7 @@ const Container = styled.div`
   left: 0;
   right: 0;
   flex-direction: column;
-  z-index: 999999;
+  z-index: 9999;
 `;
 
 const Head = styled.header`

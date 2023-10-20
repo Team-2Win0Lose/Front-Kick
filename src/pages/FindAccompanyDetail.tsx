@@ -14,9 +14,7 @@ import { RootState } from '@/app/store';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { BsFillPersonFill } from 'react-icons/bs';
-
 import { getCookie } from '@/util/cookieFn';
-import MeetingRequestsList from '@/components/ManageAccompany/MeetingRequestsList';
 const token = getCookie('token');
 const headers = {
   Authorization: `Bearer ${token}`,
@@ -70,58 +68,37 @@ const FindAccompanyDetail = () => {
       toast.error('동행 신청 실패!');
     }
   };
-  interface MeetingRequest {
-    id: number;
-    requesterName: string;
-  }
-  const meetingList = [
-    { id: 1, requesterName: 'Alice' },
-    { id: 2, requesterName: 'Bob' },
-    { id: 3, requesterName: 'Kim' },
-    { id: 4, requesterName: 'Son' },
-    // ... add more requests
-  ];
-  const [meetingRequests, setMeetingRequests] =
-    useState<MeetingRequest[]>(meetingList);
-  const [acceptedRequests, setacceptedRequests] = useState<MeetingRequest[]>(
-    [],
-  );
-  const handleAccept = (id: number) => {
-    const requestToAccept = meetingRequests.find(
-      (request) => request.id === id,
-    );
-
-    if (requestToAccept) {
-      // Remove the accepted request from meetingRequests
-      // const updatedMeetingRequests = meetingRequests.filter(
-      //   (request) => request.id !== id,
-      // );
-      // setMeetingRequests(updatedMeetingRequests);
-
-      // Add the accepted request to acceptedRequests
-      setacceptedRequests((prevAcceptedRequests) => [
-        ...prevAcceptedRequests,
-        requestToAccept,
-      ]);
+  // console.log(recruitDetailData);
+  const [btnclicknumber, setbtnclicknumber] = useState<number>(0);
+  const [boardId, setboardId] = useState<number>(0);
+  const [userID, setuserID] = useState<string>('');
+  const [isAccept, setisAccept] = useState<number>(0);
+  const ifBtnClick = (boardId: number, userID: string, isAccept: number) => {
+    setboardId(boardId);
+    setuserID(userID);
+    setisAccept(isAccept);
+    setbtnclicknumber(btnclicknumber + 1);
+  };
+  useEffect(() => {
+    const patchUserApply = async () => {
+      try {
+        const res = await fetch(
+          `${BASE_URL}/api/my-recruitment/?recruitment_board_id=${boardId}&applying_user_id=${userID}&is_accept=${isAccept}`,
+          {
+            method: 'patch',
+            headers: headers,
+          },
+        );
+        const data = await res.json();
+        console.log(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    if (btnclicknumber > 0) {
+      patchUserApply();
     }
-  };
-
-  const handleReject = (id: number) => {
-    // Handle reject logic here
-  };
-
-  const [accepted, setAccepted] = useState(false);
-  const [rejected, setRejected] = useState(false);
-
-  const handleBtnAccept = (id: number) => {
-    setAccepted(true);
-    handleAccept(id);
-  };
-
-  const handleBtnReject = (id: number) => {
-    setRejected(true);
-    handleReject(id);
-  };
+  }, [btnclicknumber]);
 
   return id !== recruitDetailData?.hostId ? (
     <Form>
@@ -231,40 +208,47 @@ const FindAccompanyDetail = () => {
       <Title>{recruitDetailData?.title}</Title>
       <AcceptContainer>
         <h1>
-          동행 신청 인원 {acceptedRequests.length}/4 예약 인원{' '}
-          {meetingRequests.length}
+          동행 신청 인원{' '}
+          {Object.values(recruitDetailData?.appliedUserIdList).length}/
+          {recruitDetailData?.maxNum} 예약 인원{' '}
+          {Object.keys(recruitDetailData?.applyingUserIdList)}
         </h1>
         <List className='meeting-requests-list'>
-          {meetingRequests.map((request, idx) => (
-            <RequestCard key={idx}>
-              <Profile>
-                <ProfileImg>
-                  <BsFillPersonFill size='29' />
-                </ProfileImg>
-                <Name>{request.requesterName}</Name>
-              </Profile>
-              {!accepted && !rejected && (
+          {Object.values(recruitDetailData?.appliedUserIdList).map(
+            (request, idx) => (
+              <RequestCard key={idx}>
+                <Profile>
+                  <ProfileImg>
+                    <BsFillPersonFill size='29' />
+                  </ProfileImg>
+                  <Name>{request.user_id}</Name>
+                </Profile>
+
                 <Btn>
-                  <Agree onClick={() => handleBtnAccept(request.id)}>
+                  <Agree
+                    onClick={() =>
+                      ifBtnClick(
+                        recruitDetailData?.recruitmentBoardId,
+                        request.user_id,
+                        0,
+                      )
+                    }
+                  >
                     수락
                   </Agree>
-                  <Disagree onClick={() => handleBtnReject(request.id)}>
-                    거절
-                  </Disagree>
+                  <Disagree>거절</Disagree>
                 </Btn>
-              )}
-              {accepted && (
+                {/* 
                 <Btn>
                   <p>참여 완료</p>
                 </Btn>
-              )}
-              {rejected && (
+
                 <Btn>
                   <p>참여 거절</p>
-                </Btn>
-              )}
-            </RequestCard>
-          ))}
+                </Btn> */}
+              </RequestCard>
+            ),
+          )}
         </List>
       </AcceptContainer>
       <Box>

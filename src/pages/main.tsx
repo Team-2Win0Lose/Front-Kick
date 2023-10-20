@@ -21,7 +21,7 @@ type Props = {};
 const Main = (props: Props) => {
   const [accompanyList, setaccompanyList] = useState<AccompanyPostReal[]>([]);
 
-  const isLogin = useSelector((state: autoCheck) => state.auth.isAuthenticated);
+  const { id, isAuthenticated } = useSelector((state: autoCheck) => state.auth);
   useEffect(() => {
     async function fetchData() {
       try {
@@ -36,15 +36,15 @@ const Main = (props: Props) => {
       }
     }
     fetchData();
-  }, []);
+  }, [isAuthenticated, id]);
   const navigate = useNavigate();
 
   return (
     <div>
-      {isLogin ? (
+      {isAuthenticated ? (
         <DIV>
-          <P>👋 현재 나의 동행일정 ({accompanyList.length})</P>
-          {accompanyList.length === 0 ? (
+          <P>👋 현재 나의 동행일정 ({accompanyList?.length})</P>
+          {accompanyList?.length === 0 ? (
             <Mypage>
               <Font>예정 중인 동행이 없어요 🥲</Font>
             </Mypage>

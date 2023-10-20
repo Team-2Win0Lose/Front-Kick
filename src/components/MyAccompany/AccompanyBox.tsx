@@ -51,8 +51,18 @@ type Props = {
     createdDate: string;
     publishedDate: string | null;
     nowHeadCount: number;
-    applyingUserIdList: string;
-    appliedUserIdList: string;
+    applyingUserIdList: {
+      item: {
+        user_id: string;
+        user_nickname: string;
+      };
+    };
+    appliedUserIdList: {
+      item: {
+        user_id: string;
+        user_nickname: string;
+      };
+    };
   };
 };
 const compareLength = (length: number) => {
@@ -300,7 +310,6 @@ const Body = styled.div`
   padding: 8px 0;
   gap: 8px;
   /* background-color: #ffffff; */
-  
 `;
 const Title = styled.p`
   font-size: 16px;

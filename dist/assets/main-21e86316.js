@@ -1,4 +1,4 @@
-import{s as t,a as e,j as o,u as y,e as d,k as v,m as T,O as $}from"./vendor-cdd8924f.js";import{S as b}from"./react-slick-b06b373c.js";/* empty css                       */import{c as n,t as k,g as F,B as z}from"./common-06e38f36.js";import j from"./FindAccompany-6076aac9.js";import{A as C}from"./shared/MyAccompany/main-e673cab7.js";import"./react-icons-ebf3d52b.js";const S=()=>e(_,{className:"carousel",children:o(b,{...{dots:!0,autoplay:!0,Infinite:!0,slidesToshow:1,slidesToscroll:1,swipeToslide:!0,autoplaySpeed:3e3,speed:500},children:[e(p,{children:e(h,{children:e(g,{src:"/assets/banner4.png",alt:"logo"})})}),e(p,{children:e(h,{children:e(g,{src:"/assets/banner3.png",alt:"logo"})})}),e(p,{children:e(h,{children:e(g,{src:"/assets/banner2.png",alt:"logo"})})}),e(p,{children:e(h,{children:e(g,{src:"/assets/banner1.png",alt:"logo"})})})]})}),p=t.div`
+import{s as t,a as e,j as s,u as y,e as d,k as T,m as $,O as k}from"./vendor-a1ee613c.js";import{S as w}from"./react-slick-f55c6e89.js";/* empty css                       */import{c as i,t as F,g as z,B as j}from"./common-1230f2e9.js";import C from"./FindAccompany-ea143d83.js";import{A as S}from"./shared/MyAccompany/main-68bdbd75.js";import"./react-icons-74110d71.js";const _=()=>e(B,{className:"carousel",children:s(w,{...{dots:!0,autoplay:!0,Infinite:!0,slidesToshow:1,slidesToscroll:1,swipeToslide:!0,autoplaySpeed:3e3,speed:500},children:[e(p,{children:e(h,{children:e(g,{src:"/assets/banner4.png",alt:"logo"})})}),e(p,{children:e(h,{children:e(g,{src:"/assets/banner3.png",alt:"logo"})})}),e(p,{children:e(h,{children:e(g,{src:"/assets/banner2.png",alt:"logo"})})}),e(p,{children:e(h,{children:e(g,{src:"/assets/banner1.png",alt:"logo"})})})]})}),p=t.div`
   width: 100%;
   display: flex;
   justify-content: center;
@@ -14,11 +14,11 @@ import{s as t,a as e,j as o,u as y,e as d,k as v,m as T,O as $}from"./vendor-cdd
   height: 100%;
   border-radius: 20px;
   object-fit: contain;
-`,_=t.div`
+`,B=t.div`
     width: 100%;
-`,B=()=>{y();const[a,s]=d.useState([]),c=d.useCallback(async()=>{const r=await(await fetch("https://kick-back.azurewebsites.net/api/team_info/list_detail",{method:"GET"})).json();s(r)},[]);d.useEffect(()=>{c()},[c]);const l=[...a||[]].sort((i,r)=>r.recruit_ing-i.recruit_ing);return e(A,{className:"carousel",children:e(I,{...{dots:!1,autoplay:!0,infinite:!0,slidesToShow:4,slidesToScroll:4,swipeToSlide:!0,autoplaySpeed:3e3,speed:500,prevArrow:e(Y,{children:"‹"}),nextArrow:e(O,{children:"›"}),responsive:[{breakpoint:960,settings:{slidesToShow:2,slidesToScroll:2,autoplay:!1}},{breakpoint:768,settings:{slidesToShow:1,slidesToScroll:1,autoplay:!1}}]},children:l==null?void 0:l.map((i,r)=>r!==12&&o(E,{backgroundColor:i.team_color_sub,children:[e(R,{backgroundColor:i.team_color_main,children:e(G,{children:r+1})}),o(L,{children:[e(M,{children:e(N,{src:k(i.original_team_name),alt:i.original_team_name})}),o(P,{children:[e(D,{children:i.original_team_name}),o(V,{children:[o(m,{children:[e(u,{children:"팔로워"}),e(f,{children:i.follower})]}),o(m,{children:[e(u,{children:"현재 동행팀"}),e(f,{children:i.recruit_ing})]})]})]})]})]},r))})})},A=t.div`
+`,A=()=>{y();const[a,o]=d.useState([]),c=d.useCallback(async()=>{const n=await(await fetch("https://kick-back.azurewebsites.net/api/team_info/list_detail",{method:"GET"})).json();o(n)},[]);d.useEffect(()=>{c()},[c]);const l=[...a||[]].sort((r,n)=>n.recruit_ing-r.recruit_ing);return e(I,{className:"carousel",children:e(E,{...{dots:!1,autoplay:!0,infinite:!0,slidesToShow:4,slidesToScroll:4,swipeToSlide:!0,autoplaySpeed:3e3,speed:500,prevArrow:e(U,{children:"‹"}),nextArrow:e(q,{children:"›"}),responsive:[{breakpoint:960,settings:{slidesToShow:2,slidesToScroll:2,autoplay:!1}},{breakpoint:768,settings:{slidesToShow:1,slidesToScroll:1,autoplay:!1}}]},children:l==null?void 0:l.map((r,n)=>n!==12&&s(R,{backgroundColor:r.team_color_sub,children:[e(G,{backgroundColor:r.team_color_main,children:e(M,{children:n+1})}),s(V,{children:[e(N,{children:e(D,{src:F(r.original_team_name),alt:r.original_team_name})}),s(Y,{children:[e(P,{children:r.original_team_name}),s(O,{children:[s(u,{children:[e(b,{children:"팔로워"}),e(m,{children:r.follower})]}),s(u,{children:[e(b,{children:"현재 동행팀"}),e(m,{children:r.recruit_ing})]})]})]})]})]},n))})})},I=t.div`
   padding: 0 50px;
-`,I=t(b)`
+`,E=t(w)`
   .slick-slide {
   }
 
@@ -33,7 +33,7 @@ import{s as t,a as e,j as o,u as y,e as d,k as v,m as T,O as $}from"./vendor-cdd
 
   .slick-prev{
   }
-`,E=t.div`
+`,R=t.div`
   position: relative;
   display: flex;
   justify-content: center;
@@ -46,13 +46,13 @@ import{s as t,a as e,j as o,u as y,e as d,k as v,m as T,O as $}from"./vendor-cdd
   margin-left: 5%;
   margin-right: 5%;
   margin-bottom: 20px;
-  ${n.lessThan("mobile")`
+  ${i.lessThan("mobile")`
 		height: 200px;
     margin-left:2%;
     margin-right:2%;
     margin-bottom: 10px;
 	`}
-`,R=t.div`
+`,G=t.div`
   display: flex;
   top: 0;
   left: 0;
@@ -62,18 +62,18 @@ import{s as t,a as e,j as o,u as y,e as d,k as v,m as T,O as $}from"./vendor-cdd
   background: ${a=>a.backgroundColor||"#FFFFFF"};
   border-radius: 20px 20px 0 0;
   width: 100%;
-  ${n.lessThan("mobile")`
+  ${i.lessThan("mobile")`
 		height:60px;
     padding: 5px;
 	`}
-`,G=t.div`
+`,M=t.div`
   justify-content: left;
   align-items: left;
   font-size: 50px;
   font-weight: bold;
   padding: 3px;
   color: white;
-  ${n.lessThan("mobile")`
+  ${i.lessThan("mobile")`
 		font-size: 30px;
     padding: 2px;
 	`}
@@ -84,7 +84,7 @@ import{s as t,a as e,j as o,u as y,e as d,k as v,m as T,O as $}from"./vendor-cdd
     font-weight: 700;
     font-style: normal;
   }
-`,M=t.div`
+`,N=t.div`
   width: 150px;
   height: 150px;
   display: flex;
@@ -95,69 +95,69 @@ import{s as t,a as e,j as o,u as y,e as d,k as v,m as T,O as $}from"./vendor-cdd
   left: 50%; 
   background-color: #FFFFFF;
   border-radius:50%;
-  ${n.lessThan("tablet")`
+  ${i.lessThan("tablet")`
 		width: 90px;
     height: 90px;
 	`}
   transform: translate(-50%, -50%);
-   ${n.lessThan("mobile")`
+   ${i.lessThan("mobile")`
 		width: 70px;
     height: 70px;
     top: 30%;
 	`}
   
-`,N=t.img`
+`,D=t.img`
   width: 120px;
   height: 120px;
   object-fit: contain;
-  ${n.lessThan("tablet")`
+  ${i.lessThan("tablet")`
 		width: 80px;
     height: 80px;
 	`}
-  ${n.lessThan("mobile")`
+  ${i.lessThan("mobile")`
 		width:60px;
     height:60px;
 	`}
-`,D=t.div`
+`,P=t.div`
   justify-content: center;
   align-items: center;
   font-size: 25px;
   padding: 5px;
   color: white;
-  ${n.lessThan("mobile")`
+  ${i.lessThan("mobile")`
 		font-size: 20px;
     padding:1px;
 	`}
-`,L=t.div`
+`,V=t.div`
   display: flex;
   padding: 5px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  ${n.lessThan("mobile")`
+  ${i.lessThan("mobile")`
 		padding: 0px;
 	`}
-`,P=t.div`
+`,Y=t.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 70px;
-  ${n.lessThan("mobile")`
+  ${i.lessThan("mobile")`
 		margin-top: 50px;
 	`}
-`,V=t.div`
+`,O=t.div`
   display: flex;
   flex-direction: column;
   padding: 20px 0;
-   ${n.lessThan("mobile")`
-	`}
-`,f=t.div`
-  font-size: 20px;
-  color: white;
-   ${n.lessThan("mobile")`
-		font-size: 15px;
+   ${i.lessThan("mobile")`
 	`}
 `,m=t.div`
+  font-size: 20px;
+  color: white;
+   ${i.lessThan("mobile")`
+		font-size: 15px;
+	`}
+`,u=t.div`
   display: flex;
   width: 100%;
   padding: 5px;
@@ -165,10 +165,10 @@ import{s as t,a as e,j as o,u as y,e as d,k as v,m as T,O as $}from"./vendor-cdd
   font-size:10px;
   align-items: center;
   justify-content: space-between;
-`,u=t.div`
+`,b=t.div`
   font-size: 20px;
   color: white;
-  ${n.lessThan("mobile")`
+  ${i.lessThan("mobile")`
 		font-size: 10px;
 	`}
 `;t.div`
@@ -196,7 +196,7 @@ import{s as t,a as e,j as o,u as y,e as d,k as v,m as T,O as $}from"./vendor-cdd
   justify-content: center;
   align-items: center;
   gap: 5px;
-`;const Y=t.div`
+`;const U=t.div`
   position: absolute;
   top: 50%;
   left: -20px;
@@ -204,7 +204,7 @@ import{s as t,a as e,j as o,u as y,e as d,k as v,m as T,O as $}from"./vendor-cdd
   z-index: 999;
   cursor: pointer;
   font-size: 24px;
-`,O=t.div`
+`,q=t.div`
   position: absolute;
   top: 50%;
   right: -20px;
@@ -212,7 +212,7 @@ import{s as t,a as e,j as o,u as y,e as d,k as v,m as T,O as $}from"./vendor-cdd
   z-index: 999;
   cursor: pointer;
   font-size: 24px;
-`,U=F("token"),q={Authorization:`Bearer ${U}`},he=a=>{const[s,c]=d.useState([]),l=v(i=>i.auth.isAuthenticated);d.useEffect(()=>{async function i(){try{const w=await(await fetch(`${z}/api/my-recruitment`,{method:"get",headers:q})).json();c(w)}catch(r){console.error("Error:",r)}}i()},[]);const x=T();return o("div",{children:[l?o(H,{children:[o(X,{children:["👋 현재 나의 동행일정 (",s.length,")"]}),s.length===0?e(ee,{children:e(Z,{children:"예정 중인 동행이 없어요 🥲"})}):e(J,{children:s.length>0&&(s==null?void 0:s.map((i,r)=>e("div",{onClick:()=>x(`/findaccompany/detail/${i.recruitmentBoardId}`),children:e(C,{post:i})},i.recruitmentBoardId)))})]}):e($,{}),e(Q,{children:e(S,{})}),o(K,{children:[e(ie,{children:"🏆 구단별 응원순위"}),e(oe,{children:"구단별 모집이 완료된 동행팀 수"}),e(B,{})]}),o(W,{children:[e(te,{children:"🙋‍♂️ 동행 구경하기"}),e(ne,{children:"나의 동행을 찾아보세요!"}),e(j,{})]})]})},H=t.div`
+`,H=z("token"),J={Authorization:`Bearer ${H}`},ge=a=>{const[o,c]=d.useState([]),{id:l,isAuthenticated:x}=T(n=>n.auth);d.useEffect(()=>{async function n(){try{const v=await(await fetch(`${j}/api/my-recruitment`,{method:"get",headers:J})).json();c(v)}catch(f){console.error("Error:",f)}}n()},[x,l]);const r=$();return s("div",{children:[x?s(K,{children:[s(L,{children:["👋 현재 나의 동행일정 (",o==null?void 0:o.length,")"]}),(o==null?void 0:o.length)===0?e(te,{children:e(ee,{children:"예정 중인 동행이 없어요 🥲"})}):e(Q,{children:o.length>0&&(o==null?void 0:o.map((n,f)=>e("div",{onClick:()=>r(`/findaccompany/detail/${n.recruitmentBoardId}`),children:e(S,{post:n})},n.recruitmentBoardId)))})]}):e(k,{}),e(X,{children:e(_,{})}),s(W,{children:[e(ne,{children:"🏆 구단별 응원순위"}),e(re,{children:"구단별 모집이 완료된 동행팀 수"}),e(A,{})]}),s(Z,{children:[e(ie,{children:"🙋‍♂️ 동행 구경하기"}),e(oe,{children:"나의 동행을 찾아보세요!"}),e(C,{})]})]})},K=t.div`
   width: 100%;
   margin-bottom: 30px;
   display: flex;
@@ -220,7 +220,7 @@ import{s as t,a as e,j as o,u as y,e as d,k as v,m as T,O as $}from"./vendor-cdd
   justify-content: center;
   align-items: flex-start;
   gap: 10px;
-`,J=t.div`
+`,Q=t.div`
   width: 100%;
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* 4열로 배치 */
@@ -231,38 +231,38 @@ import{s as t,a as e,j as o,u as y,e as d,k as v,m as T,O as $}from"./vendor-cdd
   padding: 10px;
   box-sizing: border-box;
   border-radius: 12px;
-`,K=t.div`
+`,W=t.div`
   background-color: #1f1f45;
   border-radius: 15px;
   padding: 10px 0;
-  ${n.lessThan("mobile")`
+  ${i.lessThan("mobile")`
 		padding: 5px 0;
 	`}
-`,Q=t.div`
+`,X=t.div`
   height: auto;
   overflow: hidden;
   margin-bottom: 20px;
-`,W=t.div`
+`,Z=t.div`
   display: flex;
   flex-direction: column;
   width: 100%;
   padding: 10px 0;
-  ${n.lessThan("mobile")`
+  ${i.lessThan("mobile")`
 
 	`}
-`,X=t.div`
+`,L=t.div`
   justify-content: center;
   align-items: center;
   font-size: 20px;
   font-weight: bold;
-`,Z=t.div`
+`,ee=t.div`
   justify-content: center;
   align-items: center;
   margin: 10px;
   color: #5c5c5c;
   font-size: 20px;
   font-weight: bold;
-`,ee=t.div`
+`,te=t.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -272,35 +272,35 @@ import{s as t,a as e,j as o,u as y,e as d,k as v,m as T,O as $}from"./vendor-cdd
   background: #eeeeee;
   /* box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25); */
   border-radius: 20px;
-`,te=t.div`
+`,ie=t.div`
   border: 1px;
   font-size: 25px;
   font-weight: bold;
   padding: 20px;
-  ${n.lessThan("mobile")`
+  ${i.lessThan("mobile")`
 		font-size: 20px;
     padding: 10px 0;
 	`}
-`,ie=t.div`
+`,ne=t.div`
   border: 1px;
   font-size: 25px;
   padding: 20px;
   font-weight: bold;
   color: white;
-  ${n.lessThan("mobile")`
+  ${i.lessThan("mobile")`
 		font-size: 20px;
 	`}
-`,ne=t.div`
+`,oe=t.div`
   font-size: 15px;
   margin-left: 20px;
   font-weight: bold;
-  ${n.lessThan("mobile")`
+  ${i.lessThan("mobile")`
 		margin-left: 0px;
 	`}
-`,oe=t.div`
+`,re=t.div`
   font-size: 15px;
   font-weight: bold;
   margin-left: 20px;
   margin-bottom: 30px;
   color: white;
-`;export{he as default};
+`;export{ge as default};
