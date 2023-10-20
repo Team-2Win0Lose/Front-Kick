@@ -12,6 +12,7 @@ import CheeringTeam from './CheeringTeam';
 import { customMedia } from '@/util/GlobalStyle';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from 'react-router-dom';
 
 function Sidebar({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: any }) {
   const outside = useRef<any>();
@@ -43,6 +44,8 @@ function Sidebar({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: any }) {
       toggleSide();
     }
   };
+
+  const navigate = useNavigate()
   // const KakaoLogout = () => {
   //   axios
   //     .post(
@@ -90,8 +93,12 @@ function Sidebar({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: any }) {
               email={profileData?.profile?.email}
             />
           </DIV>
-          <Menu>나의 응원팀</Menu>
+
           <DIV>
+            <Menu>나의 응원팀</Menu>
+            <Alter onClick={() =>{
+              navigate('/signup/onboarding')
+            }}>변경</Alter>
             <CheeringTeam
               team_id={profileData?.profile?.cheering_team_id}
               follower={profileData?.cheering_team?.follower}
@@ -156,6 +163,12 @@ const SideBarWrap = styled.div`
     right: 0;
     transition: 0.5s ease;
   }
+
+  ${customMedia.lessThan('tablet')`
+    width:35%;
+    right:-35%;
+	`}
+
   ${customMedia.lessThan('mobile')`
     width:85%;
     right:-85%;
@@ -170,6 +183,21 @@ const Menu = styled.li`
     margin: 10px 0px;
 	`}
 `;
+
+
+const Alter = styled.li`
+  display:flex;
+  margin-right: 50px;
+  margin-bottom: 10px;
+  align-items:center;
+  justify-content: right;
+  font-size: 1rem;
+  color: #b6b6b6;
+  ${customMedia.lessThan('mobile')`
+     margin-right: 100px;
+	`}
+`;
+
 
 const DIV = styled.div`
   margin-left: 10px;
