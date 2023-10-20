@@ -1,4 +1,4 @@
-import{s as r,m as p,e as i,a as e,j as l}from"./vendor-a1ee613c.js";import{A as m}from"./shared/MyAccompany/main-c46c05ed.js";import{g as h,B as f}from"./common-fdb541e1.js";import"./react-icons-74110d71.js";const g=h("token"),u={Authorization:`Bearer ${g}`},x=t=>{const a=p(),[o,s]=i.useState([]);return i.useEffect(()=>{async function n(){try{const d=await(await fetch(`${f}/api/my-applied-recruitment`,{method:"get",headers:u})).json();s(d)}catch(c){console.error("Error:",c)}}n()},[]),e(y,{children:e($,{children:o==null?void 0:o.map((n,c)=>e("div",{onClick:()=>a(`/findaccompany/detail/${n.recruitmentBoardId}`),children:e(m,{post:n})},n.recruitmentBoardId))})})},y=r.div`
+import{s as r,m as p,e as i,a as e,j as l}from"./vendor-40d728e2.js";import{A as m}from"./shared/MyAccompany/main-431f66cb.js";import{g as h,B as f}from"./common-0f7dd459.js";import"./react-icons-697e254d.js";const g=h("token"),u={Authorization:`Bearer ${g}`},x=t=>{const a=p(),[o,s]=i.useState([]);return i.useEffect(()=>{async function n(){try{const d=await(await fetch(`${f}/api/my-applied-recruitment`,{method:"get",headers:u})).json();s(d)}catch(c){console.error("Error:",c)}}n()},[]),e(y,{children:e($,{children:o==null?void 0:o.map((n,c)=>e("div",{onClick:()=>a(`/findaccompany/detail/${n.recruitmentBoardId}`),children:e(m,{post:n})},n.recruitmentBoardId))})})},y=r.div`
   width: 100%;
 `,$=r.div`
   margin: 20px auto 0;
@@ -7,7 +7,7 @@ import{s as r,m as p,e as i,a as e,j as l}from"./vendor-a1ee613c.js";import{A as
   justify-content: center;
   align-content: center;
   gap: 30px;
-`,w=t=>{const[a,o]=i.useState(1);return l(k,{children:[e(v,{page:a,onClick:()=>{o(1),t.handleAccompanyComponent(1)},children:e(B,{page:a,children:"내가 모집한 동행"})}),e(C,{page:a,onClick:()=>{o(2),t.handleAccompanyComponent(2)},children:e(j,{page:a,children:"내가 신청한 동행"})})]})},k=r.div`
+`,w=t=>{const[a,o]=i.useState(1);return l(k,{children:[e(v,{page:a,onClick:()=>{o(1),t.handleAccompanyComponent(1)},children:e(B,{page:a,children:"내가 모집한 동행"})}),e(C,{page:a,onClick:()=>{o(2),t.handleAccompanyComponent(2)},children:e(j,{page:a,children:"내가 참여한 동행"})})]})},k=r.div`
   display: flex;
   justify-content: center;
   align-items: center;

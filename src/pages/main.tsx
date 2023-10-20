@@ -60,7 +60,7 @@ const Main = (props: Props) => {
       {isAuthenticated ? (
         <DIV>
           <P>👋 현재 나의 동행일정 ({accompanyList2?.length})</P>
-          {accompanyList1?.length === 0 && accompanyList2?.length ? (
+          {accompanyList2?.length === 0 ? (
             <Mypage>
               <Font>예정 중인 동행이 없어요 🥲</Font>
             </Mypage>
