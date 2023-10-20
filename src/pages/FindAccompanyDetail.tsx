@@ -28,9 +28,21 @@ const FindAccompanyDetail = () => {
   const id = useSelector((state: RootState) => state.auth.id);
   const [recruitDetailData, setrecruitDetailData] =
     useState<AccompanyPostReal>();
+
   const { recruitment_board_id } = useParams() as {
     recruitment_board_id: string;
   };
+  const [userState, setuserState] = useState<boolean>(false);
+  useEffect(() => {
+    for (const key in recruitDetailData?.applyingUserIdList) {
+      if (recruitDetailData?.applyingUserIdList.hasOwnProperty(key)) {
+        const user = recruitDetailData?.applyingUserIdList[key];
+        if (user.user_id === id) {
+          setuserState(true);
+        }
+      }
+    }
+  }, [recruitDetailData, id]);
   useEffect(() => {
     async function fetchData() {
       try {
@@ -195,7 +207,11 @@ const FindAccompanyDetail = () => {
         <Content>{recruitDetailData?.content}</Content>
       </Box>
       {id ? (
-        <ApplyBtn onClick={() => applyBtnClick()}>신청</ApplyBtn>
+        userState ? (
+          <ApplyBtn onClick={() => applyBtnClick()}>신청완료</ApplyBtn>
+        ) : (
+          <ApplyBtn onClick={() => applyBtnClick()}>신청</ApplyBtn>
+        )
       ) : (
         <div>
           <ApplyBtn onClick={() => toast.warning('로그인을 해주세요!')}>

@@ -6,6 +6,7 @@ export const sliceTitle = (title: string) => {
   }
   return title;
 };
+
 export const sliceDate = (date: string) => {
   return date.split('오')[0];
 };

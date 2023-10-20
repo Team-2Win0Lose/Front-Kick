@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { AccompanyPost } from '@/lib/interface';
+import { AccompanyPost, AppliedUser } from '@/lib/interface';
 import { useNavigate } from 'react-router-dom';
 import { BsPeopleFill } from 'react-icons/bs';
 import { sliceTitle, sliceDate, replaceNowStatus } from '@/util/sliceTitle';
@@ -51,18 +51,8 @@ type Props = {
     createdDate: string;
     publishedDate: string | null;
     nowHeadCount: number;
-    applyingUserIdList: {
-      item: {
-        user_id: string;
-        user_nickname: string;
-      };
-    };
-    appliedUserIdList: {
-      item: {
-        user_id: string;
-        user_nickname: string;
-      };
-    };
+    appliedUserIdList: Record<string, AppliedUser>;
+    applyingUserIdList: Record<string, AppliedUser>;
   };
 };
 const compareLength = (length: number) => {
@@ -176,11 +166,11 @@ const AccompanyBox = (props: Props) => {
           <AccompanyInfo>
             <AccompanyData>{sliceDate(props.post.term)}</AccompanyData>
           </AccompanyInfo>
-          <Accompany>
+          <AccompanyPlace>
             <AccompanyInfo>
               <AccompanyData>{props.post.meetingPlace}</AccompanyData>
             </AccompanyInfo>
-          </Accompany>
+          </AccompanyPlace>
         </Accompany>
 
         <Personnel>
@@ -387,7 +377,7 @@ const Footer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 30px;
+  gap: 10px;
   padding: 4px 0;
   background-color: white;
   border-radius: 180px;
@@ -405,6 +395,16 @@ const PeopleCount = styled.p`
 `;
 
 const Accompany = styled.div`
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  font-size: 14px;
+  gap: 5px;
+`;
+const AccompanyPlace = styled.div`
+  width: 80%;
   display: flex;
   justify-content: center;
   align-items: flex-start;

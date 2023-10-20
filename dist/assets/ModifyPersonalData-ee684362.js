@@ -1,4 +1,4 @@
-import{s as e,e as r,m as h,k as g,j as i,a as t,a7 as l,a8 as p,S as a}from"./vendor-490cfcbe.js";import{O as u}from"./shared/ModifyPersonalData/Onboarding-6304d37d.js";import"./react-slick-bffd3a80.js";/* empty css                       */import"./common-311e16a2.js";const m=n=>{const[o,s]=r.useState(!1),d=()=>{s(!o)},f=h(),c=g(x=>x.auth.isAuthenticated);return r.useEffect(()=>{c||f("/")},[c]),i(y,{children:[i(b,{children:[t(w,{children:"계정 설정"}),t(v,{onClick:d,children:o?t(l,{size:"30"}):t(p,{size:"30"})})]}),o?i(j,{children:[i(z,{children:[t(B,{src:"",alt:"사용자 프로필 이미지"}),t(k,{children:"프로필 이미지 변경"})]}),i($,{children:[t(O,{children:"닉네임"}),t(C,{placeholder:"닉네임"})]}),t(S,{children:"저장하기"})]}):t(a,{})]})},y=e.div`
+import{s as e,e as r,m as h,k as g,j as i,a as t,a4 as l,a5 as p,O as a}from"./vendor-a1ee613c.js";import{O as u}from"./shared/ModifyPersonalData/Onboarding-1e229104.js";import"./react-slick-f55c6e89.js";/* empty css                       */import"./common-fdb541e1.js";const m=n=>{const[o,s]=r.useState(!1),d=()=>{s(!o)},f=h(),c=g(x=>x.auth.isAuthenticated);return r.useEffect(()=>{c||f("/")},[c]),i(y,{children:[i(b,{children:[t(w,{children:"계정 설정"}),t(v,{onClick:d,children:o?t(l,{size:"30"}):t(p,{size:"30"})})]}),o?i(j,{children:[i(z,{children:[t(B,{src:"",alt:"사용자 프로필 이미지"}),t(k,{children:"프로필 이미지 변경"})]}),i(O,{children:[t($,{children:"닉네임"}),t(C,{placeholder:"닉네임"})]}),t(A,{children:"저장하기"})]}):t(a,{})]})},y=e.div`
   width: 100%;
   border-top: 1px solid black;
   display: flex;
@@ -48,13 +48,13 @@ import{s as e,e as r,m as h,k as g,j as i,a as t,a7 as l,a8 as p,S as a}from"./v
   align-items: center;
   border: 1px solid #777;
   border-radius: 12px;
-`,$=e.div`
+`,O=e.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
   gap: 10px;
-`,O=e.p`
+`,$=e.p`
   font-size: 24px;
   font-weight: bold;
 `,C=e.input`
@@ -87,7 +87,7 @@ import{s as e,e as r,m as h,k as g,j as i,a as t,a7 as l,a8 as p,S as a}from"./v
 
   background-color: ${({isSelected:n})=>n?"#418DFF":"#fff"};
   color: ${({isSelected:n})=>n?"#fff":"#000"};
-`;const S=e.div`
+`;const A=e.div`
   width: 560px;
   height: 64px;
   background-color: #418dff;
@@ -98,7 +98,7 @@ import{s as e,e as r,m as h,k as g,j as i,a as t,a7 as l,a8 as p,S as a}from"./v
   font-size: 24px;
   color: #fff;
   font-weight: bold;
-`,A=n=>{const[o,s]=r.useState(!1);return i(T,{children:[i(D,{children:[t(F,{children:"나의 응원팀 설정"}),t(H,{onClick:()=>{s(!o)},children:o?t(l,{size:"30"}):t(p,{size:"30"})})]}),o?i(I,{children:[t(E,{children:t(P,{children:t(u,{})})}),t(M,{children:"저장하기"})]}):t(a,{})]})},T=e.div`
+`,S=n=>{const[o,s]=r.useState(!1);return i(T,{children:[i(D,{children:[t(F,{children:"나의 응원팀 설정"}),t(H,{onClick:()=>{s(!o)},children:o?t(l,{size:"30"}):t(p,{size:"30"})})]}),o?i(I,{children:[t(E,{children:t(P,{children:t(u,{})})}),t(M,{children:"저장하기"})]}):t(a,{})]})},T=e.div`
   width: 100%;
   border-top: 1px solid black;
   display: flex;
@@ -144,7 +144,7 @@ import{s as e,e as r,m as h,k as g,j as i,a as t,a7 as l,a8 as p,S as a}from"./v
   height: 100%;
   background-color: #1f1f45;
   overflow-x: hidden;
-`,Q=n=>t(W,{children:i(L,{children:[t(N,{children:"개인정보변경"}),t(m,{}),t(A,{})]})}),W=e.div`
+`,Q=n=>t(W,{children:i(L,{children:[t(N,{children:"개인정보변경"}),t(m,{}),t(S,{})]})}),W=e.div`
   margin-top: 50px;
   width: 100%;
   display: flex;
