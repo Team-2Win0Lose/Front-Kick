@@ -21,6 +21,7 @@ const LoginForm = (props: any) => {
   useEffect(() => {
     if (isLogin) {
       navigate('/');
+      location.reload();
     }
   }, [isLogin]);
   const {
