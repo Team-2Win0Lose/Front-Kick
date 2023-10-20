@@ -1,4 +1,4 @@
-import{s as e,m as s,j as t,a as n}from"./vendor-a1ee613c.js";const l=c=>{const o=s();return t(p,{children:[n(a,{children:n(x,{children:"이메일 찾기"})}),t(h,{children:[t(i,{children:[n(r,{placeholder:"휴대폰 번호"}),n(d,{children:"인증하기"})]}),t(i,{children:[n(r,{type:"number",placeholder:"인증번호입력"}),n(d,{children:"01:00"})]}),t(u,{children:[n(f,{onClick:()=>{o(-1)},children:"뒤로가기"}),n(m,{onClick:()=>{o("/find/useremail")},children:"인증하기"})]})]})]})},p=e.form`
+import{s as e,m as s,j as t,a as n}from"./vendor-3c23d344.js";const l=c=>{const o=s();return t(p,{children:[n(a,{children:n(x,{children:"이메일 찾기"})}),t(h,{children:[t(i,{children:[n(r,{placeholder:"휴대폰 번호"}),n(d,{children:"인증하기"})]}),t(i,{children:[n(r,{type:"number",placeholder:"인증번호입력"}),n(d,{children:"01:00"})]}),t(u,{children:[n(f,{onClick:()=>{o(-1)},children:"뒤로가기"}),n(m,{onClick:()=>{o("/find/useremail")},children:"인증하기"})]})]})]})},p=e.form`
   margin-top: 140px;
   display: flex;
   flex-direction: column;
