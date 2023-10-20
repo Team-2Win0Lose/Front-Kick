@@ -52,7 +52,7 @@ const Main = (props: Props) => {
             </Mypage>
           ) : (
             <ListContainer>
-              {accompanyList?.map((post: AccompanyPostReal, idx) => (
+              {accompanyList.length > 0 && accompanyList?.map((post: AccompanyPostReal, idx) => (
                 <div
                   key={post.recruitmentBoardId}
                   onClick={() =>
