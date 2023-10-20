@@ -1,6 +1,8 @@
 import { AxiosError } from 'axios';
 import client from './client';
 import { getCookie } from '@/util/cookieFn';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const token = getCookie('token');
 
 interface Login {
@@ -34,6 +36,7 @@ export const login = async (email: string, password: string) => {
     }
   } catch (error) {
     if (error instanceof AxiosError) {
+      toast.error('로그인 실패!');
       return {
         data: error?.response?.data,
       };

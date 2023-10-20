@@ -6,7 +6,6 @@ import { RootState } from '@/app/store';
 import { BASE_URL } from '@/config';
 import { cardData, cardList } from '@/lib/interface';
 import { closeModal } from '@/feature/ModalSlice';
-import { cardItem } from '../CreateRoom/Step/SelectCard/PlaceInfoCarousel';
 import { SelectedFoodItem } from '@/feature/SelectedItemsSlice';
 import { teamnameConvertteamId } from '@/util/teamnameConvertImg';
 import { customMedia } from '@/util/GlobalStyle';
@@ -138,58 +137,62 @@ const FoodSearchModal = (props: Props) => {
         </SettingBox>
       </Form>
       <SubTitle>⚽️ {stadium} 경기장 주변 추천 장소</SubTitle>
+      <ResultContainer>
+        <FlexContainer1>
+          <DIV>
+            {recommendList &&
+              recommendList?.item.map((item: cardData, index) => (
+                <Box2 key={index}>
+                  <FlexContainer2>
+                    <InfoContainer>
+                      <CheckboxContainer>
+                        <Checkbox
+                          type='checkbox'
+                          onChange={() => {
+                            handleCheckboxChange(item);
+                          }}
+                        />
+                      </CheckboxContainer>
+                      <IMG src={item.firstimage} alt={item.title} />
+                      <FlexContainerRight>
+                        <Name>{item.title}</Name>
+                        <Loc>{item.addr1}</Loc>
+                      </FlexContainerRight>
+                    </InfoContainer>
+                  </FlexContainer2>
+                </Box2>
+              ))}
+          </DIV>
+        </FlexContainer1>
+        {searchData?.item && <SearchTitle>검색 결과</SearchTitle>}
 
-      <FlexContainer1>
-        <DIV>
-          {recommendList?.item.map((item: cardData, index) => (
-            <Box2 key={index}>
-              <FlexContainer2>
-                <InfoContainer>
-                  <CheckboxContainer>
-                    <Checkbox
-                      type='checkbox'
-                      onChange={() => {
-                        handleCheckboxChange(item);
-                      }}
-                    />
-                  </CheckboxContainer>
-                  <IMG src={item.firstimage} alt={item.title} />
-                  <FlexContainerRight>
-                    <Name>{item.title}</Name>
-                    <Loc>{item.addr1}</Loc>
-                  </FlexContainerRight>
-                </InfoContainer>
-              </FlexContainer2>
-            </Box2>
-          ))}
-        </DIV>
-      </FlexContainer1>
-      <FlexContainer1>
-        <DIV>
-          {searchData?.item &&
-            searchData?.item.map((item: cardData, index) => (
-              <Box2 key={index}>
-                <FlexContainer2>
-                  <InfoContainer>
-                    <CheckboxContainer>
-                      <Checkbox
-                        type='checkbox'
-                        onChange={() => {
-                          handleCheckboxChange(item);
-                        }}
-                      />
-                    </CheckboxContainer>
-                    <IMG src={item.firstimage} alt={item.title} />
-                    <FlexContainerRight>
-                      <Name>{item.title}</Name>
-                      <Loc>{item.addr1}</Loc>
-                    </FlexContainerRight>
-                  </InfoContainer>
-                </FlexContainer2>
-              </Box2>
-            ))}
-        </DIV>
-      </FlexContainer1>
+        <FlexContainer1>
+          <DIV>
+            {searchData?.item &&
+              searchData?.item.map((item: cardData, index) => (
+                <Box2 key={index}>
+                  <FlexContainer2>
+                    <InfoContainer>
+                      <CheckboxContainer>
+                        <Checkbox
+                          type='checkbox'
+                          onChange={() => {
+                            handleCheckboxChange(item);
+                          }}
+                        />
+                      </CheckboxContainer>
+                      <IMG src={item.firstimage} alt={item.title} />
+                      <FlexContainerRight>
+                        <Name>{item.title}</Name>
+                        <Loc>{item.addr1}</Loc>
+                      </FlexContainerRight>
+                    </InfoContainer>
+                  </FlexContainer2>
+                </Box2>
+              ))}
+          </DIV>
+        </FlexContainer1>
+      </ResultContainer>
       <NextButtonContainer>
         <RegisterBtn
           onClick={() => {
@@ -208,47 +211,53 @@ export default FoodSearchModal;
 const Box = styled.div`
   display: flex;
   flex-direction: column;
+  gap: 10px;
   justify-content: center;
   align-items: center;
   margin: 10px auto;
   background-color: #fff;
   border-radius: 10px;
-  width: 50%;
-  height: 80%;
-  overflow-x: hidden;
-  overflow-y: scroll;
+  width: 40%;
+  height: 100%;
+  overflow-x: auto;
+  overflow-y: auto;
   z-index: 100;
   ${customMedia.lessThan('mobile')`
-    width: 100%;
+    width:100%;
     height:500%;
 	`}
 `;
-
+const ResultContainer = styled.div`
+  height: 60%;
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; */
+`;
 const FlexContainer1 = styled.div`
   padding: 10px 0;
   display: flex;
-  gap: 5px;
+  /* gap: 10px; */
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  overflow-y: scroll;
+  height: 50%;
 `;
 
 const Title = styled.h2`
   font-size: 25px;
   font-weight: bold;
   text-align: center;
-  margin-top: 550px;
-  margin-bottom: 10px;
+  margin-top: 10px;
 `;
 const Form = styled.div`
-  margin: 10px auto;
+  margin: 0 auto;
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  overflow-y: scroll;
-  /* gap: 30px; */
 `;
 const SettingBox = styled.div`
   width: 100%;
@@ -256,14 +265,13 @@ const SettingBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
 `;
 
 const BoxContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  /* margin-bottom: 20px; */
+  /* margin: 40px 0; */
 `;
 
 const CourseAddBtn = styled.div`
@@ -283,7 +291,7 @@ const CourseAddBtn = styled.div`
   input {
     border-radius: 10px;
     border: 1px solid #ccc;
-    width: 320px;
+    width: 220px;
     padding: 10px;
     /* border: none; 
     outline: none;  */
@@ -299,7 +307,6 @@ const CustomIcon = styled(FaSearch)`
 `;
 
 const LandingPage = styled.div`
-  width: 100%;
   /* Add your styles for the landing page container here */
   /* For example: padding, background-color, etc. */
 `;
@@ -307,11 +314,6 @@ const LandingPage = styled.div`
 const LandingPageInner = styled.div`
   /* Add your styles for the landing page inner container here */
   /* For example: padding, width, etc. */
-`;
-
-const SearchFormContainer = styled.div`
-  /* Add your styles for the search form container here */
-  /* For example: margin, padding, etc. */
 `;
 
 const SearchForm = styled.form`
@@ -328,27 +330,21 @@ const FormLabel = styled.label`
 `;
 
 const FormInput = styled.input`
-  width: 1000px;
+  width: 100%;
   height: 100%;
 `;
-
 const BtnBox = styled.div``;
 
-const FormSubmitButton = styled.input`
-  /* Add your styles for the form submit button here */
-  /* For example: background-color, color, padding, etc. */
-`;
-const DIV = styled.div`
-  height: auto;
-  margin: 0 auto;
-  display: flex;
-  gap: 10px;
-  flex-direction: column;
-`;
 const SubTitle = styled.div`
   border: 1px;
   font-size: 18px;
   font-weight: bold;
+`;
+const SearchTitle = styled.div`
+  border: 1px;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
 `;
 
 const Box2 = styled.div`
@@ -361,7 +357,7 @@ const Box2 = styled.div`
   background: #eeeeee;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
-  /* margin-bottom: 10px; */
+  margin-bottom: 10px;
 `;
 
 const IMG = styled.img`
@@ -373,29 +369,14 @@ const IMG = styled.img`
   border-radius: 50%;
 `;
 
-const InfoContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-`;
-
 const Name = styled.div`
   font-size: 16px;
   font-weight: bold;
   margin-bottom: 10px;
 `;
 
-const FlexContainer2 = styled.div`
-  display: flex;
-  justify-content: space-between;
-`;
-
-const FlexContainerRight = styled.div`
-  align-items: center;
-`;
-
 const Loc = styled.div`
-  font-size: 12px;
+  font-size: 11px;
   font-weight: bold;
   padding-right: 5px;
 `;
@@ -403,9 +384,28 @@ const Loc = styled.div`
 const CheckboxContainer = styled.div`
   margin-left: 10px;
 `;
-
+const DIV = styled.div`
+  height: 400px;
+  width: 100%;
+  overflow-y: scroll;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+`;
 const Checkbox = styled.input``;
+const FlexContainer2 = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+const InfoContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
 
+const FlexContainerRight = styled.div`
+  align-items: center;
+`;
 const RegisterBtn = styled.div`
   width: 160px;
   height: 50px;
