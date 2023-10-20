@@ -21,6 +21,10 @@ const headers = {
 };
 const FindAccompanyDetail = () => {
   const navigate = useNavigate();
+  const [btnclicknumber, setbtnclicknumber] = useState<number>(0);
+  const [boardId, setboardId] = useState<number>(0);
+  const [userID, setuserID] = useState<string>('');
+  const [isAccept, setisAccept] = useState<number>();
   const id = useSelector((state: RootState) => state.auth.id);
   const [recruitDetailData, setrecruitDetailData] =
     useState<AccompanyPostReal>();
@@ -38,12 +42,13 @@ const FindAccompanyDetail = () => {
         );
         const data = await res.json();
         setrecruitDetailData(data);
+        // location.reload();
       } catch (Error) {
         console.error('Error:', Error);
       }
     }
     fetchData();
-  }, []);
+  }, [btnclicknumber]);
   const tagList = recruitDetailData?.tagList as string;
 
   const applyBtnClick = async () => {
@@ -69,36 +74,32 @@ const FindAccompanyDetail = () => {
     }
   };
   // console.log(recruitDetailData);
-  const [btnclicknumber, setbtnclicknumber] = useState<number>(0);
-  const [boardId, setboardId] = useState<number>(0);
-  const [userID, setuserID] = useState<string>('');
-  const [isAccept, setisAccept] = useState<number>();
+
   const ifBtnClick = (boardId: number, userID: string, isAccept: number) => {
     setboardId(boardId);
     setuserID(userID);
     setisAccept(isAccept);
-    setbtnclicknumber(isAccept);
-  };
-  useEffect(() => {
-    const patchUserApply = async () => {
-      try {
-        const res = await fetch(
-          `${BASE_URL}/api/my-recruitment/?recruitment_board_id=${boardId}&applying_user_id=${userID}&is_accept=${isAccept}`,
-          {
-            method: 'patch',
-            headers: headers,
-          },
-        );
-        const data = await res.json();
-        console.log(data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    if (btnclicknumber) {
+    setbtnclicknumber(isAccept + 1);
+    setTimeout(() => {
       patchUserApply();
+      // location.reload();
+    }, 100);
+  };
+  const patchUserApply = async () => {
+    try {
+      const res = await fetch(
+        `${BASE_URL}/api/my-recruitment/?recruitment_board_id=${boardId}&applying_user_id=${userID}&is_accept=${isAccept}`,
+        {
+          method: 'PATCH',
+          headers: headers,
+        },
+      );
+      const data = await res.json();
+      console.log(data);
+    } catch (error) {
+      console.log(error);
     }
-  }, [btnclicknumber]);
+  };
 
   return id !== recruitDetailData?.hostId ? (
     <Form>
@@ -212,9 +213,9 @@ const FindAccompanyDetail = () => {
           {recruitDetailData?.applyingUserIdList &&
             Object.values(recruitDetailData?.applyingUserIdList).length}
           /{recruitDetailData?.maxNum} 예약 인원{' '}
-          {Object.keys(recruitDetailData?.appliedUserIdList)}
+          {Object.values(recruitDetailData?.appliedUserIdList).length}
         </h1>
-        <List className='meeting-requests-list'>
+        <List>
           {Object.values(recruitDetailData?.applyingUserIdList).map(
             (request, idx) => (
               <RequestCard key={idx}>
