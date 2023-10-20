@@ -56,7 +56,7 @@ const MatchingInfo = (props: MatchingInfoProps) => {
     );
     // console.log(item.start.toLocaleString('ko-KR'));
   };
-  console.log(props.event.extendedProps);
+  // console.log(props.event.extendedProps);
 
   return (
     <div>
