@@ -194,7 +194,7 @@ const AccompanyBox = (props: Props) => {
           </People>
 
           <Status>
-            <CurrentStatus>
+            <CurrentStatus now_status={props.post.now_status}>
               {replaceNowStatus(props.post.now_status)}
             </CurrentStatus>
           </Status>
@@ -285,13 +285,22 @@ const Versus = styled.p`
   color: black;
 `;
 
-const CurrentStatus = styled.div`
+const CurrentStatus = styled.div<{ now_status: number }>`
   width: 40px;
   height: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #ffa500;
+  background-color: ${(props) => {
+    // 여기에서 now_status 값에 따라 배경색을 설정합니다.
+    if (props.now_status === 0) {
+      return '#35CB00';
+    } else if (props.now_status === 1) {
+      return '#ffa500';
+    } else if (props.now_status === 2) {
+      return '#E72E2E';
+    }
+  }};
   border-radius: 8px;
   border: none;
   color: white;

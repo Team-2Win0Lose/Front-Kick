@@ -20,7 +20,7 @@ type Props = {};
 
 const Main = (props: Props) => {
   const [accompanyList, setaccompanyList] = useState<AccompanyPostReal[]>([]);
-
+  // window.location.reload();
   const { token, isAuthenticated } = useSelector(
     (state: RootState) => state.auth,
   );
