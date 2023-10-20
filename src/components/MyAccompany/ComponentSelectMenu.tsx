@@ -25,7 +25,7 @@ const ComponentSelectMenu = (props: Props) => {
           setcomponentPage(2), props.handleAccompanyComponent(2);
         }}
       >
-        <Text2 page={componentPage}>내가 신청한 동행</Text2>
+        <Text2 page={componentPage}>내가 참여한 동행</Text2>
       </Box2>
     </Container>
   );

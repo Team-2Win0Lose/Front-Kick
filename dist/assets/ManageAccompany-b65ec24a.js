@@ -1,4 +1,4 @@
-import{s as e,j as n,a as t,e as a,a2 as j,m as z}from"./vendor-a1ee613c.js";import{a as k,I as T}from"./react-icons-74110d71.js";const C=i=>n(A,{children:[t(q,{children:"동행 정보"}),n(I,{children:[n(R,{children:[n(M,{children:[t(h,{children:"장소"}),t(g,{children:"서울역 광장"})]}),n(N,{children:[t(h,{children:"날짜"}),t(g,{children:"23.09.13 13:00"})]}),n(S,{children:[t(h,{children:"인원"}),t(g,{children:"3/4"})]})]}),t(B,{children:n($,{children:[t(f,{children:"#절대강자"}),t(f,{children:"#축구지존"}),t(f,{children:"#제주도"}),t(f,{children:"#맛집탐방"})]})})]})]}),A=e.div`
+import{s as e,j as n,a as t,e as a,a2 as j,m as z}from"./vendor-40d728e2.js";import{a as k,I as T}from"./react-icons-697e254d.js";const C=i=>n(A,{children:[t(q,{children:"동행 정보"}),n(I,{children:[n(R,{children:[n(M,{children:[t(h,{children:"장소"}),t(g,{children:"서울역 광장"})]}),n(N,{children:[t(h,{children:"날짜"}),t(g,{children:"23.09.13 13:00"})]}),n(S,{children:[t(h,{children:"인원"}),t(g,{children:"3/4"})]})]}),t(B,{children:n($,{children:[t(f,{children:"#절대강자"}),t(f,{children:"#축구지존"}),t(f,{children:"#제주도"}),t(f,{children:"#맛집탐방"})]})})]})]}),A=e.div`
   width: 100%;
   padding: 15px 20px;
   border: 1px solid black;
