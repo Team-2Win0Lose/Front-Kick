@@ -1,4 +1,3 @@
-// export const Kakao_API_KEY = '89a02933031d97650360449087c3b594';
 export const Kakao_API_KEY = '0d04cc23f0afa6731dd3d41bd0c2350a';
 
 export const Kakao_JS_KEY = '67e1296410a389f7bfe9c8b78683fee0';

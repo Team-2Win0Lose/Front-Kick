@@ -235,8 +235,8 @@ const FindAccompanyDetail = () => {
           {meetingRequests.length}
         </h1>
         <List className='meeting-requests-list'>
-          {meetingRequests.map((request) => (
-            <RequestCard>
+          {meetingRequests.map((request, idx) => (
+            <RequestCard key={idx}>
               <Profile>
                 <ProfileImg>
                   <BsFillPersonFill size='29' />

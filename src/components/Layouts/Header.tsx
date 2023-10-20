@@ -27,7 +27,12 @@ export default Header;
 
 const Container = styled.div`
   display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   flex-direction: column;
+  z-index: 999999;
 `;
 
 const Head = styled.header`
@@ -48,9 +53,9 @@ const Head = styled.header`
 `;
 
 const Separator = styled.div`
+  display: flex;
   height: 1px;
   background-color: #ccc;
-  margin: 10px 0;
   ${customMedia.lessThan('mobile')`
 		margin: 1px 0;
 	`}

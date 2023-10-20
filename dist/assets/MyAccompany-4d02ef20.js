@@ -1,4 +1,4 @@
-import{s as n,a as t,e as i,j as p,m as l}from"./vendor-3c23d344.js";import{A as g}from"./shared/MyAccompany/main-467c4813.js";import{g as m,B as h}from"./common-6abcfddc.js";const f=e=>t(x,{children:t(u,{})}),x=n.div`
+import{s as n,a as t,e as i,j as p,m as l}from"./vendor-cdd8924f.js";import{A as m}from"./shared/MyAccompany/main-e673cab7.js";import{g,B as h}from"./common-06e38f36.js";import"./react-icons-ebf3d52b.js";const f=e=>t(x,{children:t(u,{})}),x=n.div`
   width: 100%;
 `,u=n.div`
   margin: 0 auto;
@@ -32,7 +32,7 @@ import{s as n,a as t,e as i,j as p,m as l}from"./vendor-3c23d344.js";import{A as
   color: ${e=>e.page===1?"black":"white"};
   font-weight: bold;
   font-size: 14px;
-`,A=m("token"),j={Authorization:`Bearer ${A}`},B=e=>{const o=l(),[a,s]=i.useState([]);return i.useEffect(()=>{async function c(){try{const d=await(await fetch(`${h}/api/my-recruitment`,{method:"get",headers:j})).json();s(d)}catch(r){console.error("Error:",r)}}c()},[]),t(b,{children:t(M,{children:a==null?void 0:a.map((c,r)=>t("div",{onClick:()=>o(`/findaccompany/detail/${c.recruitmentBoardId}`),children:t(g,{post:c})},c.recruitmentBoardId))})})},b=n.div`
+`,A=g("token"),j={Authorization:`Bearer ${A}`},B=e=>{const o=l(),[a,s]=i.useState([]);return i.useEffect(()=>{async function c(){try{const d=await(await fetch(`${h}/api/my-recruitment`,{method:"get",headers:j})).json();s(d)}catch(r){console.error("Error:",r)}}c()},[]),t(b,{children:t(M,{children:a==null?void 0:a.map((c,r)=>t("div",{onClick:()=>o(`/findaccompany/detail/${c.recruitmentBoardId}`),children:t(m,{post:c})},c.recruitmentBoardId))})})},b=n.div`
   width: 100%;
 `,M=n.div`
   margin: 20px auto 0;
@@ -41,11 +41,11 @@ import{s as n,a as t,e as i,j as p,m as l}from"./vendor-3c23d344.js";import{A as
   justify-content: center;
   align-content: center;
   gap: 30px;
-`,I=e=>{const[o,a]=i.useState(1);return p(S,{children:[t(y,{handleAccompanyComponent:c=>{a(c)}}),o===1?t(B,{}):t(f,{})]})},S=n.div`
+`,P=e=>{const[o,a]=i.useState(1);return p(S,{children:[t(y,{handleAccompanyComponent:c=>{a(c)}}),o===1?t(B,{}):t(f,{})]})},S=n.div`
   display: flex;
   width:100%;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
   padding: 10px 25px;
-`;export{I as default};
+`;export{P as default};

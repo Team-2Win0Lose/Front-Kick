@@ -2,7 +2,7 @@ import { RootState } from '@/app/store';
 import { setMatch } from '@/feature/SummarySlice';
 import { customMedia } from '@/util/GlobalStyle';
 import { teamnameConvertImg } from '@/util/teamnameConvertImg';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 
@@ -26,6 +26,11 @@ export interface itemsProps {
 const MatchingInfo = (props: MatchingInfoProps) => {
   const [boxColor, setBoxColor] = useState('#eeeeee');
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    setBoxColor('#eeeeee');
+  }, [props.event]);
+
   const handleSelectClick = (item: {
     extendedProps: {
       game_schedule_id: string;
@@ -58,6 +63,36 @@ const MatchingInfo = (props: MatchingInfoProps) => {
   };
   // console.log(props.event.extendedProps);
 
+  const handleCancelClick = (item: {
+    extendedProps: {
+      game_schedule_id: string;
+      home_team_name: string;
+      away_team_name: string;
+      stadium: string;
+      team_id: number;
+      team_logo_img_url: string;
+      opponent_team_id: number;
+      opponent_team_logo_img_url: string;
+    };
+    start: Date;
+  }) => {
+    setBoxColor('#eeeeee');
+    dispatch(
+      setMatch({
+        game_schedule_id: '',
+        homename: '',
+        awayname: '',
+        team_id: '',
+        date: '',
+        stadium: '',
+        team_logo_img_url: '',
+        opponent_team_id: '',
+        opponent_team_logo_img_url:'',
+      }),
+    );
+    // console.log(item.start.toLocaleString('ko-KR'));
+  };
+
   return (
     <div>
       <Box style={{ background: boxColor }}>
@@ -85,8 +120,10 @@ const MatchingInfo = (props: MatchingInfoProps) => {
           </FlexContainerRight>
         </FlexContainer>
         <FlexContainer>
-          <Btn onClick={() => handleSelectClick(props.event)}>선택</Btn>
-          {/* <Btn onClick={props.onClose}>닫기</Btn> */}
+          {boxColor  === '#efd44c' ? <Btn onClick={() => handleCancelClick(props.event)}>선택 해제</Btn>
+          : <Btn onClick={() => handleSelectClick(props.event)}>선택</Btn>
+          }
+
         </FlexContainer>
       </Box>
     </div>
