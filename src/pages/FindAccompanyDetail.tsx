@@ -32,13 +32,17 @@ const FindAccompanyDetail = () => {
   const { recruitment_board_id } = useParams() as {
     recruitment_board_id: string;
   };
-  const [userState, setuserState] = useState<boolean>(false);
+  const [userState, setuserState] = useState<string>('신청');
   useEffect(() => {
+    if (recruitDetailData?.hostId === id) {
+      setuserState('모집중');
+    }
+
     for (const key in recruitDetailData?.applyingUserIdList) {
       if (recruitDetailData?.applyingUserIdList.hasOwnProperty(key)) {
         const user = recruitDetailData?.applyingUserIdList[key];
         if (user.user_id === id) {
-          setuserState(true);
+          setuserState('신청완료');
         }
       }
     }
@@ -65,7 +69,7 @@ const FindAccompanyDetail = () => {
 
   const applyBtnClick = async () => {
     try {
-      if (recruitDetailData?.hostId !== id) {
+      if (recruitDetailData?.hostId !== id && userState === '신청') {
         const res = await fetch(
           `${BASE_URL}/api/recruitment/?recruitment_board_id=${recruitment_board_id}`,
           {
@@ -78,8 +82,10 @@ const FindAccompanyDetail = () => {
           toast.success('🤝 동행 신청 완료!');
           navigate('/');
         }
-      } else {
+      } else if (userState === '모집중') {
         toast.warning('본인의 동행에는 신청할 수 없습니다.');
+      } else {
+        toast.warning('이미 신청한 동행입니다.');
       }
     } catch (Error) {
       toast.error('동행 신청 실패!');
@@ -207,11 +213,7 @@ const FindAccompanyDetail = () => {
         <Content>{recruitDetailData?.content}</Content>
       </Box>
       {id ? (
-        userState ? (
-          <ApplyBtn onClick={() => applyBtnClick()}>신청완료</ApplyBtn>
-        ) : (
-          <ApplyBtn onClick={() => applyBtnClick()}>신청</ApplyBtn>
-        )
+        <ApplyBtn onClick={() => applyBtnClick()}>{userState}</ApplyBtn>
       ) : (
         <div>
           <ApplyBtn onClick={() => toast.warning('로그인을 해주세요!')}>
