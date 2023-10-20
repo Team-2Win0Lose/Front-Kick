@@ -48,7 +48,7 @@ const MapContainer = (props: propsType) => {
       let keyword = props.searchKeyword;
 
       if (!keyword.replace(/^\s+|\s+$/g, '')) {
-        console.log('키워드를 입력해주세요!');
+        // console.log('키워드를 입력해주세요!');
         return false;
       }
 
@@ -175,7 +175,7 @@ const MapContainer = (props: propsType) => {
           setPlace({
             meetingPlace: places.place_name,
             detailMeetingPlace: detailMeetingPlace,
-            meetingPlaceAddress: places.address_name
+            meetingPlaceAddress: places.address_name,
           }),
         );
         el.classList.toggle('checked');
@@ -277,20 +277,20 @@ const MapContainer = (props: propsType) => {
 
   return (
     <MapWrapper>
-    <MapContainer_>
-      <MapDiv id='map' className='map' />
-      <SearchResult id='search-result'>
-        <ResultText>
-          <ResultKeyword>{props.searchKeyword} 관련 검색결과</ResultKeyword>
-        </ResultText>
-        <ScrollWrapper>
-          <PlacesList id='places-list'>
-            {/* 여기에 동적으로 리스트 아이템을 추가하면 됩니다 */}
-          </PlacesList>
-        </ScrollWrapper>
-        <Pagination id='pagination' />
-      </SearchResult>
-    </MapContainer_>
+      <MapContainer_>
+        <MapDiv id='map' className='map' />
+        <SearchResult id='search-result'>
+          <ResultText>
+            <ResultKeyword>{props.searchKeyword} 관련 검색결과</ResultKeyword>
+          </ResultText>
+          <ScrollWrapper>
+            <PlacesList id='places-list'>
+              {/* 여기에 동적으로 리스트 아이템을 추가하면 됩니다 */}
+            </PlacesList>
+          </ScrollWrapper>
+          <Pagination id='pagination' />
+        </SearchResult>
+      </MapContainer_>
     </MapWrapper>
   );
 };
@@ -320,7 +320,7 @@ const MapDiv = styled.div`
   background-color: #e0e0e0;
   border-radius: 10px 0 0 10px;
   margin-bottom: 20px;
-  font-size:12px;
+  font-size: 12px;
   ${customMedia.lessThan('mobile')`
     width: 100%;
     height: 300px;
@@ -335,7 +335,7 @@ const SearchResult = styled.div`
   height: 600px;
   display: flex;
   flex-direction: column;
-  background-color: rgb(248,248,248);
+  background-color: rgb(248, 248, 248);
   border-radius: 0 10px 10px 0;
   align-items: center;
   ${customMedia.lessThan('mobile')`
@@ -347,7 +347,7 @@ const SearchResult = styled.div`
 
 const ResultText = styled.p`
   font-size: 1px;
-  margin:20px 0;
+  margin: 20px 0;
   padding: 20px;
   font-weight: bold;
   ${customMedia.lessThan('mobile')`
@@ -377,9 +377,8 @@ const PlacesList = styled.ul`
   padding: 10px;
   color: #1f1f45;
   .item {
-    div{
+    div {
       color: black;
-
     }
     padding: 3px 0;
   }

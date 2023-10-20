@@ -1,8 +1,6 @@
 import styled from 'styled-components';
-import React, { useState, useEffect } from 'react';
-import RegisterTeam from '../components/RegisterTeam/RegisterTeam';
+import { useState, useEffect } from 'react';
 import BannerCarousel from '../components/Banner/BannerCarousel';
-import TeamCard from '../components/TeamRating/TeamCard';
 import { useSelector } from 'react-redux';
 import { autoCheck } from '@/feature/authSlice';
 import TeamCardCarousel from '@/components/TeamRating/TeamCardCarousel';
@@ -52,16 +50,19 @@ const Main = (props: Props) => {
             </Mypage>
           ) : (
             <ListContainer>
-              {accompanyList.length > 0 && accompanyList?.map((post: AccompanyPostReal, idx) => (
-                <div
-                  key={post.recruitmentBoardId}
-                  onClick={() =>
-                    navigate(`/findaccompany/detail/${post.recruitmentBoardId}`)
-                  }
-                >
-                  <AccompanyBox post={post} />
-                </div>
-              ))}
+              {accompanyList.length > 0 &&
+                accompanyList?.map((post: AccompanyPostReal, idx) => (
+                  <div
+                    key={post.recruitmentBoardId}
+                    onClick={() =>
+                      navigate(
+                        `/findaccompany/detail/${post.recruitmentBoardId}`,
+                      )
+                    }
+                  >
+                    <AccompanyBox post={post} />
+                  </div>
+                ))}
             </ListContainer>
           )}
         </DIV>
@@ -111,7 +112,7 @@ const RatingContainer = styled.div`
   background-color: #1f1f45;
   border-radius: 15px;
   padding: 10px 0;
-   ${customMedia.lessThan('mobile')`
+  ${customMedia.lessThan('mobile')`
 		padding: 5px 0;
 	`}
 `;
@@ -125,7 +126,7 @@ const BannerCarouselContainer = styled.div`
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  width:100%;
+  width: 100%;
   padding: 10px 0;
   ${customMedia.lessThan('mobile')`
 
@@ -197,5 +198,4 @@ const RatingSubTitle = styled.div`
   margin-left: 20px;
   margin-bottom: 30px;
   color: white;
-  
 `;
