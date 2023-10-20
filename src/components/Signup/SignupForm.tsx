@@ -92,6 +92,8 @@ const SignupForm = (props: any) => {
       .replace(/(\-{1,2})$/g, '');
   };
 
+  const initialDate = new Date();
+
   return (
     <Form onSubmit={handleSubmit(onValid)}>
       <FormTitle>입력사항</FormTitle>
@@ -185,13 +187,14 @@ const SignupForm = (props: any) => {
               </RadioWrap>
             </optgroup>
           </GenderWrap>
+          <Title>생년월일</Title>
           <Controller
             name='birth_date'
             control={control}
             render={({ field }) => (
               <StyledDatePicker2
                 locale={ko}
-                selected={field.value ? new Date(field.value) : null}
+                selected={field.value ? new Date(field.value) : initialDate}
                 onChange={(date) => field.onChange(date)}
                 showYearDropdown
                 dateFormatCalendar='MMMM'
@@ -298,6 +301,16 @@ const AuthBtn = styled.button`
   margin-right: 10px;
 `;
 
+const Title = styled.p`
+  width: 100%;
+  padding-left: 20px;
+  font-weight: bold;
+  font-size: 12px;
+  display: flex;
+  justify-content: left;
+  align-items: left;
+`;
+
 const Warn = styled.p`
   width: 320px;
   font-size: 14px;
@@ -315,7 +328,7 @@ const SubmitBtn = styled.button`
 `;
 
 const GenderWrap = styled.select`
-  margin-bottom: 16px;
+  margin-bottom: 3px;
   display: flex;
   gap: 15px;
 `;
@@ -326,6 +339,7 @@ const RadioWrap = styled.option`
   margin-bottom: 8px;
   input {
     display: none;
+    font-weight:bold;
   }
   span {
     margin-left: 4px;
@@ -338,6 +352,11 @@ const StyledDatePicker2 = styled(DatePicker)`
   font-size: 12px;
   border-radius: 10px;
   align-items: center;
+  border: none;
+  background-color: #d9d9d9;
+  outline: none;
+  filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.12));
+  
 `;
 
 const SelectedDateBox = styled.div`
