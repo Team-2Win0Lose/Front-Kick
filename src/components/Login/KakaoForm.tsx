@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Kakao_API_KEY, Kakao_JS_KEY, Kakao_REDIRECT_URL } from '../../config';
+import { Kakao_API_KEY, Kakao_JS_KEY, Kakao_REDIRECT_URL } from '@/config';
 type Props = {};
 
 const KakaoForm = (props: Props) => {

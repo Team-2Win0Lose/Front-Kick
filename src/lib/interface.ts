@@ -91,8 +91,18 @@ export interface AccompanyPostReal {
   createdDate: string;
   publishedDate: string | null;
   nowHeadCount: number;
-  applyingUserIdList: string;
-  appliedUserIdList: string;
+  applyingUserIdList: {
+    item: {
+      user_id: string;
+      user_nickname: string;
+    };
+  };
+  appliedUserIdList: {
+    item: {
+      user_id: string;
+      user_nickname: string;
+    };
+  };
 }
 
 export interface AccompanyMadeByMeList {
