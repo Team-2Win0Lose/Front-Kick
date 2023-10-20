@@ -128,7 +128,7 @@ const StepHeader = () => {
     if (titleIndex < titles.length - 1) {
       if (titleIndex === 0) {
         if (schedule === '') {
-          toast.error('일정을 선택해주세요');
+          toast.info('일정을 선택해주세요');
         } else {
           return setTitleIndex((prevIndex) => prevIndex + 1);
         }

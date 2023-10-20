@@ -416,7 +416,6 @@ const TeamContents = styled.div`
     justify-content: flex-start;
     align-items: center;
   }
-
 `;
 const Content = styled.div`
   margin: 10px 0;
