@@ -1,4 +1,4 @@
-import{s as t,a as e,j as o,u as y,e as d,k as v,m as T,O as $}from"./vendor-a1ee613c.js";import{S as b}from"./react-slick-f55c6e89.js";/* empty css                       */import{c as n,t as k,g as F,B as z}from"./common-1230f2e9.js";import j from"./FindAccompany-8d1e55d8.js";import{A as C}from"./shared/MyAccompany/main-5c13661e.js";import"./react-icons-74110d71.js";const S=()=>e(_,{className:"carousel",children:o(b,{...{dots:!0,autoplay:!0,Infinite:!0,slidesToshow:1,slidesToscroll:1,swipeToslide:!0,autoplaySpeed:3e3,speed:500},children:[e(p,{children:e(h,{children:e(g,{src:"/assets/banner4.png",alt:"logo"})})}),e(p,{children:e(h,{children:e(g,{src:"/assets/banner3.png",alt:"logo"})})}),e(p,{children:e(h,{children:e(g,{src:"/assets/banner2.png",alt:"logo"})})}),e(p,{children:e(h,{children:e(g,{src:"/assets/banner1.png",alt:"logo"})})})]})}),p=t.div`
+import{s as t,a as e,j as o,u as y,e as d,k as v,m as T,S as $}from"./vendor-3c23d344.js";import{S as b}from"./react-slick-e8cc0b22.js";/* empty css                       */import{c as n,t as k,g as F,B as z}from"./common-6abcfddc.js";import j from"./FindAccompany-5949395f.js";import{A as C}from"./shared/MyAccompany/main-467c4813.js";const S=()=>e(_,{className:"carousel",children:o(b,{...{dots:!0,autoplay:!0,Infinite:!0,slidesToshow:1,slidesToscroll:1,swipeToslide:!0,autoplaySpeed:3e3,speed:500},children:[e(p,{children:e(h,{children:e(g,{src:"/assets/banner4.png",alt:"logo"})})}),e(p,{children:e(h,{children:e(g,{src:"/assets/banner3.png",alt:"logo"})})}),e(p,{children:e(h,{children:e(g,{src:"/assets/banner2.png",alt:"logo"})})}),e(p,{children:e(h,{children:e(g,{src:"/assets/banner1.png",alt:"logo"})})})]})}),p=t.div`
   width: 100%;
   display: flex;
   justify-content: center;
@@ -16,7 +16,7 @@ import{s as t,a as e,j as o,u as y,e as d,k as v,m as T,O as $}from"./vendor-a1e
   object-fit: contain;
 `,_=t.div`
     width: 100%;
-`,B=()=>{y();const[s,a]=d.useState([]),c=d.useCallback(async()=>{const r=await(await fetch("https://kick-back.azurewebsites.net/api/team_info/list_detail",{method:"GET"})).json();a(r)},[]);d.useEffect(()=>{c()},[c]);const l=[...s||[]].sort((i,r)=>r.recruit_ing-i.recruit_ing);return e(A,{className:"carousel",children:e(I,{...{dots:!1,autoplay:!0,infinite:!0,slidesToShow:4,slidesToScroll:4,swipeToSlide:!0,autoplaySpeed:3e3,speed:500,prevArrow:e(Y,{children:"‹"}),nextArrow:e(O,{children:"›"}),responsive:[{breakpoint:960,settings:{slidesToShow:2,slidesToScroll:2,autoplay:!1}},{breakpoint:768,settings:{slidesToShow:1,slidesToScroll:1,autoplay:!1}}]},children:l==null?void 0:l.map((i,r)=>r!==12&&o(E,{backgroundColor:i.team_color_sub,children:[e(R,{backgroundColor:i.team_color_main,children:e(G,{children:r+1})}),o(L,{children:[e(M,{children:e(N,{src:k(i.original_team_name),alt:i.original_team_name})}),o(P,{children:[e(D,{children:i.original_team_name}),o(V,{children:[o(m,{children:[e(u,{children:"팔로워"}),e(f,{children:i.follower})]}),o(m,{children:[e(u,{children:"현재 동행팀"}),e(f,{children:i.recruit_ing})]})]})]})]})]},r))})})},A=t.div`
+`,B=()=>{y();const[a,s]=d.useState([]),c=d.useCallback(async()=>{const r=await(await fetch("https://kick-back.azurewebsites.net/api/team_info/list_detail",{method:"GET"})).json();s(r)},[]);d.useEffect(()=>{c()},[c]);const l=[...a||[]].sort((i,r)=>r.recruit_ing-i.recruit_ing);return e(A,{className:"carousel",children:e(I,{...{dots:!1,autoplay:!0,infinite:!0,slidesToShow:4,slidesToScroll:4,swipeToSlide:!0,autoplaySpeed:3e3,speed:500,prevArrow:e(Y,{children:"‹"}),nextArrow:e(U,{children:"›"}),responsive:[{breakpoint:960,settings:{slidesToShow:2,slidesToScroll:2,autoplay:!1}},{breakpoint:768,settings:{slidesToShow:1,slidesToScroll:1,autoplay:!1}}]},children:l==null?void 0:l.map((i,r)=>r!==12&&o(E,{backgroundColor:i.team_color_sub,children:[e(R,{backgroundColor:i.team_color_main,children:e(G,{children:r+1})}),o(L,{children:[e(M,{children:e(N,{src:k(i.original_team_name),alt:i.original_team_name})}),o(P,{children:[e(D,{children:i.original_team_name}),o(V,{children:[o(m,{children:[e(u,{children:"팔로워"}),e(f,{children:i.follower})]}),o(m,{children:[e(u,{children:"현재 동행팀"}),e(f,{children:i.recruit_ing})]})]})]})]})]},r))})})},A=t.div`
   padding: 0 50px;
 `,I=t(b)`
   .slick-slide {
@@ -40,7 +40,7 @@ import{s as t,a as e,j as o,u as y,e as d,k as v,m as T,O as $}from"./vendor-a1e
   align-items: center;
   width: 150px;
   height: 343px;
-  background-color: ${s=>s.backgroundColor||"#FFFFFF"};
+  background-color: ${a=>a.backgroundColor||"#FFFFFF"};
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
   border-radius: 20px;
   margin-left: 5%;
@@ -59,7 +59,7 @@ import{s as t,a as e,j as o,u as y,e as d,k as v,m as T,O as $}from"./vendor-a1e
   flex-direction: column;
   padding: 5px;
   height: 120px;
-  background: ${s=>s.backgroundColor||"#FFFFFF"};
+  background: ${a=>a.backgroundColor||"#FFFFFF"};
   border-radius: 20px 20px 0 0;
   width: 100%;
   ${n.lessThan("mobile")`
@@ -204,7 +204,7 @@ import{s as t,a as e,j as o,u as y,e as d,k as v,m as T,O as $}from"./vendor-a1e
   z-index: 999;
   cursor: pointer;
   font-size: 24px;
-`,O=t.div`
+`,U=t.div`
   position: absolute;
   top: 50%;
   right: -20px;
@@ -212,7 +212,7 @@ import{s as t,a as e,j as o,u as y,e as d,k as v,m as T,O as $}from"./vendor-a1e
   z-index: 999;
   cursor: pointer;
   font-size: 24px;
-`,U=F("token"),q={Authorization:`Bearer ${U}`},he=s=>{const[a,c]=d.useState([]),l=v(i=>i.auth.isAuthenticated);d.useEffect(()=>{async function i(){try{const w=await(await fetch(`${z}/api/my-recruitment`,{method:"get",headers:q})).json();c(w)}catch(r){console.error("Error:",r)}}i()},[]);const x=T();return o("div",{children:[l?o(H,{children:[o(X,{children:["👋 현재 나의 동행일정 (",a.length,")"]}),a.length===0?e(ee,{children:e(Z,{children:"예정 중인 동행이 없어요 🥲"})}):e(J,{children:a==null?void 0:a.map((i,r)=>e("div",{onClick:()=>x(`/findaccompany/detail/${i.recruitmentBoardId}`),children:e(C,{post:i})},i.recruitmentBoardId))})]}):e($,{}),e(Q,{children:e(S,{})}),o(K,{children:[e(ie,{children:"🏆 구단별 응원순위"}),e(oe,{children:"구단별 모집이 완료된 동행팀 수"}),e(B,{})]}),o(W,{children:[e(te,{children:"🙋‍♂️ 동행 구경하기"}),e(ne,{children:"나의 동행을 찾아보세요!"}),e(j,{})]})]})},H=t.div`
+`,q=F("token"),H={Authorization:`Bearer ${q}`},pe=a=>{const[s,c]=d.useState([]),l=v(i=>i.auth.isAuthenticated);d.useEffect(()=>{async function i(){try{const w=await(await fetch(`${z}/api/my-recruitment`,{method:"get",headers:H})).json();c(w)}catch(r){console.error("Error:",r)}}i()},[]);const x=T();return o("div",{children:[l?o(J,{children:[o(X,{children:["👋 현재 나의 동행일정 (",s.length,")"]}),s.length===0?e(ee,{children:e(Z,{children:"예정 중인 동행이 없어요 🥲"})}):e(K,{children:s.length>0&&(s==null?void 0:s.map((i,r)=>e("div",{onClick:()=>x(`/findaccompany/detail/${i.recruitmentBoardId}`),children:e(C,{post:i})},i.recruitmentBoardId)))})]}):e($,{}),e(Q,{children:e(S,{})}),o(O,{children:[e(ie,{children:"🏆 구단별 응원순위"}),e(oe,{children:"구단별 모집이 완료된 동행팀 수"}),e(B,{})]}),o(W,{children:[e(te,{children:"🙋‍♂️ 동행 구경하기"}),e(ne,{children:"나의 동행을 찾아보세요!"}),e(j,{})]})]})},J=t.div`
   width: 100%;
   margin-bottom: 30px;
   display: flex;
@@ -220,7 +220,7 @@ import{s as t,a as e,j as o,u as y,e as d,k as v,m as T,O as $}from"./vendor-a1e
   justify-content: center;
   align-items: flex-start;
   gap: 10px;
-`,J=t.div`
+`,K=t.div`
   width: 100%;
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* 4열로 배치 */
@@ -231,11 +231,11 @@ import{s as t,a as e,j as o,u as y,e as d,k as v,m as T,O as $}from"./vendor-a1e
   padding: 10px;
   box-sizing: border-box;
   border-radius: 12px;
-`,K=t.div`
+`,O=t.div`
   background-color: #1f1f45;
   border-radius: 15px;
   padding: 10px 0;
-   ${n.lessThan("mobile")`
+  ${n.lessThan("mobile")`
 		padding: 5px 0;
 	`}
 `,Q=t.div`
@@ -245,7 +245,7 @@ import{s as t,a as e,j as o,u as y,e as d,k as v,m as T,O as $}from"./vendor-a1e
 `,W=t.div`
   display: flex;
   flex-direction: column;
-  width:100%;
+  width: 100%;
   padding: 10px 0;
   ${n.lessThan("mobile")`
 
@@ -303,5 +303,4 @@ import{s as t,a as e,j as o,u as y,e as d,k as v,m as T,O as $}from"./vendor-a1e
   margin-left: 20px;
   margin-bottom: 30px;
   color: white;
-  
-`;export{he as default};
+`;export{pe as default};
