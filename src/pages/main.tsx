@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import { useState, useEffect } from 'react';
 import BannerCarousel from '../components/Banner/BannerCarousel';
 import { useSelector } from 'react-redux';
-import { autoCheck } from '@/feature/authSlice';
 import TeamCardCarousel from '@/components/TeamRating/TeamCardCarousel';
 import FindAccompany from './FindAccompany';
 import { customMedia } from '@/util/GlobalStyle';
@@ -11,6 +10,7 @@ import { getCookie } from '@/util/cookieFn';
 import { AccompanyPostReal } from '@/lib/interface';
 import AccompanyBox from '@/components/MyAccompany/AccompanyBox';
 import { useNavigate } from 'react-router-dom';
+import { RootState } from '@/app/store';
 
 const token = getCookie('token');
 const headers = {
@@ -21,7 +21,7 @@ type Props = {};
 const Main = (props: Props) => {
   const [accompanyList, setaccompanyList] = useState<AccompanyPostReal[]>([]);
 
-  const { id, isAuthenticated } = useSelector((state: autoCheck) => state.auth);
+  const { id, isAuthenticated } = useSelector((state: RootState) => state.auth);
   useEffect(() => {
     async function fetchData() {
       try {
@@ -36,7 +36,7 @@ const Main = (props: Props) => {
       }
     }
     fetchData();
-  }, [isAuthenticated, id]);
+  }, [id]);
   const navigate = useNavigate();
 
   return (
