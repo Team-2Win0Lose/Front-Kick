@@ -89,7 +89,6 @@ const Wrap = styled.div`
   justify-content: left;
   align-items: center;
   padding: 20px;
-  margin-bottom:20px;
 `;
 
 const DIV = styled.div`
