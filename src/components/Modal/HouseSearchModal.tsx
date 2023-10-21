@@ -223,13 +223,16 @@ const Box = styled.div`
   overflow-x: auto;
   overflow-y: scroll;
   z-index: 100;
+
   ${customMedia.lessThan('mobile')`
     width:80%;
     height:70%;
 	`}
+  
 `;
 const ResultContainer = styled.div`
   height: 60%;
+  width: 90%;
   overflow-y: scroll;
   /* display: flex;
   flex-direction: column;
@@ -238,7 +241,6 @@ const ResultContainer = styled.div`
 `;
 const FlexContainer1 = styled.div`
   padding: 10px 0;
-
   display: flex;
   /* gap: 10px; */
   flex-direction: column;
@@ -294,11 +296,19 @@ const CourseAddBtn = styled.div`
   input {
     border-radius: 10px;
     border: 1px solid #ccc;
-    width: 220px;
+    width: 420px;
     padding: 10px;
     /* border: none; 
     outline: none;  */
     font-size: 14px;
+    ${customMedia.lessThan('tablet')`
+      width: 200px;
+      height: 40px;
+	`}
+    ${customMedia.lessThan('mobile')`
+      width: 230px;
+      height: 40px;
+	`}
   }
 `;
 
@@ -328,6 +338,7 @@ const FormLabel = styled.label`
   display: flex;
   justify-content: center;
   align-items: center;
+
   /* Add your styles for the form label here */
   /* For example: display, flex-direction, etc. */
 `;

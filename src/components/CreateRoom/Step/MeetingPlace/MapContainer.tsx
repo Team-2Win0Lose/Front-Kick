@@ -321,13 +321,15 @@ const MapDiv = styled.div`
   border-radius: 10px 0 0 10px;
   margin-bottom: 20px;
   font-size: 12px;
-  ${customMedia.lessThan('mobile')`
-    width: 100%;
+  ${customMedia.lessThan('tablet')`
+    width: 300px;
     height: 300px;
     border-radius: 10px;
     margin-bottom: 10px;
     border-radius: 10px;
 	`}
+
+
 `;
 
 const SearchResult = styled.div`
@@ -342,6 +344,7 @@ const SearchResult = styled.div`
       padding: 0px;
       border-radius: 10px;
       width:100%;
+      height: 400px;
 	`}
 `;
 
@@ -359,7 +362,6 @@ const ResultKeyword = styled.span`
   color: black;
   font-size: 20px;
   ${customMedia.lessThan('mobile')`
-     font-size: 20px;
 	`}
 `;
 

@@ -45,7 +45,6 @@ function Sidebar({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: any }) {
     }
   };
 
-  const navigate = useNavigate()
   // const KakaoLogout = () => {
   //   axios
   //     .post(
@@ -96,9 +95,6 @@ function Sidebar({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: any }) {
 
           <DIV>
             <Menu>나의 응원팀</Menu>
-            <Alter onClick={() =>{
-              navigate('/signup/onboarding')
-            }}>변경</Alter>
             <CheeringTeam
               team_id={profileData?.profile?.cheering_team_id}
               follower={profileData?.cheering_team?.follower}
@@ -181,20 +177,6 @@ const Menu = styled.li`
   color: #ffffff;
   ${customMedia.lessThan('mobile')`
     margin: 10px 0px;
-	`}
-`;
-
-
-const Alter = styled.li`
-  display:flex;
-  margin-right: 50px;
-  margin-bottom: 10px;
-  align-items:center;
-  justify-content: right;
-  font-size: 1rem;
-  color: #b6b6b6;
-  ${customMedia.lessThan('mobile')`
-     margin-right: 100px;
 	`}
 `;
 
