@@ -232,6 +232,7 @@ const Box = styled.div`
 const ResultContainer = styled.div`
   height: 60%;
   overflow-y: scroll;
+  width: 90%;
   /* display: flex;
   flex-direction: column;
   justify-content: center;
@@ -295,11 +296,19 @@ const CourseAddBtn = styled.div`
   input {
     border-radius: 10px;
     border: 1px solid #ccc;
-    width: 220px;
+    width: 420px;
     padding: 10px;
     /* border: none; 
     outline: none;  */
     font-size: 14px;
+    ${customMedia.lessThan('tablet')`
+      width: 200px;
+      height: 40px;
+	`}
+    ${customMedia.lessThan('mobile')`
+      width: 230px;
+      height: 40px;
+	`}
   }
 `;
 
