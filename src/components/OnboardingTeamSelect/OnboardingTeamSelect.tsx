@@ -7,7 +7,6 @@ import SelectTeamCard from './SelectTeamCard';
 import { customMedia } from '@/util/GlobalStyle';
 import { teamnameConvertImg } from '@/util/teamnameConvertImg';
 
-
 const OnboardingTeamSelect = () => {
   const [selectedTeam, setSelectedTeam] = useState<any | null>('강원');
 
@@ -81,33 +80,65 @@ const OnboardingTeamSelect = () => {
   return (
     <CarouselContainer>
       <CustomSlider {...settings}>
-        {sortedItems.map((item, index) => (
-          index !== 12 && (
-          <DIV2 key={index} isSelected={selectedTeam === item.original_team_name}>
-            <BoxWrapper key={index}>
-              <Box onClick={() => handleBoxClick(item.original_team_name)}>
-                <FlexContainer>
-                  <IMG src={teamnameConvertImg(item.original_team_name)} alt={item.original_team_name} />
-                </FlexContainer>
-              </Box>
-            </BoxWrapper>
-            <NameWrapper>
-              <Name>{item.team_name}</Name>
-            </NameWrapper>
-          </DIV2>
-          )
-        ))}
+        {sortedItems.map(
+          (item, index) =>
+            index !== 12 && (
+              <DIV2
+                key={index}
+                isSelected={selectedTeam === item.original_team_name}
+              >
+                <BoxWrapper key={index}>
+                  <Box onClick={() => handleBoxClick(item.original_team_name)}>
+                    <FlexContainer>
+                      <IMG
+                        src={teamnameConvertImg(item.original_team_name)}
+                        alt={item.original_team_name}
+                      />
+                    </FlexContainer>
+                  </Box>
+                </BoxWrapper>
+                <NameWrapper>
+                  <Name>{item.team_name}</Name>
+                </NameWrapper>
+              </DIV2>
+            ),
+        )}
       </CustomSlider>
       {selectedTeam && (
         <SelectTeamCard
           original_team_name={selectedTeam}
-          team_color_main={sortedItems.find((item) => item.original_team_name === selectedTeam)?.team_color_main || ''}
-          team_name={sortedItems.find((item) => item.original_team_name === selectedTeam)?.team_name || ''}
-          team_color_sub={sortedItems.find((item) => item.original_team_name === selectedTeam)?.team_color_sub || ''}
-          logo_img_url={sortedItems.find((item) => item.original_team_name === selectedTeam)?.original_team_name|| ''}
-          recruit_ing={sortedItems.find((item) => item.original_team_name === selectedTeam)?.recruit_ing || 1}
-          follower={sortedItems.find((item) => item.original_team_name === selectedTeam)?.follower || 1}
-          recruit_end={sortedItems.find((item) => item.original_team_name === selectedTeam)?.recruit_end || 1}
+          football_team_id={
+            sortedItems.find((item) => item.original_team_name === selectedTeam)
+              ?.football_team_id || 1
+          }
+          team_color_main={
+            sortedItems.find((item) => item.original_team_name === selectedTeam)
+              ?.team_color_main || ''
+          }
+          team_name={
+            sortedItems.find((item) => item.original_team_name === selectedTeam)
+              ?.team_name || ''
+          }
+          team_color_sub={
+            sortedItems.find((item) => item.original_team_name === selectedTeam)
+              ?.team_color_sub || ''
+          }
+          logo_img_url={
+            sortedItems.find((item) => item.original_team_name === selectedTeam)
+              ?.original_team_name || ''
+          }
+          recruit_ing={
+            sortedItems.find((item) => item.original_team_name === selectedTeam)
+              ?.recruit_ing || 1
+          }
+          follower={
+            sortedItems.find((item) => item.original_team_name === selectedTeam)
+              ?.follower || 1
+          }
+          recruit_end={
+            sortedItems.find((item) => item.original_team_name === selectedTeam)
+              ?.recruit_end || 1
+          }
           // name={selectedTeam || ''}
         />
       )}
@@ -139,10 +170,10 @@ const CustomSlider = styled(Slider)`
 	`}
   }
 
-  .slick-prev{
+  .slick-prev {
     left: 12px;
   }
-  .slick-next{
+  .slick-next {
     right: 12px;
   }
 `;
@@ -174,7 +205,6 @@ interface BoxProps {
   backgroundColor?: string;
 }
 
-
 const Box = styled.div<BoxProps>`
   position: relative;
   display: flex;
@@ -197,13 +227,12 @@ const DIV = styled.div`
   justify-content: center;
   align-items: center;
   position: absolute;
-  top: 50%; 
-  left: 50%; 
-  background-color: #FFFFFF;
-  border-radius:50%;
+  top: 50%;
+  left: 50%;
+  background-color: #ffffff;
+  border-radius: 50%;
   transform: translate(-50%, -50%);
-  
-`
+`;
 
 const IMG = styled.img`
   width: 70px;

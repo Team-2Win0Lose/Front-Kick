@@ -1,8 +1,19 @@
+import { RootState } from '@/app/store';
+import { BASE_URL } from '@/config';
+import { getCookie } from '@/util/cookieFn';
 import { teamnameConvertImg } from '@/util/teamnameConvertImg';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+const token = getCookie('token');
+const headers = {
+  authorization: `Bearer ${token}`,
+  'Content-Type': `application/json`,
+};
 
 type SelectTeamCardProps = {
+  football_team_id: number;
   original_team_name: string;
   follower: number;
   recruit_ing: number;
@@ -14,13 +25,34 @@ type SelectTeamCardProps = {
 };
 
 const SelectTeamCard = (props: SelectTeamCardProps) => {
+  const id = useSelector((state: RootState) => state.auth.id);
+  const navigate = useNavigate();
+  const handleSelectButtonClick = async () => {
+    const body = {
+      id: id,
+      nickname: '',
+      cheering_team_id: props.football_team_id,
+    };
+    const res = await fetch(`${BASE_URL}/api/user/profile/`, {
+      method: 'PATCH',
+      headers: headers,
+      body: JSON.stringify({
+        ...body,
+      }),
+    });
+    const data = await res.json();
+    // console.log(data);
+    navigate('/');
+    location.reload();
+  };
+
   return (
     <Wrap>
       <BodyContainer teamcolor={props?.team_color_sub}>
         <BodyHead teamcolor={props?.team_color_main}></BodyHead>
         <HeadLogo>
           <Circle>
-          <IMG src={teamnameConvertImg(props?.logo_img_url)} />
+            <IMG src={teamnameConvertImg(props?.logo_img_url)} />
           </Circle>
         </HeadLogo>
         <BodyBody>
@@ -43,6 +75,10 @@ const SelectTeamCard = (props: SelectTeamCardProps) => {
           </TeamInfo>
         </BodyBody>
       </BodyContainer>
+      <ButtonContainer>
+        <SelectButton onClick={handleSelectButtonClick}>선택하기</SelectButton>
+        <SkipButton onClick={() => navigate('/')}>취소</SkipButton>
+      </ButtonContainer>
     </Wrap>
   );
 };
@@ -54,6 +90,7 @@ const Wrap = styled.div`
   width: 100%;
   padding: 10px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: #ffffff;
@@ -87,13 +124,12 @@ const Circle = styled.div`
   justify-content: center;
   align-items: center;
   position: absolute;
-  top: 30%; 
-  left: 50%; 
-  background-color: #FFFFFF;
-  border-radius:50%;
+  top: 30%;
+  left: 50%;
+  background-color: #ffffff;
+  border-radius: 50%;
   transform: translate(-50%, -50%);
-  
-`
+`;
 
 const HeadLogo = styled.div`
   z-index: 3;
@@ -185,4 +221,30 @@ const About = styled.p`
   font-size: 10px;
   font-weight: bolder;
   color: #ffffff;
+`;
+const ButtonContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  padding: 10px;
+`;
+
+const SelectButton = styled.button`
+  background-color: #000000;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+`;
+
+const SkipButton = styled.button`
+  background-color: transparent;
+  color: #000000;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
 `;
