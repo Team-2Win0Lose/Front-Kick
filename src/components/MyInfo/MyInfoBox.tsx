@@ -10,6 +10,7 @@ type Props = {
   nickname?: string;
   name?: string;
   email?: string;
+  toggleSide: () => void;
 };
 
 const RegisterTeam = (props: Props) => {
@@ -38,7 +39,8 @@ const RegisterTeam = (props: Props) => {
         </VerticalContainer>
         <AiFillSetting
           size='30'
-          onClick={() => navigate('/mypage')}
+          onClick={() => {navigate('/mypage')
+          props.toggleSide()}}
         ></AiFillSetting>
       </FlexContainer>
     </Form>
