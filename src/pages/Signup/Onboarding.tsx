@@ -1,14 +1,7 @@
 import styled from 'styled-components';
-import { useNavigate } from 'react-router-dom';
 import OnboardingTeamSelect from '@/components/OnboardingTeamSelect/OnboardingTeamSelect';
 
 const Onboarding = () => {
-  const navigate = useNavigate();
-
-  const handleSelectButtonClick = () => {
-    navigate('/'); // Navigate to the '/home' route when the button is clicked
-  };
-
   return (
     <div>
       <TitleForm>
@@ -17,13 +10,9 @@ const Onboarding = () => {
       </TitleForm>
       <TeamCardContainer>
         <CarouselContainer>
-          <OnboardingTeamSelect></OnboardingTeamSelect>
+          <OnboardingTeamSelect />
         </CarouselContainer>
       </TeamCardContainer>
-      <ButtonContainer>
-        <SelectButton onClick={handleSelectButtonClick}>선택하기</SelectButton>
-        <SkipButton onClick={handleSelectButtonClick}>건너뛰기</SkipButton>
-      </ButtonContainer>
     </div>
   );
 };
@@ -52,30 +41,4 @@ const H1 = styled.h1`
   font-weight: bold;
 `;
 
-const ButtonContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 16px;
-  padding: 10px;
-`;
-
-const SelectButton = styled.button`
-  background-color: #000000;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 8px;
-  cursor: pointer;
-`;
-
-const SkipButton = styled.button`
-  background-color: transparent;
-  color: #000000;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 8px;
-  cursor: pointer;
-`;
 export default Onboarding;
