@@ -46,7 +46,40 @@ const FindAccompanyDetail = () => {
         }
       }
     }
+    for (const key in recruitDetailData?.appliedUserIdList) {
+      if (recruitDetailData?.appliedUserIdList.hasOwnProperty(key)) {
+        const user = recruitDetailData?.appliedUserIdList[key];
+        if (user.user_id === id) {
+          setuserState('참여완료');
+        }
+      }
+    }
   }, [recruitDetailData, id]);
+  const ifBtnClick = (boardId: number, userID: string, isAccept: number) => {
+    setboardId(boardId);
+    setuserID(userID);
+    setisAccept(isAccept);
+    setbtnclicknumber(isAccept + 1);
+    setTimeout(() => {
+      patchUserApply();
+    }, 100);
+  };
+  const patchUserApply = async () => {
+    try {
+      const res = await fetch(
+        `${BASE_URL}/api/my-recruitment/?recruitment_board_id=${boardId}&applying_user_id=${userID}&is_accept=${isAccept}`,
+        {
+          method: 'PATCH',
+          headers: headers,
+        },
+      );
+      const data = await res.json();
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     async function fetchData() {
       try {
@@ -92,32 +125,6 @@ const FindAccompanyDetail = () => {
     }
   };
   // console.log(recruitDetailData);
-
-  const ifBtnClick = (boardId: number, userID: string, isAccept: number) => {
-    setboardId(boardId);
-    setuserID(userID);
-    setisAccept(isAccept);
-    setbtnclicknumber(isAccept + 1);
-    setTimeout(() => {
-      patchUserApply();
-      // location.reload();
-    }, 100);
-  };
-  const patchUserApply = async () => {
-    try {
-      const res = await fetch(
-        `${BASE_URL}/api/my-recruitment/?recruitment_board_id=${boardId}&applying_user_id=${userID}&is_accept=${isAccept}`,
-        {
-          method: 'PATCH',
-          headers: headers,
-        },
-      );
-      const data = await res.json();
-      console.log(data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   return id !== recruitDetailData?.hostId ? (
     <Form>
@@ -373,6 +380,8 @@ export default FindAccompanyDetail;
 
 const ApplyBtn = styled.div`
   background-color: #1f1f45;
+  margin-top: 20px;
+  margin-bottom: 20px;
   padding: 10px 20px;
   border-radius: 12px;
   color: white;
@@ -438,7 +447,7 @@ const MatchInfo = styled.div`
 `;
 
 const FlexItem = styled.div`
-  font-size: 12px;
+  font-size: 14px;
   padding: 5px;
   font-weight: bold;
   text-align: left;
@@ -456,7 +465,7 @@ const TitleText = styled.div`
 `;
 
 const Text = styled.div`
-  font-size: 12px;
+  font-size: 14px;
   font-weight: bold;
   justify-content: center;
   align-items: center;
@@ -511,7 +520,7 @@ const Content = styled.div`
   box-sizing: border-box;
   border-radius: 10px;
   border: 1px solid #ccc;
-  font-size: 16px;
+  font-size: 18px;
   padding: 15px;
   line-height: 1.3;
   /* border: none;

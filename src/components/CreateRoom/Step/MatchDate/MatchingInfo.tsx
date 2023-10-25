@@ -111,7 +111,7 @@ const MatchingInfo = (props: MatchingInfoProps) => {
           <FlexContainerRight>
             <FlexText>
               <DIV>경기 일정</DIV>
-              <FlexItem>{props.event.start.toLocaleString('ko-KR')}</FlexItem>
+              <FlexItem>{props.event.start.toLocaleString('ko-KR').slice(0, -3)}</FlexItem>
             </FlexText>
             <FlexText>
               <DIV>경기 장소</DIV>
@@ -134,7 +134,7 @@ export default MatchingInfo;
 
 const Text = styled.div`
   font-size: 30px;
-  padding: 30px;
+  padding: 20px;
   font-weight: bold;
   justify-content: center;
   align-items: center;
