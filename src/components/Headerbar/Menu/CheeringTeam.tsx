@@ -13,6 +13,7 @@ type Props = {
   recruit_ing: number;
   team_color_main: string;
   team_color_sub: string;
+  toggleSide: ()=>void;
 };
 
 const CheeringTeam = (props: Props) => {
@@ -24,6 +25,7 @@ const CheeringTeam = (props: Props) => {
     <div>
     <Alter onClick={() =>{
               navigate('/signup/onboarding')
+              props.toggleSide()
             }}>변경
     </Alter>
     <Form>
