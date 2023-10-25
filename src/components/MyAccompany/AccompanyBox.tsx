@@ -352,7 +352,7 @@ const Img = styled.img`
 `;
 const CardName = styled.div`
   width: 80%;
-  font-size: 10px;
+  font-size: 12px;
   color: black;
   word-break: break-all;
   text-align: center;

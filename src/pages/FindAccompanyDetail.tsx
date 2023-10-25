@@ -380,6 +380,8 @@ export default FindAccompanyDetail;
 
 const ApplyBtn = styled.div`
   background-color: #1f1f45;
+  margin-top: 20px;
+  margin-bottom: 20px;
   padding: 10px 20px;
   border-radius: 12px;
   color: white;
@@ -445,7 +447,7 @@ const MatchInfo = styled.div`
 `;
 
 const FlexItem = styled.div`
-  font-size: 12px;
+  font-size: 14px;
   padding: 5px;
   font-weight: bold;
   text-align: left;
@@ -463,7 +465,7 @@ const TitleText = styled.div`
 `;
 
 const Text = styled.div`
-  font-size: 12px;
+  font-size: 14px;
   font-weight: bold;
   justify-content: center;
   align-items: center;
@@ -518,7 +520,7 @@ const Content = styled.div`
   box-sizing: border-box;
   border-radius: 10px;
   border: 1px solid #ccc;
-  font-size: 16px;
+  font-size: 18px;
   padding: 15px;
   line-height: 1.3;
   /* border: none;

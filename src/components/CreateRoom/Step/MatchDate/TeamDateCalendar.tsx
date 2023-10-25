@@ -194,6 +194,10 @@ const EventContainer = styled.div`
   height: 100%;
   margin-bottom: -30%;
   color: black;
+  ${customMedia.lessThan('tablet')`
+    margin-bottom: -10%;
+
+	`}
 `;
 
 const EventTitle = styled.div`
@@ -213,6 +217,11 @@ const EventImage = styled.img`
   display: flex;
   justify-content: center;
   align-items: center;
+  ${customMedia.lessThan('tablet')`
+    width: 40%;
+    height: 40%;
+    object-fit: contain;
+	`}
   ${customMedia.lessThan('mobile')`
     width: 100%;
     height: 100%;

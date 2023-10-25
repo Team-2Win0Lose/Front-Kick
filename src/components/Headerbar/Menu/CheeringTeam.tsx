@@ -1,5 +1,7 @@
+import { customMedia } from '@/util/GlobalStyle';
 import { teamnametoFullname } from '@/util/teamnameConvertImg';
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 type Props = {
@@ -14,7 +16,16 @@ type Props = {
 };
 
 const CheeringTeam = (props: Props) => {
+
+
+  const navigate = useNavigate()
+
   return (
+    <div>
+    <Alter onClick={() =>{
+              navigate('/signup/onboarding')
+            }}>변경
+    </Alter>
     <Form>
       <FlexContainer>
         <ColorContainer1 teamcolor={props.team_color_main}>
@@ -38,8 +49,26 @@ const CheeringTeam = (props: Props) => {
         </ColorContainer2>
       </FlexContainer>
     </Form>
+    </div>
   );
 };
+
+
+const Alter = styled.li`
+  display:flex;
+  margin-left: 75%;
+  margin-bottom: 10px;
+  align-items:center;
+  justify-content: left;
+  font-size: 1rem;
+  color: #b6b6b6;
+  ${customMedia.lessThan('tablet')`
+     margin-left: 85%;
+	`}
+  ${customMedia.lessThan('mobile')`
+     margin-left: 60%;
+	`}
+`;
 
 const Title = styled.div<{ teamcolor: string }>`
   font-size: 20px;
