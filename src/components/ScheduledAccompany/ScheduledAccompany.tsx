@@ -5,6 +5,8 @@ import { HiPlusCircle } from 'react-icons/hi';
 import SelectTeamCard from '../OnboardingTeamSelect/SelectTeamCard';
 
 interface Props {
+  football_team_id: number;
+
   team_id: number;
   follower: number;
   logo_img_url: string;
@@ -20,6 +22,7 @@ const ScheduledAccompany = (props: Props) => {
   if (props.team_id !== 0) {
     return (
       <SelectTeamCard
+        football_team_id={props.football_team_id}
         team_name={props?.original_team_name}
         team_color_main={props.team_color_main}
         team_color_sub={props.team_color_sub}
