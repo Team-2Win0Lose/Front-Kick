@@ -74,7 +74,6 @@ const FindAccompanyDetail = () => {
         },
       );
       const data = await res.json();
-      console.log(data);
     } catch (error) {
       console.log(error);
     }
@@ -91,7 +90,6 @@ const FindAccompanyDetail = () => {
         );
         const data = await res.json();
         setrecruitDetailData(data);
-        // location.reload();
       } catch (Error) {
         console.error('Error:', Error);
       }

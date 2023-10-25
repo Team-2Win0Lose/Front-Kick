@@ -75,7 +75,6 @@ const MultiFilter = (props: Props) => {
   useEffect(() => {
     getCardListData();
   }, [getCardListData]);
-  // console.log(cardList);
 
   const makeQueryString = () => {
     const queryString = clickedCheckList
@@ -133,7 +132,6 @@ const MultiFilter = (props: Props) => {
                         onClick={() => appendTeam(content[1])}
                       >
                         <TeamLogo src={content[0]} alt='팀로고' />
-                        {/* <input type='checkbox' /> */}
                       </TeamLabel>
                     </TeamContent>
                   ))}
@@ -196,64 +194,6 @@ const MultiFilter = (props: Props) => {
                 </Contents>
               </Filter>
             );
-            // } else if (sort_type === 'date') {
-            //   return (
-            //     <Filter key={idx}>
-            //       <Title
-            //         className={clickedCategory === idx ? 'show' : 'hide'}
-            //         onClick={() => {
-            //           setClickedCategory(idx);
-            //           setIsContentsShowed(true);
-            //         }}
-            //       >
-            //         {title}
-            //       </Title>
-            //       <DateContents
-            //         className={
-            //           clickedCategory === idx && isContentsShowed
-            //             ? 'show'
-            //             : 'hide'
-            //         }
-            //         onClick={() => {
-            //           handleCheckList(idx, '', sort_type);
-            //         }}
-            //       >
-            //         <DatePick>
-            //           <DateBox1>
-            //             <Calendar />
-            //             <CustomDatePicker
-            //               locale={ko} //한글
-            //               dateFormat='yyyy.MM.dd'
-            //               selected={startDate}
-            //               closeOnScroll={true}
-            //               onChange={(date: Date) => setStartDate(date)}
-            //             />
-            //           </DateBox1>
-            //           <DateBox2>
-            //             <Calendar />
-
-            //             <CustomDatePicker
-            //               locale={ko} //한글
-            //               dateFormat='yyyy.MM.dd'
-            //               selected={endDate}
-            //               closeOnScroll={true}
-            //               onChange={(date: Date) => setEndDate(date)}
-            //             />
-            //           </DateBox2>
-            //         </DatePick>
-
-            //         <Btns>
-            //           <Button
-            //             onClick={() => {
-            //               setIsContentsShowed(false);
-            //             }}
-            //           >
-            //             필터 적용
-            //           </Button>
-            //         </Btns>
-            //       </DateContents>
-            // </Filter>
-            // );
           }
         })}
       </FilterList>
@@ -324,15 +264,10 @@ const FILTER_CATEGORYS = [
     title: '모집 여부',
     contents: [
       ['모집중', '0'],
-      ['모집종료', '1'],
-      ['모집완료', '2'],
+      ['모집완료', '1'],
+      ['모집종료', '2'],
     ],
   },
-  // {
-  //   sort_type: 'date',
-  //   title: '날짜 선택',
-  //   contents: [],
-  // },
 ];
 const useOutsideClick = (
   ref: RefObject<HTMLElement>,
