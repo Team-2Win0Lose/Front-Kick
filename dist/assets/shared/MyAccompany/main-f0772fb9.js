@@ -126,7 +126,7 @@ import{s as n,m as B,j as i,a as t}from"../../vendor-f20b940a.js";import{B as N}
   border-radius: 100%;
 `,d=n.div`
   width: 80%;
-  font-size: 10px;
+  font-size: 12px;
   color: black;
   word-break: break-all;
   text-align: center;
