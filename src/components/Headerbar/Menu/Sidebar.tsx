@@ -86,6 +86,7 @@ function Sidebar({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: any }) {
           <DIV>
             <Menu>내 정보</Menu>
             <MyInfoBox
+              toggleSide={toggleSide}
               profileImg={profileData?.profile?.profileImg}
               name={profileData?.profile?.name}
               nickname={profileData?.profile?.nickname}
@@ -96,6 +97,7 @@ function Sidebar({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: any }) {
           <DIV>
             <Menu>나의 응원팀</Menu>
             <CheeringTeam
+              toggleSide={toggleSide}
               team_id={profileData?.profile?.cheering_team_id}
               follower={profileData?.cheering_team?.follower}
               logo_img_url={`https://kickstorage.blob.core.windows.net${profileData?.cheering_team?.logo_img_url}`}
@@ -136,7 +138,7 @@ function Sidebar({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: any }) {
       <ul>
         <DIV onClick={() => toggleSide()}>
           <Menu>내 정보</Menu>
-          <MyInfoBox />
+          <MyInfoBox toggleSide={toggleSide}/>
         </DIV>
       </ul>
     </SideBarWrap>
