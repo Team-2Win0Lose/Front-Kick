@@ -46,7 +46,40 @@ const FindAccompanyDetail = () => {
         }
       }
     }
+    for (const key in recruitDetailData?.appliedUserIdList) {
+      if (recruitDetailData?.appliedUserIdList.hasOwnProperty(key)) {
+        const user = recruitDetailData?.appliedUserIdList[key];
+        if (user.user_id === id) {
+          setuserState('참여완료');
+        }
+      }
+    }
   }, [recruitDetailData, id]);
+  const ifBtnClick = (boardId: number, userID: string, isAccept: number) => {
+    setboardId(boardId);
+    setuserID(userID);
+    setisAccept(isAccept);
+    setbtnclicknumber(isAccept + 1);
+    setTimeout(() => {
+      patchUserApply();
+    }, 100);
+  };
+  const patchUserApply = async () => {
+    try {
+      const res = await fetch(
+        `${BASE_URL}/api/my-recruitment/?recruitment_board_id=${boardId}&applying_user_id=${userID}&is_accept=${isAccept}`,
+        {
+          method: 'PATCH',
+          headers: headers,
+        },
+      );
+      const data = await res.json();
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     async function fetchData() {
       try {
@@ -92,32 +125,6 @@ const FindAccompanyDetail = () => {
     }
   };
   // console.log(recruitDetailData);
-
-  const ifBtnClick = (boardId: number, userID: string, isAccept: number) => {
-    setboardId(boardId);
-    setuserID(userID);
-    setisAccept(isAccept);
-    setbtnclicknumber(isAccept + 1);
-    setTimeout(() => {
-      patchUserApply();
-      // location.reload();
-    }, 100);
-  };
-  const patchUserApply = async () => {
-    try {
-      const res = await fetch(
-        `${BASE_URL}/api/my-recruitment/?recruitment_board_id=${boardId}&applying_user_id=${userID}&is_accept=${isAccept}`,
-        {
-          method: 'PATCH',
-          headers: headers,
-        },
-      );
-      const data = await res.json();
-      console.log(data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   return id !== recruitDetailData?.hostId ? (
     <Form>
